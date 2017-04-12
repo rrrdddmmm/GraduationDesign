@@ -1,0 +1,138 @@
+package edu.xust.expert.fan;
+
+public class AlertParameter {
+	/*
+	 *预警信息
+	 * */
+	private String AlertId;             //预警主键
+	private String AlertCode;       //预警编码
+	private String TroubleClass;   //故障类型 （位置）
+	private String AlertTime;         //预警时间
+	private int AlertState;            // 0 为正常，1为报警，2为自动消警，3 为人工消警  4为上报
+	private String Remark;           //备注
+
+	public AlertParameter() {
+		super();	
+	}
+	//全部参数构造方法
+	public AlertParameter(String alertId, String alertCode, String troubleClass, String alertTime,
+			 int isDismissAlert, int alertState, String remark) {
+		super();
+		AlertId = alertId;
+		AlertCode = alertCode;
+		TroubleClass=troubleClass;
+		AlertTime = alertTime;
+		AlertState = alertState;
+		Remark = remark;
+	}
+
+	//除去自增参数外，其他参数构造方法
+	public AlertParameter( String alertId,String alertCode, String troubleClass,
+			int isDismissAlert, int alertState, String remark) {
+		super();
+		AlertId = alertId;
+		AlertCode = alertCode;
+		TroubleClass=troubleClass;
+		AlertState = alertState;
+		Remark = remark;
+	}
+	public AlertParameter( String alertId,String alertCode, String troubleClass,int alertState) {
+		super();
+		AlertId = alertId;
+		AlertCode = alertCode;
+		TroubleClass=troubleClass;
+		AlertState = alertState;
+	}
+	
+	public AlertParameter(String alertCode, String troubleClass,int alertState,String remark) {
+		super();
+		AlertCode = alertCode;
+		TroubleClass=troubleClass;
+		AlertState = alertState;
+		Remark = remark;
+	}
+	/**
+	 * @return the alerId
+	 */
+	public String getAlertId() {
+		return AlertId;
+	}
+	/**
+	 * @param alerId the alerId to set
+	 */
+	public void setAlertId(String alertId) {
+		AlertId = alertId;
+	}
+
+
+	/**
+	 * @return the alertCode
+	 */
+	public String getAlertCode() {
+		return AlertCode;
+	}
+
+
+	/**
+	 * @param alertCode the alertCode to set
+	 */
+	public void setAlertCode(String alertCode) {
+		AlertCode = alertCode;
+	}
+	/**
+	 * @return the troubleClass
+	 */
+	public String getTroubleClass() {
+		return TroubleClass;
+	}
+	/**
+	 * @param troubleClass the troubleClass to set
+	 */
+	public void setTroubleClass(String troubleClass) {
+		TroubleClass = troubleClass;
+	}
+	/**
+	 * @return the AlertTime
+	 */
+	public String getAlertTime() {
+		return AlertTime;
+	}
+
+
+	/**
+	 * @param AlertTime the AlertTime to set
+	 */
+	public void setAlertTime(String alertTime) {
+		AlertTime = alertTime;
+	}
+	/**
+	 * @return the alerState
+	 */
+	public int getAlertState() {
+		return AlertState;
+	}
+
+
+	/**
+	 * @param alerState the alerState to set
+	 */
+	public void setAlertState(int alertState) {
+		AlertState = alertState;
+	}
+
+
+	/**
+	 * @return the remark
+	 */
+	public String getRemark() {
+		return Remark;
+	}
+
+
+	/**
+	 * @param remark the remark to set
+	 */
+	public void setRemark(String remark) {
+		Remark = remark;
+	}
+}

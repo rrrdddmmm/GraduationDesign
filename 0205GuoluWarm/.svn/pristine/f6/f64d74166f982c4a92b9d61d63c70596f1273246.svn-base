@@ -1,0 +1,38 @@
+package edu.xust.expert.shuguan;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Date;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import edu.xust.job.FanJob;
+import edu.xust.db.MyDB;
+import edu.xust.expert.Expert;
+
+;
+
+public class ShuGuanExpert implements Expert {
+	private static Logger log = LoggerFactory.getLogger(FanJob.class);
+
+	@Override
+	public void start() {
+		// TODO Auto-generated method stub
+		try {
+			log.info("束管专家 - 分析了一次" + new Date());
+			ResultSet rs = MyDB.executeQuerySql("select top 5 * from BeamTubeAlert");
+			String str="";
+			while (rs.next()) {
+				str=str + rs.getString("CoalTemp")+", ";
+			}
+			log.info("煤温=" + str);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		}
+
+	}
+
+}

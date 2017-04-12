@@ -1,0 +1,5 @@
+package edu.xust.expert;
+
+public interface Expert {
+	public void start();
+}

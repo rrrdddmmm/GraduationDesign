@@ -1,0 +1,186 @@
+package edu.xust.expert.fan;
+
+import java.util.List;
+
+
+public class AlertModel {
+	private double LevelShock;//水平振动
+	private double VerticalShock;//垂直振动
+	private double BearingTemp;//轴承温度
+	private double ThreeVoltage;//三相电压值
+	private double ThreeCurrentIv;//三相电流值Iv
+	private double ThreeCurrentIu;//三相电流值Iu
+	private double ThreeCurrentIw;//三相电流值Iw
+	private double WindingTemp;//绕组温度
+	private double ActualWindPressure;//实际工作风压
+	private double ActualWorkVolume;//实际工作风量
+	private double FrequencySpeed;//变频转速
+	private String CollectTime ;//数据采集时间
+	
+	/*
+	 * 风机主轴故障 联轴器故障均有可能
+	 * */
+	// 1  风机主轴故障   B0100
+	public String  SpindleTrouble(FanParameter fanParameter){
+		String TroubleID="00000";
+		LevelShock=fanParameter.getLevelShock();
+		VerticalShock=fanParameter.getVerticalShock();
+		if(LevelShock>8 && VerticalShock>8){
+			TroubleID="B0100";
+		}
+		return TroubleID;
+	}
+	//2   联轴器故障   B0400
+	public String  CouplerTrouble(FanParameter fanParameter){
+		String TroubleID="00000";
+		LevelShock=fanParameter.getLevelShock();
+		VerticalShock=fanParameter.getVerticalShock();
+		
+		
+		if(LevelShock>8 && VerticalShock>8){
+			TroubleID="B0400";
+		}		
+		return TroubleID;
+	}
+	
+	// 3  工作轮、叶片故障     B0200
+	public String  ImpellerVaneTrouble(FanParameter fanParameter){
+		String TroubleID="00000";
+		LevelShock=fanParameter.getLevelShock();
+		VerticalShock=fanParameter.getVerticalShock();
+		ThreeCurrentIv=fanParameter.getThreeCurrentIv();
+		ThreeCurrentIu=fanParameter.getThreeCurrentIu();
+		ThreeCurrentIw=fanParameter.getThreeCurrentIw();
+	    
+		if(LevelShock>8 && VerticalShock>8 &&(ThreeCurrentIv>246.1
+				||ThreeCurrentIu>246.1||ThreeCurrentIw>246.1)){
+			TroubleID="B0200";
+		}
+		return TroubleID;
+	}
+	
+	
+	// 4  电机堵转故障     B0600
+	public String  MotorBlockTrouble(FanParameter fanParameter){
+		String TroubleID="00000";
+		WindingTemp=fanParameter.getWindingTemp();
+		ThreeCurrentIv=fanParameter.getThreeCurrentIv();
+		ThreeCurrentIu=fanParameter.getThreeCurrentIu();
+		ThreeCurrentIw=fanParameter.getThreeCurrentIw();
+		double I=246.1;
+		if(WindingTemp>125 &&((ThreeCurrentIv>5*I && ThreeCurrentIv<8*I)
+				||(ThreeCurrentIu>5*I && ThreeCurrentIu<8*I)||
+				(ThreeCurrentIw>5*I && ThreeCurrentIw<8*I))){
+			TroubleID="B0600";
+		}
+		return TroubleID;
+	}
+	
+	// 5  电机过载故障     B0700
+		public String  MotorOverloadTrouble(FanParameter fanParameter){
+			String TroubleID="00000";
+			WindingTemp=fanParameter.getWindingTemp();
+			ThreeVoltage=fanParameter.getThreeVoltage();
+			ThreeCurrentIv=fanParameter.getThreeCurrentIv();
+			ThreeCurrentIu=fanParameter.getThreeCurrentIu();
+			ThreeCurrentIw=fanParameter.getThreeCurrentIw();
+			
+			double I=246.1;
+			double U=660.0;
+			if(WindingTemp>125 &&((ThreeCurrentIv>1.25*I && ThreeCurrentIv<5*I)
+					||(ThreeCurrentIu>1.25*I && ThreeCurrentIu<5*I)||
+					(ThreeCurrentIw>1.25*I && ThreeCurrentIw<5*I)) 
+					&&(ThreeVoltage>1.05*U||ThreeVoltage<0.95*U)){
+				TroubleID="B0700";
+			}
+			return TroubleID;
+		}
+		
+		// 6   电机接地故障    B0800
+		public String  MotorGroundTrouble(FanParameter fanParameter){
+			String TroubleID="00000";
+			WindingTemp=fanParameter.getWindingTemp();
+			ThreeCurrentIv=fanParameter.getThreeCurrentIv();
+			ThreeCurrentIu=fanParameter.getThreeCurrentIu();
+			ThreeCurrentIw=fanParameter.getThreeCurrentIw();	
+			if(WindingTemp>125 &&(((ThreeCurrentIu>ThreeCurrentIv && 
+		       Math.abs(ThreeCurrentIv-ThreeCurrentIw)<0.01)
+					||(ThreeCurrentIw >ThreeCurrentIu && ThreeCurrentIv>ThreeCurrentIu)))){
+				TroubleID="B0800";
+			}
+			return TroubleID;
+		}
+		
+		// 7 电机相间短路故障   B0900
+		public String  PhaseFaultTrouble(FanParameter fanParameter){
+			String TroubleID="00000";
+			WindingTemp=fanParameter.getWindingTemp();
+			ThreeCurrentIv=fanParameter.getThreeCurrentIv();
+			ThreeCurrentIu=fanParameter.getThreeCurrentIu();
+			ThreeCurrentIw=fanParameter.getThreeCurrentIw();	
+			if(WindingTemp>125 &&(((-ThreeCurrentIv>ThreeCurrentIw && 
+			     Math.abs(ThreeCurrentIu-(-ThreeCurrentIv))<0.01)))){
+				    TroubleID="B0900";
+				}
+			return TroubleID;
+		}
+		
+		
+		// 8 电机缺相故障  B0900  
+		public String StatorfalutTrouble( List<FanParameter>  fanParameters){
+			String TroubleID="00000";
+			WindingTemp=fanParameters.get(0).getWindingTemp();
+			ThreeCurrentIv=fanParameters.get(0).getThreeCurrentIv();
+			ThreeCurrentIu=fanParameters.get(0).getThreeCurrentIu();
+			ThreeCurrentIw=fanParameters.get(0).getThreeCurrentIw();
+			//故障前电流幅值
+			double LastThreeCurrentIv=fanParameters.get(1).getThreeCurrentIv();
+
+//			System.out.println("本次的电流值是"+ThreeCurrentIv);
+//			System.out.println("上一次的电流值是"+LastThreeCurrentIv);
+				
+			if(WindingTemp>125 &&(ThreeCurrentIu==0 && (-ThreeCurrentIw==ThreeCurrentIv)
+					&&(-ThreeCurrentIw> LastThreeCurrentIv))){
+				    TroubleID="B0900";
+				}
+			return TroubleID;
+		}
+
+	    // 9  工况性能不稳定性 B1000
+		public String  PerformanceUnstable(FanParameter fanParameter){
+			String TroubleID="00000";
+			ActualWindPressure=fanParameter.getActualWindPressure();
+			FrequencySpeed=fanParameter.getFrequencySpeed();
+			double n=Math.pow((FrequencySpeed/740.0), 2);
+			if(ActualWindPressure>(0.9*3300*n)){
+				TroubleID="B1000";
+			}
+			return TroubleID;
+		}
+		
+		//  10  风机工况性能不经济性  B1100
+		public String  PerformanceUn(FanParameter fanParameter){
+			String TroubleID="00000";
+			ActualWorkVolume=fanParameter.getActualWorkVolume();
+			FrequencySpeed=fanParameter.getFrequencySpeed();
+			double n=FrequencySpeed/740.0;
+			if(ActualWindPressure>(67.5*n)){
+				TroubleID="B1100";
+			}
+			return TroubleID;
+		}	
+		
+		// 4  电机轴承故障  B0300
+		public String  MotorBearTrouble(FanParameter fanParameter){
+			String TroubleID="00000";
+			BearingTemp=fanParameter.getBearingTemp();
+			ThreeCurrentIv=fanParameter.getThreeCurrentIv();
+			ThreeCurrentIu=fanParameter.getThreeCurrentIu();
+			ThreeCurrentIw=fanParameter.getThreeCurrentIw();
+			double I=246.1;
+			if(BearingTemp>80 &&((ThreeCurrentIv>I)||(ThreeCurrentIu >I)||(ThreeCurrentIw>I))){
+				TroubleID="B0300";
+			}
+			return TroubleID;
+		}
+}

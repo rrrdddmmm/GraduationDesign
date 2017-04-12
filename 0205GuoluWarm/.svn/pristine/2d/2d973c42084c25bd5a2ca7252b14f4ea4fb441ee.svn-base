@@ -1,0 +1,239 @@
+package edu.xust.expert.fan;
+
+public class FanParameter {
+	/*
+	 * 风机设备参数
+	 * */
+	private String FanParameterId ;//参数主键
+	private double LevelShock;//水平振动
+	private double VerticalShock;//垂直振动
+	private double BearingTemp;//轴承温度
+	private double ThreeVoltage;//三相电压
+	private double ThreeCurrentIv;//三相电流值Iv
+	private double ThreeCurrentIu;//三相电流值Iu
+	private double ThreeCurrentIw;//三相电流值Iw
+	private double WindingTemp;//绕组温度
+	private double ActualWindPressure;//实际工作风压
+	private double ActualWorkVolume;//实际工作风量
+	private double FrequencySpeed;//变频转速
+	private String CollectTime ;//数据采集时间
+	private int  Flag ;//标示位，看数据是否读过
+	
+
+	//无参构造方法
+	public FanParameter() {
+		super();
+	}
+	public FanParameter(String fanParameterId, double levelShock,
+			double verticalShock, double bearingTemp, double threeVoltage,
+			double threeCurrentIv, double threeCurrentIu,
+			double threeCurrentIw, double windingTemp,
+			double actualWindPressure, double actualWorkVolume,
+			double frequencySpeed, String collectTime) {
+		super();
+		FanParameterId = fanParameterId;
+		LevelShock = levelShock;
+		VerticalShock = verticalShock;
+		BearingTemp = bearingTemp;
+		ThreeVoltage = threeVoltage;
+		ThreeCurrentIv = threeCurrentIv;
+		ThreeCurrentIu = threeCurrentIu;
+		ThreeCurrentIw = threeCurrentIw;
+		WindingTemp = windingTemp;
+		ActualWindPressure = actualWindPressure;
+		ActualWorkVolume = actualWorkVolume;
+		FrequencySpeed = frequencySpeed;
+		CollectTime = collectTime;
+	}
+	
+	public FanParameter(String fanParameterId,double levelShock,
+			double verticalShock, double bearingTemp, double threeVoltage,
+			double threeCurrentIv, double threeCurrentIu,
+			double threeCurrentIw, double windingTemp,
+			double actualWindPressure, double actualWorkVolume,
+			double frequencySpeed) {
+		super();
+		FanParameterId = fanParameterId;
+		LevelShock = levelShock;
+		VerticalShock = verticalShock;
+		BearingTemp = bearingTemp;
+		ThreeVoltage = threeVoltage;
+		ThreeCurrentIv = threeCurrentIv;
+		ThreeCurrentIu = threeCurrentIu;
+		ThreeCurrentIw = threeCurrentIw;
+		WindingTemp = windingTemp;
+		ActualWindPressure = actualWindPressure;
+		ActualWorkVolume = actualWorkVolume;
+		FrequencySpeed = frequencySpeed;
+	}
+	
+	/**
+	 * @return the flag
+	 */
+	public int getFlag() {
+		return Flag;
+	}
+	/**
+	 * @param flag the flag to set
+	 */
+	public void setFlag(int flag) {
+		this.Flag = flag;
+	}
+	/**
+	 * @return the fanParameter
+	 */
+	public String getFanParameterId() {
+		return FanParameterId;
+	}
+	/**
+	 * @param fanParameter the fanParameter to set
+	 */
+	public void setFanParameterId(String fanParameterId) {
+		FanParameterId = fanParameterId;
+	}
+	/**
+	 * @return the levelShock
+	 */
+	public double getLevelShock() {
+		return LevelShock;
+	}
+	/**
+	 * @param levelShock the levelShock to set
+	 */
+	public void setLevelShock(double levelShock) {
+		LevelShock = levelShock;
+	}
+	/**
+	 * @return the verticalShock
+	 */
+	public double getVerticalShock() {
+		return VerticalShock;
+	}
+	/**
+	 * @param verticalShock the verticalShock to set
+	 */
+	public void setVerticalShock(double verticalShock) {
+		VerticalShock = verticalShock;
+	}
+	/**
+	 * @return the bearingTemp
+	 */
+	public double getBearingTemp() {
+		return BearingTemp;
+	}
+	/**
+	 * @param bearingTemp the bearingTemp to set
+	 */
+	public void setBearingTemp(double bearingTemp) {
+		BearingTemp = bearingTemp;
+	}
+	/**
+	 * @return the threeVoltage
+	 */
+	public double getThreeVoltage() {
+		return ThreeVoltage;
+	}
+	/**
+	 * @param threeVoltage the threeVoltage to set
+	 */
+	public void setThreeVoltage(double threeVoltage) {
+		ThreeVoltage = threeVoltage;
+	}
+	/**
+	 * @return the threeCurrentIv
+	 */
+	public double getThreeCurrentIv() {
+		return ThreeCurrentIv;
+	}
+	/**
+	 * @param threeCurrentIv the threeCurrentIv to set
+	 */
+	public void setThreeCurrentIv(double threeCurrentIv) {
+		ThreeCurrentIv = threeCurrentIv;
+	}
+	/**
+	 * @return the threeCurrentIu
+	 */
+	public double getThreeCurrentIu() {
+		return ThreeCurrentIu;
+	}
+	/**
+	 * @param threeCurrentIu the threeCurrentIu to set
+	 */
+	public void setThreeCurrentIu(double threeCurrentIu) {
+		ThreeCurrentIu = threeCurrentIu;
+	}
+	/**
+	 * @return the threeCurrentIw
+	 */
+	public double getThreeCurrentIw() {
+		return ThreeCurrentIw;
+	}
+	/**
+	 * @param threeCurrentIw the threeCurrentIw to set
+	 */
+	public void setThreeCurrentIw(double threeCurrentIw) {
+		ThreeCurrentIw = threeCurrentIw;
+	}
+	/**
+	 * @return the windingTemp
+	 */
+	public double getWindingTemp() {
+		return WindingTemp;
+	}
+	/**
+	 * @param windingTemp the windingTemp to set
+	 */
+	public void setWindingTemp(double windingTemp) {
+		WindingTemp = windingTemp;
+	}
+	/**
+	 * @return the actualWindPressure
+	 */
+	public double getActualWindPressure() {
+		return ActualWindPressure;
+	}
+	/**
+	 * @param actualWindPressure the actualWindPressure to set
+	 */
+	public void setActualWindPressure(double actualWindPressure) {
+		ActualWindPressure = actualWindPressure;
+	}
+	/**
+	 * @return the actualWorkVolume
+	 */
+	public double getActualWorkVolume() {
+		return ActualWorkVolume;
+	}
+	/**
+	 * @param actualWorkVolume the actualWorkVolume to set
+	 */
+	public void setActualWorkVolume(double actualWorkVolume) {
+		ActualWorkVolume = actualWorkVolume;
+	}
+	/**
+	 * @return the frequencySpeed
+	 */
+	public double getFrequencySpeed() {
+		return FrequencySpeed;
+	}
+	/**
+	 * @param frequencySpeed the frequencySpeed to set
+	 */
+	public void setFrequencySpeed(double frequencySpeed) {
+		FrequencySpeed = frequencySpeed;
+	}
+	/**
+	 * @return the collectTime
+	 */
+	public String getCollectTime() {
+		return CollectTime;
+	}
+	/**
+	 * @param collectTime the collectTime to set
+	 */
+	public void setCollectTime(String collectTime) {
+		CollectTime = collectTime;
+	}
+ 
+}
