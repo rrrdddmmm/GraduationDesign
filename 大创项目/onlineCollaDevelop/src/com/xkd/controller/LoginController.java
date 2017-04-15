@@ -2,14 +2,11 @@ package com.xkd.controller;
 
 import java.io.Serializable;
 
-
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-
 
 import com.xkd.entity.StateResult;
 import com.xkd.entity.User;
@@ -18,7 +15,11 @@ import com.xkd.service.LoginService;
 @Controller
 @RequestMapping("/login")
 public class LoginController implements Serializable {
-    @Resource
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Resource
     private LoginService loginService;
     
     @RequestMapping("/toLogin.do")
