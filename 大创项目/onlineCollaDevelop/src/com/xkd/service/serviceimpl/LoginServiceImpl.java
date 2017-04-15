@@ -7,14 +7,21 @@ import com.xkd.dao.UserDaoMapper;
 import com.xkd.entity.StateResult;
 import com.xkd.entity.User;
 import com.xkd.service.LoginService;
-
-
+/**
+ * 登陆服务
+ * @author RBB
+ *
+ */
 @Service("LoginService")
 public class LoginServiceImpl implements LoginService{
-
+/**
+ * 
+ */
 	@Autowired
 	private UserDaoMapper userDao;
-
+/**
+ * 
+ */
 	public StateResult checkLogin(User user) {	
 		StateResult result=new StateResult();
 		User userd = userDao.findByName(user.getUsername());
@@ -42,7 +49,9 @@ public class LoginServiceImpl implements LoginService{
 		return result;
 	}
 	
-
+/**
+ * 
+ */
 	public StateResult registUser(User user){
 
 		StateResult result = new StateResult();
