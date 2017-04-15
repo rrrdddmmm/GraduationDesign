@@ -19,7 +19,7 @@ import com.xkd.service.IndexService;
 public class IndexController  implements Serializable {
 
 	/**
-	 * 序列化
+	 *  序列化
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
