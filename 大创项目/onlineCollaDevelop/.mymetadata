@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="onlineCollaDevelop"
+  id="myeclipse.1469419049688"
+  context-root="/onlineCollaDevelop"
+  j2ee-spec="5.0"
+  archive="onlineCollaDevelop.war">
+  <attributes>
+    <attribute name="webrootdir" value="/WebRoot" />
+  </attributes>
+</project-module>
+

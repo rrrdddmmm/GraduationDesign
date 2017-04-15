@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:jee="http://www.springframework.org/schema/jee" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+	
+	<!-- 配置直接转发的页面 -->
+	<!-- 可以直接响应转发的页面，无需再经过Handler的方法 -->
+	<!-- 前提条件：
+		 path：在地址栏输入的路径，该路径名需要满足前台控制器的要求：即要被前台控制前拦截到否则不会起作用
+		 view-name:输入的path应该跳转的位置
+	 -->
+	<!-- http://localhost:8088/springMvcForm/error.do .jsp-->
+	 
+	<!-- <mvc:view-controller path="login.do"  view-name="redirect:/login.jsp"/> -->
+	<!--
+	<mvc:view-controller path="/logind.do"  view-name="forward:/main/login.jsp"/>
+	<mvc:view-controller path="/give_power_login.do"  view-name="role/give_power_login"/>
+	<mvc:view-controller path="/submit_give_power_main.do"  view-name="submit/give_power_main"/>
+	<mvc:view-controller path="/material_inroom.do"  view-name="material/inroom"/>
+	<mvc:view-controller path="/materialCreat.do"  view-name="material/materialCreat"/>
+	 -->
+	<!-- 配置直接转发的页面后注解访问方式将会失效，加入此配置会恢复注解访问 -->
+	<mvc:annotation-driven />
+	
+	<!-- 当配置静态资源访问后注解将不起作用，加入次配置会恢复注解访问 -->
+	<mvc:default-servlet-handler/>
+	
+	<!-- 配置MultipartResolver为文件下载准备 -->
+	<bean id="multipartResolver" 
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="UTF-8"></property>
+		<property name="maxUploadSize" value="688400280"></property>
+	</bean>
+	
+	<!-- 4.配置Spring注解自动扫描(spring注解<自定义注解不行>) -->
+	<context:component-scan base-package="com.xkd" />
+	<!-- 6.配置SpringMVC的ViewResolver //重定向是不会进入视图解析器的-->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+</beans>

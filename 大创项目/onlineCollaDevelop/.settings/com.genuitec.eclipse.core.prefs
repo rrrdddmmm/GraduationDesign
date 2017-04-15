@@ -1,0 +1,4 @@
+#Sat Dec 17 01:31:29 CST 2016
+eclipse.preferences.version=1
+validator.Checked=WebRoot/WEB-INF/spring-controller.xml,WebRoot/login.jsp,WebRoot/WEB-INF/applicationContext.xml,WebRoot/WEB-INF/jsp,WebRoot/editor/plugins,WebRoot/editor/kindeditor.js,WebRoot/js/editor/plugins/code/prettify.js,corechart.I.js,default,WebRoot/xiaoshou/js/select-ui.min.js,WebRoot/xiaoshou/js/format+zh_CN,WebRoot/main,WebRoot/error.jsp,WebRoot/js/format+zh_CN,WebRoot/js/select-ui.min.js
+validator.Unchecked=

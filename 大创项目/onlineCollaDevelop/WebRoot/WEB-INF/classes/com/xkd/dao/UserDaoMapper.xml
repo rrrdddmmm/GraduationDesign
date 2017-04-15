@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xkd.dao.UserDaoMapper">
+
+
+	<!-- 登陆验证 -->
+	<select id="findByName" parameterType="string" resultType="com.xkd.entity.User">
+		select * from user
+		where username=#{username}
+	</select> 
+	<!-- 注册 -->
+	<insert id="save">
+		insert into user (username,email,phone,role)
+		values (#{username},#{email},#{phone},#{role})
+   </insert>
+
+	
+
+</mapper>
