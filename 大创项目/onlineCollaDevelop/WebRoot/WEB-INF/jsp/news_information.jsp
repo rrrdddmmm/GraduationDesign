@@ -32,11 +32,11 @@
 </head>
 <body style="background:url(../images/123.jpg) no-repeat center 0px;">
 	
-	<!-- 头部开始 --><!-- 头部开始 --><div align="right"><ol><li><h1><em><font face="Adobe 黑体 Std R"><strong></strong></font><font face="隶书" size="4" color="#0000ff"><u><strong><a href="../myInformation/toMyInformation.do">admin:欢迎您!!!</a></strong></u></font></em></h1></li><li><font face="隶书" size="4" color="#0000ff"><u><a href="#">退出</a><br><br></u></font></li></ol></div>
+	<!-- 头部开始 --><!-- 头部开始 --><div align="right"><ol><li><h1><em><font face="Adobe 黑体 Std R"><strong></strong></font><font face="隶书" size="4" color="#0000ff"><u><strong><a href="../myInformation/toMyInformation.do">admin:欢迎您!!!</a></strong></u></font></em></h1></li><li><font face="隶书" size="4" color="#0000ff"><u><a href="../exit/toExit.do">退出</a><br><br></u></font></li></ol></div>
 	<div id="header" class="w">
 		<div class="topbar">
 			<div class="logo fl">
-				<a href="toIndex.do"><img src="../images/logo1.png" width="268" height="70" alt="西安植物园"></a>
+				<a href="toIndex.do"><img src="../images/logo1.png" width="268" height="70" alt="西安科技大学"></a>
 			</div>
 			<div class="nav fr" id="wrap">
 				<ul class="clearfix">
