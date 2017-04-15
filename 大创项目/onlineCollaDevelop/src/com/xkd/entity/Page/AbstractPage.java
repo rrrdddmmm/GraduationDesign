@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.xkd.entity.Entity;
 import com.xkd.util.ConfigStr;
-import com.xkd.util.FormatStr;
 
 /**
  * 
@@ -21,7 +19,6 @@ public abstract class AbstractPage implements ConfigStr{
 	 * 翻页模型
 	 */
 	private Page page;
-	private String flag="del";
 	/**
 	 * 分页查询查找指定页数的数据
 	 * @Pags:要显示的当前页数，从第一页开始
@@ -77,110 +74,6 @@ public abstract class AbstractPage implements ConfigStr{
 	 */
 	protected Integer getallRows()throws SQLException{return 0;}
 /**************************************************************************************/
-/************************************批量删除和更新***************************************/	
-	/**
-	 * 批量删除保存:函数重载实现要是有字符串就是更新没有就是删除
-	 * @param Str
-	 * @return
-	 */
-	public boolean delAndUpdataSave(String Str)throws SQLException{
-		return delAndUpdataSave(Str,flag);
-	}
-	/**
-	 * 批量更新保存:函数重载实现要是有字符串就是更新没有就是删除
-	 * @param Str
-	 * @return
-	 */
-	public boolean delAndUpdataSave(String Str,String flag)throws SQLException{
-		//创建一个list集合作为根据批量权限id值查找权限信息的参数
-		List<String> List=null;
-		if(Str!=null){
-			//接收进来的数据进行处理成需要的格式
-			List=FormatStr.ToListStr(Str, ",");
-			if("del".equals(flag)){
-					return delListData(List);
-			}else{
-					return updataListData(List);
-			}
-		}
-		return false;
-	}
-	/**
-	 * 批量删除，需要重写即可
-	 * @param List:要传的参数
-	 * @return
-	 * @throws SQLException
-	 */
-	protected boolean delListData(List<?> List)throws SQLException{return false;};
-	/**
-	 * 批量更新，需要重写即可
-	 * @param List
-	 * @return
-	 * @throws SQLException
-	 */
-	protected boolean updataListData(List<?> List)throws SQLException {return false;}
-/**************************************************************************************/
-/*************************************数据更新******************************************/
-
-	/**
-	 * 数据更新保存
-	 * @param entity
-	 * @return
-	 * @throws SQLException
-	 */
-	protected boolean updataSave(Entity entity)throws SQLException {return false;}
-/**************************************************************************************/
-/*************************************数据查询*******************************************/
-	/**
-	 * 查询全部数据
-	 * @param entity
-	 * @return
-	 * @throws SQLException
-	 */
-	protected Entity findAll()throws SQLException {return null;}
-	/**
-	 * 条件查询一条数据
-	 * @param entity
-	 * @return
-	 * @throws SQLException
-	 */
-	protected Entity findByFactory(Entity entity)throws SQLException {return null;}
-	/**
-	 * 条件查询一列数据
-	 * @param entity
-	 * @return
-	 * @throws SQLException
-	 */
-	protected List<?> findByFactoryList(Entity entity)throws SQLException {return null;}
-/*************************************单个数据删除******************************************/
-	/**
-	 * 数据删除保存
-	 * @param entity
-	 * @return
-	 * @throws SQLException
-	 */
-	protected boolean delSave(Entity entity)throws SQLException {return false;}
-/*************************************添加数据******************************************/
-	/**
-	 * 添加一条数据
-	 * @param entity
-	 * @return
-	 * @throws SQLException
-	 */
-	protected boolean addSave(Entity entity)throws SQLException {return false;}
-	/**
-	 * 添加一批数据
-	 * @param entity
-	 * @return
-	 * @throws SQLException
-	 */
-	protected boolean addListSave(List<?> list)throws SQLException {return false;}
-/**************************************************************************************/
-/*************************************数据验证******************************************/
-	/**
-	 * 数据单个验证
-	 */
-	protected boolean verify(String factor)throws SQLException {return false;}
 }
 
 

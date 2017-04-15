@@ -31,7 +31,7 @@
 <body style="background:url(../images/123.jpg) no-repeat center 0px;">
 	
 	<!-- 头部开始 --><!-- 头部开始 --><div align="right"><ol><li><h1><em><font face="Adobe 黑体 Std R"><strong></strong></font><font face="隶书" size="4" color="#0000ff">
-	<u><strong><a href="xxxx.html">admin:欢迎您!!!</a></strong></u></font></em></h1></li>
+	<u><strong><a href="xxxx.html">${user.email }:欢迎您!!!</a></strong></u></font></em></h1></li>
 	<li><font face="隶书" size="4" color="#0000ff"><u><a href="#">退出</a><br><br></u></font></li></ol></div>
 	<div id="header" class="w">
 		<div class="topbar">

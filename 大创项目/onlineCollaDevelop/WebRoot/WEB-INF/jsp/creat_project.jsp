@@ -27,7 +27,7 @@
 <body style="background:url(../images/123.jpg) no-repeat center 0px;">
 	
 	<!-- 头部开始 --><!-- 头部开始 --><div align="right"><ol><li><h1><em><font face="Adobe 黑体 Std R"><strong></strong></font><font face="隶书" size="4" color="#0000ff">
-	<u><strong><a href="../myInformation/toMyInformation.do">admin:欢迎您!!!</a></strong></u></font></em></h1></li>
+	<u><strong><a href="../myInformation/toMyInformation.do">${user.email }:欢迎您!!!</a></strong></u></font></em></h1></li>
 	<li><font face="隶书" size="4" color="#0000ff"><u><a href="../exit/toExit.do">退出</a><br><br></u></font></li></ol></div>
 	<div id="header" class="w">
 		<div class="topbar">
@@ -58,7 +58,7 @@
 			<span class="name">创建项目</span>
 		</div>
 		<div class="main_box">
-			<form action="">
+			<form action="toSave.do" method="post">
 				<table width="1000" border="2" cellpadding="0" cellspacing="0" class="main_table">
 					<tbody>
 					<tr>
@@ -67,10 +67,10 @@
 						<td>开发语言：</td>
 						<td>
 							<select name="project_language">
-								<option value ="1">Volvo</option>
-								<option value ="2">Saab</option>
-								<option value="3">Opel</option>
-								<option value="4">Audi</option>
+								<option value ="1">java</option>
+								<option value ="2">c语言</option>
+								<option value="3">c++</option>
+								<option value="4">php</option>
 							</select>
 						</td>
 					</tr>
@@ -82,19 +82,19 @@
 					</tr>
 					<tr>
 						<td>项目批准人：</td>
-						<td><input type="text" name="leader"></td>
+						<td><input type="text" name="approver"></td>
 						<td>开发环境：</td>
-						<td><input type="text" name=""></td>
+						<td><input type="text" name="develop_platform"></td>
 					</tr>
 					<tr>
 						<td>项目经理：</td>
 						<td><input type="text" name="leader"></td>
 						<td>项目预算：</td>
-						<td><input type="text" name="" style="width:180px;margin-right:5px;"><span style="font-weight:bold">元</span></td>
+						<td><input type="text" name="budget" style="width:180px;margin-right:5px;"><span style="font-weight:bold">元</span></td>
 					</tr>
 					<tr>
 						<td>项目简介：</td>
-						<td colspan="3"><textarea name="" id="" size="20"></textarea></td>
+						<td colspan="3"><textarea name="describe" id="" size="20"></textarea></td>
 					</tr>
 					<tr>
 						<td>立项时间：</td>

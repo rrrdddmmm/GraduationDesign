@@ -44,7 +44,7 @@ public class CreatProjectController  implements Serializable {
      */
     @RequestMapping("/toSave.do")
     public String toSave(Project project) {
-    	
+    	System.out.println(project);
         return "creat_project";
     }
 

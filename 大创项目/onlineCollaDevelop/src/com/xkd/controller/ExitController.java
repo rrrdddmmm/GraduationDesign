@@ -2,6 +2,9 @@ package com.xkd.controller;
 
 import java.io.Serializable;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 /**
@@ -21,8 +24,10 @@ public class ExitController  implements Serializable {
      * @return
      */
     @RequestMapping("/toExit.do")
-    public String toExit() {
+    public String toExit(HttpServletRequest request){
     	//删除session
+    	HttpSession session=request.getSession();
+		session.setAttribute("user", null);
         return "redirect:../index/toIndex.do";
     }
 }

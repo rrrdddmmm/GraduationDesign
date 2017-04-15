@@ -3,6 +3,10 @@ package com.xkd.entity;
 import java.io.Serializable;
 import java.sql.Date;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Repository;
+@Repository("project")
+@Scope("prototype")//非单例模式
 public class Project implements Serializable{
 	/**
 	 * 
@@ -26,13 +30,6 @@ public class Project implements Serializable{
 	private String approver;
 	private double budget;
 	private String describe;
-	
-	
-	
-	
-	
-
-	
 	public Integer getProject_no() {
 		return project_no;
 	}

@@ -24,7 +24,7 @@ $(function(){
                 timer = window.setInterval(showSecondes,1000);
             }
 
-            var i = 3;
+            var i = 8;
             function showSecondes() {
                 if (i > 0) {
                     i--;
@@ -33,7 +33,7 @@ $(function(){
                 else {
                     window.clearInterval(timer);
                     //parent.location.href = "../main/login.jsp";//上一层页面跳转
-                      top.location.href = "../toPageController/toLogin.do";//最外层页面跳转
+                      top.location.href = "../login/toLogin.do";//最外层页面跳转
                 }
             }
 
@@ -65,7 +65,7 @@ $(function(){
     <h2>您可以尝试重新登录!</h2>
     <p ><a id="secondes">3</a>秒后将自动跳转至登录界面</p>
     <!-- ，立即跳转请点击,<a  href="javascript:history.back();">返回</a> -->
-    <div class="reindex"><a href="../loginController/loginOut.do" target="_parent">重新登录</a></div>
+    <div class="reindex"><a href="../login/toLogin.do" target="_parent">重新登录</a></div>
     
     </div>
 </body>
