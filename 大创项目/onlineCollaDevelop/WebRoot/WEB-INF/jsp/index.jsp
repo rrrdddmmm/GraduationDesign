@@ -55,8 +55,8 @@
 <body style="background:url(../images/123.jpg) no-repeat center 0px;">
 	
 		<!-- 头部开始 --><div align="right"><ol><li><h1><em><font face="Adobe 黑体 Std R"><strong></strong></font><font face="隶书" size="4" color="#0000ff"><u><strong>
-		<a href="xxxx.html">admin:欢迎您!!!</a></strong></u></font></em></h1></li>
-		<li><font face="隶书" size="4" color="#0000ff"><u><a href="xxxx.html">退出</a><br><br></u></font></li></ol></div>
+		<a href="my_Information.do">admin:欢迎您!!!</a></strong></u></font></em></h1></li>
+		<li><font face="隶书" size="4" color="#0000ff"><u><a href="my_Information.do">退出</a><br><br></u></font></li></ol></div>
 		<div id="header" class="w"><div align="right"> 
 			</div><div class="topbar">
 				<div class="logo fl">
@@ -64,25 +64,14 @@
 				</div>
 				<div class="nav fr" id="wrap">
 					<ul class="clearfix">
-						<li><font size="3"><a href="index.html">首页</a></font>
-						</li>
-						<li><font size="3"><a href="hyjj.html">新闻动态</a></font>                           <ul style="z-index:1000;display:none;">
-								   <li><a href="hyjj.html">新闻动态1</a></li>
-								   <li><a href="hyjj.html">新闻动态2</a></li>
-								   <li><a href="hyjj.html">新闻动态3</a></li>
-								   <li><a href="hyjj.html">新闻动态4</a></li>
-								   <li><a href="hyjj.html">新闻动态5</a></li>
-							    </ul>
-						</li>
-						<li><font size="3"><a href="rcap.html">加入项目</a></font></li>
-						<li><a href="sqtj.html">创建项目</a>
-							
-						</li>
-						<li><font size="3"><a href="myproject.html">我的项目</a></font></li>
-						<li><font size="3"><a href="toRegist.do">注册</a></font></li>
-						<li><font size="3"><a href="toLogin.do">登陆</a></font></li>
-						<li><font size="3"><a href="lxwm.html">师资力量</a></font></li>
-                        <li><a href="tuisong.html">项目推送</a></li>
+						<li><a href="toIndex.do">首页</a></li>
+						<li><a href="toNews.do">新闻动态</a></li>
+						<li><a href="rcap.html">加入项目</a></li>
+						<li><a href="toCreatProject.do">创建项目</a></li>
+						<li><a href="toMyproject.do">我的项目</a></li>
+						<li><a href="toRegist.do">注册</a></li>
+						<li><a href="toLogin.do">登陆</a></li>
+						<li><a href="toTeachersStrength.do">师资力量</a></li>
 					</ul>
 				</div>
 			</div>
