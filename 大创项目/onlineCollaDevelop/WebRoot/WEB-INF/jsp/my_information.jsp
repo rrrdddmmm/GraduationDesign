@@ -4,8 +4,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>我的信息-基于项目管理流程的校园软件项目协同平台</title>
-	<link rel="stylesheet" type="text/css" href="../css/base.css">
 	<link rel="stylesheet" type="text/css" href="../css/validform.css">
+	<link rel="stylesheet" type="text/css" href="../css/base.css">
 	<style type="text/css">
 		body{ margin:0; padding:0; font:normal 14px/24px "\5FAE\8F6F\96C5\9ED1";}
 	</style>

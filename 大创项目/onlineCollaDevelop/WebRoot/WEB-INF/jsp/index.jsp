@@ -6,8 +6,9 @@
 	<meta charset="UTF-8">
      <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
 	<title>基于项目管理流程的校园软件项目协同平台</title>
-	<link rel="stylesheet" type="text/css" href="../css/index.css">
+		<link rel="stylesheet" type="text/css" href="../css/index.css">
 	<link rel="stylesheet" type="text/css" href="../bootstrap/dist/css/bootstrap.min.css"/>
+
 	<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
 	<script type="text/javascript" src="../js/Validform_v5.3.2_min.js"></script>
 	<script type="text/javascript">
