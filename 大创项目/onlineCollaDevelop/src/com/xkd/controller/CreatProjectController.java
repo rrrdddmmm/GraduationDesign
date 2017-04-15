@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.xkd.entity.Project;
 import com.xkd.service.CreatProjectService;
 
 
@@ -35,6 +36,15 @@ public class CreatProjectController  implements Serializable {
      */
     @RequestMapping("/toCreatProject.do")
     public String toCreatProject() {
+        return "creat_project";
+    }
+    /**
+     * 创建项目保存
+     * @return
+     */
+    @RequestMapping("/toSave.do")
+    public String toSave(Project project) {
+    	
         return "creat_project";
     }
 

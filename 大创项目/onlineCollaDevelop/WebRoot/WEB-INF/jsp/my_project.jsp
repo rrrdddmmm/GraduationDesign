@@ -72,30 +72,9 @@
 					<td width="%">任务优先级</td>
 					<td width="%">项目状态</td>
 					<td width="%">项目进度</td>
-					<td width="%">提交</td>
+					<td width="%">操作</td>
 				</tr>
-				<tr>
-					<td>会议注册系统</td>
-					<td>任勃</td>
-					<td>3</td>
-					<td>2017-03-13</td>
-					<td>2017-03-13</td>
-					<td>急</td>
-					<td>待开发</td>
-					<td><progress value="0" max="100"></progress></td>
-					 <td><input type="file" name="" id=""></td>
-				</tr>
-				<tr>
-					<td>学生管理系统</td>
-					<td>任勃</td>
-					<td>3</td>
-					<td>2017-03-13</td>
-					<td>2017-03-13</td>
-					<td>急</td>
-					<td>开发中</td>
-					<td><progress value="50" max="100"></progress></td>
-					 <td><input type="file" name="" id=""></td>
-				</tr>
+				
 				<tr>
 					<td>校园管理系统</td>
 					<td>任勃</td>
@@ -105,8 +84,7 @@
 					<td>急</td>
 					<td>已完成</td>
 					<td><progress value="100" max="100"></progress></td>
-					<!--<td><a href="#">查看</a>丨<a href="#">加入</a></td>-->
-                    <td><input type="file" name="" id=""></td>
+					<td><a href="#">查看</a>丨<a href="#">编辑</a></td>
 				</tr>
 				<table border="0" width="1000" class="main_page">
 					<tbody>

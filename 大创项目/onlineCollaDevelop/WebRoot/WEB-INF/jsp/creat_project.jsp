@@ -63,10 +63,10 @@
 					<tbody>
 					<tr>
 						<td>项目名称：</td>
-						<td><input type="text" name=""></td>
-						<td>项目类型：</td>
+						<td><input type="text" name="project_name"></td>
+						<td>开发语言：</td>
 						<td>
-							<select>
+							<select name="project_language">
 								<option value ="1">Volvo</option>
 								<option value ="2">Saab</option>
 								<option value="3">Opel</option>
@@ -76,19 +76,19 @@
 					</tr>
 					<tr>
 						<td>参与人数：</td>
-						<td><input type="text" name=""></td>
+						<td><input type="text" name="all_number"></td>
 						<td>上传立项书：</td>
 						<td><input type="file" name="" id=""></td>
 					</tr>
 					<tr>
-						<td>项目经理：</td>
-						<td><input type="text" name=""></td>
-						<td>项目负责人：</td>
+						<td>项目批准人：</td>
+						<td><input type="text" name="leader"></td>
+						<td>开发环境：</td>
 						<td><input type="text" name=""></td>
 					</tr>
 					<tr>
-						<td>项目批准人：</td>
-						<td><input type="text" name=""></td>
+						<td>项目经理：</td>
+						<td><input type="text" name="leader"></td>
 						<td>项目预算：</td>
 						<td><input type="text" name="" style="width:180px;margin-right:5px;"><span style="font-weight:bold">元</span></td>
 					</tr>
@@ -98,15 +98,9 @@
 					</tr>
 					<tr>
 						<td>立项时间：</td>
-						<td><input type="date" name=""></td>
+						<td><input type="date" name="crt_time"></td>
 						<td>启动时间：</td>
-						<td><input type="date" name=""></td>
-					</tr>
-					<tr>
-						<td>完成时间：</td>
-						<td><input type="date" name=""></td>
-						<td>所属部门：</td>
-						<td><input type="text" name=""></td>
+						<td><input type="date" name="update_time"></td>
 					</tr>
 					<tr>
 						<td colspan="4">
