@@ -9,6 +9,7 @@ public class Project implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	
 	private Integer project_no;
 	private String project_name;
 	private Integer home_no;
@@ -22,6 +23,16 @@ public class Project implements Serializable{
 	private Date update_time;
 	private Integer status;
 	private String leader;
+	private String approver;
+	private double budget;
+	private String describe;
+	
+	
+	
+	
+	
+
+	
 	public Integer getProject_no() {
 		return project_no;
 	}
@@ -100,6 +111,25 @@ public class Project implements Serializable{
 	public void setLeader(String leader) {
 		this.leader = leader;
 	}
+	
+	public String getApprover() {
+		return approver;
+	}
+	public void setApprover(String approver) {
+		this.approver = approver;
+	}
+	public double getBudget() {
+		return budget;
+	}
+	public void setBudget(double budget) {
+		this.budget = budget;
+	}
+	public String getDescribe() {
+		return describe;
+	}
+	public void setDescribe(String describe) {
+		this.describe = describe;
+	}
 	@Override
 	public String toString() {
 		return "Project [project_no=" + project_no + ", project_name="
@@ -109,9 +139,9 @@ public class Project implements Serializable{
 				+ ", all_number=" + all_number + ", pronser_number="
 				+ pronser_number + ", crt_time=" + crt_time + ", update_time="
 				+ update_time + ", status=" + status + ", leader=" + leader
-				+ "]";
+				+ ", approver=" + approver + ", budget=" + budget
+				+ ", describe=" + describe + "]";
 	}
-	
 	
 	
 

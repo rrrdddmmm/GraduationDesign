@@ -42,7 +42,7 @@
 				<ul class="clearfix">
 						<li><a href="../index/toIndex.do">首页</a></li>
 						<li><a href="toNews.do">新闻动态</a></li>
-						<li><a href="rcap.html">加入项目</a></li>
+						<li><a href="../jion/toJion.do">加入项目</a></li>
 						<li><a href="../creatProject/toCreatProject.do">创建项目</a></li>
 						<li><a href="../myProject/toMyProject.do">我的项目</a></li>
 						<li><a href="../register/toRegister.do">注册</a></li>
