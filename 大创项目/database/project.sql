@@ -1,58 +1,40 @@
-USE [simulation_laboratory]
-GO
+/*
+Navicat MySQL Data Transfer
 
-/****** Object:  Table [dbo].[project]    Script Date: 2017-04-15 0:50:17 ******/
-SET ANSI_NULLS ON
-GO
+Source Server         : localhost_3306
+Source Server Version : 50537
+Source Host           : localhost:3306
+Source Database       : simulation_laboratory
 
-SET QUOTED_IDENTIFIER ON
-GO
+Target Server Type    : MYSQL
+Target Server Version : 50537
+File Encoding         : 65001
 
-SET ANSI_PADDING ON
-GO
+Date: 2017-04-15 22:32:00
+*/
 
-CREATE TABLE [dbo].[project](
-	[project_no] [int] NOT NULL,
-	[project_name] [varchar](max) NOT NULL,
-	[home_no] [int] NOT NULL,
-	[user_name] [varchar](max) NOT NULL,
-	[project_data] [varchar](max) NOT NULL,
-	[project_language] [varchar](max) NOT NULL,
-	[develop_platform] [varchar](50) NOT NULL,
-	[pronser_number] [int] NOT NULL,
-	[crt_time] [date] NOT NULL,
-	[update_time] [date] NULL,
-	[status] [varchar](10) NOT NULL,
- CONSTRAINT [PK_project] PRIMARY KEY CLUSTERED 
-(
-	[project_no] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+SET FOREIGN_KEY_CHECKS=0;
+-- ----------------------------
+-- Table structure for `project`
+-- ----------------------------
+DROP TABLE IF EXISTS `project`;
+CREATE TABLE `project` (
+  `project_no` int(11) NOT NULL,
+  `project_name` varchar(50) NOT NULL,
+  `home_no` int(11) DEFAULT NULL,
+  `email` varchar(50) NOT NULL,
+  `project_data` varchar(50) DEFAULT NULL,
+  `project_language` varchar(50) NOT NULL,
+  `develop_platform` varchar(50) NOT NULL,
+  `all_number` int(11) NOT NULL,
+  `pronser_number` int(11) NOT NULL,
+  `crt_time` date NOT NULL,
+  `update_time` date DEFAULT NULL,
+  `status` int(10) NOT NULL,
+  PRIMARY KEY (`project_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-GO
-
-SET ANSI_PADDING OFF
-GO
-
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'œÓƒø±‡∫≈' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'project', @level2type=N'COLUMN',@level2name=N'project_no'
-GO
-
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'œÓƒø√˚≥∆' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'project', @level2type=N'COLUMN',@level2name=N'project_name'
-GO
-
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'∑øº‰√˚≥∆' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'project', @level2type=N'COLUMN',@level2name=N'home_no'
-GO
-
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'œÓƒø≥…‘±' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'project', @level2type=N'COLUMN',@level2name=N'user_name'
-GO
-
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Ã·Ωª ˝æ›' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'project', @level2type=N'COLUMN',@level2name=N'project_data'
-GO
-
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'À˘”√”Ô—‘' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'project', @level2type=N'COLUMN',@level2name=N'project_language'
-GO
-
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'ø™∑¢∆ΩÃ®' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'project', @level2type=N'COLUMN',@level2name=N'develop_platform'
-GO
-
-
+-- ----------------------------
+-- Records of project
+-- ----------------------------
+INSERT INTO `project` VALUES ('1', 'ËÆ°ÁÆóÊú∫ÂºÄÂèë', null, '314187985@qq.com', null, 'java', 'windows', '5', '2', '2017-04-13', '2017-04-03', '0');
