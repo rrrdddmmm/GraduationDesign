@@ -24,17 +24,17 @@ public class LoginServiceImpl implements LoginService{
  */
 	public StateResult checkLogin(User user) {	
 		StateResult result=new StateResult();
-		User userd = userDao.findByName(user.getUsername());
+		User userd = userDao.findByEmail(user.getEmail());
 
 		if(userd==null){
 			result.setStatus(1);
-			result.setMsg("用户名不存在");
+			result.setMsg("邮箱不存在");
 			return result;
 		}
 
-		if(!user.getEmail().equals(userd.getEmail())){
+		if(user!=null && !user.getPassword().equals(userd.getPassword())){
 			result.setStatus(2);
-			result.setMsg("邮箱不正确");
+			result.setMsg("密码不正确");
 			return result;
 		}
 		
@@ -49,30 +49,5 @@ public class LoginServiceImpl implements LoginService{
 		return result;
 	}
 	
-/**
- * 
- */
-	public StateResult registUser(User user){
-
-		StateResult result = new StateResult();
-		User usr = userDao.findByName(user.getUsername());
-		User users=new User();
-		if(usr != null){
-			result.setStatus(1);
-			result.setMsg("用户名已占用");
-			return result;
-		}
-		
-		
-		users.setUsername(user.getUsername());
-		users.setEmail(user.getEmail());
-		users.setPhone(user.getPhone());
-		users.setRole(user.getRole());
-		userDao.save(users);
-		System.out.println("注册成功");
-		result.setStatus(0);
-		result.setMsg("注册成功");
-		return result;
-	}
 
 }

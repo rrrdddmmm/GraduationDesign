@@ -34,35 +34,15 @@ public class LoginController implements Serializable {
     	System.out.println("进入登陆页面");
         return "login";
     }
-    
-    @RequestMapping("/toIndex.do")
-    public String toIndex() {
-    	System.out.println("进入首页");
-        return "index";
-    }
-    
-    @RequestMapping("/toRegist.do")
-    public String toRegist() {
-    	System.out.println("进入注册页面");
-        return "register";
-    }
- 
+
     @RequestMapping("/loginIn")
 	@ResponseBody
 	public StateResult login(User user){
-    	System.out.println("登录验证");
+    	System.out.println("登录验证"+user);
 		StateResult result = loginService.checkLogin(user);
 		System.out.println("resultstatus"+result.getStatus());
 		return result;
 	}
-    
-    @RequestMapping("/regist")
-	@ResponseBody
-	public StateResult register(User user){
-    	System.out.println("注册中");
-    	StateResult result = loginService.registUser(user);
-    	System.out.println("注册成功");
-		return result;
-	}
+  
   
 }

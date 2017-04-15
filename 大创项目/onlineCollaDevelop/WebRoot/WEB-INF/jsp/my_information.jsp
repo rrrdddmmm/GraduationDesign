@@ -57,19 +57,13 @@
 				<div style="margin:20px auto; text-align:center; width:500px;">
 					<form class="registerform" method="post" action="">
 			            <table width="100%" style="table-layout:fixed;">
-			                <tr>
-			                    <td class="need" style="width:10px;">*</td>
-			                    <td class="txt">用&nbsp;&nbsp;户&nbsp;&nbsp;名：</td>
-			                    <td ><input type="text" value="" name="name" class="inputxt" datatype="s2-16" errormsg="用户名至少2个字符,最多16个字符！" /></td>
-			                    <td><div class="Validform_checktip">2-16个字符，推荐使用中文</div></td>
-			                </tr>
+			               
 			                <tr>
 			                    <td class="need">*</td>
 			                    <td class="txt">电子邮箱：</td>
 			                    <td><input type="text" value="" name="email" class="inputxt" datatype="e" errormsg="请输入正确的格式！"  /></td>
 			                    <td><div class="Validform_checktip">请输入常用的电子邮箱</div></td>
 			                </tr>
-			                
 			                <tr>
 			                    <td class="need">*</td>
 			                    <td class="txt">手机号码：</td>
@@ -85,7 +79,6 @@
 				                    	<option value="XZ">--请选择--</option>      
 								        <option value="UK">学生</option>  
 					        			<option value="CN">教师</option> 
-					        			<option value="DE">管理员</option>
 				                    </select>
 			                    </td>
 			                    <td><div class="Validform_checktip">请选择角色</div></td>

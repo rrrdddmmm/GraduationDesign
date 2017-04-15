@@ -48,17 +48,18 @@
 				<div style="margin:20px auto; text-align:center; width:500px;">
 					<form class="registerform" method="post" action="">
 			            <table width="100%" style="table-layout:fixed;">
-			                <tr>
-			                    <td class="need" style="width:10px;">*</td>
-			                    <td class="txt">用&nbsp;&nbsp;户&nbsp;&nbsp;名：</td>
-			                    <td ><input type="text" value="" name="username" id="username" class="inputxt" datatype="s2-16" errormsg="用户名至少2个字符,最多16个字符！" /></td>
-			                    <td><div class="Validform_checktip" id="warning_1"></div></td>
-			                </tr> 
+			                
 			                <tr>
 			                    <td class="need">*</td>
 			                    <td class="txt">电子邮箱：</td>
 			                    <td><input type="text" value="" id="email" name="email" class="inputxt" datatype="e" errormsg="请输入正确的格式！"  /></td>
 			                    <td><div class="Validform_checktip" id="warning_2"></div></td>
+			                </tr>
+			                <tr>
+			                    <td class="need" style="width:10px;">*</td>
+			                    <td class="txt">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</td>
+			                    <td ><input type="password" name="password" id="password" class="inputxt" datatype="s2-16" errormsg="用户名至少2个字符,最多16个字符！" /></td>
+			                    <td><div class="Validform_checktip" id="warning_1"></div></td>
 			                </tr>
 			               <tr>
 			                    <td class="need">*</td>
@@ -67,8 +68,6 @@
 			                    	<select name="role" id="role" datatype="*" nullmsg="请选择！" errormsg="请选择所在国家！">
 				                    	<option value="1">--请选择--</option>      
 								        <option value="1">学生</option>  
-					        			<option value="2">教师</option> 
-					        			<option value="3">管理员</option>
 				                    </select>
 			                    </td>
 			                    <td><div class="Validform_checktip"></div></td>
@@ -121,12 +120,12 @@
 		  $("#warning_1").html("");
 		  $("#warning_2").html("");
 		  $("#role").html();
-	   var username = $("#username").val().trim();
+	   var password = $("#password").val().trim();
       	var email = $("#email").val().trim();
       	var role=$("#role").val().trim();
       	var flag = true;//通过检测
-      	if(username==""){
-      		$("#warning_1").html("2-16个字符，推荐使用中文");
+      	if(password==""){
+      		$("#warning_1").html("2-16个字符");
       		flag = false;//未通过检测
       	}
       	if(email==""){
@@ -140,11 +139,11 @@
       		$.ajax({     		
       		  url:"http://localhost:8088/onlineCollaDevelop/login/loginIn.do",
       		  type:"post",
-      		  data :{"username":username,"email":email,"role":role},
+      		  data :{"password":password,"email":email,"role":role},
       		  dataType:"json",
       		  success:function(result){
       		  	if(result.status==0){//成功 		  		
-      		  		window.location.href="http://localhost:8088/onlineCollaDevelop/login/toIndex.do";
+      		  		window.location.href="http://localhost:8088/onlineCollaDevelop/index/toIndex.do";
       		  	}else if(result.status==1){
       		  	   $("#warning_1").html("用户名错误");
       		  	}else if(result.status==2){

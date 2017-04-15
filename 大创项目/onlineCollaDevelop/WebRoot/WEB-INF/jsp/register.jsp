@@ -11,6 +11,67 @@
 		body{ margin:0; padding:0; font:normal 14px/24px "\5FAE\8F6F\96C5\9ED1";}
 	</style>
 	<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript">       
+$(function(){
+  //注册按钮单击处理
+  $("#regist_button").click(function(){
+  	//隐藏所有提示信息
+  	$("#warning_1").hide();
+  	$("#warning_2").hide();
+  	$("#warning_3").hide();
+  	$("#warning_4").hide();
+  	//获取要提交的数据
+  	var password = $("#password").val().trim();
+  	var email = $("#email").val().trim();
+  	var phone = $("#phone").val().trim();
+  	var role = $("#role").val().trim();
+  	//检测数据格式
+  	var flag = true;
+  	if(password == ""){
+  		$("#warning_1").html("2-16个字符");
+  		$("#warning_1").show();
+  		flag = false;
+  	}
+  	if(email == ""){
+  		$("#warning_2").html("请输入常用的电子邮箱");
+  		$("#warning_2").show();
+  		flag = false;
+  	}
+  	if(phone == ""){
+  	  	$("#warning_3").html("请输入中国大陆手机号码");
+  		$("#warning_3").show();
+  		flag = false;
+  	}
+  	if(role == ""){
+  	  	$("#warning_4").html("请选择角色");
+  		$("#warning_4").show();
+  		flag = false;
+  	}
+  	//发送ajax请求
+  if(flag){	
+  	$.ajax({
+  		url:"http://localhost:8088/onlineCollaDevelop/register/regist.do",
+  		type:"post",
+  		dataType:"json",
+  		data:{"password":password,
+  			"email":email,
+  			"phone":phone,
+  			"role":role
+  			},
+  		success:function(result){
+  			if(result.status==0){//成功
+  				window.location.href="http://localhost:8088/onlineCollaDevelop/login/toLogin.do"
+  			}else if(result.status==1){//用户名被占用
+  				$("#warning_1").html(result.msg);
+  				$("#warning_1").show();
+  			}
+  		}
+  		
+  	});
+  }
+  });
+});
+	</script>
 </head>
 <body style="background:url(../images/123.jpg) no-repeat center 0px;">
 	
@@ -51,32 +112,17 @@
 					<form class="registerform" method="post" action="">
 			            <table width="100%" style="table-layout:fixed;">
 			                <tr>
-			                    <td class="need" style="width:10px;">*</td>
-			                    <td class="txt">用&nbsp;&nbsp;户&nbsp;&nbsp;名：</td>
-			                    <td ><input type="text" value="" name="name" id="username" class="inputxt" datatype="s2-16" errormsg="用户名至少2个字符,最多16个字符！" /></td>
-			                    <td><div class="Validform_checktip" id="warning_1"></div></td>
-			                </tr>
-			                <!-- 
-			                 <tr>
-			                    <td class="need">*</td>
-			                    <td class="txt">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</td>
-			                    <td style="text-align:center; font-size:1.3em;"><input type="radio" value="1" name="gender" id="male" class="pr1" datatype="*" errormsg="请选择性别！" /><label for="male">男</label> <input type="radio" value="2" name="gender" id="female" class="pr1" /><label for="female">女</label></td>
-			                    <td><div class="Validform_checktip"></div></td>
-			                </tr>
-			                <tr>
-			                    <td class="need">*</td>
-			                    <td class="txt">出生年月：</td>
-			                    <td><input type="date" class="inputxt" name="birthday" id="birth" value="" errormsg="输入不能为空！"></td>
-			                    <td><div class="Validform_checktip">请输入出生年月</div></td>
-			                </tr>
-			                 -->
-			                <tr>
 			                    <td class="need">*</td>
 			                    <td class="txt">电子邮箱：</td>
-			                    <td><input type="text" value="" id="email"  name="email" class="inputxt" datatype="e" errormsg="请输入正确的格式！"  /></td>
+			                    <td><input type="text" id="email"  name="email" class="inputxt" datatype="e" errormsg="请输入正确的格式！"  /></td>
 			                    <td><div class="Validform_checktip" id="warning_2"></div></td>
 			                </tr>
-			                
+			                 <tr>
+			                    <td class="need" style="width:10px;">*</td>
+			                    <td class="txt">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</td>
+			                    <td ><input type="password" name="password" id="password" class="inputxt" datatype="s2-16" errormsg="用户名至少2个字符,最多16个字符！" /></td>
+			                    <td><div class="Validform_checktip" id="warning_1"></div></td>
+			                </tr>
 			                <tr>
 			                    <td class="need">*</td>
 			                    <td class="txt">手机号码：</td>
@@ -138,68 +184,7 @@
 	</div>
 	<!-- 页脚结束 -->
 </body>
-<script type="text/javascript">       
-$(function(){
-  //注册按钮单击处理
-  $("#regist_button").click(function(){
-  	//隐藏所有提示信息
-  	$("#warning_1").hide();
-  	$("#warning_2").hide();
-  	$("#warning_3").hide();
-  	$("#warning_4").hide();
-  	//获取要提交的数据
-  	var username = $("#username").val().trim();
-  	var email = $("#email").val().trim();
-  	var phone = $("#phone").val().trim();
-  	var role = $("#role").val().trim();
-  	alert(role);
-  	//检测数据格式
-  	var flag = true;
-  	if(username == ""){
-  		$("#warning_1").html("2-16个字符，推荐使用中文");
-  		$("#warning_1").show();
-  		flag = false;
-  	}
-  	if(email == ""){
-  		$("#warning_2").html("请输入常用的电子邮箱");
-  		$("#warning_2").show();
-  		flag = false;
-  	}
-  	if(phone == ""){
-  	  	$("#warning_3").html("请输入中国大陆手机号码");
-  		$("#warning_3").show();
-  		flag = false;
-  	}
-  	if(role == ""){
-  	  	$("#warning_4").html("请选择角色");
-  		$("#warning_4").show();
-  		flag = false;
-  	}
-  	//发送ajax请求
-  if(flag){	
-  	$.ajax({
-  		url:"http://localhost:8088/onlineCollaDevelop/login/regist.do",
-  		type:"post",
-  		dataType:"json",
-  		data:{"username":username,
-  			"email":email,
-  			"phone":phone,
-  			"role":role
-  			},
-  		success:function(result){
-  			if(result.status==0){//成功
-  				window.location.href="http://localhost:8088/onlineCollaDevelop/login/toLogin.do"
-  			}else if(result.status==1){//用户名被占用
-  				$("#warning_1").html(result.msg);
-  				$("#warning_1").show();
-  			}
-  		}
-  		
-  	});
-  }
-  });
-});
-	</script>
+
 <script type="text/javascript" src="../html/js/Validform_v5.3.2_min.js"></script>
 <!-- <script type="text/javascript">
 	$(function(){

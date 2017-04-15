@@ -6,7 +6,10 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.xkd.entity.StateResult;
+import com.xkd.entity.User;
 import com.xkd.service.RegisterService;
 
 /**
@@ -35,5 +38,12 @@ public class RegisterController  implements Serializable {
     public String toRegister() {
         return "register";
     }
-
+    
+    @RequestMapping("/regist")
+	@ResponseBody
+	public StateResult register(User user){
+    	StateResult result = registerService.registUser(user);
+    	System.out.println("注册成功");
+		return result;
+	}
 }

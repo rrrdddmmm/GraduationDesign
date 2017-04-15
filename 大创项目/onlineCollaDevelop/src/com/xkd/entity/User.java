@@ -7,22 +7,25 @@ public class User implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String username;
+	private String password;
     private String email;
     private String phone;
     private String role;
     
 	@Override
 	public String toString() {
-		return "User [username=" + username + ", email=" + email + ", phone="
+		return "User [password=" + password + ", email=" + email + ", phone="
 				+ phone + ", role=" + role + "]";
 	}
-	public String getUsername() {
-		return username;
+	
+	public String getPassword() {
+		return password;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
+
 	public String getEmail() {
 		return email;
 	}

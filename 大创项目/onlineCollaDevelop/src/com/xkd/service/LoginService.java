@@ -14,10 +14,5 @@ public interface LoginService {
 	 * @return
 	 */
 	public StateResult checkLogin(User user);
-	/**
-	 * 
-	 * @param user
-	 * @return
-	 */
-	public StateResult registUser(User user);
+	
 }
