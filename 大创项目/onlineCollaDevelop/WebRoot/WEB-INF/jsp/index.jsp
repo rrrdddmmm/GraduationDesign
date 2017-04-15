@@ -55,23 +55,23 @@
 <body style="background:url(../images/123.jpg) no-repeat center 0px;">
 	
 		<!-- 头部开始 --><div align="right"><ol><li><h1><em><font face="Adobe 黑体 Std R"><strong></strong></font><font face="隶书" size="4" color="#0000ff"><u><strong>
-		<a href="my_Information.do">admin:欢迎您!!!</a></strong></u></font></em></h1></li>
+		<a href="../myInformation/toMyInformation.do">admin:欢迎您!!!</a></strong></u></font></em></h1></li>
 		<li><font face="隶书" size="4" color="#0000ff"><u><a href="my_Information.do">退出</a><br><br></u></font></li></ol></div>
 		<div id="header" class="w"><div align="right"> 
 			</div><div class="topbar">
 				<div class="logo fl">
-					<font size="3"><a href="index.html"><img height="70" width="268" src="../images/logo1.png" alt="西安植物园"></a></font>
+					<font size="3"><a href="toIndex.do"><img height="70" width="268" src="../images/logo1.png" alt="西安科技大学"></a></font>
 				</div>
 				<div class="nav fr" id="wrap">
 					<ul class="clearfix">
 						<li><a href="toIndex.do">首页</a></li>
-						<li><a href="toNews.do">新闻动态</a></li>
+						<li><a href="../news/toNews.do">新闻动态</a></li>
 						<li><a href="rcap.html">加入项目</a></li>
-						<li><a href="toCreatProject.do">创建项目</a></li>
-						<li><a href="toMyproject.do">我的项目</a></li>
-						<li><a href="toRegist.do">注册</a></li>
-						<li><a href="toLogin.do">登陆</a></li>
-						<li><a href="toTeachersStrength.do">师资力量</a></li>
+						<li><a href="../creatProject/toCreatProject.do">创建项目</a></li>
+						<li><a href="../myProject/toMyProject.do">我的项目</a></li>
+						<li><a href="../register/toRegister.do">注册</a></li>
+						<li><a href="../login/toLogin.do">登陆</a></li>
+						<li><a href="../teacherStrength/toTeachersStrength.do">师资力量</a></li>
 					</ul>
 				</div>
 			</div>
@@ -174,8 +174,8 @@
 			<div class="main_tz mt15 w">
 				<div class="main_tz_l fl">
 					<ul class="hy">
-						<li><a href="zcsq.html"><img src="../images/zcsq.jpg"></a></li>
-						<li><a href="dlrk.html"><img src="../images/hcwz.jpg"></a></li>
+						<li><a href="../register/toRegister.do"><img src="../images/zcsq.jpg"></a></li>
+						<li><a href="../login/toLogin.do"><img src="../images/hcwz.jpg"></a></li>
 					</ul>
 					<ul class="yq">
 						<li><img src="../images/yqlj.png" width="205" height="60"></li>

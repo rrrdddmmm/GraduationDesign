@@ -11,85 +11,11 @@
 		body{ margin:0; padding:0; font:normal 14px/24px "\5FAE\8F6F\96C5\9ED1";}
 	</style>
 	<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
-<!-- 	<script type="text/javascript">
-	    $(function(){
-	        $('#off-body').click(function(){
-	            $('body').css({'background':'#e8e7e7 '})
-	            $(this).hide();
-	        });
-	    });
-		 $(document).ready(function(){
-            $("#wrap li").hover(function(){
-                $(this).children("ul").slideToggle();
-            });
-        }); -->
-<script type="text/javascript">       
-$(function(){
-  //注册按钮单击处理
-  $("#regist_button").click(function(){
-  	//隐藏所有提示信息
-  	$("#warning_1").hide();
-  	$("#warning_2").hide();
-  	$("#warning_3").hide();
-  	$("#warning_4").hide();
-  	//获取要提交的数据
-  	var username = $("#username").val().trim();
-  	var email = $("#email").val().trim();
-  	var phone = $("#phone").val().trim();
-  	var role = $("#role").val().trim();
-  	alert(role);
-  	//检测数据格式
-  	var flag = true;
-  	if(username == ""){
-  		$("#warning_1").html("2-16个字符，推荐使用中文");
-  		$("#warning_1").show();
-  		flag = false;
-  	}
-  	if(email == ""){
-  		$("#warning_2").html("请输入常用的电子邮箱");
-  		$("#warning_2").show();
-  		flag = false;
-  	}
-  	if(phone == ""){
-  	  	$("#warning_3").html("请输入中国大陆手机号码");
-  		$("#warning_3").show();
-  		flag = false;
-  	}
-  	if(role == ""){
-  	  	$("#warning_4").html("请选择角色");
-  		$("#warning_4").show();
-  		flag = false;
-  	}
-  	//发送ajax请求
-  if(flag){	
-  	$.ajax({
-  		url:"http://localhost:8088/onlineCollaDevelop/login/regist.do",
-  		type:"post",
-  		dataType:"json",
-  		data:{"username":username,
-  			"email":email,
-  			"phone":phone,
-  			"role":role
-  			},
-  		success:function(result){
-  			if(result.status==0){//成功
-  				window.location.href="http://localhost:8088/onlineCollaDevelop/login/toLogin.do"
-  			}else if(result.status==1){//用户名被占用
-  				$("#warning_1").html(result.msg);
-  				$("#warning_1").show();
-  			}
-  		}
-  		
-  	});
-  }
-  });
-});
-	</script>
 </head>
 <body style="background:url(../images/123.jpg) no-repeat center 0px;">
 	
 	<!-- 头部开始 --><!-- 头部开始 --><div align="right"><ol><li><h1><em><font face="Adobe 黑体 Std R"><strong></strong></font><font face="隶书" size="4" color="#0000ff">
-	<u><strong><a href="my_Information.do">admin:欢迎您!!!</a></strong></u></font></em></h1></li>
+	<u><strong><a href="../myInformation/toMyInformation.do">admin:欢迎您!!!</a></strong></u></font></em></h1></li>
 	<li><font face="隶书" size="4" color="#0000ff"><u><a href="#">退出</a><br><br></u></font></li></ol></div>
 	<div id="header" class="w">
 		<div class="topbar">
@@ -98,14 +24,14 @@ $(function(){
 			</div>
 			<div class="nav fr" id="wrap">
 				<ul class="clearfix">
-						<li><a href="toIndex.do">首页</a></li>
-						<li><a href="toNews.do">新闻动态</a></li>
+						<li><a href="../index/toIndex.do">首页</a></li>
+						<li><a href="../news/toNews.do">新闻动态</a></li>
 						<li><a href="rcap.html">加入项目</a></li>
-						<li><a href="toCreatProject.do">创建项目</a></li>
-						<li><a href="toMyproject.do">我的项目</a></li>
-						<li><a href="toRegist.do">注册</a></li>
-						<li><a href="toLogin.do">登陆</a></li>
-						<li><a href="toTeachersStrength.do">师资力量</a></li>
+						<li><a href="../creatProject/toCreatProject.do">创建项目</a></li>
+						<li><a href="../myProject/toMyProject.do">我的项目</a></li>
+						<li><a href="toRegister.do">注册</a></li>
+						<li><a href="../login/toLogin.do">登陆</a></li>
+						<li><a href="../teacherStrength/toTeachersStrength.do">师资力量</a></li>
 				</ul>
 			</div>
 		</div>
@@ -188,11 +114,11 @@ $(function(){
 						<div class="l_box_title">
 							<span class="name">注册入口</span>
 						</div>
-						<li class="b"><a href="zcsq.html"><img src="../images/zcsq.jpg"></a></li>
+						<li class="b"><a href="toRegister.do"><img src="../images/zcsq.jpg"></a></li>
 						<div class="l_box_title">
 							<span class="name">登录入口</span>
 						</div>
-						<li class="b"><a href="dlrk.html"><img src="../images/hcwz.jpg"></a></li>
+						<li class="b"><a href="../login/toLogin.do"><img src="../images/hcwz.jpg"></a></li>
 					</ul>
 					<ul class="yq">
 						<li><img src="../images/yqlj.png" width="205" height="60"></li>
@@ -212,6 +138,68 @@ $(function(){
 	</div>
 	<!-- 页脚结束 -->
 </body>
+<script type="text/javascript">       
+$(function(){
+  //注册按钮单击处理
+  $("#regist_button").click(function(){
+  	//隐藏所有提示信息
+  	$("#warning_1").hide();
+  	$("#warning_2").hide();
+  	$("#warning_3").hide();
+  	$("#warning_4").hide();
+  	//获取要提交的数据
+  	var username = $("#username").val().trim();
+  	var email = $("#email").val().trim();
+  	var phone = $("#phone").val().trim();
+  	var role = $("#role").val().trim();
+  	alert(role);
+  	//检测数据格式
+  	var flag = true;
+  	if(username == ""){
+  		$("#warning_1").html("2-16个字符，推荐使用中文");
+  		$("#warning_1").show();
+  		flag = false;
+  	}
+  	if(email == ""){
+  		$("#warning_2").html("请输入常用的电子邮箱");
+  		$("#warning_2").show();
+  		flag = false;
+  	}
+  	if(phone == ""){
+  	  	$("#warning_3").html("请输入中国大陆手机号码");
+  		$("#warning_3").show();
+  		flag = false;
+  	}
+  	if(role == ""){
+  	  	$("#warning_4").html("请选择角色");
+  		$("#warning_4").show();
+  		flag = false;
+  	}
+  	//发送ajax请求
+  if(flag){	
+  	$.ajax({
+  		url:"http://localhost:8088/onlineCollaDevelop/login/regist.do",
+  		type:"post",
+  		dataType:"json",
+  		data:{"username":username,
+  			"email":email,
+  			"phone":phone,
+  			"role":role
+  			},
+  		success:function(result){
+  			if(result.status==0){//成功
+  				window.location.href="http://localhost:8088/onlineCollaDevelop/login/toLogin.do"
+  			}else if(result.status==1){//用户名被占用
+  				$("#warning_1").html(result.msg);
+  				$("#warning_1").show();
+  			}
+  		}
+  		
+  	});
+  }
+  });
+});
+	</script>
 <script type="text/javascript" src="../html/js/Validform_v5.3.2_min.js"></script>
 <!-- <script type="text/javascript">
 	$(function(){

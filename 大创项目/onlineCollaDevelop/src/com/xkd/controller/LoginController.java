@@ -17,11 +17,18 @@ import com.xkd.service.LoginService;
 public class LoginController implements Serializable {
     /**
 	 * 
+	 * 序列化
 	 */
 	private static final long serialVersionUID = 1L;
-	@Resource
+	/**
+	 * 登陆服务
+	 */
+	@Resource(name="LoginService")
     private LoginService loginService;
-    
+    /**
+     * 进入登陆页面
+     * @return
+     */
     @RequestMapping("/toLogin.do")
     public String toLogin() {
     	System.out.println("进入登陆页面");

@@ -27,7 +27,7 @@
 <body style="background:url(../images/123.jpg) no-repeat center 0px;">
 	
 	<!-- 头部开始 --><!-- 头部开始 --><div align="right"><ol><li><h1><em><font face="Adobe 黑体 Std R"><strong></strong></font><font face="隶书" size="4" color="#0000ff">
-	<u><strong><a href="my_Information.do">admin:欢迎您!!!</a></strong></u></font></em></h1></li>
+	<u><strong><a href="../myInformation/toMyInformation.do">admin:欢迎您!!!</a></strong></u></font></em></h1></li>
 	<li><font face="隶书" size="4" color="#0000ff"><u><a href="#">退出</a><br><br></u></font></li></ol></div>
 	<div id="header" class="w">
 		<div class="topbar">
@@ -36,14 +36,14 @@
 			</div>
 			<div class="nav fr" id="wrap">
 				<ul class="clearfix">
-						<li><a href="toIndex.do">首页</a></li>
-						<li><a href="toNews.do">新闻动态</a></li>
+						<li><a href="../index/toIndex.do">首页</a></li>
+						<li><a href="../news/toNews.do">新闻动态</a></li>
 						<li><a href="rcap.html">加入项目</a></li>
-						<li><a href="toCreatProject.do">创建项目</a></li>
-						<li><a href="toMyproject.do">我的项目</a></li>
-						<li><a href="toRegist.do">注册</a></li>
-						<li><a href="toLogin.do">登陆</a></li>
-						<li><a href="toTeachersStrength.do">师资力量</a></li>
+						<li><a href="../creatProject/toCreatProject.do">创建项目</a></li>
+						<li><a href="toMyProject.do">我的项目</a></li>
+						<li><a href="../register/toRegister.do">注册</a></li>
+						<li><a href="../login/toLogin.do">登陆</a></li>
+						<li><a href="../teacherStrength/toTeachersStrength.do">师资力量</a></li>
 				</ul>
 			</div>
 		</div>
