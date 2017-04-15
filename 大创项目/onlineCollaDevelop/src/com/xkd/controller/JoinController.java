@@ -11,9 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.xkd.entity.Project;
-import com.xkd.entity.StateResult;
 import com.xkd.service.JionService;
-import com.xkd.service.LoginService;
 
 @Controller
 @RequestMapping("/jion")
