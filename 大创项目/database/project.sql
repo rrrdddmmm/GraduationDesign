@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50537
 File Encoding         : 65001
 
-Date: 2017-04-15 22:32:00
+Date: 2017-04-16 03:29:02
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,10 +31,15 @@ CREATE TABLE `project` (
   `crt_time` date NOT NULL,
   `update_time` date DEFAULT NULL,
   `status` int(10) NOT NULL,
+  `leader` varchar(10) NOT NULL,
+  `approver` varchar(10) NOT NULL,
+  `budget` double(10,0) NOT NULL,
+  `describe` varchar(50) NOT NULL,
   PRIMARY KEY (`project_no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of project
 -- ----------------------------
-INSERT INTO `project` VALUES ('1', '计算机开发', null, '314187985@qq.com', null, 'java', 'windows', '5', '2', '2017-04-13', '2017-04-03', '0');
+INSERT INTO `project` VALUES ('1', '计算机开发', null, '314187985@qq.com', null, 'java', 'windows', '5', '5', '2017-04-13', '2017-04-03', '0', '任博', '宁少杰', '2017', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊');
+INSERT INTO `project` VALUES ('2', '会议管理系统', null, '925857350@qq.com', null, 'java', 'windows', '6', '3', '2017-04-16', '2017-04-16', '0', '宁少杰', '任博', '2303', '啊啊啊啊啊啊啊啊啊啊啊');
