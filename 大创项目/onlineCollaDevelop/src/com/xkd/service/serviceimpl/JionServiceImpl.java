@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.xkd.dao.ProjectDaoMapper;
-import com.xkd.dao.UserDaoMapper;
 import com.xkd.entity.Project;
-import com.xkd.entity.StateResult;
 import com.xkd.service.JionService;
 
 
