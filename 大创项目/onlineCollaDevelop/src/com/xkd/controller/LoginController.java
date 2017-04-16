@@ -33,9 +33,6 @@ public class LoginController implements Serializable {
      */
     @RequestMapping("/toLogin.do")
     public String toLogin(HttpServletRequest request){
-    	//删除session
-    	HttpSession session=request.getSession();
-		session.setAttribute("user", null);
     	System.out.println("进入登陆页面");
         return "login";
     }

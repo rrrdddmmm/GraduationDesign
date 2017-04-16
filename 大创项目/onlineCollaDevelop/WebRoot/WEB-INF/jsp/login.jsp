@@ -137,13 +137,13 @@
       		//通过检测，发送Ajax请求
       	if(flag){
       		$.ajax({     		
-      		  url:"http://localhost:8088/onlineCollaDevelop/login/loginIn.do",
+      		  url:"loginIn.do",
       		  type:"post",
       		  data :{"password":password,"email":email,"role":role},
       		  dataType:"json",
       		  success:function(result){
       		  	if(result.status==0){//成功 		  		
-      		  		window.location.href="http://localhost:8088/onlineCollaDevelop/index/toIndex.do";
+      		  		window.location.href="../index/toIndex.do";
       		  	}else if(result.status==1){
       		  	   $("#warning_1").html("用户名错误");
       		  	}else if(result.status==2){

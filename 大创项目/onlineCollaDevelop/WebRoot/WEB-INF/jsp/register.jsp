@@ -61,7 +61,7 @@ $(function(){
   	//发送ajax请求
   if(flag){	
   	$.ajax({
-  		url:"http://localhost:8088/onlineCollaDevelop/register/regist.do",
+  		url:"regist.do",
   		type:"post",
   		dataType:"json",
   		data:{"password":password,
