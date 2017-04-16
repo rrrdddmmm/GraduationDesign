@@ -5,7 +5,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Properties;
+
+import javax.servlet.http.HttpServletResponse;
 
 public class FileDealWith {
 	 /**
@@ -97,4 +101,35 @@ public class FileDealWith {
 	  //返回value值
 	   return value;
 	 }
+	 /**
+		 * 文件下载、预览、打印
+		 * @return
+		 * @throws IOException 
+		 */
+		 public static void downloadFile(HttpServletResponse response,
+				 String materialAddress) throws IOException{    
+		        
+		        File file=new File(materialAddress);
+				if(!file.exists()){
+					file.createNewFile();
+				}
+				System.out.println(file.getAbsolutePath());
+		      //去掉下面两行可作为预览、下载、打印pdf功能，其他会直接下载download.do、如果没有下面两行则会直接调用下载对话框
+		       response.setContentType("multipart/form-data;charset=UTF-8");
+		        response.setHeader("Content-Disposition", "attachment;fileName="+new String(file.getName().getBytes("UTF-8"),"ISO8859-1"));
+		        InputStream inputStream=null;
+		        try {  
+		            inputStream=new FileInputStream(file);  
+		            OutputStream os=response.getOutputStream();  
+		            byte[] b=new byte[1024];  
+		            int length;  
+		            while((length=inputStream.read(b))>0){  
+		                os.write(b,0,length);  
+		            }   
+		        } catch (FileNotFoundException e) { 
+		        	System.out.println("找不到文件路径!");  
+		        }finally{
+		        	inputStream.close(); 
+		        }
+		    }
 }

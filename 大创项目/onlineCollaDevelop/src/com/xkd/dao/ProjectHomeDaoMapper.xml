@@ -14,4 +14,12 @@
 		#{project_no},#{email}
 		)
 	</insert>
+	<select id="findById" resultType="com.xkd.entity.ProjectHome">
+		select * from home_information
+		where project_no=#{project_no} and email=#{email}
+	</select>
+	<select id="findByEmail"  parameterType="string" resultType="com.xkd.entity.Project">
+		select * from Project
+		where  project_no in (select project_no from home_information where email=#{email})
+	</select>
 </mapper>

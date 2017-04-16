@@ -1,4 +1,5 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,8 +62,9 @@
 			<table width="1000" border="2" cellpadding="0" cellspacing="0" class="main_table">
 				<tbody>
 				<tr>
-					<td colspan="9" class="table_title">项目信息管理</td>
+					<td colspan="11" class="table_title">项目信息管理</td>
 				</tr>
+				
 				<tr class="table_subtitle">
 					<td width="%">项目名称</td>
 					<td width="%">项目负责人</td>
@@ -72,20 +74,30 @@
 					<td width="%">任务优先级</td>
 					<td width="%">项目状态</td>
 					<td width="%">项目进度</td>
+					<td width="%">任务下载</td>
+					<td width="%">任务提交</td>
 					<td width="%">操作</td>
 				</tr>
-				
+				<c:forEach var="l" items="${list}">
 				<tr>
-					<td>校园管理系统</td>
-					<td>任勃</td>
-					<td>3</td>
-					<td>2017-03-13</td>
-					<td>2017-03-13</td>
+					<td>${l.project_name}</td>
+					<td>${l.leader}</td>
+					<td>${l.all_number}</td>
+					<td>${l.crt_time}</td>
+					<td>${l.update_time}</td>
 					<td>急</td>
-					<td>已完成</td>
-					<td><progress value="100" max="100"></progress></td>
-					<td><a href="#">查看</a>丨<a href="#">编辑</a></td>
+					<c:if test="${l.status==0}">
+							<td>待开发</td>
+						</c:if>
+					<c:if test="${l.status==1}">
+							<td>开发中</td>
+					</c:if>
+					<td><progress value="50" max="100"></progress></td>
+					<td><a href="../downLoadController/downLoad.do">任务下载</a></td>
+					<td><a href="#">任务提交</a></td>
+					<td><a href="../jion/toShow.do?id=${l.project_no}">查看</a></td>
 				</tr>
+				</c:forEach>
 				<table border="0" width="1000" class="main_page">
 					<tbody>
 						<tr>

@@ -1,14 +1,5 @@
 package com.xkd.util;
 
-import java.io.*;   
-import java.nio.charset.Charset;
-import java.sql.DriverManager;
-
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.jdbc.ScriptRunner;
-import org.apache.tools.*;   
-
-import com.mysql.jdbc.Connection;
  
 
 public class Test {

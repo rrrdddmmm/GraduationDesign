@@ -37,10 +37,14 @@ public class JionServiceImpl implements JionService {
 	}
 
 	public void updateJion(int id,String email) {
-		ProjectHome p=new ProjectHome();
-		p.setEmail(email);
-		p.setProject_no(id);
-		projectHomeDaoMapper.insertData(p);
+		ProjectHome projecthome=new ProjectHome();
+		projecthome.setEmail(email);
+		projecthome.setProject_no(id);
+		ProjectHome result=projectHomeDaoMapper.findById(projecthome);
+		if(result!=null){
+			return;
+		}
+		projectHomeDaoMapper.insertData(projecthome);
 		projectDao.updateProject(id);
 	}
 
