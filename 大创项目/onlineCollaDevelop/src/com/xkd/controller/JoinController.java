@@ -65,7 +65,7 @@ public class JoinController implements Serializable {
 			return "redirect:../login/toLogin.do";
 		}
 		int id=Integer.parseInt(request.getParameter("id"));
-		jionservice.updateJion(id);
+		jionservice.updateJion(id,use.getEmail());
 		 return "redirect:toJion.do";
     }
 	

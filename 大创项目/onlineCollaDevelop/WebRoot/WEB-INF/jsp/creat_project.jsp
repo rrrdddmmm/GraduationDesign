@@ -118,7 +118,7 @@
 						<td>
 							<input type="text" name="project_name" id="project_name"　>
 							<input type="text" name="status" value="0" style="display:none;">
-							<input type="text" name="pronser_number" value="0" style="display:none;">
+							<input type="text" name="pronser_number" value="1" style="display:none;">
 							<input type="text" name="email" id="email" value="${user.email }" style="display:none;">
 						</td>
 						<td>开发语言：</td>

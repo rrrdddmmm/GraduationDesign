@@ -1,50 +1,30 @@
-USE [simulation_laboratory]
-GO
+/*
+Navicat MySQL Data Transfer
 
-/****** Object:  Table [dbo].[home_information]    Script Date: 2017-03-18 16:49:51 ******/
-SET ANSI_NULLS ON
-GO
+Source Server         : localhost_3306
+Source Server Version : 50537
+Source Host           : localhost:3306
+Source Database       : simulation_laboratory
 
-SET QUOTED_IDENTIFIER ON
-GO
+Target Server Type    : MYSQL
+Target Server Version : 50537
+File Encoding         : 65001
 
-SET ANSI_PADDING ON
-GO
+Date: 2017-04-16 16:21:55
+*/
 
-CREATE TABLE [dbo].[home_information](
-	[home_no] [int] NOT NULL,
-	[project_name] [varchar](max) NOT NULL,
-	[peoplenum_max] [int] NOT NULL,
-	[application_days] [int] NOT NULL,
-	[team_name] [varchar](max) NOT NULL,
-	[peoplenum_true] [int] NOT NULL,
- CONSTRAINT [PK_home_information] PRIMARY KEY CLUSTERED 
-(
-	[home_no] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+SET FOREIGN_KEY_CHECKS=0;
+-- ----------------------------
+-- Table structure for `home_information`
+-- ----------------------------
+DROP TABLE IF EXISTS `home_information`;
+CREATE TABLE `home_information` (
+  `project_no` int(10) NOT NULL DEFAULT '0',
+  `email` varchar(50) NOT NULL DEFAULT '',
+  PRIMARY KEY (`project_no`,`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-GO
-
-SET ANSI_PADDING OFF
-GO
-
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'房间名' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'home_information', @level2type=N'COLUMN',@level2name=N'home_no'
-GO
-
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'项目名称' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'home_information', @level2type=N'COLUMN',@level2name=N'project_name'
-GO
-
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'最多人数' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'home_information', @level2type=N'COLUMN',@level2name=N'peoplenum_max'
-GO
-
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'申请天数' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'home_information', @level2type=N'COLUMN',@level2name=N'application_days'
-GO
-
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'团队名称' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'home_information', @level2type=N'COLUMN',@level2name=N'team_name'
-GO
-
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'实际人数' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'home_information', @level2type=N'COLUMN',@level2name=N'peoplenum_true'
-GO
-
-
+-- ----------------------------
+-- Records of home_information
+-- ----------------------------
+INSERT INTO `home_information` VALUES ('15', '314187985@qq.com');

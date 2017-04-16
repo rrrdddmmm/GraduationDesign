@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xkd.dao.ProjectHomeDaoMapper">
+
+	<!-- 向数据库中插入一条数据 -->
+	<insert id="insertData" >
+       insert into home_information
+        (  
+		project_no,email
+		) 
+		values
+		(
+		#{project_no},#{email}
+		)
+	</insert>
+</mapper>
