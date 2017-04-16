@@ -34,7 +34,7 @@ public class MyProjectController  implements Serializable {
 	@Resource(name="MyProjectService")
     private MyProjectService myProjectService;
     /**
-     * 进入创建项目
+     * 我的项目
      * @return
      */
     @RequestMapping("/toMyProject.do")
@@ -54,6 +54,15 @@ public class MyProjectController  implements Serializable {
 			return "redirect:../login/toLogin.do";
 		}
 		
+    }
+    /**
+     * 提交任务
+     * @return
+     */
+    @RequestMapping("/toUpTask.do")
+    public String toUpTask(){
+		return "taskup";
+    	
     }
 
 }
