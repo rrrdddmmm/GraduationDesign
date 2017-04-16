@@ -61,33 +61,23 @@
 			                <tr>
 			                    <td class="need">*</td>
 			                    <td class="txt">电子邮箱：</td>
-			                    <td><input type="text" value="" name="email" class="inputxt" datatype="e" errormsg="请输入正确的格式！"  /></td>
-			                    <td><div class="Validform_checktip">请输入常用的电子邮箱</div></td>
+			                    <td><input type="text" value="${user.email }" name="email" class="inputxt" /></td>
 			                </tr>
 			                <tr>
 			                    <td class="need">*</td>
 			                    <td class="txt">手机号码：</td>
-			                    <td><input type="text" value="" name="tel" class="inputxt" datatype="m" errormsg="手机号码输入有误！"  /></td>
-			                    <td><div class="Validform_checktip">请输入中国大陆手机号码</div></td>
+			                    <td><input type="text" value="${user.phone }" name="tel" class="inputxt"  /></td>
 			                </tr>
 			                
 			                <tr>
 			                    <td class="need">*</td>
 			                    <td class="txt">角色：</td>
-			                    <td>
-			                    	<select name="province" datatype="*" nullmsg="请选择！" errormsg="请选择所在国家！">
-				                    	<option value="XZ">--请选择--</option>      
-								        <option value="UK">学生</option>  
-					        			<option value="CN">教师</option> 
-				                    </select>
-			                    </td>
-			                    <td><div class="Validform_checktip">请选择角色</div></td>
+			                    <td><input type="text" value="学生"  class="inputxt" /></td>
 			                </tr>
 			                <tr>
 			                    <td class="need"></td>
 			                    <td></td>
 			                    <td colspan="2">
-			                        <input type="submit" class="confirm" value="保存" /> <input type="button" onclick="history.back();" class="clear" value="返回" />
 			                    </td>
 			                </tr>
 			            </table>

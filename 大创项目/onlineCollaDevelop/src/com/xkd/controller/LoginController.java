@@ -47,7 +47,8 @@ public class LoginController implements Serializable {
 		StateResult result = loginService.checkLogin(user);
 		if(result.getStatus()==0){
 			HttpSession session=request.getSession();
-			session.setAttribute("user", user);
+			System.out.println("session中的数据："+(User)result.getUse());
+			session.setAttribute("user", (User)result.getUse());
 		}
 		System.out.println("resultstatus"+result.getStatus());
 		return result;

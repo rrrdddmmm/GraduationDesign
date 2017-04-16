@@ -3,10 +3,14 @@ package com.xkd.controller;
 import java.io.Serializable;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.xkd.entity.Project;
+import com.xkd.entity.User;
 import com.xkd.service.MyInformationService;
 
 /**
@@ -32,8 +36,14 @@ public class MyInformationController  implements Serializable {
      * @return
      */
     @RequestMapping("/toMyInformation.do")
-    public String toMyInformation() {
-        return "my_information";
+    public String toMyInformation(HttpServletRequest request) {
+    	HttpSession session=request.getSession();
+		User use=(User) session.getAttribute("user");
+		if(use!=null){
+			 return "my_information";
+		}else{
+			return "redirect:../login/toLogin.do";
+		}
     }
-
 }
+

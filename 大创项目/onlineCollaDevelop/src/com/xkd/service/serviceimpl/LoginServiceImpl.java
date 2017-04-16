@@ -43,6 +43,7 @@ public class LoginServiceImpl implements LoginService{
 			result.setMsg("角色不正确");
 			return result;
 		}
+		result.setUse(userd);
 		result.setStatus(0);
 		result.setMsg("用户名和邮箱正确");	
 		System.out.println("验证通过");

@@ -4,6 +4,7 @@ public class StateResult {
 	private int status;
 	private String msg;
 	private Object data;
+	private Object use;
 	public int getStatus() {
 		return status;
 	}
@@ -21,6 +22,12 @@ public class StateResult {
 	}
 	public void setData(Object data) {
 		this.data = data;
+	}
+	public Object getUse() {
+		return use;
+	}
+	public void setUse(Object use) {
+		this.use = use;
 	}
 	
 	
