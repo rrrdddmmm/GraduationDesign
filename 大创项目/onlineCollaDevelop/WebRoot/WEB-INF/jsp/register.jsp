@@ -13,6 +13,17 @@
 	<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
 	<script type="text/javascript">       
 $(function(){
+	//电话号码验证
+	function verifymobile(id){
+		var reg=/^1\d{10}$|^(0\d{2,3}-?|\(0\d{2,3}\))?[1-9]\d{4,7}(-\d{1,8})?$/;
+	    var result= reg.test($("#"+id+"").val());
+	    if(!result){
+	        alert("请填写正确电话号码格式！",2);
+	        $("#"+id+"").val("");
+			return false;
+	    }
+		return true;
+	}
   //注册按钮单击处理
   $("#regist_button").click(function(){
   	//隐藏所有提示信息

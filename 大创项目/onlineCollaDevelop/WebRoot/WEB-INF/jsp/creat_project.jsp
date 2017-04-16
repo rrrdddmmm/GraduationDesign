@@ -1,4 +1,5 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="fs"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,6 +23,57 @@
                 $(this).children("ul").slideToggle();
             });
         });
+		 function verify(){
+			 if(verifynull("project_name")&&verifynull("email")&&verifynull("file")&&verifyselect("project_language")&&
+					 verifynull("develop_platform")&&verifynull("all_number")
+					 &&verifynull("crt_time_str")&&verifynull("update_time_str")&&verifynull("leader")&&
+					 verifynull("approver")&&verifynull("projectbudget")&&verifynull("describeproject")&&
+					 verifyPric("projectbudget")&&regnum("all_number")){
+				 return true;
+			 }else{
+				 return false;
+			 }
+		 }
+		//金额验证
+		 function verifyPric(id){
+		     var reg=/^[0-9]*.{0,1}[0-9]*[0-9]$/;
+		     var result= reg.test($("#"+id+"").val());
+		     if(!result){
+		         alert("请填写正确金额格式！",2);
+		         $("#"+id+"").val("");
+		 		return false;
+		     }
+		 	return true;
+		 }
+		 //数字验证
+		 function regnum(id){
+		     var reg=/^[0-9]*[0-9]*[0-9]$/;
+		     var result= reg.test($("#"+id+"").val());
+		     if(!result){
+		         alert("请填写正确数量格式！",2);
+		         $("#"+id+"").val("");
+		 		return false;
+		     }
+		 	return true;
+		 }
+		//判空验证
+		 function verifynull(id){
+		 	if($("#"+id+"").is(":visible") && $("#"+id+"").val()==""){
+		 		alert("请填写"+id);
+		 		return false;
+		 	}else{
+		 		return true;
+		 	}
+		 }
+		//判空验证
+		 function verifyselect(id){
+		 	if($("#"+id+"").val()==-1){
+		 		alert("请填写"+id);
+		 		return false;
+		 	}else{
+		 		return true;
+		 	}
+		 }
 	</script>
 </head>
 <body style="background:url(../images/123.jpg) no-repeat center 0px;">
@@ -58,59 +110,64 @@
 			<span class="name">创建项目</span>
 		</div>
 		<div class="main_box">
-			<form action="toSave.do" method="post">
+			<fs:form action="toSave.do" method="post" id="" modelAttribute="project">
 				<table width="1000" border="2" cellpadding="0" cellspacing="0" class="main_table">
 					<tbody>
 					<tr>
 						<td>项目名称：</td>
-						<td><input type="text" name="project_name"></td>
+						<td>
+							<input type="text" name="project_name" id="project_name"　>
+							<input type="text" name="status" value="0" style="display:none;">
+							<input type="text" name="pronser_number" value="0" style="display:none;">
+							<input type="text" name="email" id="email" value="${user.email }" style="display:none;">
+						</td>
 						<td>开发语言：</td>
 						<td>
-							<select name="project_language">
-								<option value ="1">java</option>
-								<option value ="2">c语言</option>
-								<option value="3">c++</option>
-								<option value="4">php</option>
+							<select name="project_language" id="project_language">
+								<option value ="java">java</option>
+								<option value ="c语言">c语言</option>
+								<option value="c++">c++</option>
+								<option value="php">php</option>
 							</select>
 						</td>
 					</tr>
 					<tr>
 						<td>参与人数：</td>
-						<td><input type="text" name="all_number"></td>
+						<td><input type="text" name="all_number" id="all_number"></td>
 						<td>上传立项书：</td>
-						<td><input type="file" name="" id=""></td>
+						<td><input type="file" id="file"></td>
 					</tr>
 					<tr>
 						<td>项目批准人：</td>
-						<td><input type="text" name="approver"></td>
+						<td><input type="text" name="approver" id="approver"></td>
 						<td>开发环境：</td>
-						<td><input type="text" name="develop_platform"></td>
+						<td><input type="text" name="develop_platform" id="develop_platform"></td>
 					</tr>
 					<tr>
 						<td>项目经理：</td>
-						<td><input type="text" name="leader"></td>
+						<td><input type="text" name="leader" id="leader"></td>
 						<td>项目预算：</td>
-						<td><input type="text" name="budget" style="width:180px;margin-right:5px;"><span style="font-weight:bold">元</span></td>
+						<td><input type="text" name="projectbudget" id="projectbudget"　style="width:180px;margin-right:5px;"><span style="font-weight:bold">元</span></td>
 					</tr>
 					<tr>
 						<td>项目简介：</td>
-						<td colspan="3"><textarea name="describe" id="" size="20"></textarea></td>
+						<td colspan="3"><textarea name="describeproject" id="describeproject" size="20"></textarea></td>
 					</tr>
 					<tr>
 						<td>立项时间：</td>
-						<td><input type="date" name="crt_time"></td>
+						<td><input type="date" name="crt_time_str" id="crt_time_str"></td>
 						<td>启动时间：</td>
-						<td><input type="date" name="update_time"></td>
+						<td><input type="date" name="update_time_str" id="update_time_str"></td>
 					</tr>
 					<tr>
 						<td colspan="4">
-							<input type="submit" value="提交项目" class="btn">
+							<input type="submit" value="提交项目" onclick="return verify();" class="btn">
 							<input type="reset" value="取消创建" class="btn">
 						</td>
 					</tr>
 					</tbody>
 				</table>
-			</form>
+			</fs:form>
 		</div>
 	</div>
 	<!-- 主体结束 -->

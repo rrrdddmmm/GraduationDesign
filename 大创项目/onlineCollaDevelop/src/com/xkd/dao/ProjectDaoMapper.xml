@@ -19,6 +19,21 @@
 		pronser_number=pronser_number+1
 		where project_no=#{id}
 	</update>
+	
+	 
+	 <!-- 向数据库中插入一条数据 -->
+	<insert id="insertData" >
+       insert into project
+        (  
+		project_name,email,develop_platform,project_language,
+		all_number,pronser_number,crt_time,update_time,status,leader,approver,projectbudget,describeproject
+		) 
+		values 
+		(
+		#{project_name},#{email},#{develop_platform},#{project_language},
+		#{all_number},#{pronser_number},#{crt_time},#{update_time},#{status},#{leader},#{approver},#{projectbudget},#{describeproject}
+		)
+	</insert>
 </mapper>
 
 

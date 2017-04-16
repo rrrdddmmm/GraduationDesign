@@ -23,13 +23,29 @@ public class Project implements Serializable{
 	private String develop_platform;
 	private Integer all_number;
 	private Integer pronser_number;
+	private String crt_time_str; 
+	private String update_time_str; 
 	private Date crt_time; 
 	private Date update_time;
 	private Integer status;
 	private String leader;
 	private String approver;
-	private double budget;
-	private String describe;
+	private Double projectbudget;
+	private String describeproject;
+	
+	@Override
+	public String toString() {
+		return "Project [project_no=" + project_no + ", project_name="
+				+ project_name + ", home_no=" + home_no + ", email=" + email
+				+ ", project_data=" + project_data + ", project_language="
+				+ project_language + ", develop_platform=" + develop_platform
+				+ ", all_number=" + all_number + ", pronser_number="
+				+ pronser_number + ", crt_time_str=" + crt_time_str
+				+ ", update_time_str=" + update_time_str + ", crt_time="
+				+ crt_time + ", update_time=" + update_time + ", status="
+				+ status + ", leader=" + leader + ", approver=" + approver
+				+ ", projectbudget=" + projectbudget + ", describeproject=" + describeproject + "]";
+	}
 	public Integer getProject_no() {
 		return project_no;
 	}
@@ -115,29 +131,29 @@ public class Project implements Serializable{
 	public void setApprover(String approver) {
 		this.approver = approver;
 	}
-	public double getBudget() {
-		return budget;
+	public Double getProjectbudget() {
+		return projectbudget;
 	}
-	public void setBudget(double budget) {
-		this.budget = budget;
+	public void setProjectbudget(Double projectbudget) {
+		this.projectbudget = projectbudget;
 	}
-	public String getDescribe() {
-		return describe;
+	public String getDescribeproject() {
+		return describeproject;
 	}
-	public void setDescribe(String describe) {
-		this.describe = describe;
+	public void setDescribeproject(String describeproject) {
+		this.describeproject = describeproject;
 	}
-	@Override
-	public String toString() {
-		return "Project [project_no=" + project_no + ", project_name="
-				+ project_name + ", home_no=" + home_no + ", email=" + email
-				+ ", project_data=" + project_data + ", project_language="
-				+ project_language + ", develop_platform=" + develop_platform
-				+ ", all_number=" + all_number + ", pronser_number="
-				+ pronser_number + ", crt_time=" + crt_time + ", update_time="
-				+ update_time + ", status=" + status + ", leader=" + leader
-				+ ", approver=" + approver + ", budget=" + budget
-				+ ", describe=" + describe + "]";
+	public String getCrt_time_str() {
+		return crt_time_str;
+	}
+	public void setCrt_time_str(String crt_time_str) {
+		this.crt_time_str = crt_time_str;
+	}
+	public String getUpdate_time_str() {
+		return update_time_str;
+	}
+	public void setUpdate_time_str(String update_time_str) {
+		this.update_time_str = update_time_str;
 	}
 	
 	

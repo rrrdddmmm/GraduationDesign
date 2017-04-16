@@ -84,11 +84,11 @@
 						<td>项目批准人：</td>
 						<td><input type="text" value="${pro.approver}" ></td>
 						<td>项目预算：</td>
-						<td><input type="text" value="${pro.budget}" style="width:180px;margin-right:5px;"><span style="font-weight:bold">元</span></td>
+						<td><input type="text" value="${pro.projectbudget}" style="width:180px;margin-right:5px;"><span style="font-weight:bold">元</span></td>
 					</tr>
 					<tr>
 						<td>项目简介：</td>
-						<td colspan="3"><textarea name="" id="" size="20" >${pro.describe}</textarea></td>
+						<td colspan="3"><textarea name="" id="" size="20" >${pro.describeproject}</textarea></td>
 						
 						
 					</tr>

@@ -9,4 +9,5 @@ public interface ProjectDaoMapper {
 	List<Project> findProject();
 	Project findByid(int id);
 	void updateProject(int id);
+    void insertData(Project project);
 }
