@@ -1,3 +1,5 @@
 在进行程序编码的时候，乱码是最常见的一种问题。使用java操作mysql数据库插入数据的时候出现乱码需要在安装的时候对数据库编码进行设定，如果数据库已经安装完成，该如何处理呢？小编介绍下mysql数据库插入汉字出现乱码该如何处理
 1、更改数据库安装时的字符编码。打开mysql安装目录，找到my.ini文件，通过使用记事本的方式打开，将这里面的default-character-set=latin1修改成utf8，注意这里面有两处需要修改。
 http://jingyan.baidu.com/article/4ae03de3ebb0d83eff9e6b16.html
+eclipse下设置tomcat,修改Java代码不必重启tomcat
+http://blog.csdn.net/czx33859066/article/details/46893985
