@@ -5,6 +5,7 @@ import com.xkd.entity.User;
 
 /**
  * 注册服务接口
+ * 
  * @author RBB
  *
  */
