@@ -69,5 +69,4 @@ public class CreatProjectController implements Serializable {
 		creatProjectService.toSave(project);
 		return "creat_project";
 	}
-
 }
