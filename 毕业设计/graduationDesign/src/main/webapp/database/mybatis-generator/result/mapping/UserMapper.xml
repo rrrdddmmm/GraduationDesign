@@ -85,6 +85,708 @@
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="role" jdbcType="VARCHAR" property="role" />
   </resultMap>
+  <sql id="Base_Column_List">
+    email, password, phone, role
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where email = #{email,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user
+    where email = #{email,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="model.User">
+    insert into user (email, password, phone, 
+      role)
+    values (#{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{role,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="email != null">
+        email,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="role != null">
+        role,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        #{role,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.User">
+    update user
+    <set>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        role = #{role,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where email = #{email,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.User">
+    update user
+    set password = #{password,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      role = #{role,jdbcType=VARCHAR}
+    where email = #{email,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="model.User">
+    <id column="email" jdbcType="VARCHAR" property="email" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="role" jdbcType="VARCHAR" property="role" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    email, password, phone, role
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where email = #{email,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user
+    where email = #{email,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="model.User">
+    insert into user (email, password, phone, 
+      role)
+    values (#{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{role,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="email != null">
+        email,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="role != null">
+        role,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        #{role,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.User">
+    update user
+    <set>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        role = #{role,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where email = #{email,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.User">
+    update user
+    set password = #{password,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      role = #{role,jdbcType=VARCHAR}
+    where email = #{email,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="model.User">
+    <id column="email" jdbcType="VARCHAR" property="email" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="role" jdbcType="VARCHAR" property="role" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    email, password, phone, role
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where email = #{email,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user
+    where email = #{email,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="model.User">
+    insert into user (email, password, phone, 
+      role)
+    values (#{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{role,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="email != null">
+        email,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="role != null">
+        role,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        #{role,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.User">
+    update user
+    <set>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        role = #{role,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where email = #{email,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.User">
+    update user
+    set password = #{password,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      role = #{role,jdbcType=VARCHAR}
+    where email = #{email,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="model.User">
+    <id column="email" jdbcType="VARCHAR" property="email" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="role" jdbcType="VARCHAR" property="role" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    email, password, phone, role
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where email = #{email,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user
+    where email = #{email,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="model.User">
+    insert into user (email, password, phone, 
+      role)
+    values (#{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{role,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="email != null">
+        email,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="role != null">
+        role,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        #{role,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.User">
+    update user
+    <set>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        role = #{role,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where email = #{email,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.User">
+    update user
+    set password = #{password,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      role = #{role,jdbcType=VARCHAR}
+    where email = #{email,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="model.User">
+    <id column="email" jdbcType="VARCHAR" property="email" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="role" jdbcType="VARCHAR" property="role" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    email, password, phone, role
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where email = #{email,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user
+    where email = #{email,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="model.User">
+    insert into user (email, password, phone, 
+      role)
+    values (#{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{role,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="email != null">
+        email,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="role != null">
+        role,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        #{role,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.User">
+    update user
+    <set>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        role = #{role,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where email = #{email,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.User">
+    update user
+    set password = #{password,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      role = #{role,jdbcType=VARCHAR}
+    where email = #{email,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="model.User">
+    <id column="email" jdbcType="VARCHAR" property="email" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="role" jdbcType="VARCHAR" property="role" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    email, password, phone, role
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where email = #{email,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user
+    where email = #{email,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="model.User">
+    insert into user (email, password, phone, 
+      role)
+    values (#{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{role,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="email != null">
+        email,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="role != null">
+        role,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        #{role,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.User">
+    update user
+    <set>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        role = #{role,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where email = #{email,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.User">
+    update user
+    set password = #{password,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      role = #{role,jdbcType=VARCHAR}
+    where email = #{email,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="model.User">
+    <id column="email" jdbcType="VARCHAR" property="email" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="role" jdbcType="VARCHAR" property="role" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    email, password, phone, role
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where email = #{email,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user
+    where email = #{email,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="model.User">
+    insert into user (email, password, phone, 
+      role)
+    values (#{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{role,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="email != null">
+        email,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="role != null">
+        role,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        #{role,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.User">
+    update user
+    <set>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        role = #{role,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where email = #{email,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.User">
+    update user
+    set password = #{password,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      role = #{role,jdbcType=VARCHAR}
+    where email = #{email,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="model.User">
+    <id column="email" jdbcType="VARCHAR" property="email" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="role" jdbcType="VARCHAR" property="role" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    email, password, phone, role
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where email = #{email,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user
+    where email = #{email,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="model.User">
+    insert into user (email, password, phone, 
+      role)
+    values (#{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{role,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="email != null">
+        email,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="role != null">
+        role,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        #{role,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.User">
+    update user
+    <set>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        role = #{role,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where email = #{email,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.User">
+    update user
+    set password = #{password,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      role = #{role,jdbcType=VARCHAR}
+    where email = #{email,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="model.User">
+    <id column="email" jdbcType="VARCHAR" property="email" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="role" jdbcType="VARCHAR" property="role" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    email, password, phone, role
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where email = #{email,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user
+    where email = #{email,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="model.User">
+    insert into user (email, password, phone, 
+      role)
+    values (#{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{role,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="email != null">
+        email,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="role != null">
+        role,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        #{role,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.User">
+    update user
+    <set>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        role = #{role,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where email = #{email,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.User">
+    update user
+    set password = #{password,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      role = #{role,jdbcType=VARCHAR}
+    where email = #{email,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="model.User">
+    <id column="email" jdbcType="VARCHAR" property="email" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="role" jdbcType="VARCHAR" property="role" />
+  </resultMap>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

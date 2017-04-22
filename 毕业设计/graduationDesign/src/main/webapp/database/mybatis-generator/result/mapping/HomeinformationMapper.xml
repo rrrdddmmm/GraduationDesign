@@ -37,6 +37,294 @@
     <id column="project_no" jdbcType="INTEGER" property="projectNo" />
     <id column="email" jdbcType="VARCHAR" property="email" />
   </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="model.HomeinformationKey">
+    delete from home_information
+    where project_no = #{projectNo,jdbcType=INTEGER}
+      and email = #{email,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="model.HomeinformationKey">
+    insert into home_information (project_no, email)
+    values (#{projectNo,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.HomeinformationKey">
+    insert into home_information
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="projectNo != null">
+        project_no,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="projectNo != null">
+        #{projectNo,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.HomeinformationKey">
+    <id column="project_no" jdbcType="INTEGER" property="projectNo" />
+    <id column="email" jdbcType="VARCHAR" property="email" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="model.HomeinformationKey">
+    delete from home_information
+    where project_no = #{projectNo,jdbcType=INTEGER}
+      and email = #{email,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="model.HomeinformationKey">
+    insert into home_information (project_no, email)
+    values (#{projectNo,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.HomeinformationKey">
+    insert into home_information
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="projectNo != null">
+        project_no,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="projectNo != null">
+        #{projectNo,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.HomeinformationKey">
+    <id column="project_no" jdbcType="INTEGER" property="projectNo" />
+    <id column="email" jdbcType="VARCHAR" property="email" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="model.HomeinformationKey">
+    delete from home_information
+    where project_no = #{projectNo,jdbcType=INTEGER}
+      and email = #{email,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="model.HomeinformationKey">
+    insert into home_information (project_no, email)
+    values (#{projectNo,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.HomeinformationKey">
+    insert into home_information
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="projectNo != null">
+        project_no,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="projectNo != null">
+        #{projectNo,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.HomeinformationKey">
+    <id column="project_no" jdbcType="INTEGER" property="projectNo" />
+    <id column="email" jdbcType="VARCHAR" property="email" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="model.HomeinformationKey">
+    delete from home_information
+    where project_no = #{projectNo,jdbcType=INTEGER}
+      and email = #{email,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="model.HomeinformationKey">
+    insert into home_information (project_no, email)
+    values (#{projectNo,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.HomeinformationKey">
+    insert into home_information
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="projectNo != null">
+        project_no,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="projectNo != null">
+        #{projectNo,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.HomeinformationKey">
+    <id column="project_no" jdbcType="INTEGER" property="projectNo" />
+    <id column="email" jdbcType="VARCHAR" property="email" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="model.HomeinformationKey">
+    delete from home_information
+    where project_no = #{projectNo,jdbcType=INTEGER}
+      and email = #{email,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="model.HomeinformationKey">
+    insert into home_information (project_no, email)
+    values (#{projectNo,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.HomeinformationKey">
+    insert into home_information
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="projectNo != null">
+        project_no,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="projectNo != null">
+        #{projectNo,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.HomeinformationKey">
+    <id column="project_no" jdbcType="INTEGER" property="projectNo" />
+    <id column="email" jdbcType="VARCHAR" property="email" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="model.HomeinformationKey">
+    delete from home_information
+    where project_no = #{projectNo,jdbcType=INTEGER}
+      and email = #{email,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="model.HomeinformationKey">
+    insert into home_information (project_no, email)
+    values (#{projectNo,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.HomeinformationKey">
+    insert into home_information
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="projectNo != null">
+        project_no,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="projectNo != null">
+        #{projectNo,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.HomeinformationKey">
+    <id column="project_no" jdbcType="INTEGER" property="projectNo" />
+    <id column="email" jdbcType="VARCHAR" property="email" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="model.HomeinformationKey">
+    delete from home_information
+    where project_no = #{projectNo,jdbcType=INTEGER}
+      and email = #{email,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="model.HomeinformationKey">
+    insert into home_information (project_no, email)
+    values (#{projectNo,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.HomeinformationKey">
+    insert into home_information
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="projectNo != null">
+        project_no,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="projectNo != null">
+        #{projectNo,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.HomeinformationKey">
+    <id column="project_no" jdbcType="INTEGER" property="projectNo" />
+    <id column="email" jdbcType="VARCHAR" property="email" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="model.HomeinformationKey">
+    delete from home_information
+    where project_no = #{projectNo,jdbcType=INTEGER}
+      and email = #{email,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="model.HomeinformationKey">
+    insert into home_information (project_no, email)
+    values (#{projectNo,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.HomeinformationKey">
+    insert into home_information
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="projectNo != null">
+        project_no,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="projectNo != null">
+        #{projectNo,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.HomeinformationKey">
+    <id column="project_no" jdbcType="INTEGER" property="projectNo" />
+    <id column="email" jdbcType="VARCHAR" property="email" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="model.HomeinformationKey">
+    delete from home_information
+    where project_no = #{projectNo,jdbcType=INTEGER}
+      and email = #{email,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="model.HomeinformationKey">
+    insert into home_information (project_no, email)
+    values (#{projectNo,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.HomeinformationKey">
+    insert into home_information
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="projectNo != null">
+        project_no,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="projectNo != null">
+        #{projectNo,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.HomeinformationKey">
+    <id column="project_no" jdbcType="INTEGER" property="projectNo" />
+    <id column="email" jdbcType="VARCHAR" property="email" />
+  </resultMap>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
