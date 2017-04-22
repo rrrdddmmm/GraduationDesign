@@ -2219,6 +2219,226 @@
     <result column="projectbudget" jdbcType="DOUBLE" property="projectbudget" />
     <result column="describeproject" jdbcType="VARCHAR" property="describeproject" />
   </resultMap>
+  <sql id="Base_Column_List">
+    project_no, project_name, home_no, email, project_data, project_language, develop_platform, 
+    all_number, pronser_number, crt_time, update_time, status, leader, approver, projectbudget, 
+    describeproject
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from project
+    where project_no = #{projectNo,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from project
+    where project_no = #{projectNo,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="model.Project">
+    insert into project (project_no, project_name, home_no, 
+      email, project_data, project_language, 
+      develop_platform, all_number, pronser_number, 
+      crt_time, update_time, status, 
+      leader, approver, projectbudget, 
+      describeproject)
+    values (#{projectNo,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, #{homeNo,jdbcType=INTEGER}, 
+      #{email,jdbcType=VARCHAR}, #{projectData,jdbcType=VARCHAR}, #{projectLanguage,jdbcType=VARCHAR}, 
+      #{developPlatform,jdbcType=VARCHAR}, #{allNumber,jdbcType=INTEGER}, #{pronserNumber,jdbcType=INTEGER}, 
+      #{crtTime,jdbcType=DATE}, #{updateTime,jdbcType=DATE}, #{status,jdbcType=INTEGER}, 
+      #{leader,jdbcType=VARCHAR}, #{approver,jdbcType=VARCHAR}, #{projectbudget,jdbcType=DOUBLE}, 
+      #{describeproject,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.Project">
+    insert into project
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="projectNo != null">
+        project_no,
+      </if>
+      <if test="projectName != null">
+        project_name,
+      </if>
+      <if test="homeNo != null">
+        home_no,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="projectData != null">
+        project_data,
+      </if>
+      <if test="projectLanguage != null">
+        project_language,
+      </if>
+      <if test="developPlatform != null">
+        develop_platform,
+      </if>
+      <if test="allNumber != null">
+        all_number,
+      </if>
+      <if test="pronserNumber != null">
+        pronser_number,
+      </if>
+      <if test="crtTime != null">
+        crt_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="leader != null">
+        leader,
+      </if>
+      <if test="approver != null">
+        approver,
+      </if>
+      <if test="projectbudget != null">
+        projectbudget,
+      </if>
+      <if test="describeproject != null">
+        describeproject,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="projectNo != null">
+        #{projectNo,jdbcType=INTEGER},
+      </if>
+      <if test="projectName != null">
+        #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="homeNo != null">
+        #{homeNo,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="projectData != null">
+        #{projectData,jdbcType=VARCHAR},
+      </if>
+      <if test="projectLanguage != null">
+        #{projectLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="developPlatform != null">
+        #{developPlatform,jdbcType=VARCHAR},
+      </if>
+      <if test="allNumber != null">
+        #{allNumber,jdbcType=INTEGER},
+      </if>
+      <if test="pronserNumber != null">
+        #{pronserNumber,jdbcType=INTEGER},
+      </if>
+      <if test="crtTime != null">
+        #{crtTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="leader != null">
+        #{leader,jdbcType=VARCHAR},
+      </if>
+      <if test="approver != null">
+        #{approver,jdbcType=VARCHAR},
+      </if>
+      <if test="projectbudget != null">
+        #{projectbudget,jdbcType=DOUBLE},
+      </if>
+      <if test="describeproject != null">
+        #{describeproject,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.Project">
+    update project
+    <set>
+      <if test="projectName != null">
+        project_name = #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="homeNo != null">
+        home_no = #{homeNo,jdbcType=INTEGER},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="projectData != null">
+        project_data = #{projectData,jdbcType=VARCHAR},
+      </if>
+      <if test="projectLanguage != null">
+        project_language = #{projectLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="developPlatform != null">
+        develop_platform = #{developPlatform,jdbcType=VARCHAR},
+      </if>
+      <if test="allNumber != null">
+        all_number = #{allNumber,jdbcType=INTEGER},
+      </if>
+      <if test="pronserNumber != null">
+        pronser_number = #{pronserNumber,jdbcType=INTEGER},
+      </if>
+      <if test="crtTime != null">
+        crt_time = #{crtTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="leader != null">
+        leader = #{leader,jdbcType=VARCHAR},
+      </if>
+      <if test="approver != null">
+        approver = #{approver,jdbcType=VARCHAR},
+      </if>
+      <if test="projectbudget != null">
+        projectbudget = #{projectbudget,jdbcType=DOUBLE},
+      </if>
+      <if test="describeproject != null">
+        describeproject = #{describeproject,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where project_no = #{projectNo,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.Project">
+    update project
+    set project_name = #{projectName,jdbcType=VARCHAR},
+      home_no = #{homeNo,jdbcType=INTEGER},
+      email = #{email,jdbcType=VARCHAR},
+      project_data = #{projectData,jdbcType=VARCHAR},
+      project_language = #{projectLanguage,jdbcType=VARCHAR},
+      develop_platform = #{developPlatform,jdbcType=VARCHAR},
+      all_number = #{allNumber,jdbcType=INTEGER},
+      pronser_number = #{pronserNumber,jdbcType=INTEGER},
+      crt_time = #{crtTime,jdbcType=DATE},
+      update_time = #{updateTime,jdbcType=DATE},
+      status = #{status,jdbcType=INTEGER},
+      leader = #{leader,jdbcType=VARCHAR},
+      approver = #{approver,jdbcType=VARCHAR},
+      projectbudget = #{projectbudget,jdbcType=DOUBLE},
+      describeproject = #{describeproject,jdbcType=VARCHAR}
+    where project_no = #{projectNo,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="model.Project">
+    <id column="project_no" jdbcType="INTEGER" property="projectNo" />
+    <result column="project_name" jdbcType="VARCHAR" property="projectName" />
+    <result column="home_no" jdbcType="INTEGER" property="homeNo" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="project_data" jdbcType="VARCHAR" property="projectData" />
+    <result column="project_language" jdbcType="VARCHAR" property="projectLanguage" />
+    <result column="develop_platform" jdbcType="VARCHAR" property="developPlatform" />
+    <result column="all_number" jdbcType="INTEGER" property="allNumber" />
+    <result column="pronser_number" jdbcType="INTEGER" property="pronserNumber" />
+    <result column="crt_time" jdbcType="DATE" property="crtTime" />
+    <result column="update_time" jdbcType="DATE" property="updateTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="leader" jdbcType="VARCHAR" property="leader" />
+    <result column="approver" jdbcType="VARCHAR" property="approver" />
+    <result column="projectbudget" jdbcType="DOUBLE" property="projectbudget" />
+    <result column="describeproject" jdbcType="VARCHAR" property="describeproject" />
+  </resultMap>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
