@@ -14,30 +14,28 @@ import com.xkd.util.FileDealWith;
 
 /**
  * 文件下载
+ * 
  * @author RBB
  *
  */
 @Controller
 @RequestMapping("/downLoadController")
-public class DownLoadController  implements Serializable {
+public class DownLoadController implements Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
+
 	/**
 	 * 
 	 * @param response
 	 */
-	 @SuppressWarnings("deprecation")
+	@SuppressWarnings("deprecation")
 	@RequestMapping("/downLoad.do")
-	public void downLoad(HttpServletResponse response,HttpServletRequest request){
+	public void downLoad(HttpServletResponse response, HttpServletRequest request) {
 		try {
-			File directory = new File("");//设定为当前文件夹 
-			System.out.println(directory.getAbsolutePath());
-			//
-			
-			FileDealWith.downloadFile(response, request.getRealPath("/") + "taskfile"+File.separator + "task.txt");
+			FileDealWith.downloadFile(response, request.getRealPath("/") + "taskfile" + File.separator + "task.txt");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
