@@ -3,34 +3,35 @@
   PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
   "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
-    <!--Êý¾Ý¿âÇý¶¯-->
     <classPathEntry    location="mysql-connector-java-5.1.6.jar"/>
     <context id="DB2Tables"    targetRuntime="MyBatis3">
+        <!--æ•°æ®åº“é©±åŠ¨-->
         <commentGenerator>
             <property name="suppressDate" value="true"/>
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
-        <!--Êý¾Ý¿âÁ´½ÓµØÖ·ÕËºÅÃÜÂë-->
+         <!--æ•°æ®åº“é“¾æŽ¥åœ°å€è´¦å·å¯†ç -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost/simulation_laboratory" userId="root" password="123456">
         </jdbcConnection>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
-        <!--Éú³ÉModelÀà´æ·ÅÎ»ÖÃ-->
-        <javaModelGenerator targetPackage="lcw.model" targetProject="src">
+         <!--ç”ŸæˆModelç±»å­˜æ”¾ä½ç½®-->
+        <javaModelGenerator targetPackage="model" targetProject="result">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
-        <!--Éú³ÉÓ³ÉäÎÄ¼þ´æ·ÅÎ»ÖÃ-->
-        <sqlMapGenerator targetPackage="lcw.mapping" targetProject="src">
+        <!--ç”Ÿæˆæ˜ å°„æ–‡ä»¶å­˜æ”¾ä½ç½®-->
+        <sqlMapGenerator targetPackage="mapping" targetProject="result">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
-        <!--Éú³ÉDaoÀà´æ·ÅÎ»ÖÃ-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="lcw.dao" targetProject="src">
+         <!--ç”ŸæˆDaoç±»å­˜æ”¾ä½ç½®-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="dao" targetProject="result">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
-        <!--Éú³É¶ÔÓ¦±í¼°ÀàÃû-->
+        <!--ç”Ÿæˆå¯¹åº”è¡¨åŠç±»å-->
         <table tableName="home_information" domainObjectName="Homeinformation" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
 		<table tableName="project" domainObjectName="Project" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<table tableName="user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
     </context>
 </generatorConfiguration>
