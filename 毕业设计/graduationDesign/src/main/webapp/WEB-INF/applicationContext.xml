@@ -44,38 +44,4 @@
 		<property name="basePackage" value="com.xkd.dao" />
 	</bean>
 	<context:component-scan base-package="com.xkd.entity"/>
-
-
-
-
-<bean id="mailMessage" class="org.springframework.mail.SimpleMailMessage">
-<!--收件人-->  
-<property name="to">  
- <value>314187985@qq.com</value>
-</property>
-<!--发件人-->
-  <property name="from">
-   <value>18829348437@163.com</value>
-  </property>
-<!--邮件主题-->
-  <property name="subject">
-   <value>spring</value>
-  </property>
-<!--邮件内容-->
-  <property name="text">
-   <value>spring XXXXXXXXXXXXXX</value>
-  </property>
- </bean>
- <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-  <property name="host">
-<!--新浪邮件的服务器地址,可以根据需要选择不同的邮件服务器-->
-   <value>smtp.163.com</value>
-  </property>
-  <property name="username">
-   <value>18829348437@163.com</value>
-  </property>
-  <property name="password">
-   <value>a314187985</value>
-  </property>
- </bean>
 </beans>

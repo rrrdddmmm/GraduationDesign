@@ -1,6 +1,6 @@
-package model;
+package com.xkd.mybatisgenerator.model;
 
-public class HomeinformationKey {
+public class BaseHomeinformation {
     private Integer projectNo;
 
     private String email;

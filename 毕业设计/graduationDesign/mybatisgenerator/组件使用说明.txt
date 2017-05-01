@@ -1,0 +1,3 @@
+配置环境变量：
+path中添加mysql安装路径的bin目录
+在generatorConfig.xml中的table节点处添加表的名称以及结构

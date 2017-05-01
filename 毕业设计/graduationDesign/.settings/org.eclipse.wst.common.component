@@ -5,6 +5,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/mybatisgenerator"/>
         <property name="context-root" value="graduationDesign"/>
         <property name="java-output-path" value="/graduationDesign/target/classes"/>
     </wb-module>
