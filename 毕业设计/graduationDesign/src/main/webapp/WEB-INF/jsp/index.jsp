@@ -6,8 +6,8 @@
 	<meta charset="UTF-8">
      <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
 	<title>基于项目管理流程的校园软件项目协同平台</title>
+		<link rel="stylesheet" type="text/css" href="../bootstrap/dist/css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="../css/index.css">
-	<link rel="stylesheet" type="text/css" href="../bootstrap/dist/css/bootstrap.min.css"/>
 
 	<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
 	<script type="text/javascript" src="../js/Validform_v5.3.2_min.js"></script>
@@ -120,6 +120,7 @@
 			    </div>
 			</div>
 			<!--会议掠影结束-->
+			
 			<!--会议简介开始-->
 			<div class="main_hy fr">
 					<div class="ht">
@@ -135,42 +136,6 @@
 					</div>
 				</div>
 			</div>
-            <!--内容-->
-             <div class="tab2" style="padding-top: 15px; text-align: center; background-color: #E7E7E7;">
-        	<div class="container">
-        		<div class="col-md-6 col-sm-6" style="margin-top: 35px;">
-        			<h3>校园软件管理系统</h3>
-        			<p style="color: #337AB7;">为你提供更多的项目、让你不再因为有能力而没有锻炼的机会</p>
-        		</div>
-        		<div class="col-md-6 col-sm-6 ">
-        			<img src="../images/list5.jpg" class="img-reponsive center-block" alt="科技" />
-        		</div>
-        	</div>
-        </div>
-        <div class="tab2" style="padding-top: 15px; text-align: center; background-color: #E7E7E7;">
-        	<div class="container">
-        		<div class="col-md-6 col-sm-6">
-        			<img src="../images/list6.jpg" class="img-reponsive center-block" alt="科技" />
-        		</div>
-        		<div class="col-md-6 col-sm-6" style="margin-top: 35px;">
-        			<h3>最快的线上验收功能</h3>
-        			<p style="color: #337AB7;">在如今的校园中，项目的规划还不是多么健全。具备验收功能的管理平台，减轻了学生与老师之间的工作</p>
-        		</div>
-        		
-        	</div>
-        </div>
-        <div class="tab2" style="padding-top: 15px; text-align: center; background-color: #E7E7E7;">
-        	<div class="container">
-        		<div class="col-md-6 col-sm-6" \ style="margin-top: 35px;">
-        			<h3>智能推送功能</h3>
-        			<p style="color: #337AB7;">当完成了一个项目的时候，该平台通过智能推送、筛选，向成员提供下一个项目任务</p>
-        		</div>
-        		<div class="col-md-6 col-sm-6">
-        			<img src="../images/list7.jpg" class="img-reponsive center-block" alt="科技" />
-        		</div>
-        	</div>
-        </div>
-			<!--会议简介结束-->
 			<!--通知公告开始-->
 			<div class="main_tz mt15 w">
 				<div class="main_tz_l fl">
@@ -226,6 +191,43 @@
 				</div>
 			</div>
 			<!--通知公告结束-->
+            <!--内容-->
+             <div class="tab2" style="padding-top: 15px; text-align: center; background-color: #E7E7E7;">
+        	<div class="container">
+        		<div class="col-md-6 col-sm-6" style="margin-top: 35px;">
+        			<h3>校园软件管理系统</h3>
+        			<p style="color: #337AB7;">为你提供更多的项目、让你不再因为有能力而没有锻炼的机会</p>
+        		</div>
+        		<div class="col-md-6 col-sm-6 ">
+        			<img src="../images/list5.jpg" class="img-reponsive center-block" alt="科技" />
+        		</div>
+        	</div>
+        </div>
+        <div class="tab2" style="padding-top: 15px; text-align: center; background-color: #E7E7E7;">
+        	<div class="container">
+        		<div class="col-md-6 col-sm-6">
+        			<img src="../images/list6.jpg" class="img-reponsive center-block" alt="科技" />
+        		</div>
+        		<div class="col-md-6 col-sm-6" style="margin-top: 35px;">
+        			<h3>最快的线上验收功能</h3>
+        			<p style="color: #337AB7;">在如今的校园中，项目的规划还不是多么健全。具备验收功能的管理平台，减轻了学生与老师之间的工作</p>
+        		</div>
+        		
+        	</div>
+        </div>
+        <div class="tab2" style="padding-top: 15px; text-align: center; background-color: #E7E7E7;">
+        	<div class="container">
+        		<div class="col-md-6 col-sm-6" \ style="margin-top: 35px;">
+        			<h3>智能推送功能</h3>
+        			<p style="color: #337AB7;">当完成了一个项目的时候，该平台通过智能推送、筛选，向成员提供下一个项目任务</p>
+        		</div>
+        		<div class="col-md-6 col-sm-6">
+        			<img src="../images/list7.jpg" class="img-reponsive center-block" alt="科技" />
+        		</div>
+        	</div>
+        </div>
+			<!--会议简介结束-->
+			
 		</div>
 		<!-- 主体结束 -->
 		<script type="text/javascript">
