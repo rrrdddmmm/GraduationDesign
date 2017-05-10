@@ -47,7 +47,7 @@ public class CreatProjectController implements Serializable {
 		User use = (User) session.getAttribute("user");
 		if (use != null) {
 			model.addAttribute("project", new Project());
-			return "creat_project";
+			return "creatproject/creat_project";
 		} else {
 			return "redirect:../login/toLogin.do";
 		}
@@ -67,6 +67,6 @@ public class CreatProjectController implements Serializable {
 			return "redirect:../login/toLogin.do";
 		}
 		creatProjectService.toSave(project);
-		return "creat_project";
+		return "creatproject/creat_project";
 	}
 }

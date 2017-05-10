@@ -14,36 +14,39 @@ import com.xkd.service.RegisterService;
 
 /**
  * 用户注册控制器
+ * 
  * @author RBB
  *
  */
 @Controller
 @RequestMapping("/register")
-public class RegisterController  implements Serializable {
+public class RegisterController implements Serializable {
 
 	/**
 	 * 序列化
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 	/**
 	 * 用户注册服务
 	 */
-	@Resource(name="RegisterService")
-    private RegisterService registerService;
-    /**
-     * 进入注册页面
-     * @return
-     */
-    @RequestMapping("/toRegister.do")
-    public String toRegister() {
-        return "register";
-    }
-    
-    @RequestMapping("/regist")
+	@Resource(name = "RegisterService")
+	private RegisterService		registerService;
+
+	/**
+	 * 进入注册页面
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/toRegister.do")
+	public String toRegister() {
+		return "register/register";
+	}
+
+	@RequestMapping("/regist")
 	@ResponseBody
-	public StateResult register(User user){
-    	StateResult result = registerService.registUser(user);
-    	System.out.println("注册成功");
+	public StateResult register(User user) {
+		StateResult result = registerService.registUser(user);
+		System.out.println("注册成功");
 		return result;
 	}
 }

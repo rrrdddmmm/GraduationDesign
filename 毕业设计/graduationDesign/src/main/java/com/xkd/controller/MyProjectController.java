@@ -17,52 +17,57 @@ import com.xkd.service.MyProjectService;
 
 /**
  * 我的项目控制器
+ * 
  * @author RBB
  *
  */
 @Controller
 @RequestMapping("/myProject")
-public class MyProjectController  implements Serializable {
+public class MyProjectController implements Serializable {
 
 	/**
 	 * 序列化
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 	/**
 	 * 我的项目服务
 	 */
-	@Resource(name="MyProjectService")
-    private MyProjectService myProjectService;
-    /**
-     * 我的项目
-     * @return
-     */
-    @RequestMapping("/toMyProject.do")
-    public String toMyProject(HttpServletRequest request, Model model) {
-    	HttpSession session=request.getSession();
-		User user=(User) session.getAttribute("user");
-		if(user!=null){
+	@Resource(name = "MyProjectService")
+	private MyProjectService	myProjectService;
+
+	/**
+	 * 我的项目
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/toMyProject.do")
+	public String toMyProject(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		if (user != null) {
 			System.out.println(user.getEmail());
 			System.out.println("显示我的项目");
-			List<Project> list=myProjectService.findMyProject(user.getEmail());
-			  for(Project p:list){
+			List<Project> list = myProjectService.findMyProject(user.getEmail());
+			for (Project p : list) {
 				System.out.println(p.getProject_name());
 			}
 			model.addAttribute("list", list);
-	        return "my_project";
-		}else{
+			return "myproject/my_project";
+		} else {
 			return "redirect:../login/toLogin.do";
 		}
-		
-    }
-    /**
-     * 提交任务
-     * @return
-     */
-    @RequestMapping("/toUpTask.do")
-    public String toUpTask(){
+
+	}
+
+	/**
+	 * 提交任务
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/toUpTask.do")
+	public String toUpTask() {
 		return "taskup";
-    	
-    }
+
+	}
 
 }

@@ -55,32 +55,9 @@
 </head>
 <body style="background:url(../images/123.jpg) no-repeat center 0px;">
 	
-		<!-- 头部开始 --><div align="right"><ol><li><h1><em><font face="Adobe 黑体 Std R"><strong></strong></font><font face="隶书" size="4" color="#0000ff"><u><strong>
-		<a href="../myInformation/toMyInformation.do">${user.email }:欢迎您!!!</a></strong></u></font></em></h1></li>
-		<li><font face="隶书" size="4" color="#0000ff"><u><a href="../exit/toExit.do">退出</a><br><br></u></font></li></ol></div>
-		<div id="header" class="w"><div align="right"> 
-			</div><div class="topbar">
-				<div class="logo fl">
-					<font size="3"><a href="toIndex.do"><img height="70" width="268" src="../images/logo1.png" alt="西安科技大学"></a></font>
-				</div>
-				<div class="nav fr" id="wrap">
-					<ul class="clearfix">
-						<li><a href="toIndex.do">首页</a></li>
-						<li><a href="../news/toNews.do">新闻动态</a></li>
-						<li><a href="../jion/toJion.do">加入项目</a></li>
-						<li><a href="../creatProject/toCreatProject.do">创建项目</a></li>
-						<li><a href="../myProject/toMyProject.do">我的项目</a></li>
-						<li><a href="../register/toRegister.do">注册</a></li>
-						<li><a href="../login/toLogin.do">登陆</a></li>
-						<li><a href="../teacherStrength/toTeachersStrength.do">师资力量</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="topphoto" >
-				<img src="../images/lt.png" alt="" width="1039" height="90">
-			</div>
-		</div>
-		<!-- 头部结束 -->
+	<!-- 头部开始 -->
+	<jsp:include page="common/header.jsp"/>
+	<!-- 头部结束 -->
 		<!-- 主体开始 -->
 		<div id="main" class="w">
 			<!-- 焦点图开始 -->
@@ -297,11 +274,7 @@
 		     });
 		</script>
 		<!-- 页脚开始 -->
-		<div id="footer" class="w">
-			<br>
-			<p>地址：西安市临潼区陕鼓大道西安科技大学 邮编 710600 </p>
-			<p>版权所有：© 陕西省西安市临潼区西安科技大学</p>
-		</div>
+		<jsp:include page="common/foot.jsp"/>
 		<!-- 页脚结束 -->
         <script src="../bootstrap/dist/js/jquery-1.10.2.min.js"></script>
 		<script src="../bootstrap/dist/js/bootstrap.min.js"></script>

@@ -77,7 +77,7 @@ table{ border-collapse: collapse;}
 /*lxww*/
 #main .l_box_content  .lemma-map{margin-top:20px;}
 /* registerform */
-#main .l_box_content .registerform .need{width:10px;color:#f00;}
+#main .l_box_content .registerform .need{width:10px;color:#f00;height: 20px;}
 #main .l_box_content .registerform .txt{width:100px;vertical-align:middle;font-size:16px; color:#3807f9;}
 #main .l_box_content .registerform td{padding:10px 0;vertical-align:top;text-align:left;}
 #main .l_box_content .registerform .inputxt{border:1px solid #0481f1;width:200px;padding:2px;height:30px;}

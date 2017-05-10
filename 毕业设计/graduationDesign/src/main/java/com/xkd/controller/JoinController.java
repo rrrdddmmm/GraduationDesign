@@ -22,52 +22,51 @@ public class JoinController implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	@Resource(name="JionService")
-    private JionService jionservice;
-	
+	@Resource(name = "JionService")
+	private JionService			jionservice;
+
 	@RequestMapping("/toJion.do")
-    public String toJion(HttpServletRequest request, Model model) {
-		HttpSession session=request.getSession();
-		User use=(User) session.getAttribute("user");
-		if(use==null){
+	public String toJion(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		User use = (User) session.getAttribute("user");
+		if (use == null) {
 			return "redirect:../login/toLogin.do";
 		}
 		System.out.println("加入页面");
-		List<Project> list=jionservice.findJion();
-		  for(Project p:list){
+		List<Project> list = jionservice.findJion();
+		for (Project p : list) {
 			System.out.println(p.getProject_name());
 		}
-    	model.addAttribute("list", list);
-        return "jion";
-    }
-	
+		model.addAttribute("list", list);
+		return "addproject/jion";
+	}
+
 	@RequestMapping("/toShow.do")
-    public String toShow(HttpServletRequest request, Model model) {
-		HttpSession session=request.getSession();
-		User use=(User) session.getAttribute("user");
-		if(use==null){
+	public String toShow(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		User use = (User) session.getAttribute("user");
+		if (use == null) {
 			return "redirect:../login/toLogin.do";
 		}
-		int id=Integer.parseInt(request.getParameter("id"));
-		Project pro=new Project();
-		pro=jionservice.findProjectByid(id);
+		int id = Integer.parseInt(request.getParameter("id"));
+		Project pro = new Project();
+		pro = jionservice.findProjectByid(id);
 		model.addAttribute("pro", pro);
-        return "show";
-    }
+		return "show";
+	}
 
 	@RequestMapping("/toAdd.do")
-    public String toAdd(HttpServletRequest request, Model model) {
-		HttpSession session=request.getSession();
-		User use=(User) session.getAttribute("user");
-		if(use==null){
+	public String toAdd(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		User use = (User) session.getAttribute("user");
+		if (use == null) {
 			return "redirect:../login/toLogin.do";
 		}
-		int id=Integer.parseInt(request.getParameter("id"));
-		jionservice.updateJion(id,use.getEmail());
-		 return "redirect:toJion.do";
-    }
-	
+		int id = Integer.parseInt(request.getParameter("id"));
+		jionservice.updateJion(id, use.getEmail());
+		return "redirect:toJion.do";
+	}
 
 }

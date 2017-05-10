@@ -17,39 +17,40 @@ import com.xkd.service.LoginService;
 @Controller
 @RequestMapping("/login")
 public class LoginController implements Serializable {
-    /**
+	/**
 	 * 
 	 * 序列化
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 	/**
 	 * 登陆服务
 	 */
-	@Resource(name="LoginService")
-    private LoginService loginService;
-    /**
-     * 进入登陆页面
-     * @return
-     */
-    @RequestMapping("/toLogin.do")
-    public String toLogin(HttpServletRequest request){
-    	System.out.println("进入登陆页面");
-        return "login";
-    }
+	@Resource(name = "LoginService")
+	private LoginService		loginService;
 
-    @RequestMapping("/loginIn")
+	/**
+	 * 进入登陆页面
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/toLogin.do")
+	public String toLogin(HttpServletRequest request) {
+		System.out.println("进入登陆页面");
+		return "login/login";
+	}
+
+	@RequestMapping("/loginIn")
 	@ResponseBody
-	public StateResult login(User user,HttpServletRequest request){
-    	System.out.println("登录验证"+user);
+	public StateResult login(User user, HttpServletRequest request) {
+		System.out.println("登录验证" + user);
 		StateResult result = loginService.checkLogin(user);
-		if(result.getStatus()==0){
-			HttpSession session=request.getSession();
-			System.out.println("session中的数据："+(User)result.getUse());
-			session.setAttribute("user", (User)result.getUse());
+		if (result.getStatus() == 0) {
+			HttpSession session = request.getSession();
+			System.out.println("session中的数据：" + (User) result.getUse());
+			session.setAttribute("user", (User) result.getUse());
 		}
-		System.out.println("resultstatus"+result.getStatus());
+		System.out.println("resultstatus" + result.getStatus());
 		return result;
 	}
-  
-  
+
 }

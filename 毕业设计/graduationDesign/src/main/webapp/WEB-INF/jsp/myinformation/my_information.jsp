@@ -21,31 +21,8 @@
 </head>
 <body style="background:url(../images/123.jpg) no-repeat center 0px;">
 	
-	<!-- 头部开始 --><!-- 头部开始 --><div align="right"><ol><li><h1><em><font face="Adobe 黑体 Std R"><strong></strong></font><font face="隶书" size="4" color="#0000ff">
-	<u><strong><a href="toMyInformation.do">${user.email }:欢迎您!!!</a></strong></u></font></em></h1></li>
-	<li><font face="隶书" size="4" color="#0000ff"><u><a href="../exit/toExit.do">退出</a><br><br></u></font></li></ol></div>
-	<div id="header" class="w">
-		<div class="topbar">
-			<div class="logo fl">
-				<a href="../index/toIndex.do"><img src="../images/logo1.png" width="268" height="70" alt="西安植物园"></a>
-			</div>
-			<div class="nav fr">
-				<ul class="clearfix">
-						<li><a href="../index/toIndex.do">首页</a></li>
-						<li><a href="../news/toNews.do">新闻动态</a></li>
-						<li><a href="../jion/toJion.do">加入项目</a></li>
-						<li><a href="../creatProject/toCreatProject.do">创建项目</a></li>
-						<li><a href="../myProject/toMyProject.do">我的项目</a></li>
-						<li><a href="../register/toRegister.do">注册</a></li>
-						<li><a href="../login/toLogin.do">登陆</a></li>
-						<li><a href="../teacherStrength/toTeachersStrength.do">师资力量</a></li>
-				</ul>
-			</div>
-		</div>
-		<div class="topphoto" >
-			<img src="../images/lt.png" alt="" width="1039" height="90">
-		</div>
-	</div>
+	<!-- 头部开始 -->
+	<jsp:include page="../common/header.jsp"/>
 	<!-- 头部结束 -->
 	<!-- 主体开始 -->
 	<div id="main" class="w">
@@ -86,33 +63,14 @@
 			</div>
 		</div>
 		<div class="r_box fr">
-			<div class="r_box_hy">
-					<ul class="hy">
-						<div class="l_box_title">
-							<span class="name">注册入口</span>
-						</div>
-						<li class="b"><a href="../register/toRegister.do"><img src="../images/zcsq.jpg"></a></li>
-						<div class="l_box_title">
-							<span class="name">登录入口</span>
-						</div>
-						<li class="b"><a href="../login/toLogin.do"><img src="../images/hcwz.jpg"></a></li>
-					</ul>
-					<ul class="yq">
-						<li><img src="../images/yqlj.png" width="205" height="60"></li>
-						<li><a href="http://www.xazwy.com/" target="_blank"><img src="../images/yq01.jpg" width="205" height="60"></li></a>
-						<li><a href="http://www.xab.cas.cn/" target="_blank"><img src="../images/yq02.png" width="205" height="60"></li></a>
-						<li><a href="http://www.ibcas.ac.cn/" target="_blank"><img src="../images/yq03.png" width="205" height="60"></li></a>
-					</ul>
-			</div>
+		<div class="r_box_hy">
+			<jsp:include page="../common/right.jsp"/>
+		</div>
 		</div>
 	</div>
 	<!-- 主体结束 -->
 	<!-- 页脚开始 -->
-	<div id="footer" class="w">
-		<br>
-		<p>地址：西安市临潼区陕鼓大道西安科技大学 邮编 710600 </p>
-		<p>版权所有：© 陕西省西安市临潼区西安科技大学</p>
-	</div>
+	<jsp:include page="../common/foot.jsp"/>
 	<!-- 页脚结束 -->
 </body>
 <script type="text/javascript" src="../js/Validform_v5.3.2_min.js"></script>
