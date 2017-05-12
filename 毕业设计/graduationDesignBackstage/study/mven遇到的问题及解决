@@ -1,0 +1,7 @@
+新建mven的web项目jsp报错解决方法：
+http://blog.csdn.net/ya_1249463314/article/details/61617590
+maven的本地仓库配置以及安装
+http://www.cnblogs.com/liunanjava/archive/2015/11/05/4936037.html
+eclipse项目转换为web项目
+项目上右击->属性->Project Facets
+
