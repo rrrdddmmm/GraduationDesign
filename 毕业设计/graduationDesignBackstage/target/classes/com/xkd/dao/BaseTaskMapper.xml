@@ -9,13 +9,14 @@
     <result column="endTime" jdbcType="DATE" property="endtime" />
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="taskFile" jdbcType="VARCHAR" property="taskfile" />
+    <result column="resultDescription" jdbcType="VARCHAR" property="resultdescription" />
     <result column="resultFile" jdbcType="VARCHAR" property="resultfile" />
     <result column="resultEvaluation" jdbcType="VARCHAR" property="resultevaluation" />
     <result column="status" jdbcType="INTEGER" property="status" />
   </resultMap>
   <sql id="Base_Column_List">
-    projectId, email, startupTime, updateTime, endTime, description, taskFile, resultFile, 
-    resultEvaluation, status
+    projectId, email, startupTime, updateTime, endTime, description, taskFile, resultDescription, 
+    resultFile, resultEvaluation, status
   </sql>
   <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
     select 
@@ -34,12 +35,12 @@
   <insert id="insert" parameterType="com.xkd.entity.BaseTask">
     insert into t_task (projectId, email, startupTime, 
       updateTime, endTime, description, 
-      taskFile, resultFile, resultEvaluation, 
-      status)
+      taskFile, resultDescription, resultFile, 
+      resultEvaluation, status)
     values (#{projectid,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{startuptime,jdbcType=DATE}, 
       #{updatetime,jdbcType=DATE}, #{endtime,jdbcType=DATE}, #{description,jdbcType=VARCHAR}, 
-      #{taskfile,jdbcType=VARCHAR}, #{resultfile,jdbcType=VARCHAR}, #{resultevaluation,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER})
+      #{taskfile,jdbcType=VARCHAR}, #{resultdescription,jdbcType=VARCHAR}, #{resultfile,jdbcType=VARCHAR}, 
+      #{resultevaluation,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.xkd.entity.BaseTask">
     insert into t_task
@@ -64,6 +65,9 @@
       </if>
       <if test="taskfile != null">
         taskFile,
+      </if>
+      <if test="resultdescription != null">
+        resultDescription,
       </if>
       <if test="resultfile != null">
         resultFile,
@@ -97,6 +101,9 @@
       <if test="taskfile != null">
         #{taskfile,jdbcType=VARCHAR},
       </if>
+      <if test="resultdescription != null">
+        #{resultdescription,jdbcType=VARCHAR},
+      </if>
       <if test="resultfile != null">
         #{resultfile,jdbcType=VARCHAR},
       </if>
@@ -123,6 +130,9 @@
       <if test="taskfile != null">
         taskFile = #{taskfile,jdbcType=VARCHAR},
       </if>
+      <if test="resultdescription != null">
+        resultDescription = #{resultdescription,jdbcType=VARCHAR},
+      </if>
       <if test="resultfile != null">
         resultFile = #{resultfile,jdbcType=VARCHAR},
       </if>
@@ -143,6 +153,7 @@
       endTime = #{endtime,jdbcType=DATE},
       description = #{description,jdbcType=VARCHAR},
       taskFile = #{taskfile,jdbcType=VARCHAR},
+      resultDescription = #{resultdescription,jdbcType=VARCHAR},
       resultFile = #{resultfile,jdbcType=VARCHAR},
       resultEvaluation = #{resultevaluation,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER}

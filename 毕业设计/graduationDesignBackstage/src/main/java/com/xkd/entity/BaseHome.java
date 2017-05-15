@@ -1,9 +1,15 @@
 package com.xkd.entity;
 
+import java.util.Date;
+
 public class BaseHome {
     private Integer projectid;
 
     private String email;
+
+    private Date creattime;
+
+    private Date updatetime;
 
     private Integer status;
 
@@ -21,6 +27,22 @@ public class BaseHome {
 
     public void setEmail(String email) {
         this.email = email == null ? null : email.trim();
+    }
+
+    public Date getCreattime() {
+        return creattime;
+    }
+
+    public void setCreattime(Date creattime) {
+        this.creattime = creattime;
+    }
+
+    public Date getUpdatetime() {
+        return updatetime;
+    }
+
+    public void setUpdatetime(Date updatetime) {
+        this.updatetime = updatetime;
     }
 
     public Integer getStatus() {

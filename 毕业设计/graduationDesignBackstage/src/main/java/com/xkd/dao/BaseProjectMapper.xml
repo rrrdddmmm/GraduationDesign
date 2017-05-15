@@ -5,24 +5,29 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="language" jdbcType="VARCHAR" property="language" />
     <result column="platform" jdbcType="VARCHAR" property="platform" />
     <result column="allNumber" jdbcType="INTEGER" property="allnumber" />
     <result column="currentNumber" jdbcType="INTEGER" property="currentnumber" />
     <result column="tutor" jdbcType="VARCHAR" property="tutor" />
     <result column="budget" jdbcType="DOUBLE" property="budget" />
+    <result column="budgetFile" jdbcType="VARCHAR" property="budgetfile" />
     <result column="describe" jdbcType="VARCHAR" property="describe" />
     <result column="logo" jdbcType="VARCHAR" property="logo" />
     <result column="creatTime" jdbcType="DATE" property="creattime" />
     <result column="startupTime" jdbcType="DATE" property="startuptime" />
     <result column="updateTime" jdbcType="DATE" property="updatetime" />
     <result column="endTime" jdbcType="DATE" property="endtime" />
+    <result column="startupEvaluation" jdbcType="VARCHAR" property="startupevaluation" />
     <result column="resultEvaluation" jdbcType="VARCHAR" property="resultevaluation" />
+    <result column="grade" jdbcType="VARCHAR" property="grade" />
     <result column="status" jdbcType="INTEGER" property="status" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, name, email, language, platform, allNumber, currentNumber, tutor, budget, describe, 
-    logo, creatTime, startupTime, updateTime, endTime, resultEvaluation, status
+    id, name, email, phone, language, platform, allNumber, currentNumber, tutor, budget, 
+    budgetFile, describe, logo, creatTime, startupTime, updateTime, endTime, startupEvaluation, 
+    resultEvaluation, grade, status
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -36,17 +41,21 @@
   </delete>
   <insert id="insert" parameterType="com.xkd.entity.BaseProject">
     insert into t_project (id, name, email, 
-      language, platform, allNumber, 
-      currentNumber, tutor, budget, 
-      describe, logo, creatTime, 
-      startupTime, updateTime, endTime, 
-      resultEvaluation, status)
+      phone, language, platform, 
+      allNumber, currentNumber, tutor, 
+      budget, budgetFile, describe, 
+      logo, creatTime, startupTime, 
+      updateTime, endTime, startupEvaluation, 
+      resultEvaluation, grade, status
+      )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{language,jdbcType=VARCHAR}, #{platform,jdbcType=VARCHAR}, #{allnumber,jdbcType=INTEGER}, 
-      #{currentnumber,jdbcType=INTEGER}, #{tutor,jdbcType=VARCHAR}, #{budget,jdbcType=DOUBLE}, 
-      #{describe,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, #{creattime,jdbcType=DATE}, 
-      #{startuptime,jdbcType=DATE}, #{updatetime,jdbcType=DATE}, #{endtime,jdbcType=DATE}, 
-      #{resultevaluation,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER})
+      #{phone,jdbcType=VARCHAR}, #{language,jdbcType=VARCHAR}, #{platform,jdbcType=VARCHAR}, 
+      #{allnumber,jdbcType=INTEGER}, #{currentnumber,jdbcType=INTEGER}, #{tutor,jdbcType=VARCHAR}, 
+      #{budget,jdbcType=DOUBLE}, #{budgetfile,jdbcType=VARCHAR}, #{describe,jdbcType=VARCHAR}, 
+      #{logo,jdbcType=VARCHAR}, #{creattime,jdbcType=DATE}, #{startuptime,jdbcType=DATE}, 
+      #{updatetime,jdbcType=DATE}, #{endtime,jdbcType=DATE}, #{startupevaluation,jdbcType=VARCHAR}, 
+      #{resultevaluation,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.xkd.entity.BaseProject">
     insert into t_project
@@ -59,6 +68,9 @@
       </if>
       <if test="email != null">
         email,
+      </if>
+      <if test="phone != null">
+        phone,
       </if>
       <if test="language != null">
         language,
@@ -78,6 +90,9 @@
       <if test="budget != null">
         budget,
       </if>
+      <if test="budgetfile != null">
+        budgetFile,
+      </if>
       <if test="describe != null">
         describe,
       </if>
@@ -96,8 +111,14 @@
       <if test="endtime != null">
         endTime,
       </if>
+      <if test="startupevaluation != null">
+        startupEvaluation,
+      </if>
       <if test="resultevaluation != null">
         resultEvaluation,
+      </if>
+      <if test="grade != null">
+        grade,
       </if>
       <if test="status != null">
         status,
@@ -112,6 +133,9 @@
       </if>
       <if test="email != null">
         #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
       </if>
       <if test="language != null">
         #{language,jdbcType=VARCHAR},
@@ -131,6 +155,9 @@
       <if test="budget != null">
         #{budget,jdbcType=DOUBLE},
       </if>
+      <if test="budgetfile != null">
+        #{budgetfile,jdbcType=VARCHAR},
+      </if>
       <if test="describe != null">
         #{describe,jdbcType=VARCHAR},
       </if>
@@ -149,8 +176,14 @@
       <if test="endtime != null">
         #{endtime,jdbcType=DATE},
       </if>
+      <if test="startupevaluation != null">
+        #{startupevaluation,jdbcType=VARCHAR},
+      </if>
       <if test="resultevaluation != null">
         #{resultevaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
@@ -165,6 +198,9 @@
       </if>
       <if test="email != null">
         email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
       </if>
       <if test="language != null">
         language = #{language,jdbcType=VARCHAR},
@@ -184,6 +220,9 @@
       <if test="budget != null">
         budget = #{budget,jdbcType=DOUBLE},
       </if>
+      <if test="budgetfile != null">
+        budgetFile = #{budgetfile,jdbcType=VARCHAR},
+      </if>
       <if test="describe != null">
         describe = #{describe,jdbcType=VARCHAR},
       </if>
@@ -202,8 +241,14 @@
       <if test="endtime != null">
         endTime = #{endtime,jdbcType=DATE},
       </if>
+      <if test="startupevaluation != null">
+        startupEvaluation = #{startupevaluation,jdbcType=VARCHAR},
+      </if>
       <if test="resultevaluation != null">
         resultEvaluation = #{resultevaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        grade = #{grade,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
@@ -215,19 +260,23 @@
     update t_project
     set name = #{name,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
       language = #{language,jdbcType=VARCHAR},
       platform = #{platform,jdbcType=VARCHAR},
       allNumber = #{allnumber,jdbcType=INTEGER},
       currentNumber = #{currentnumber,jdbcType=INTEGER},
       tutor = #{tutor,jdbcType=VARCHAR},
       budget = #{budget,jdbcType=DOUBLE},
+      budgetFile = #{budgetfile,jdbcType=VARCHAR},
       describe = #{describe,jdbcType=VARCHAR},
       logo = #{logo,jdbcType=VARCHAR},
       creatTime = #{creattime,jdbcType=DATE},
       startupTime = #{startuptime,jdbcType=DATE},
       updateTime = #{updatetime,jdbcType=DATE},
       endTime = #{endtime,jdbcType=DATE},
+      startupEvaluation = #{startupevaluation,jdbcType=VARCHAR},
       resultEvaluation = #{resultevaluation,jdbcType=VARCHAR},
+      grade = #{grade,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>

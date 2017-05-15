@@ -3,15 +3,15 @@ package com.xkd.dao;
 import com.xkd.entity.BaseTitle;
 
 public interface BaseTitleMapper {
-	int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Integer id);
 
-	int insert(BaseTitle record);
+    int insert(BaseTitle record);
 
-	int insertSelective(BaseTitle record);
+    int insertSelective(BaseTitle record);
 
-	BaseTitle selectByPrimaryKey(Integer id);
+    BaseTitle selectByPrimaryKey(Integer id);
 
-	int updateByPrimaryKeySelective(BaseTitle record);
+    int updateByPrimaryKeySelective(BaseTitle record);
 
-	int updateByPrimaryKey(BaseTitle record);
+    int updateByPrimaryKey(BaseTitle record);
 }

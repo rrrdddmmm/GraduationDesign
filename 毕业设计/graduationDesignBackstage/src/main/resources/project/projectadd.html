@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>创建项目</title>
+<link href="content/css/style.css" rel="stylesheet" type="text/css" />
+<script src="content/js/jquery.js" language="javascript"></script>
+<script src="content/js/globle_select.js"></script>
+<script src="laydate/laydate.js"></script>
+<style>
+.cp{width:500px; height:auto; background:#FFF; border:1px solid #ccc; padding:10px; position:absolute; box-shadow:5px 5px #ccc; margin-top:10px;}
+.cp i{font-style:normal}
+.cp h1{font-size:14px; border-bottom:1px solid #6CF; padding-bottom:10px; margin-bottom:10px;}
+.cp h1 span{float:right; cursor:pointer; padding:0px 5px; background:#ff9900; color:#FFF; border-radius:10px;}
+.cp .li-left{float:left; width:50px; font-size:12px; font-weight:bold; color:#F60; margin-right:15px; line-height:30px;}
+.cp .li-right{float:left; width:420px;}
+.cp .li-right dl{float:left; width:128px; line-height:30px; margin-right:5px; border:1px #fff solid}
+.cp .li-right dl h2{font-size:12px; font-weight:100}
+.cp .li-right dl h2.on{border-left:1px solid #ccc;border-top:1px solid #ccc; cursor:pointer; border-right:1px solid #ccc; background:#EEE}
+.cp .cpchild{width:500px; height:auto; border:1px solid #ccc;background:#FFF; padding:10px; position:absolute; top:0px; left:0px; display:none}
+.cp .cpchild dt{width:170px; float:left; display:block}
+.schild{width:450px; padding:5px; position:absolute; top:0px; left:0px; background:#ff9900; border-radius:5px;}
+.schild i{font-style:normal; color:#ff9900; font-size:30px; margin-left:-14px; position:absolute}
+</style>
+<script>
+//滑动门JS
+$(document).ready(function() {
+
+    $("#blockquote_title a").each(function(index, element) {
+        $(this).click(function(){
+			$("#blockquote_title a").each(function(index, element) {
+				$(this).attr('class','linkout');
+			})
+			$(this).attr('class','linkon');
+			var k = index;
+			$("#blockquote_content blockquote").each(function(indexs, element) {
+			  $(this).css('display','none');
+			  if(k==indexs) $(this).css('display','');
+			});
+		});
+    });
+	
+	$("#blockquote_content blockquote").each(function(index, element) {
+      if(index!=0) $(this).css('display','none');
+    });
+	
+	//点击弹出多个层
+	$('.cc').click(function(){
+		var arrtid = $(this).attr('data-id');
+		if($('.cp').length&&$('.cp').length>0) $('.cp').remove();
+		//$('body').remove();
+		$('body').append('<div class="cp"><h1><span>×</span>指导教师</h1><div><ul><li class="li-left" id="方向" >方向</li><li class="li-right"><dl><h2 data-id="大数据"  ><i>+</i> 大数据</h2><div class="cpchild"><dt><input name="c1" type="radio" value="314187985@qq.com">任勃</input></dt><dt><dt><input name="c1" type="radio" value="850263340@qq.com" >董美丽</input></dt><dt><input name="c1" type="radio" value="FX50J" >王朝</input></dt><div class="clearfix"></div></div></dl></li></ul><button type="button"  class="chaxun_but2" onclick="aa();$(\'.cp\').remove();" >确定</button><button type="submit" class="chaxun_but2" onclick="$(\'.cp\').remove()">取消</button></div><div class="clearfix"></div></div>');
+		var top = $(this).position().top + 20;
+		var left = $(this).position().left;
+		$('.cp').css({'top':top+'px','left':left+'px'});
+		$('.cp span').click(function(){
+			$(this).parent().parent().remove();
+		});
+		
+		//二级展开
+		$('.cp h2').each(function(index, element) {
+			$(this).click(function(){
+				var dataid = $(this).attr('data-id');//ajax调用数据
+				$('.cp h2').each(function(index, element) {  //全部设置加号
+                    $(this).find('i').text('+');
+					$(this).removeClass('on');
+                });
+				$('.cp .cpchild').each(function(index, element) {  //全部设置加号
+                    $(this).css('display','none');
+                });
+				var topc = $(this).position().top+30;
+				var leftc = $(this).position().left;
+				$(this).find('i').text('-');
+				$(this).addClass('on');
+				$(this).parent().find('.cpchild').css({'top':topc+'px','display':'block',left:leftc+'px'});
+				
+			});
+		});
+		
+		//三级展开
+		$('.cpchild dt').each(function(index, element) {
+            $(this).mouseover(function(){
+				if($('.schild').length&&$('.schild').length>0) $('.schild').remove();
+				$('body').append('<div class="schild"><i>◆</i><p>配置不低于：CPU：第五代智能英特尔酷睿i5 5200U处理器（2.2GHZ 睿频至 2.7GHZ，3MB）；内存：4GB 1600MHZ</p></div>');
+				var topc = $(this).offset().top;
+				var leftc = $(this).offset().left + $(this).width();
+				$('.schild').css({'top':topc+'px',left:leftc+'px'});
+			});
+			$(this).mouseleave(function(){
+				$('.schild').remove();
+			});
+        });
+		
+	});
+});
+
+function closeDiv(obj){
+	$(obj).parent().css('display','none');
+	$(obj).parent().parent().find('i').text('+');
+	$(obj).parent().parent().find('h2').removeClass('on');
+}
+
+  //弹出隐藏层
+        function ShowDiv2(show_div, bg_div) {
+            document.getElementById(show_div).style.display = 'block';
+            document.getElementById(bg_div).style.display = 'block';
+            var bgdiv = document.getElementById(bg_div);
+            bgdiv.style.width = document.body.scrollWidth;
+            $("#" + bg_div).height($(document).height());
+        };
+
+        //关闭弹出层
+        function CloseDiv2(show_div, bg_div) {
+            document.getElementById(show_div).style.display = 'none';
+            document.getElementById(bg_div).style.display = 'none';
+        };
+		
+function aa(){
+	$("#tutoremail").val($("input[name='c1']:checked").val());
+	$("#tutorname").val($("input[name='c1']:checked").parent().text());
+	
+}
+</script>
+     <style type="text/css">
+        .black_overlay
+        {
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            z-index: 1001;
+            -moz-opacity: 0.35;
+            opacity: .35;
+            filter: alpha(opacity=35);
+        }
+        
+        .white_content
+        {
+            display: none;
+            position: absolute;
+            top: 25%;
+            left: 35%;
+            width: 50%;
+            height: auto;
+            z-index: 1002;
+            overflow: hidden;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<h1 class="globle_title2"><img src="content/images/tag.gif" /> 项目管理 → <em>创建项目</em></h1>
+<div class="sytxq_conment_wk">
+
+<div class="sytxq_conment_wk_bx">
+  <div class="table_qh_bj">
+    <div id="blockquote_title"> <a href="#" class="linkon">创建项目</a> 
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div id="blockquote_content">
+<blockquote>
+  <div class="syt_lb_top">
+    <h1 class="syt_lb_top_titleh2">申请表信息</h1>
+  </div>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_xq">
+    <tr>
+      <td class="table_xqa">项目名称：</td>
+      <td class="table_xqb"><input type="text"  placeholder="项目名称" class="syt_lb_top_conment_txt"/></td>
+      <td class="table_xqa">预算：</td>
+      <td class="table_xqb"><input type="text" placeholder="负责人联系方式" class="syt_lb_top_conment_txt" /></td>
+    </tr>
+    <tr>
+      <td class="table_xqa">立项书：</td>
+      <td class="table_xqb"><input type="file" style="width:137px; height:27px" class="syt_lb_top_conment_txt"/></td>
+      <td class="table_xqa">预算书：</td>
+      <td class="table_xqb"><input type="file" style="width:137px; height:27px" class="syt_lb_top_conment_txt"/></td>
+    </tr>
+    
+    <tr>
+      <td class="table_xqa">创建时间：</td>
+      <td class="table_xqb"><input name="newreturnTime" placeholder="请输入日期" class="syt_lb_top_conment_txt" onclick="laydate()" id="newreturnTime"/></td>
+      <td class="table_xqa">结题时间：</td>
+      <td class="table_xqb"><input name="newreturnTime" placeholder="请输入日期" class="syt_lb_top_conment_txt" onclick="laydate()" id="newreturnTime"/></td>
+    </tr>
+    
+    <tr>
+      <td class="table_xqa">指导教师：</td>
+      <td class="table_xqb">
+      	<input type="text" id="tutoremail" name="tutor" style="display:none"/>
+      	<input type="text" id="tutorname" class="syt_lb_top_conment_txt" />
+      	<input type="button" class="cc cjxm_but" value="指导教师" />
+      </td>
+      <td class="table_xqa">项目总人数：</td>
+      <td class="table_xqb">
+      	<input type="text"  placeholder="项目总人数" class="syt_lb_top_conment_txt"/>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="table_xqa">开发语言：</td>
+      <td class="table_xqb"><select name="select3"  class="input_b" >
+        <option selected="selected" value="-1">请选择</option>
+        <option value="1">java</option>
+        <option value="2">c++</option>
+        <option value="3">c#</option>
+      </select></td>
+      
+      <td class="table_xqa">开发平台：</td>
+      <td class="table_xqb"><select name="select4"  class="input_b" >
+        <option selected="selected" value="-1">请选择</option>
+        <option value="1">Windows</option>
+        <option value="2">Linux</option>
+      </select></td>
+    </tr>
+    
+    <tr>
+      <td class="table_xqa">项目简述：</td>
+      <td colspan="3" class="table_xqb"><textarea name="txtOpinion" rows="4" class="textarea_wby" id="txtOpinion" ></textarea></td>
+    </tr>
+  </table>
+  <div class="sytxq_conment_bc">
+    <button type="submit" class="chaxun_but">保 存</button>
+    <button type="submit" class="chaxun_but">返 回</button>
+  </div>
+  
+</div>
+  <div class="sytxq_conment"></div>
+</div>
+</div> 
+</body>
+</html>

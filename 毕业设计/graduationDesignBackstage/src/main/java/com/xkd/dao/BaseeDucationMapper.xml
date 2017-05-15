@@ -4,10 +4,12 @@
   <resultMap id="BaseResultMap" type="com.xkd.entity.BaseeDucation">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="creatTime" jdbcType="DATE" property="creattime" />
+    <result column="updateTime" jdbcType="DATE" property="updatetime" />
     <result column="state" jdbcType="VARCHAR" property="state" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, name, state
+    id, name, creatTime, updateTime, state
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -20,10 +22,10 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.xkd.entity.BaseeDucation">
-    insert into t_education (id, name, state
-      )
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}
-      )
+    insert into t_education (id, name, creatTime, 
+      updateTime, state)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{creattime,jdbcType=DATE}, 
+      #{updatetime,jdbcType=DATE}, #{state,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.xkd.entity.BaseeDucation">
     insert into t_education
@@ -33,6 +35,12 @@
       </if>
       <if test="name != null">
         name,
+      </if>
+      <if test="creattime != null">
+        creatTime,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
       </if>
       <if test="state != null">
         state,
@@ -45,6 +53,12 @@
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
+      <if test="creattime != null">
+        #{creattime,jdbcType=DATE},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=DATE},
+      </if>
       <if test="state != null">
         #{state,jdbcType=VARCHAR},
       </if>
@@ -56,6 +70,12 @@
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
+      <if test="creattime != null">
+        creatTime = #{creattime,jdbcType=DATE},
+      </if>
+      <if test="updatetime != null">
+        updateTime = #{updatetime,jdbcType=DATE},
+      </if>
       <if test="state != null">
         state = #{state,jdbcType=VARCHAR},
       </if>
@@ -65,6 +85,8 @@
   <update id="updateByPrimaryKey" parameterType="com.xkd.entity.BaseeDucation">
     update t_education
     set name = #{name,jdbcType=VARCHAR},
+      creatTime = #{creattime,jdbcType=DATE},
+      updateTime = #{updatetime,jdbcType=DATE},
       state = #{state,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

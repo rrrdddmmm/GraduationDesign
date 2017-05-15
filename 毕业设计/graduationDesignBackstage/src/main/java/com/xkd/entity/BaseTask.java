@@ -17,6 +17,8 @@ public class BaseTask {
 
     private String taskfile;
 
+    private String resultdescription;
+
     private String resultfile;
 
     private String resultevaluation;
@@ -77,6 +79,14 @@ public class BaseTask {
 
     public void setTaskfile(String taskfile) {
         this.taskfile = taskfile == null ? null : taskfile.trim();
+    }
+
+    public String getResultdescription() {
+        return resultdescription;
+    }
+
+    public void setResultdescription(String resultdescription) {
+        this.resultdescription = resultdescription == null ? null : resultdescription.trim();
     }
 
     public String getResultfile() {

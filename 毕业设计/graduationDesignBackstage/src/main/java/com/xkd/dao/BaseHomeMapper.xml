@@ -4,10 +4,12 @@
   <resultMap id="BaseResultMap" type="com.xkd.entity.BaseHome">
     <id column="projectId" jdbcType="INTEGER" property="projectid" />
     <id column="email" jdbcType="VARCHAR" property="email" />
+    <result column="creatTime" jdbcType="DATE" property="creattime" />
+    <result column="updateTime" jdbcType="DATE" property="updatetime" />
     <result column="status" jdbcType="INTEGER" property="status" />
   </resultMap>
   <sql id="Base_Column_List">
-    projectId, email, status
+    projectId, email, creatTime, updateTime, status
   </sql>
   <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
     select 
@@ -22,10 +24,10 @@
       and email = #{email,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.xkd.entity.BaseHome">
-    insert into t_home (projectId, email, status
-      )
-    values (#{projectid,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}
-      )
+    insert into t_home (projectId, email, creatTime, 
+      updateTime, status)
+    values (#{projectid,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{creattime,jdbcType=DATE}, 
+      #{updatetime,jdbcType=DATE}, #{status,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.xkd.entity.BaseHome">
     insert into t_home
@@ -35,6 +37,12 @@
       </if>
       <if test="email != null">
         email,
+      </if>
+      <if test="creattime != null">
+        creatTime,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
       </if>
       <if test="status != null">
         status,
@@ -47,6 +55,12 @@
       <if test="email != null">
         #{email,jdbcType=VARCHAR},
       </if>
+      <if test="creattime != null">
+        #{creattime,jdbcType=DATE},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=DATE},
+      </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
       </if>
@@ -55,6 +69,12 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.xkd.entity.BaseHome">
     update t_home
     <set>
+      <if test="creattime != null">
+        creatTime = #{creattime,jdbcType=DATE},
+      </if>
+      <if test="updatetime != null">
+        updateTime = #{updatetime,jdbcType=DATE},
+      </if>
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
       </if>
@@ -64,7 +84,9 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xkd.entity.BaseHome">
     update t_home
-    set status = #{status,jdbcType=INTEGER}
+    set creatTime = #{creattime,jdbcType=DATE},
+      updateTime = #{updatetime,jdbcType=DATE},
+      status = #{status,jdbcType=INTEGER}
     where projectId = #{projectid,jdbcType=INTEGER}
       and email = #{email,jdbcType=VARCHAR}
   </update>

@@ -9,6 +9,8 @@ public class BaseProject {
 
     private String email;
 
+    private String phone;
+
     private String language;
 
     private String platform;
@@ -20,6 +22,8 @@ public class BaseProject {
     private String tutor;
 
     private Double budget;
+
+    private String budgetfile;
 
     private String describe;
 
@@ -33,7 +37,11 @@ public class BaseProject {
 
     private Date endtime;
 
+    private String startupevaluation;
+
     private String resultevaluation;
+
+    private String grade;
 
     private Integer status;
 
@@ -59,6 +67,14 @@ public class BaseProject {
 
     public void setEmail(String email) {
         this.email = email == null ? null : email.trim();
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
     }
 
     public String getLanguage() {
@@ -109,6 +125,14 @@ public class BaseProject {
         this.budget = budget;
     }
 
+    public String getBudgetfile() {
+        return budgetfile;
+    }
+
+    public void setBudgetfile(String budgetfile) {
+        this.budgetfile = budgetfile == null ? null : budgetfile.trim();
+    }
+
     public String getDescribe() {
         return describe;
     }
@@ -157,12 +181,28 @@ public class BaseProject {
         this.endtime = endtime;
     }
 
+    public String getStartupevaluation() {
+        return startupevaluation;
+    }
+
+    public void setStartupevaluation(String startupevaluation) {
+        this.startupevaluation = startupevaluation == null ? null : startupevaluation.trim();
+    }
+
     public String getResultevaluation() {
         return resultevaluation;
     }
 
     public void setResultevaluation(String resultevaluation) {
         this.resultevaluation = resultevaluation == null ? null : resultevaluation.trim();
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade == null ? null : grade.trim();
     }
 
     public Integer getStatus() {

@@ -78,7 +78,9 @@ INSERT INTO `user` VALUES ('123456', '314187985@qq44.com', '18829348437', '1');
 DROP TABLE IF EXISTS `t_user`;
 CREATE TABLE `t_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `name` varchar(50) NOT NULL COMMENT '姓名',
   `email` varchar(50) NOT NULL COMMENT '邮件地址',
+  `phone` varchar(20) NOT NULL COMMENT '手机号',
   `password` varchar(20) NOT NULL COMMENT '密码',
   `role` varchar(5) NOT NULL COMMENT '角色',
   `title` varchar(5) DEFAULT '完善职称' COMMENT '职称',
@@ -89,6 +91,7 @@ CREATE TABLE `t_user` (
   `creatTime` date DEFAULT NULL COMMENT '建创时间',
   `updateTime` date DEFAULT NULL COMMENT '修改时间',
   `state` varchar(5) NOT NULL DEFAULT '0' COMMENT '账号状态',
+  `grade` varchar(5) NOT NULL DEFAULT '1000' COMMENT '用户等级数据',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
@@ -99,6 +102,8 @@ DROP TABLE IF EXISTS `t_title`;
 CREATE TABLE `t_title` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `name` varchar(50) NOT NULL COMMENT '职称名称',
+  `creatTime` date DEFAULT NULL COMMENT '建创时间',
+  `updateTime` date DEFAULT NULL COMMENT '修改时间',
   `state` varchar(5) NOT NULL DEFAULT '1' COMMENT '职称状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
@@ -110,6 +115,8 @@ DROP TABLE IF EXISTS `t_education`;
 CREATE TABLE `t_education` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `name` varchar(50) NOT NULL COMMENT '学历名称',
+  `creatTime` date DEFAULT NULL COMMENT '建创时间',
+  `updateTime` date DEFAULT NULL COMMENT '修改时间',
   `state` varchar(5) NOT NULL DEFAULT '1' COMMENT '学历状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
@@ -121,6 +128,8 @@ DROP TABLE IF EXISTS `t_direction`;
 CREATE TABLE `t_direction` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `name` varchar(50) NOT NULL COMMENT '方向名称',
+  `creatTime` date DEFAULT NULL COMMENT '建创时间',
+  `updateTime` date DEFAULT NULL COMMENT '修改时间',
   `state` varchar(5) NOT NULL DEFAULT '1' COMMENT '方向状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
@@ -150,22 +159,55 @@ CREATE TABLE `t_project` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `name` varchar(50)  NOT NULL COMMENT '项目名称',
   `email` varchar(50)  NOT NULL COMMENT '创建人邮件账号',
+  `phone` varchar(20) NOT NULL COMMENT '手机号',
   `language` varchar(50)  NOT NULL COMMENT '开发语言',
   `platform` varchar(50)  NOT NULL COMMENT '开发平台',
   `allNumber` int(11) NOT NULL DEFAULT '0' COMMENT '项目总人数',
   `currentNumber` int(11) NOT NULL DEFAULT '0' COMMENT '项目当前人数',
   `tutor` varchar(10)  NOT NULL COMMENT '指导老师账号',
   `budget` double(10,0) DEFAULT NULL COMMENT '项目预算价格',
+  `budgetFile` varchar(20)  DEFAULT NULL COMMENT '预算账单地址',
   `describe` varchar(100)  DEFAULT NULL COMMENT '项目描述',
   `logo` varchar(20)  DEFAULT NULL COMMENT '项目logo',
   `creatTime` date NOT NULL COMMENT '创建时间',
   `startupTime` date DEFAULT NULL COMMENT '启动时间',
   `updateTime` date DEFAULT NULL COMMENT '更新时间',
   `endTime` date NOT NULL COMMENT '结束时间',
-  `resultEvaluation` varchar(500) DEFAULT NULL COMMENT '项目评价',
+  `startupEvaluation` varchar(500) DEFAULT NULL COMMENT '项目启动审核评价',
+  `resultEvaluation` varchar(500) DEFAULT NULL COMMENT '项目结题审核评价',
+  `grade` varchar(5) NOT NULL DEFAULT '0' COMMENT '项目等级数据',
   `status` int(10) NOT NULL DEFAULT '0' COMMENT '项目状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+-- ----------------------------
+-- 开发语言常量表：Table structure for `t_language`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_language`;
+CREATE TABLE `t_language` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `name` varchar(50) NOT NULL COMMENT '语言名称',
+  `creatTime` date DEFAULT NULL COMMENT '建创时间',
+  `updateTime` date DEFAULT NULL COMMENT '修改时间',
+  `state` varchar(5) NOT NULL DEFAULT '1' COMMENT '语言状态',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+
+
+-- ----------------------------
+-- 开发平台常量表：Table structure for `t_platform`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_platform`;
+CREATE TABLE `t_platform` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `name` varchar(50) NOT NULL COMMENT '平台名称',
+  `creatTime` date DEFAULT NULL COMMENT '建创时间',
+  `updateTime` date DEFAULT NULL COMMENT '修改时间',
+  `state` varchar(5) NOT NULL DEFAULT '1' COMMENT '方向状态',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+
 
 -- ----------------------------
 -- 用户-项目表（不包括负责人）：Table structure for `home`
@@ -174,6 +216,8 @@ DROP TABLE IF EXISTS `t_home`;
 CREATE TABLE `t_home` (
   `projectId` int(11)  NOT NULL COMMENT '项目id',
   `email` varchar(50) NOT NULL COMMENT '用户email',
+  `creatTime` date DEFAULT NULL COMMENT '建创时间',
+  `updateTime` date DEFAULT NULL COMMENT '修改时间',
   `status` int(10) NOT NULL DEFAULT '0' COMMENT '加入项目状态',
   PRIMARY KEY (`projectId`,`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
@@ -190,6 +234,7 @@ CREATE TABLE `t_task` (
   `endTime` date NOT NULL COMMENT '结束时间',
   `description` varchar(500) DEFAULT NULL COMMENT '任务描述',
   `taskFile` varchar(20)  DEFAULT NULL COMMENT '详细任务文件地址',
+  `resultDescription` varchar(20)  DEFAULT NULL COMMENT '成果描述',
   `resultFile` varchar(20)  DEFAULT NULL COMMENT '成果文件地址',
   `resultEvaluation` varchar(500) DEFAULT NULL COMMENT '成果评价',
   `status` int(10) NOT NULL DEFAULT '0' COMMENT '任务是否有效',

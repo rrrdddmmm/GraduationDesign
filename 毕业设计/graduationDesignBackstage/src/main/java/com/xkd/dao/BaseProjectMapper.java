@@ -3,15 +3,15 @@ package com.xkd.dao;
 import com.xkd.entity.BaseProject;
 
 public interface BaseProjectMapper {
-	int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Integer id);
 
-	int insert(BaseProject record);
+    int insert(BaseProject record);
 
-	int insertSelective(BaseProject record);
+    int insertSelective(BaseProject record);
 
-	BaseProject selectByPrimaryKey(Integer id);
+    BaseProject selectByPrimaryKey(Integer id);
 
-	int updateByPrimaryKeySelective(BaseProject record);
+    int updateByPrimaryKeySelective(BaseProject record);
 
-	int updateByPrimaryKey(BaseProject record);
+    int updateByPrimaryKey(BaseProject record);
 }

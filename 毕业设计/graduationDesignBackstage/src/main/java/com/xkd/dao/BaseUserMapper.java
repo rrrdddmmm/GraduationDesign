@@ -11,6 +11,8 @@ public interface BaseUserMapper {
 
 	BaseUser selectByPrimaryKey(Integer id);
 
+	BaseUser selectByEmailRolePwd(BaseUser record);
+
 	int updateByPrimaryKeySelective(BaseUser record);
 
 	int updateByPrimaryKey(BaseUser record);

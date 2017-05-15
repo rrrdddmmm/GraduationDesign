@@ -1,9 +1,15 @@
 package com.xkd.entity;
 
+import java.util.Date;
+
 public class BaseeDucation {
     private Integer id;
 
     private String name;
+
+    private Date creattime;
+
+    private Date updatetime;
 
     private String state;
 
@@ -21,6 +27,22 @@ public class BaseeDucation {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
+    }
+
+    public Date getCreattime() {
+        return creattime;
+    }
+
+    public void setCreattime(Date creattime) {
+        this.creattime = creattime;
+    }
+
+    public Date getUpdatetime() {
+        return updatetime;
+    }
+
+    public void setUpdatetime(Date updatetime) {
+        this.updatetime = updatetime;
     }
 
     public String getState() {
