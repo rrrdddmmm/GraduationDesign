@@ -1,5 +1,7 @@
 package com.xkd.dao;
 
+import java.util.List;
+
 import com.xkd.entity.BaseUser;
 
 public interface BaseUserMapper {
@@ -12,6 +14,10 @@ public interface BaseUserMapper {
 	BaseUser selectByPrimaryKey(Integer id);
 
 	BaseUser selectByEmailRolePwd(BaseUser record);
+
+	List<BaseUser> selectAll();
+
+	List<BaseUser> selectBystate(String state);
 
 	int updateByPrimaryKeySelective(BaseUser record);
 

@@ -28,6 +28,17 @@
     from t_user
     where id = #{id,jdbcType=INTEGER}
   </select>
+   <select id="selectBystate" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where state = #{state,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+  </select>
   <select id="selectByEmailRolePwd" parameterType="com.xkd.entity.BaseUser" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -39,10 +50,13 @@
         <if test="password!=null and password!=''">   
          	and password = #{password,jdbcType=VARCHAR}
     	</if>  
+    	<if test="phone!=null and phone!=''">   
+         	and phone = #{phone,jdbcType=VARCHAR}
+    	</if>  
     	<if test="role!=null and role!='-1'">   
          	and role = #{role,jdbcType=VARCHAR}
     	</if> 
-    	<if test="email==null or email=='' or password==null or password=='' or role==null or role=='-1'">   
+    	<if test="email==null or email=='' or phone==null or phone=='' or password==null or password=='' or role==null or role=='-1'">   
          	or 1 = 2
     	</if>  
     </where>

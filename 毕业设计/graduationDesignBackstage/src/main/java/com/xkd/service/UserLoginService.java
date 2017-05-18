@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.xkd.dao.BaseUserMapper;
 import com.xkd.entity.BaseUser;
 import com.xkd.entity.StateResult;
+import com.xkd.util.ConfigStr;
 
 /**
  * 登陆服务
@@ -37,9 +38,15 @@ public class UserLoginService {
 				if (dbuser != null) {
 					dbuser = baseUserMapper.selectByEmailRolePwd(user);
 					if (dbuser != null) {
-						stateResult.setStatus(0);
-						stateResult.setMsg("服务器端:登陆成功");
-						return dbuser;
+						if (ConfigStr.start.equals(dbuser.getState())) {
+							stateResult.setStatus(0);
+							stateResult.setMsg("服务器端:登陆成功");
+							return dbuser;
+						} else {
+							stateResult.setStatus(4);
+							stateResult.setMsg("服务器端:账号未启用，请联系管理员!");
+							return dbuser;
+						}
 					} else {
 						stateResult.setStatus(1);
 						stateResult.setMsg("服务器端:请正确输入角色!");

@@ -55,6 +55,9 @@
       	<dd class="snav dis">
           <dl><a href="../userManagerController/userList.do" target="rightT">用户列表</a></dl>
         </dd>
+        <dd class="snav dis">
+          <dl><a href="../userManagerController/userStateList.do?state=2" target="rightT">停用用户</a></dl>
+        </dd>
       </li>
       <li> <i class="i5"></i><em>系统维护</em>
         <dd class="snav dis">
@@ -78,7 +81,7 @@
       </li>
       <li> <i class="i5"></i><em>个人信息管理</em>
         <dd class="snav dis">
-          <dl><a href="../userMyInfomationController/myInfomation.do" target="rightT">我的信息</a></dl>          
+          <dl><a href="../userMyInfomationController/myInfomation.do" target="rightT">更新我的信息</a></dl>          
         </dd>
       </li>
       

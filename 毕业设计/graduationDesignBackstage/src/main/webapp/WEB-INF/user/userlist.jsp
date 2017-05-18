@@ -1,5 +1,7 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -8,6 +10,8 @@
     <link href="../content/css/style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="../content/js/jquery.1.7.2.min.js"></script>
     <script type="text/javascript" src="../content/js/user/opuser.js"></script>
+    <script type="text/javascript" src="../content/js/commonalert.js"></script>
+	<script type="text/javascript" src="../content/js/commonutil.js"></script>
 </head>
 <body>
     <h1 class="globle_title2">
@@ -27,10 +31,9 @@
                     <td>邮件</td>
                     <td>手机号</td>
                     <td>角色</td>
-                    
-                    <td>职称</td>
                     <td>学历</td>
                     <td>方向</td>
+                    <td>职称</td>
                     <td>个人简介</td>
                     <td>创建时间</td>
                     <td>更新时间</td>
@@ -39,32 +42,58 @@
                 </tr>
             </thead>
             <tbody>
-            <tr class="whittr" data-itemid="121">
-            	<td align="center">任勃</td>
-            	<td>314187985@qq.com</td>
-            	<td>18829348437</td>
-            	<td>老师</td>
-            	<td>教授</td>
-            	<td>博士</td>
-            	<td>大数据</td>
-            	<td title="sajdhsajkn撒娇的赛季的起哦按属地加上">本人曾参与...</td>
-            	<td>2016/10/22</td>
-            	<td>2016/10/22</td>
-            	<td>启用</td>
-            	<td><a href="userAlter.do">修改</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a class="font-red-sunglo">删除</a>
-            	</td>
-            </tr>
+            <c:forEach items="${baseUserList }" var="li" varStatus="idxStatus">
+	            <tr class="whittr" data-itemid="${li.id }">
+	            	<td align="center">${li.name}</td>
+	            	<td>${li.email}</td>
+	            	<td>${li.phone}</td>
+	            	<c:if test="${li.role=='1'}"><td>学生</td></c:if>
+	            	<c:if test="${li.role=='2'}"><td>教师</td></c:if>
+	            	<c:if test="${li.role=='3'}"><td>管理员</td></c:if>
+	            	<td>${li.education}</td>
+	            	<td>${li.direction}</td>
+	            	<td>${li.title}</td>
+	            	<td title="${li.introduce}">${fn:substring(li.introduce, 0, 5)}..</td>
+	            	<td><fmt:formatDate value="${li.creattime }" pattern="yyyy-MM-dd"/></td>
+					<td><fmt:formatDate value="${li.updatetime }" pattern="yyyy-MM-dd"/></td>
+	            	<c:if test="${li.state==1}"><td>启用</td></c:if>
+	            	<c:if test="${li.state==2}"><td>停用</td></c:if>
+	            	<td><a href="userAlter.do?id=${li.id }">修改(查看)</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a class="font-red-sunglo" >删除</a>
+	            	</td>
+	            </tr>
+            </c:forEach>
             </tbody>
         </table>
     </div>
 </body>
 <script type="text/javascript">
-    $(document).ready(function () {
-        //firstStep();
-        $("#search").click(function () {
-            currentPage = 1;
-            firstStep();
-        });
-    });
+var _parent;
+$(".font-red-sunglo").live("click", function() {
+	var _this=$(this);
+	_parent = _this.parent().parent();
+	var id = _parent.attr("data-itemID");
+	_confirm("是否删除此记录？",1,"del("+id+")");
+});
+	function del(id){
+			$.ajax({
+				type : "POST",
+				url : "userDelHandle.do",
+				data : {
+					id : id,
+				},
+				datatype : "json",
+				error : function() {  
+		            _alert("操作失败，请检查网络后重试",2);  
+		        },  
+				success : function(result) {
+					if (result.status == '0') {
+						_parent.remove();
+						_alert(result.msg);
+					}else{
+						_alert(result.msg,2); 
+					} 
+				}
+			});
+	}
 </script>
 </html>

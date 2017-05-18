@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>采购预算网上申报系统</title>
+<title>校园软件开发在线协同平台</title>
 <link href="../content/css/style.css" rel="stylesheet" type="text/css" />
 <script src="../content/js/commonalert.js" type="text/javascript"  charset="utf-8"></script>
 <script src="../content/js/jquery-2.1.1.min.js" type="text/javascript"></script>
@@ -35,7 +35,7 @@
             <tr>
                 <td height="40" align="right">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</td>
                  <td>
-                   <input name="password" type="password" class="input_txt"  id="password" onkeydown="if (event.keyCode == 13) { login(); };"  placeholder="请输入您的密码" />
+                   <input name="password" type="password" placeholder="初始化密码：123456" class="input_txt"  id="password" onkeydown="if (event.keyCode == 13) { login(); };"  placeholder="请输入您的密码" />
 
                  </td>
             </tr>

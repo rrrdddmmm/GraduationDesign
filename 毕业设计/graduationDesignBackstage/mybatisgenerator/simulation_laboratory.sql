@@ -81,22 +81,25 @@ CREATE TABLE `t_user` (
   `name` varchar(50) NOT NULL COMMENT '姓名',
   `email` varchar(50) NOT NULL COMMENT '邮件地址',
   `phone` varchar(20) NOT NULL COMMENT '手机号',
-  `password` varchar(50) NOT NULL COMMENT '密码',
+  `password` varchar(50) NOT NULL DEFAULT 'e10adc3949ba59abbe56e057f20f883e' COMMENT '密码',
   `role` varchar(5) NOT NULL COMMENT '角色',
   `title` varchar(5) DEFAULT '完善职称' COMMENT '职称',
   `education` varchar(5) DEFAULT '完善学历' COMMENT '学历',
   `direction` varchar(5) DEFAULT '完善方向' COMMENT '方向',
   `introduce` varchar(500) NOT NULL COMMENT '简介和补充说明',
-  `image` varchar(20) DEFAULT '上传头像' COMMENT '用户头像',
+  `image` varchar(200) DEFAULT NULL COMMENT '/resource/default.jpg',
   `creatTime` date DEFAULT NULL COMMENT '建创时间',
   `updateTime` date DEFAULT NULL COMMENT '修改时间',
-  `state` varchar(5) NOT NULL DEFAULT '0' COMMENT '账号状态',
-  `grade` varchar(5) NOT NULL DEFAULT '1000' COMMENT '用户等级数据',
+  `state` varchar(5)  DEFAULT '2' COMMENT '账号状态',
+  `grade` varchar(5)  DEFAULT '1000' COMMENT '用户等级数据',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 INSERT INTO `t_user` VALUES ('1', '任勃', '314187985@qq.com','18829348437',
-'e10adc3949ba59abbe56e057f20f883e', '3','学生','学历','方向','简介和补充说明',
-'用户头像','2017-04-13','2017-04-13','1','10');
+'e10adc3949ba59abbe56e057f20f883e', '3','职称','学历','方向','简介和补充说明',
+'/resource/default.jpg','2017-04-13','2017-04-13','1','10');
+INSERT INTO `t_user` VALUES ('2', '董美丽', '850263340@qq.com','18292960987',
+'e10adc3949ba59abbe56e057f20f883e', '3','职称','学历','方向','简介和补充说明',
+'/resource/default.jpg','2017-04-13','2017-04-13','1','10');
 -- ----------------------------
 -- 职称常量表：Table structure for `t_title`
 -- ----------------------------
@@ -109,7 +112,8 @@ CREATE TABLE `t_title` (
   `state` varchar(5) NOT NULL DEFAULT '1' COMMENT '职称状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
-
+INSERT INTO `t_title` VALUES ('1', '职称','2017-04-13','2017-04-13','1');
+INSERT INTO `t_title` VALUES ('2', '讲师','2017-04-13','2017-04-13','1');
 -- ----------------------------
 -- 学历常量表：Table structure for `t_education`
 -- ----------------------------
@@ -122,6 +126,8 @@ CREATE TABLE `t_education` (
   `state` varchar(5) NOT NULL DEFAULT '1' COMMENT '学历状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+INSERT INTO `t_education` VALUES ('1', '学历','2017-04-13','2017-04-13','1');
+INSERT INTO `t_education` VALUES ('2', '本科','2017-04-13','2017-04-13','1');
 
 -- ----------------------------
 -- 方向常量表：Table structure for `t_direction`
@@ -135,7 +141,8 @@ CREATE TABLE `t_direction` (
   `state` varchar(5) NOT NULL DEFAULT '1' COMMENT '方向状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
-
+INSERT INTO `t_direction` VALUES ('1', '方向','2017-04-13','2017-04-13','1');
+INSERT INTO `t_direction` VALUES ('2', '大数据','2017-04-13','2017-04-13','1');
 
 -- ----------------------------
 -- 新闻表：Table structure for `t_news`
@@ -195,7 +202,7 @@ CREATE TABLE `t_language` (
   `state` varchar(5) NOT NULL DEFAULT '1' COMMENT '语言状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
-
+INSERT INTO `t_language` VALUES ('1', 'java语言','2017-04-13','2017-04-13','1');
 
 -- ----------------------------
 -- 开发平台常量表：Table structure for `t_platform`
@@ -209,7 +216,7 @@ CREATE TABLE `t_platform` (
   `state` varchar(5) NOT NULL DEFAULT '1' COMMENT '方向状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
-
+INSERT INTO `t_platform` VALUES ('1', 'windows平台','2017-04-13','2017-04-13','1');
 
 -- ----------------------------
 -- 用户-项目表（不包括负责人）：Table structure for `home`

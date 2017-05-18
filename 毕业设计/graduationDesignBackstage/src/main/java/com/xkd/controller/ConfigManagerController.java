@@ -1,9 +1,18 @@
 package com.xkd.controller;
 
 import java.io.Serializable;
+import java.util.List;
+
+import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.xkd.entity.BaseConfig;
+import com.xkd.entity.StateResult;
+import com.xkd.service.ConfigManagerService;
 
 /**
  * 配置管理
@@ -18,15 +27,31 @@ public class ConfigManagerController implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long		serialVersionUID	= 1L;
+
+	@Resource(name = "configManagerService")
+	private ConfigManagerService	configManagerService;
 
 	@RequestMapping("configList.do")
-	public String configList(Integer flage) {
+	public String configList(Model model, Integer flage) {
+		@SuppressWarnings("unchecked")
+		List<BaseConfig> configlist = (List<BaseConfig>) configManagerService.configList(flage);
+		model.addAttribute("configlist", configlist);
+		model.addAttribute("flage", flage);
 		return "config/configlist";
 	}
 
 	@RequestMapping("configAdd.do")
-	public String configAdd(Integer flage) {
+	public String configAdd(Model model, BaseConfig baseConfig) {
+		model.addAttribute("baseConfig", baseConfig);
 		return "config/configadd";
+	}
+
+	@RequestMapping("configHandle.do")
+	@ResponseBody
+	public StateResult configHandle(BaseConfig baseConfig, StateResult stateResult) {
+		System.out.println(baseConfig);
+		stateResult = configManagerService.configHandle(baseConfig, stateResult);
+		return stateResult;
 	}
 }

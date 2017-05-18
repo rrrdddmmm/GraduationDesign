@@ -18,6 +18,11 @@
     where projectId = #{projectid,jdbcType=INTEGER}
       and email = #{email,jdbcType=VARCHAR}
   </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_home
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="map">
     delete from t_home
     where projectId = #{projectid,jdbcType=INTEGER}

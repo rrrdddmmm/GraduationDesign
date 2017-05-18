@@ -26,6 +26,11 @@
       and email = #{email,jdbcType=VARCHAR}
       and startupTime = #{startuptime,jdbcType=DATE}
   </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_task
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="map">
     delete from t_task
     where projectId = #{projectid,jdbcType=INTEGER}

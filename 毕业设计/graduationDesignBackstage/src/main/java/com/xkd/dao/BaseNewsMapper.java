@@ -1,17 +1,21 @@
 package com.xkd.dao;
 
+import java.util.List;
+
 import com.xkd.entity.BaseNews;
 
 public interface BaseNewsMapper {
-    int deleteByPrimaryKey(Integer id);
+	int deleteByPrimaryKey(Integer id);
 
-    int insert(BaseNews record);
+	int insert(BaseNews record);
 
-    int insertSelective(BaseNews record);
+	int insertSelective(BaseNews record);
 
-    BaseNews selectByPrimaryKey(Integer id);
+	BaseNews selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(BaseNews record);
+	List<BaseNews> selectAll();
 
-    int updateByPrimaryKey(BaseNews record);
+	int updateByPrimaryKeySelective(BaseNews record);
+
+	int updateByPrimaryKey(BaseNews record);
 }

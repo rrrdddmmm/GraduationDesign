@@ -1,17 +1,23 @@
 package com.xkd.dao;
 
+import java.util.List;
+
 import com.xkd.entity.BaseTitle;
 
-public interface BaseTitleMapper {
-    int deleteByPrimaryKey(Integer id);
+public interface BaseTitleMapper extends BaseConfigMapper {
+	int deleteByPrimaryKey(Integer id);
 
-    int insert(BaseTitle record);
+	int insert(BaseTitle record);
 
-    int insertSelective(BaseTitle record);
+	int insertSelective(BaseTitle record);
 
-    BaseTitle selectByPrimaryKey(Integer id);
+	BaseTitle selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(BaseTitle record);
+	BaseTitle selectByName(String name);
 
-    int updateByPrimaryKey(BaseTitle record);
+	List<BaseTitle> selectAll();
+
+	int updateByPrimaryKeySelective(BaseTitle record);
+
+	int updateByPrimaryKey(BaseTitle record);
 }

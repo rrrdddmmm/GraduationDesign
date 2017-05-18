@@ -1,17 +1,23 @@
 package com.xkd.dao;
 
+import java.util.List;
+
 import com.xkd.entity.BaseDirection;
 
-public interface BaseDirectionMapper {
-    int deleteByPrimaryKey(Integer id);
+public interface BaseDirectionMapper extends BaseConfigMapper {
+	int deleteByPrimaryKey(Integer id);
 
-    int insert(BaseDirection record);
+	int insert(BaseDirection record);
 
-    int insertSelective(BaseDirection record);
+	int insertSelective(BaseDirection record);
 
-    BaseDirection selectByPrimaryKey(Integer id);
+	BaseDirection selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(BaseDirection record);
+	BaseDirection selectByName(String name);
 
-    int updateByPrimaryKey(BaseDirection record);
+	List<BaseDirection> selectAll();
+
+	int updateByPrimaryKeySelective(BaseDirection record);
+
+	int updateByPrimaryKey(BaseDirection record);
 }

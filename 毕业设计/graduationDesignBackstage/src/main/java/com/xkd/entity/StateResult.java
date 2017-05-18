@@ -3,6 +3,7 @@ package com.xkd.entity;
 public class StateResult {
 	private int		status;
 	private String	msg;
+	private String	newpath;
 
 	public int getStatus() {
 		return status;
@@ -18,6 +19,14 @@ public class StateResult {
 
 	public void setMsg(String msg) {
 		this.msg = msg;
+	}
+
+	public String getNewpath() {
+		return newpath;
+	}
+
+	public void setNewpath(String newpath) {
+		this.newpath = newpath;
 	}
 
 }

@@ -1,17 +1,23 @@
 package com.xkd.dao;
 
+import java.util.List;
+
 import com.xkd.entity.BasePlatform;
 
-public interface BasePlatformMapper {
-    int deleteByPrimaryKey(Integer id);
+public interface BasePlatformMapper extends BaseConfigMapper {
+	int deleteByPrimaryKey(Integer id);
 
-    int insert(BasePlatform record);
+	int insert(BasePlatform record);
 
-    int insertSelective(BasePlatform record);
+	int insertSelective(BasePlatform record);
 
-    BasePlatform selectByPrimaryKey(Integer id);
+	BasePlatform selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(BasePlatform record);
+	BasePlatform selectByName(String name);
 
-    int updateByPrimaryKey(BasePlatform record);
+	List<BasePlatform> selectAll();
+
+	int updateByPrimaryKeySelective(BasePlatform record);
+
+	int updateByPrimaryKey(BasePlatform record);
 }

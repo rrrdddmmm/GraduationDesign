@@ -1,17 +1,23 @@
 package com.xkd.dao;
 
+import java.util.List;
+
 import com.xkd.entity.BaseLanguage;
 
-public interface BaseLanguageMapper {
-    int deleteByPrimaryKey(Integer id);
+public interface BaseLanguageMapper extends BaseConfigMapper {
+	int deleteByPrimaryKey(Integer id);
 
-    int insert(BaseLanguage record);
+	int insert(BaseLanguage record);
 
-    int insertSelective(BaseLanguage record);
+	int insertSelective(BaseLanguage record);
 
-    BaseLanguage selectByPrimaryKey(Integer id);
+	BaseLanguage selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(BaseLanguage record);
+	BaseLanguage selectByName(String name);
 
-    int updateByPrimaryKey(BaseLanguage record);
+	List<BaseLanguage> selectAll();
+
+	int updateByPrimaryKeySelective(BaseLanguage record);
+
+	int updateByPrimaryKey(BaseLanguage record);
 }
