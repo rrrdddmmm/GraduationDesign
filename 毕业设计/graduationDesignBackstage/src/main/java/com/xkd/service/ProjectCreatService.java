@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.context.annotation.Scope;
@@ -12,9 +13,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.xkd.controller.SessionController;
+import com.xkd.dao.BaseProjectMapper;
 import com.xkd.entity.BaseProject;
 import com.xkd.entity.BaseUser;
 import com.xkd.entity.StateResult;
+import com.xkd.util.ConfigStr;
+import com.xkd.util.DateDealwith;
 import com.xkd.util.GetResousePath;
 
 /**
@@ -26,50 +30,77 @@ import com.xkd.util.GetResousePath;
 @Service("projectCreatService")
 @Scope("prototype")
 public class ProjectCreatService {
+	/**
+	 * 新闻常量表
+	 */
+	@Resource(name = "baseProjectMapper")
+	private BaseProjectMapper	baseProjectMapper;
 
 	public StateResult creatProjectHandle(BaseProject baseProject, StateResult stateResult,
 			@RequestParam(value = "file", required = true) MultipartFile[] file, HttpServletRequest request) {
 		try {
 			BaseUser users = SessionController.getLoginInfomation(request);
-			String projectid = UUID.randomUUID().toString();
+			String projectid = DateDealwith.getSHC();
 			String uuid0 = UUID.randomUUID().toString();
 			String uuid1 = UUID.randomUUID().toString();
-			if (!verifyfile(stateResult, file[0], users.getId().toString(), uuid0)) {
-				stateResult.setMsg(stateResult.getMsg());
-				return stateResult;
-			}
-			if (!verifyfile(stateResult, file[1], users.getId().toString(), uuid1)) {
-				stateResult.setMsg(stateResult.getMsg());
-				return stateResult;
-			}
-			// 设置网络地址
-			baseProject.setBudgetfile(GetResousePath.getUserResouresNetPath(users.getId().toString()) + uuid0
+			// 预算文件物理地址
+			String BudgetfilePath = GetResousePath.getUserProjectFilePath(users.getId().toString(), projectid, uuid1
 					+ file[1].getOriginalFilename());
-			baseProject.setProgectfile(GetResousePath.getUserResouresNetPath(users.getId().toString()) + uuid1
+			// 预算文件网络地址
+			String BudgetfileNetPath = GetResousePath.getUserNetProjectFilePath(users.getId().toString(), projectid,
+					uuid1 + file[1].getOriginalFilename());
+
+			// 立项书物理地址
+			String ProgectfilePath = GetResousePath.getUserProjectFilePath(users.getId().toString(), projectid, uuid0
 					+ file[0].getOriginalFilename());
+			// 立项书网络地址
+			String ProgectfileNetPath = GetResousePath.getUserNetProjectFilePath(users.getId().toString(), projectid,
+					uuid0 + file[0].getOriginalFilename());
+
+			if (!upload(stateResult, file[0], ProgectfilePath)) {
+				stateResult.setMsg("0" + stateResult.getMsg());
+				return stateResult;
+			}
+			if (!upload(stateResult, file[1], BudgetfilePath)) {
+				stateResult.setMsg("1" + stateResult.getMsg());
+				return stateResult;
+			}
+			baseProject.setProjid(projectid);
+			// 设置网络地址
+			baseProject.setProjbudgetfile(BudgetfileNetPath);
+			baseProject.setProjbudgetfile(ProgectfileNetPath);
+			baseProject.setProjcreattime(DateDealwith.getCurrDate());
+			baseProject.setProjcurrentnumber(ConfigStr.currentnumber);
+			baseProject.setProjemail(users.getEmail());
+			baseProject.setProjphone(users.getPhone());
+			baseProject.setProjstatus(Integer.parseInt(ConfigStr.close));
+			baseProject.setProjupdatetime(DateDealwith.getCurrDate());
+			baseProject.setProjgrade("0");
+			baseProjectMapper.insert(baseProject);
+			stateResult.setMsg("服务器端：项目创建成功!");
+			stateResult.setStatus(0);
 		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(baseProject);
-		stateResult.setMsg("ok");
-		stateResult.setStatus(0);
 		return stateResult;
 	}
 
-	private boolean verifyfile(StateResult stateResult, MultipartFile file, String id, String uuid)
-			throws IllegalStateException, IOException {
+	private boolean upload(StateResult stateResult, MultipartFile file, String absPath) throws IllegalStateException,
+			IOException {
 		if (file != null) {
 			if (file.getName() != null || "".equals(file.getName())) {
-				String[] name = file.getContentType().split("/");
+				System.out.println(file.getOriginalFilename());
+				String[] name = file.getOriginalFilename().split("\\.");
+				System.out.println(name[0]);
 				if ("txt".equals(name[name.length - 1]) || "doc".equals(name[name.length - 1])
 						|| "docx".equals(name[name.length - 1]) || "pdf".equals(name[name.length - 1])) {
-					file.transferTo(new File(GetResousePath.getUserResouresPath(id) + uuid + file.getOriginalFilename()));
-					stateResult.setStatus(0);
-					stateResult.setMsg("服务器端：上传成功!");
+					File f = new File(absPath);
+					if (!f.exists()) {
+						f.mkdirs();
+					}
+					file.transferTo(f);
 					return true;
 				} else {
 					stateResult.setStatus(1);

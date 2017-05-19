@@ -192,10 +192,10 @@ $(document).ready(function() {
 	    <tr>
 	      <td class="table_xqa">项目名称：</td>
 	      <td class="table_xqb">
-	      <input type="text"  id="name" name="name" placeholder="项目名称" class="syt_lb_top_conment_txt"/></td>
+	      <input type="text"  id="name" name="projname" placeholder="项目名称" class="syt_lb_top_conment_txt"/></td>
 	      <td class="table_xqa">预算：</td>
 	      <td class="table_xqb">
-	      <input type="text" id="budget" name="budget" placeholder="项目预算价格" class="syt_lb_top_conment_txt" /></td>
+	      <input type="text" id="budget" name="projbudget" placeholder="项目预算价格" class="syt_lb_top_conment_txt" /></td>
 	    </tr>
 	    <tr>
 	      <td class="table_xqa">立项书：</td>
@@ -209,19 +209,19 @@ $(document).ready(function() {
 	    <tr>
 	      <td class="table_xqa">指导教师：</td>
 	      <td class="table_xqb">
-	      	<input type="text" id="tutoreid" name="tutor" style="display:none"/>
+	      	<input type="text" id="tutoreid" name="projtutor" style="display:none"/>
 	      	<input type="text" id="tutorname" class="syt_lb_top_conment_txt" />
 	      	<input type="button" class="cc cjxm_but" value="指导教师" />
 	      </td>
 	      <td class="table_xqa">项目总人数：</td>
 	      <td class="table_xqb">
-	      	<input type="text" id="allnumber" name="allnumber" placeholder="项目总人数" class="syt_lb_top_conment_txt"/>
+	      	<input type="text" id="allnumber" name="projallnumber" placeholder="项目总人数" class="syt_lb_top_conment_txt"/>
 	      </td>
 	    </tr>
 		<tr>
 			<td class="table_xqa">开发语言：</td>
 			<td class="table_xqb">
-				<select id="language" name="language" class="input_b" style="float:left;">
+				<select id="language" name="projlanguage" class="input_b" style="float:left;">
 					<c:forEach items="${languageconfiglist }" var="li" varStatus="idxStatus">
 						<option value="${li.name }">${li.name }</option>
 					</c:forEach>
@@ -229,7 +229,7 @@ $(document).ready(function() {
 			</td>
 			<td class="table_xqa">开发平台：</td>
 			<td class="table_xqb">
-				<select id="platform" name="platform" class="input_b" style="float:left;">
+				<select id="platform" name="projplatform" class="input_b" style="float:left;">
 					<c:forEach items="${platformconfiglist }" var="li" varStatus="idxStatus">
 						<option value="${li.name }">${li.name }</option>
 					</c:forEach>
@@ -239,12 +239,12 @@ $(document).ready(function() {
 	    <tr>
 	      <td class="table_xqa">结题时间：</td>
 	      <td class="table_xqb">
-	      <input name="endtime" id="endtime" placeholder="请输入日期" class="syt_lb_top_conment_txt" onclick="laydate()" /></td>
+	      <input name="projendtime" id="endtime" placeholder="请输入日期" class="syt_lb_top_conment_txt" onclick="laydate()" /></td>
 	    </tr>
 	    <tr>
 	      <td class="table_xqa">项目简述：</td>
 	      <td colspan="3" class="table_xqb">
-	      <textarea name="describe" id="describe" rows="4" maxlength="500" class="textarea_wby" ></textarea>
+	      <textarea name="projdescribe" id="describe" rows="4" maxlength="500" class="textarea_wby" ></textarea>
 	      <p style="color:red;text-align:left;"><br>注意：不能超过500个字符。</p>
 	      </td>
 	    </tr>
@@ -285,6 +285,15 @@ $(document).ready(function() {
 		}  
 		if($("#tutoreid").val()==""){
 			_alert("请选择系统的指导教师!",2)
+			return;
+		}
+		//判断结题时间大于当前时间
+		var date2 = new Date($("#endtime").val());
+		var today = new Date();
+		var ww=date2.getTime()-today.getTime();
+		if(ww<=0){
+			_alert("结题时间有误!",2)
+			$("#endtime").val("");
 			return;
 		}
 		if(!regnum("allnumber")){return;}

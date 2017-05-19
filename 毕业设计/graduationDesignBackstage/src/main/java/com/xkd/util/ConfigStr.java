@@ -11,5 +11,6 @@ public interface ConfigStr {
 	public static String	netPathAbs		= "/resource/";
 	public static String	newsAbsPathAbs	= "F:/resource/news/";
 	public static String	newsNetPathAbs	= "/resource/news/";
+	public static Integer	currentnumber	= 1;					// 项目创建后当前人数
 
 }

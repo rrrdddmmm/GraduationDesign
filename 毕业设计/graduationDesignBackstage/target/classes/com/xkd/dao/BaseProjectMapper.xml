@@ -2,293 +2,294 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xkd.dao.BaseProjectMapper">
   <resultMap id="BaseResultMap" type="com.xkd.entity.BaseProject">
-    <id column="id" jdbcType="VARCHAR" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="phone" jdbcType="VARCHAR" property="phone" />
-    <result column="language" jdbcType="VARCHAR" property="language" />
-    <result column="platform" jdbcType="VARCHAR" property="platform" />
-    <result column="allNumber" jdbcType="INTEGER" property="allnumber" />
-    <result column="currentNumber" jdbcType="INTEGER" property="currentnumber" />
-    <result column="tutor" jdbcType="VARCHAR" property="tutor" />
-    <result column="budget" jdbcType="DOUBLE" property="budget" />
-    <result column="budgetFile" jdbcType="VARCHAR" property="budgetfile" />
-    <result column="progectFile" jdbcType="VARCHAR" property="progectfile" />
-    <result column="describe" jdbcType="VARCHAR" property="describe" />
-    <result column="logo" jdbcType="VARCHAR" property="logo" />
-    <result column="creatTime" jdbcType="DATE" property="creattime" />
-    <result column="startupTime" jdbcType="DATE" property="startuptime" />
-    <result column="updateTime" jdbcType="DATE" property="updatetime" />
-    <result column="endTime" jdbcType="DATE" property="endtime" />
-    <result column="startupEvaluation" jdbcType="VARCHAR" property="startupevaluation" />
-    <result column="resultEvaluation" jdbcType="VARCHAR" property="resultevaluation" />
-    <result column="grade" jdbcType="VARCHAR" property="grade" />
-    <result column="status" jdbcType="INTEGER" property="status" />
+    <id column="projid" jdbcType="VARCHAR" property="projid" />
+    <result column="projname" jdbcType="VARCHAR" property="projname" />
+    <result column="projemail" jdbcType="VARCHAR" property="projemail" />
+    <result column="projphone" jdbcType="VARCHAR" property="projphone" />
+    <result column="projlanguage" jdbcType="VARCHAR" property="projlanguage" />
+    <result column="projplatform" jdbcType="VARCHAR" property="projplatform" />
+    <result column="projallNumber" jdbcType="INTEGER" property="projallnumber" />
+    <result column="projcurrentNumber" jdbcType="INTEGER" property="projcurrentnumber" />
+    <result column="projtutor" jdbcType="VARCHAR" property="projtutor" />
+    <result column="projbudget" jdbcType="DOUBLE" property="projbudget" />
+    <result column="projbudgetFile" jdbcType="VARCHAR" property="projbudgetfile" />
+    <result column="projprogectFile" jdbcType="VARCHAR" property="projprogectfile" />
+    <result column="projdescribe" jdbcType="VARCHAR" property="projdescribe" />
+    <result column="projlogo" jdbcType="VARCHAR" property="projlogo" />
+    <result column="projcreatTime" jdbcType="DATE" property="projcreattime" />
+    <result column="projstartupTime" jdbcType="DATE" property="projstartuptime" />
+    <result column="projupdateTime" jdbcType="DATE" property="projupdatetime" />
+    <result column="projendTime" jdbcType="DATE" property="projendtime" />
+    <result column="projstartupEvaluation" jdbcType="VARCHAR" property="projstartupevaluation" />
+    <result column="projresultEvaluation" jdbcType="VARCHAR" property="projresultevaluation" />
+    <result column="projgrade" jdbcType="VARCHAR" property="projgrade" />
+    <result column="projstatus" jdbcType="INTEGER" property="projstatus" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, name, email, phone, language, platform, allNumber, currentNumber, tutor, budget, 
-    budgetFile, progectFile, describe, logo, creatTime, startupTime, updateTime, endTime, 
-    startupEvaluation, resultEvaluation, grade, status
+    projid, projname, projemail, projphone, projlanguage, projplatform, projallNumber, 
+    projcurrentNumber, projtutor, projbudget, projbudgetFile, projprogectFile, projdescribe, 
+    projlogo, projcreatTime, projstartupTime, projupdateTime, projendTime, projstartupEvaluation, 
+    projresultEvaluation, projgrade, projstatus
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from t_project
-    where id = #{id,jdbcType=VARCHAR}
+    where projid = #{projid,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from t_project
-    where id = #{id,jdbcType=VARCHAR}
+    where projid = #{projid,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.xkd.entity.BaseProject">
-    insert into t_project (id, name, email, 
-      phone, language, platform, 
-      allNumber, currentNumber, tutor, 
-      budget, budgetFile, progectFile, 
-      describe, logo, creatTime, 
-      startupTime, updateTime, endTime, 
-      startupEvaluation, resultEvaluation, grade, 
-      status)
-    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{language,jdbcType=VARCHAR}, #{platform,jdbcType=VARCHAR}, 
-      #{allnumber,jdbcType=INTEGER}, #{currentnumber,jdbcType=INTEGER}, #{tutor,jdbcType=VARCHAR}, 
-      #{budget,jdbcType=DOUBLE}, #{budgetfile,jdbcType=VARCHAR}, #{progectfile,jdbcType=VARCHAR}, 
-      #{describe,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, #{creattime,jdbcType=DATE}, 
-      #{startuptime,jdbcType=DATE}, #{updatetime,jdbcType=DATE}, #{endtime,jdbcType=DATE}, 
-      #{startupevaluation,jdbcType=VARCHAR}, #{resultevaluation,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER})
+    insert into t_project (projid, projname, projemail, 
+      projphone, projlanguage, projplatform, 
+      projallNumber, projcurrentNumber, projtutor, 
+      projbudget, projbudgetFile, projprogectFile, 
+      projdescribe, projlogo, projcreatTime, 
+      projstartupTime, projupdateTime, projendTime, 
+      projstartupEvaluation, projresultEvaluation, 
+      projgrade, projstatus)
+    values (#{projid,jdbcType=VARCHAR}, #{projname,jdbcType=VARCHAR}, #{projemail,jdbcType=VARCHAR}, 
+      #{projphone,jdbcType=VARCHAR}, #{projlanguage,jdbcType=VARCHAR}, #{projplatform,jdbcType=VARCHAR}, 
+      #{projallnumber,jdbcType=INTEGER}, #{projcurrentnumber,jdbcType=INTEGER}, #{projtutor,jdbcType=VARCHAR}, 
+      #{projbudget,jdbcType=DOUBLE}, #{projbudgetfile,jdbcType=VARCHAR}, #{projprogectfile,jdbcType=VARCHAR}, 
+      #{projdescribe,jdbcType=VARCHAR}, #{projlogo,jdbcType=VARCHAR}, #{projcreattime,jdbcType=DATE}, 
+      #{projstartuptime,jdbcType=DATE}, #{projupdatetime,jdbcType=DATE}, #{projendtime,jdbcType=DATE}, 
+      #{projstartupevaluation,jdbcType=VARCHAR}, #{projresultevaluation,jdbcType=VARCHAR}, 
+      #{projgrade,jdbcType=VARCHAR}, #{projstatus,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.xkd.entity.BaseProject">
     insert into t_project
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
+      <if test="projid != null">
+        projid,
       </if>
-      <if test="name != null">
-        name,
+      <if test="projname != null">
+        projname,
       </if>
-      <if test="email != null">
-        email,
+      <if test="projemail != null">
+        projemail,
       </if>
-      <if test="phone != null">
-        phone,
+      <if test="projphone != null">
+        projphone,
       </if>
-      <if test="language != null">
-        language,
+      <if test="projlanguage != null">
+        projlanguage,
       </if>
-      <if test="platform != null">
-        platform,
+      <if test="projplatform != null">
+        projplatform,
       </if>
-      <if test="allnumber != null">
-        allNumber,
+      <if test="projallnumber != null">
+        projallNumber,
       </if>
-      <if test="currentnumber != null">
-        currentNumber,
+      <if test="projcurrentnumber != null">
+        projcurrentNumber,
       </if>
-      <if test="tutor != null">
-        tutor,
+      <if test="projtutor != null">
+        projtutor,
       </if>
-      <if test="budget != null">
-        budget,
+      <if test="projbudget != null">
+        projbudget,
       </if>
-      <if test="budgetfile != null">
-        budgetFile,
+      <if test="projbudgetfile != null">
+        projbudgetFile,
       </if>
-      <if test="progectfile != null">
-        progectFile,
+      <if test="projprogectfile != null">
+        projprogectFile,
       </if>
-      <if test="describe != null">
-        describe,
+      <if test="projdescribe != null">
+        projdescribe,
       </if>
-      <if test="logo != null">
-        logo,
+      <if test="projlogo != null">
+        projlogo,
       </if>
-      <if test="creattime != null">
-        creatTime,
+      <if test="projcreattime != null">
+        projcreatTime,
       </if>
-      <if test="startuptime != null">
-        startupTime,
+      <if test="projstartuptime != null">
+        projstartupTime,
       </if>
-      <if test="updatetime != null">
-        updateTime,
+      <if test="projupdatetime != null">
+        projupdateTime,
       </if>
-      <if test="endtime != null">
-        endTime,
+      <if test="projendtime != null">
+        projendTime,
       </if>
-      <if test="startupevaluation != null">
-        startupEvaluation,
+      <if test="projstartupevaluation != null">
+        projstartupEvaluation,
       </if>
-      <if test="resultevaluation != null">
-        resultEvaluation,
+      <if test="projresultevaluation != null">
+        projresultEvaluation,
       </if>
-      <if test="grade != null">
-        grade,
+      <if test="projgrade != null">
+        projgrade,
       </if>
-      <if test="status != null">
-        status,
+      <if test="projstatus != null">
+        projstatus,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=VARCHAR},
+      <if test="projid != null">
+        #{projid,jdbcType=VARCHAR},
       </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
+      <if test="projname != null">
+        #{projname,jdbcType=VARCHAR},
       </if>
-      <if test="email != null">
-        #{email,jdbcType=VARCHAR},
+      <if test="projemail != null">
+        #{projemail,jdbcType=VARCHAR},
       </if>
-      <if test="phone != null">
-        #{phone,jdbcType=VARCHAR},
+      <if test="projphone != null">
+        #{projphone,jdbcType=VARCHAR},
       </if>
-      <if test="language != null">
-        #{language,jdbcType=VARCHAR},
+      <if test="projlanguage != null">
+        #{projlanguage,jdbcType=VARCHAR},
       </if>
-      <if test="platform != null">
-        #{platform,jdbcType=VARCHAR},
+      <if test="projplatform != null">
+        #{projplatform,jdbcType=VARCHAR},
       </if>
-      <if test="allnumber != null">
-        #{allnumber,jdbcType=INTEGER},
+      <if test="projallnumber != null">
+        #{projallnumber,jdbcType=INTEGER},
       </if>
-      <if test="currentnumber != null">
-        #{currentnumber,jdbcType=INTEGER},
+      <if test="projcurrentnumber != null">
+        #{projcurrentnumber,jdbcType=INTEGER},
       </if>
-      <if test="tutor != null">
-        #{tutor,jdbcType=VARCHAR},
+      <if test="projtutor != null">
+        #{projtutor,jdbcType=VARCHAR},
       </if>
-      <if test="budget != null">
-        #{budget,jdbcType=DOUBLE},
+      <if test="projbudget != null">
+        #{projbudget,jdbcType=DOUBLE},
       </if>
-      <if test="budgetfile != null">
-        #{budgetfile,jdbcType=VARCHAR},
+      <if test="projbudgetfile != null">
+        #{projbudgetfile,jdbcType=VARCHAR},
       </if>
-      <if test="progectfile != null">
-        #{progectfile,jdbcType=VARCHAR},
+      <if test="projprogectfile != null">
+        #{projprogectfile,jdbcType=VARCHAR},
       </if>
-      <if test="describe != null">
-        #{describe,jdbcType=VARCHAR},
+      <if test="projdescribe != null">
+        #{projdescribe,jdbcType=VARCHAR},
       </if>
-      <if test="logo != null">
-        #{logo,jdbcType=VARCHAR},
+      <if test="projlogo != null">
+        #{projlogo,jdbcType=VARCHAR},
       </if>
-      <if test="creattime != null">
-        #{creattime,jdbcType=DATE},
+      <if test="projcreattime != null">
+        #{projcreattime,jdbcType=DATE},
       </if>
-      <if test="startuptime != null">
-        #{startuptime,jdbcType=DATE},
+      <if test="projstartuptime != null">
+        #{projstartuptime,jdbcType=DATE},
       </if>
-      <if test="updatetime != null">
-        #{updatetime,jdbcType=DATE},
+      <if test="projupdatetime != null">
+        #{projupdatetime,jdbcType=DATE},
       </if>
-      <if test="endtime != null">
-        #{endtime,jdbcType=DATE},
+      <if test="projendtime != null">
+        #{projendtime,jdbcType=DATE},
       </if>
-      <if test="startupevaluation != null">
-        #{startupevaluation,jdbcType=VARCHAR},
+      <if test="projstartupevaluation != null">
+        #{projstartupevaluation,jdbcType=VARCHAR},
       </if>
-      <if test="resultevaluation != null">
-        #{resultevaluation,jdbcType=VARCHAR},
+      <if test="projresultevaluation != null">
+        #{projresultevaluation,jdbcType=VARCHAR},
       </if>
-      <if test="grade != null">
-        #{grade,jdbcType=VARCHAR},
+      <if test="projgrade != null">
+        #{projgrade,jdbcType=VARCHAR},
       </if>
-      <if test="status != null">
-        #{status,jdbcType=INTEGER},
+      <if test="projstatus != null">
+        #{projstatus,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.xkd.entity.BaseProject">
     update t_project
     <set>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
+      <if test="projname != null">
+        projname = #{projname,jdbcType=VARCHAR},
       </if>
-      <if test="email != null">
-        email = #{email,jdbcType=VARCHAR},
+      <if test="projemail != null">
+        projemail = #{projemail,jdbcType=VARCHAR},
       </if>
-      <if test="phone != null">
-        phone = #{phone,jdbcType=VARCHAR},
+      <if test="projphone != null">
+        projphone = #{projphone,jdbcType=VARCHAR},
       </if>
-      <if test="language != null">
-        language = #{language,jdbcType=VARCHAR},
+      <if test="projlanguage != null">
+        projlanguage = #{projlanguage,jdbcType=VARCHAR},
       </if>
-      <if test="platform != null">
-        platform = #{platform,jdbcType=VARCHAR},
+      <if test="projplatform != null">
+        projplatform = #{projplatform,jdbcType=VARCHAR},
       </if>
-      <if test="allnumber != null">
-        allNumber = #{allnumber,jdbcType=INTEGER},
+      <if test="projallnumber != null">
+        projallNumber = #{projallnumber,jdbcType=INTEGER},
       </if>
-      <if test="currentnumber != null">
-        currentNumber = #{currentnumber,jdbcType=INTEGER},
+      <if test="projcurrentnumber != null">
+        projcurrentNumber = #{projcurrentnumber,jdbcType=INTEGER},
       </if>
-      <if test="tutor != null">
-        tutor = #{tutor,jdbcType=VARCHAR},
+      <if test="projtutor != null">
+        projtutor = #{projtutor,jdbcType=VARCHAR},
       </if>
-      <if test="budget != null">
-        budget = #{budget,jdbcType=DOUBLE},
+      <if test="projbudget != null">
+        projbudget = #{projbudget,jdbcType=DOUBLE},
       </if>
-      <if test="budgetfile != null">
-        budgetFile = #{budgetfile,jdbcType=VARCHAR},
+      <if test="projbudgetfile != null">
+        projbudgetFile = #{projbudgetfile,jdbcType=VARCHAR},
       </if>
-      <if test="progectfile != null">
-        progectFile = #{progectfile,jdbcType=VARCHAR},
+      <if test="projprogectfile != null">
+        projprogectFile = #{projprogectfile,jdbcType=VARCHAR},
       </if>
-      <if test="describe != null">
-        describe = #{describe,jdbcType=VARCHAR},
+      <if test="projdescribe != null">
+        projdescribe = #{projdescribe,jdbcType=VARCHAR},
       </if>
-      <if test="logo != null">
-        logo = #{logo,jdbcType=VARCHAR},
+      <if test="projlogo != null">
+        projlogo = #{projlogo,jdbcType=VARCHAR},
       </if>
-      <if test="creattime != null">
-        creatTime = #{creattime,jdbcType=DATE},
+      <if test="projcreattime != null">
+        projcreatTime = #{projcreattime,jdbcType=DATE},
       </if>
-      <if test="startuptime != null">
-        startupTime = #{startuptime,jdbcType=DATE},
+      <if test="projstartuptime != null">
+        projstartupTime = #{projstartuptime,jdbcType=DATE},
       </if>
-      <if test="updatetime != null">
-        updateTime = #{updatetime,jdbcType=DATE},
+      <if test="projupdatetime != null">
+        projupdateTime = #{projupdatetime,jdbcType=DATE},
       </if>
-      <if test="endtime != null">
-        endTime = #{endtime,jdbcType=DATE},
+      <if test="projendtime != null">
+        projendTime = #{projendtime,jdbcType=DATE},
       </if>
-      <if test="startupevaluation != null">
-        startupEvaluation = #{startupevaluation,jdbcType=VARCHAR},
+      <if test="projstartupevaluation != null">
+        projstartupEvaluation = #{projstartupevaluation,jdbcType=VARCHAR},
       </if>
-      <if test="resultevaluation != null">
-        resultEvaluation = #{resultevaluation,jdbcType=VARCHAR},
+      <if test="projresultevaluation != null">
+        projresultEvaluation = #{projresultevaluation,jdbcType=VARCHAR},
       </if>
-      <if test="grade != null">
-        grade = #{grade,jdbcType=VARCHAR},
+      <if test="projgrade != null">
+        projgrade = #{projgrade,jdbcType=VARCHAR},
       </if>
-      <if test="status != null">
-        status = #{status,jdbcType=INTEGER},
+      <if test="projstatus != null">
+        projstatus = #{projstatus,jdbcType=INTEGER},
       </if>
     </set>
-    where id = #{id,jdbcType=VARCHAR}
+    where projid = #{projid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xkd.entity.BaseProject">
     update t_project
-    set name = #{name,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=VARCHAR},
-      language = #{language,jdbcType=VARCHAR},
-      platform = #{platform,jdbcType=VARCHAR},
-      allNumber = #{allnumber,jdbcType=INTEGER},
-      currentNumber = #{currentnumber,jdbcType=INTEGER},
-      tutor = #{tutor,jdbcType=VARCHAR},
-      budget = #{budget,jdbcType=DOUBLE},
-      budgetFile = #{budgetfile,jdbcType=VARCHAR},
-      progectFile = #{progectfile,jdbcType=VARCHAR},
-      describe = #{describe,jdbcType=VARCHAR},
-      logo = #{logo,jdbcType=VARCHAR},
-      creatTime = #{creattime,jdbcType=DATE},
-      startupTime = #{startuptime,jdbcType=DATE},
-      updateTime = #{updatetime,jdbcType=DATE},
-      endTime = #{endtime,jdbcType=DATE},
-      startupEvaluation = #{startupevaluation,jdbcType=VARCHAR},
-      resultEvaluation = #{resultevaluation,jdbcType=VARCHAR},
-      grade = #{grade,jdbcType=VARCHAR},
-      status = #{status,jdbcType=INTEGER}
-    where id = #{id,jdbcType=VARCHAR}
+    set projname = #{projname,jdbcType=VARCHAR},
+      projemail = #{projemail,jdbcType=VARCHAR},
+      projphone = #{projphone,jdbcType=VARCHAR},
+      projlanguage = #{projlanguage,jdbcType=VARCHAR},
+      projplatform = #{projplatform,jdbcType=VARCHAR},
+      projallNumber = #{projallnumber,jdbcType=INTEGER},
+      projcurrentNumber = #{projcurrentnumber,jdbcType=INTEGER},
+      projtutor = #{projtutor,jdbcType=VARCHAR},
+      projbudget = #{projbudget,jdbcType=DOUBLE},
+      projbudgetFile = #{projbudgetfile,jdbcType=VARCHAR},
+      projprogectFile = #{projprogectfile,jdbcType=VARCHAR},
+      projdescribe = #{projdescribe,jdbcType=VARCHAR},
+      projlogo = #{projlogo,jdbcType=VARCHAR},
+      projcreatTime = #{projcreattime,jdbcType=DATE},
+      projstartupTime = #{projstartuptime,jdbcType=DATE},
+      projupdateTime = #{projupdatetime,jdbcType=DATE},
+      projendTime = #{projendtime,jdbcType=DATE},
+      projstartupEvaluation = #{projstartupevaluation,jdbcType=VARCHAR},
+      projresultEvaluation = #{projresultevaluation,jdbcType=VARCHAR},
+      projgrade = #{projgrade,jdbcType=VARCHAR},
+      projstatus = #{projstatus,jdbcType=INTEGER}
+    where projid = #{projid,jdbcType=VARCHAR}
   </update>
 </mapper>

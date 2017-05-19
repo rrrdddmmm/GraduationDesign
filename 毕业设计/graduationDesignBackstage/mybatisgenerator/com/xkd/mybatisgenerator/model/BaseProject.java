@@ -3,223 +3,223 @@ package com.xkd.mybatisgenerator.model;
 import java.util.Date;
 
 public class BaseProject {
-    private String id;
+    private String projid;
 
-    private String name;
+    private String projname;
 
-    private String email;
+    private String projemail;
 
-    private String phone;
+    private String projphone;
 
-    private String language;
+    private String projlanguage;
 
-    private String platform;
+    private String projplatform;
 
-    private Integer allnumber;
+    private Integer projallnumber;
 
-    private Integer currentnumber;
+    private Integer projcurrentnumber;
 
-    private String tutor;
+    private String projtutor;
 
-    private Double budget;
+    private Double projbudget;
 
-    private String budgetfile;
+    private String projbudgetfile;
 
-    private String progectfile;
+    private String projprogectfile;
 
-    private String describe;
+    private String projdescribe;
 
-    private String logo;
+    private String projlogo;
 
-    private Date creattime;
+    private Date projcreattime;
 
-    private Date startuptime;
+    private Date projstartuptime;
 
-    private Date updatetime;
+    private Date projupdatetime;
 
-    private Date endtime;
+    private Date projendtime;
 
-    private String startupevaluation;
+    private String projstartupevaluation;
 
-    private String resultevaluation;
+    private String projresultevaluation;
 
-    private String grade;
+    private String projgrade;
 
-    private Integer status;
+    private Integer projstatus;
 
-    public String getId() {
-        return id;
+    public String getProjid() {
+        return projid;
     }
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+    public void setProjid(String projid) {
+        this.projid = projid == null ? null : projid.trim();
     }
 
-    public String getName() {
-        return name;
+    public String getProjname() {
+        return projname;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setProjname(String projname) {
+        this.projname = projname == null ? null : projname.trim();
     }
 
-    public String getEmail() {
-        return email;
+    public String getProjemail() {
+        return projemail;
     }
 
-    public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
+    public void setProjemail(String projemail) {
+        this.projemail = projemail == null ? null : projemail.trim();
     }
 
-    public String getPhone() {
-        return phone;
+    public String getProjphone() {
+        return projphone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
+    public void setProjphone(String projphone) {
+        this.projphone = projphone == null ? null : projphone.trim();
     }
 
-    public String getLanguage() {
-        return language;
+    public String getProjlanguage() {
+        return projlanguage;
     }
 
-    public void setLanguage(String language) {
-        this.language = language == null ? null : language.trim();
+    public void setProjlanguage(String projlanguage) {
+        this.projlanguage = projlanguage == null ? null : projlanguage.trim();
     }
 
-    public String getPlatform() {
-        return platform;
+    public String getProjplatform() {
+        return projplatform;
     }
 
-    public void setPlatform(String platform) {
-        this.platform = platform == null ? null : platform.trim();
+    public void setProjplatform(String projplatform) {
+        this.projplatform = projplatform == null ? null : projplatform.trim();
     }
 
-    public Integer getAllnumber() {
-        return allnumber;
+    public Integer getProjallnumber() {
+        return projallnumber;
     }
 
-    public void setAllnumber(Integer allnumber) {
-        this.allnumber = allnumber;
+    public void setProjallnumber(Integer projallnumber) {
+        this.projallnumber = projallnumber;
     }
 
-    public Integer getCurrentnumber() {
-        return currentnumber;
+    public Integer getProjcurrentnumber() {
+        return projcurrentnumber;
     }
 
-    public void setCurrentnumber(Integer currentnumber) {
-        this.currentnumber = currentnumber;
+    public void setProjcurrentnumber(Integer projcurrentnumber) {
+        this.projcurrentnumber = projcurrentnumber;
     }
 
-    public String getTutor() {
-        return tutor;
+    public String getProjtutor() {
+        return projtutor;
     }
 
-    public void setTutor(String tutor) {
-        this.tutor = tutor == null ? null : tutor.trim();
+    public void setProjtutor(String projtutor) {
+        this.projtutor = projtutor == null ? null : projtutor.trim();
     }
 
-    public Double getBudget() {
-        return budget;
+    public Double getProjbudget() {
+        return projbudget;
     }
 
-    public void setBudget(Double budget) {
-        this.budget = budget;
+    public void setProjbudget(Double projbudget) {
+        this.projbudget = projbudget;
     }
 
-    public String getBudgetfile() {
-        return budgetfile;
+    public String getProjbudgetfile() {
+        return projbudgetfile;
     }
 
-    public void setBudgetfile(String budgetfile) {
-        this.budgetfile = budgetfile == null ? null : budgetfile.trim();
+    public void setProjbudgetfile(String projbudgetfile) {
+        this.projbudgetfile = projbudgetfile == null ? null : projbudgetfile.trim();
     }
 
-    public String getProgectfile() {
-        return progectfile;
+    public String getProjprogectfile() {
+        return projprogectfile;
     }
 
-    public void setProgectfile(String progectfile) {
-        this.progectfile = progectfile == null ? null : progectfile.trim();
+    public void setProjprogectfile(String projprogectfile) {
+        this.projprogectfile = projprogectfile == null ? null : projprogectfile.trim();
     }
 
-    public String getDescribe() {
-        return describe;
+    public String getProjdescribe() {
+        return projdescribe;
     }
 
-    public void setDescribe(String describe) {
-        this.describe = describe == null ? null : describe.trim();
+    public void setProjdescribe(String projdescribe) {
+        this.projdescribe = projdescribe == null ? null : projdescribe.trim();
     }
 
-    public String getLogo() {
-        return logo;
+    public String getProjlogo() {
+        return projlogo;
     }
 
-    public void setLogo(String logo) {
-        this.logo = logo == null ? null : logo.trim();
+    public void setProjlogo(String projlogo) {
+        this.projlogo = projlogo == null ? null : projlogo.trim();
     }
 
-    public Date getCreattime() {
-        return creattime;
+    public Date getProjcreattime() {
+        return projcreattime;
     }
 
-    public void setCreattime(Date creattime) {
-        this.creattime = creattime;
+    public void setProjcreattime(Date projcreattime) {
+        this.projcreattime = projcreattime;
     }
 
-    public Date getStartuptime() {
-        return startuptime;
+    public Date getProjstartuptime() {
+        return projstartuptime;
     }
 
-    public void setStartuptime(Date startuptime) {
-        this.startuptime = startuptime;
+    public void setProjstartuptime(Date projstartuptime) {
+        this.projstartuptime = projstartuptime;
     }
 
-    public Date getUpdatetime() {
-        return updatetime;
+    public Date getProjupdatetime() {
+        return projupdatetime;
     }
 
-    public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
+    public void setProjupdatetime(Date projupdatetime) {
+        this.projupdatetime = projupdatetime;
     }
 
-    public Date getEndtime() {
-        return endtime;
+    public Date getProjendtime() {
+        return projendtime;
     }
 
-    public void setEndtime(Date endtime) {
-        this.endtime = endtime;
+    public void setProjendtime(Date projendtime) {
+        this.projendtime = projendtime;
     }
 
-    public String getStartupevaluation() {
-        return startupevaluation;
+    public String getProjstartupevaluation() {
+        return projstartupevaluation;
     }
 
-    public void setStartupevaluation(String startupevaluation) {
-        this.startupevaluation = startupevaluation == null ? null : startupevaluation.trim();
+    public void setProjstartupevaluation(String projstartupevaluation) {
+        this.projstartupevaluation = projstartupevaluation == null ? null : projstartupevaluation.trim();
     }
 
-    public String getResultevaluation() {
-        return resultevaluation;
+    public String getProjresultevaluation() {
+        return projresultevaluation;
     }
 
-    public void setResultevaluation(String resultevaluation) {
-        this.resultevaluation = resultevaluation == null ? null : resultevaluation.trim();
+    public void setProjresultevaluation(String projresultevaluation) {
+        this.projresultevaluation = projresultevaluation == null ? null : projresultevaluation.trim();
     }
 
-    public String getGrade() {
-        return grade;
+    public String getProjgrade() {
+        return projgrade;
     }
 
-    public void setGrade(String grade) {
-        this.grade = grade == null ? null : grade.trim();
+    public void setProjgrade(String projgrade) {
+        this.projgrade = projgrade == null ? null : projgrade.trim();
     }
 
-    public Integer getStatus() {
-        return status;
+    public Integer getProjstatus() {
+        return projstatus;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setProjstatus(Integer projstatus) {
+        this.projstatus = projstatus;
     }
 }
