@@ -1,17 +1,33 @@
 package com.xkd.entity;
 
 import java.util.Date;
+import java.util.List;
 
+/**
+ * 方向常量表
+ * 
+ * @author RBB
+ *
+ */
 public class BaseDirection extends BaseConfig {
-	private Integer	id;
+	private Integer			id;
 
-	private String	name;
+	private String			name;
 
-	private Date	creattime;
+	private Date			creattime;
 
-	private Date	updatetime;
+	private Date			updatetime;
 
-	private String	state;
+	private String			state;
+	private List<BaseUser>	userList;
+
+	public List<BaseUser> getUserList() {
+		return userList;
+	}
+
+	public void setUserList(List<BaseUser> userList) {
+		this.userList = userList;
+	}
 
 	public Integer getId() {
 		return id;

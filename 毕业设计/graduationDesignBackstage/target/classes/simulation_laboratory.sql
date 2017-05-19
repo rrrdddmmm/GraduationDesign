@@ -87,7 +87,7 @@ CREATE TABLE `t_user` (
   `education` varchar(5) DEFAULT '完善学历' COMMENT '学历',
   `direction` varchar(5) DEFAULT '完善方向' COMMENT '方向',
   `introduce` varchar(500) NOT NULL COMMENT '简介和补充说明',
-  `image` varchar(200) DEFAULT NULL COMMENT '/resource/default.jpg',
+  `image` varchar(200) DEFAULT '/resource/default.jpg' COMMENT '头像照片',
   `creatTime` date DEFAULT NULL COMMENT '建创时间',
   `updateTime` date DEFAULT NULL COMMENT '修改时间',
   `state` varchar(5)  DEFAULT '2' COMMENT '账号状态',
@@ -150,22 +150,24 @@ INSERT INTO `t_direction` VALUES ('2', '大数据','2017-04-13','2017-04-13','1'
 DROP TABLE IF EXISTS `t_news`;
 CREATE TABLE `t_news` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `title` varchar(50) NOT NULL COMMENT '新闻标题',
-  `explain` varchar(500) NOT NULL COMMENT '新闻简介',
-  `logo` varchar(20) DEFAULT '上传log' COMMENT '新闻logo',
-  `details` varchar(50) COMMENT '详情连接',
+  `newstitle` varchar(200) DEFAULT NULL COMMENT '新闻标题',
+  `newsexplain` varchar(500) DEFAULT NULL COMMENT '新闻简介',
+  `newslogo` varchar(200) DEFAULT '/resource/default.jpg' COMMENT '新闻logo',
+  `newsdetails` varchar(200) DEFAULT '#' COMMENT '详情连接',
   `creatTime` date DEFAULT NULL COMMENT '建创时间',
   `updateTime` date DEFAULT NULL COMMENT '修改时间',
   `state` varchar(5) NOT NULL DEFAULT '0' COMMENT '新闻状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
-
+INSERT INTO `t_news` VALUES ('1', '大数据有大新闻啦!!!','后视镜的痕','/resource/default.jpg','#','2017-04-13','2017-04-13','1');
+INSERT INTO `t_news` VALUES ('2', '大数据有大新闻啦!!!','后视镜的痕','/resource/default.jpg','#','2017-04-13','2017-04-13','1');
+INSERT INTO `t_news` VALUES ('3', '大数据有大新闻啦!!!','后视镜的痕','/resource/default.jpg','#','2017-04-13','2017-04-13','1');
 -- ----------------------------
 -- 项目表Table structure for `t_project`
 -- ----------------------------
 DROP TABLE IF EXISTS `t_project`;
 CREATE TABLE `t_project` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `id` varchar(100) NOT NULL  COMMENT '主键',
   `name` varchar(50)  NOT NULL COMMENT '项目名称',
   `email` varchar(50)  NOT NULL COMMENT '创建人邮件账号',
   `phone` varchar(20) NOT NULL COMMENT '手机号',
@@ -175,9 +177,10 @@ CREATE TABLE `t_project` (
   `currentNumber` int(11) NOT NULL DEFAULT '0' COMMENT '项目当前人数',
   `tutor` varchar(10)  NOT NULL COMMENT '指导老师账号',
   `budget` double(10,0) DEFAULT NULL COMMENT '项目预算价格',
-  `budgetFile` varchar(20)  DEFAULT NULL COMMENT '预算账单地址',
-  `describe` varchar(100)  DEFAULT NULL COMMENT '项目描述',
-  `logo` varchar(20)  DEFAULT NULL COMMENT '项目logo',
+  `budgetFile` varchar(200)  DEFAULT NULL COMMENT '预算账单地址',
+  `progectFile` varchar(200)  DEFAULT NULL COMMENT '立项书',
+  `describe` varchar(500)  DEFAULT NULL COMMENT '项目描述',
+  `logo` varchar(200)  DEFAULT NULL COMMENT '项目logo',
   `creatTime` date NOT NULL COMMENT '创建时间',
   `startupTime` date DEFAULT NULL COMMENT '启动时间',
   `updateTime` date DEFAULT NULL COMMENT '更新时间',
@@ -203,6 +206,8 @@ CREATE TABLE `t_language` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 INSERT INTO `t_language` VALUES ('1', 'java语言','2017-04-13','2017-04-13','1');
+INSERT INTO `t_language` VALUES ('2', 'c语言','2017-04-13','2017-04-13','1');
+INSERT INTO `t_language` VALUES ('3', 'c#语言','2017-04-13','2017-04-13','1');
 
 -- ----------------------------
 -- 开发平台常量表：Table structure for `t_platform`
@@ -217,13 +222,14 @@ CREATE TABLE `t_platform` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 INSERT INTO `t_platform` VALUES ('1', 'windows平台','2017-04-13','2017-04-13','1');
+INSERT INTO `t_platform` VALUES ('2', 'linux平台','2017-04-13','2017-04-13','1');
 
 -- ----------------------------
 -- 用户-项目表（不包括负责人）：Table structure for `home`
 -- ----------------------------
 DROP TABLE IF EXISTS `t_home`;
 CREATE TABLE `t_home` (
-  `projectId` int(11)  NOT NULL COMMENT '项目id',
+  `projectId` varchar(100)  NOT NULL COMMENT '项目id',
   `email` varchar(50) NOT NULL COMMENT '用户email',
   `creatTime` date DEFAULT NULL COMMENT '建创时间',
   `updateTime` date DEFAULT NULL COMMENT '修改时间',
@@ -236,7 +242,7 @@ CREATE TABLE `t_home` (
 -- ----------------------------
 DROP TABLE IF EXISTS `t_task`;
 CREATE TABLE `t_task` (
-  `projectId` int(11)  NOT NULL COMMENT '项目id',
+  `projectId` varchar(100)  NOT NULL COMMENT '项目id',
   `email` varchar(50) NOT NULL COMMENT '用户email',
   `startupTime` date NOT NULL COMMENT '开始时间',
   `updateTime` date DEFAULT NULL COMMENT '更新时间',

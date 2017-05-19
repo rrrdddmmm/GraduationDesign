@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xkd.dao.BaseProjectMapper">
   <resultMap id="BaseResultMap" type="com.xkd.entity.BaseProject">
-    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
@@ -13,6 +13,7 @@
     <result column="tutor" jdbcType="VARCHAR" property="tutor" />
     <result column="budget" jdbcType="DOUBLE" property="budget" />
     <result column="budgetFile" jdbcType="VARCHAR" property="budgetfile" />
+    <result column="progectFile" jdbcType="VARCHAR" property="progectfile" />
     <result column="describe" jdbcType="VARCHAR" property="describe" />
     <result column="logo" jdbcType="VARCHAR" property="logo" />
     <result column="creatTime" jdbcType="DATE" property="creattime" />
@@ -26,41 +27,36 @@
   </resultMap>
   <sql id="Base_Column_List">
     id, name, email, phone, language, platform, allNumber, currentNumber, tutor, budget, 
-    budgetFile, describe, logo, creatTime, startupTime, updateTime, endTime, startupEvaluation, 
-    resultEvaluation, grade, status
+    budgetFile, progectFile, describe, logo, creatTime, startupTime, updateTime, endTime, 
+    startupEvaluation, resultEvaluation, grade, status
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from t_project
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from t_project
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from t_project
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.xkd.entity.BaseProject">
     insert into t_project (id, name, email, 
       phone, language, platform, 
       allNumber, currentNumber, tutor, 
-      budget, budgetFile, describe, 
-      logo, creatTime, startupTime, 
-      updateTime, endTime, startupEvaluation, 
-      resultEvaluation, grade, status
-      )
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      budget, budgetFile, progectFile, 
+      describe, logo, creatTime, 
+      startupTime, updateTime, endTime, 
+      startupEvaluation, resultEvaluation, grade, 
+      status)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
       #{phone,jdbcType=VARCHAR}, #{language,jdbcType=VARCHAR}, #{platform,jdbcType=VARCHAR}, 
       #{allnumber,jdbcType=INTEGER}, #{currentnumber,jdbcType=INTEGER}, #{tutor,jdbcType=VARCHAR}, 
-      #{budget,jdbcType=DOUBLE}, #{budgetfile,jdbcType=VARCHAR}, #{describe,jdbcType=VARCHAR}, 
-      #{logo,jdbcType=VARCHAR}, #{creattime,jdbcType=DATE}, #{startuptime,jdbcType=DATE}, 
-      #{updatetime,jdbcType=DATE}, #{endtime,jdbcType=DATE}, #{startupevaluation,jdbcType=VARCHAR}, 
-      #{resultevaluation,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}
-      )
+      #{budget,jdbcType=DOUBLE}, #{budgetfile,jdbcType=VARCHAR}, #{progectfile,jdbcType=VARCHAR}, 
+      #{describe,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, #{creattime,jdbcType=DATE}, 
+      #{startuptime,jdbcType=DATE}, #{updatetime,jdbcType=DATE}, #{endtime,jdbcType=DATE}, 
+      #{startupevaluation,jdbcType=VARCHAR}, #{resultevaluation,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.xkd.entity.BaseProject">
     insert into t_project
@@ -98,6 +94,9 @@
       <if test="budgetfile != null">
         budgetFile,
       </if>
+      <if test="progectfile != null">
+        progectFile,
+      </if>
       <if test="describe != null">
         describe,
       </if>
@@ -131,7 +130,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=VARCHAR},
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
@@ -162,6 +161,9 @@
       </if>
       <if test="budgetfile != null">
         #{budgetfile,jdbcType=VARCHAR},
+      </if>
+      <if test="progectfile != null">
+        #{progectfile,jdbcType=VARCHAR},
       </if>
       <if test="describe != null">
         #{describe,jdbcType=VARCHAR},
@@ -228,6 +230,9 @@
       <if test="budgetfile != null">
         budgetFile = #{budgetfile,jdbcType=VARCHAR},
       </if>
+      <if test="progectfile != null">
+        progectFile = #{progectfile,jdbcType=VARCHAR},
+      </if>
       <if test="describe != null">
         describe = #{describe,jdbcType=VARCHAR},
       </if>
@@ -259,7 +264,7 @@
         status = #{status,jdbcType=INTEGER},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xkd.entity.BaseProject">
     update t_project
@@ -273,6 +278,7 @@
       tutor = #{tutor,jdbcType=VARCHAR},
       budget = #{budget,jdbcType=DOUBLE},
       budgetFile = #{budgetfile,jdbcType=VARCHAR},
+      progectFile = #{progectfile,jdbcType=VARCHAR},
       describe = #{describe,jdbcType=VARCHAR},
       logo = #{logo,jdbcType=VARCHAR},
       creatTime = #{creattime,jdbcType=DATE},
@@ -283,6 +289,6 @@
       resultEvaluation = #{resultevaluation,jdbcType=VARCHAR},
       grade = #{grade,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

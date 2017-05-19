@@ -22,6 +22,26 @@ public class GetResousePath {
 	}
 
 	/**
+	 * 获取新闻图像的物理文件夹目录
+	 * 
+	 * @param request
+	 * @return
+	 */
+	public static String getNewsImagesAbsPath(String imagsname) {
+		return ConfigStr.newsAbsPathAbs + imagsname;
+	}
+
+	/**
+	 * 获取新闻图像的网络地址
+	 * 
+	 * @param request
+	 * @return
+	 */
+	public static String getNewsImagesNetPath(String imagsname) {
+		return ConfigStr.newsNetPathAbs + imagsname;
+	}
+
+	/**
 	 * 获取用户资源网络根路径
 	 * 
 	 * @author RBB

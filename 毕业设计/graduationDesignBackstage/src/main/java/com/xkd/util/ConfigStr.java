@@ -9,5 +9,7 @@ public interface ConfigStr {
 	public static String	close			= "2";
 	public static String	ResourcesPath	= "F:/resource/";
 	public static String	netPathAbs		= "/resource/";
+	public static String	newsAbsPathAbs	= "F:/resource/news/";
+	public static String	newsNetPathAbs	= "/resource/news/";
 
 }

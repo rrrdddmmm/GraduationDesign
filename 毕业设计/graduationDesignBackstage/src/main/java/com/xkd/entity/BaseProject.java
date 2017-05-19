@@ -3,213 +3,223 @@ package com.xkd.entity;
 import java.util.Date;
 
 public class BaseProject {
-    private Integer id;
+	private String	id;
 
-    private String name;
+	private String	name;
 
-    private String email;
+	private String	email;
 
-    private String phone;
+	private String	phone;
 
-    private String language;
+	private String	language;
 
-    private String platform;
+	private String	platform;
 
-    private Integer allnumber;
+	private Integer	allnumber;
 
-    private Integer currentnumber;
+	private Integer	currentnumber;
 
-    private String tutor;
+	private String	tutor;
 
-    private Double budget;
+	private Double	budget;
 
-    private String budgetfile;
+	private String	budgetfile;
 
-    private String describe;
+	private String	progectfile;
 
-    private String logo;
+	private String	describe;
 
-    private Date creattime;
+	private String	logo;
 
-    private Date startuptime;
+	private Date	creattime;
 
-    private Date updatetime;
+	private Date	startuptime;
 
-    private Date endtime;
+	private Date	updatetime;
 
-    private String startupevaluation;
+	private Date	endtime;
 
-    private String resultevaluation;
+	private String	startupevaluation;
 
-    private String grade;
+	private String	resultevaluation;
 
-    private Integer status;
+	private String	grade;
 
-    public Integer getId() {
-        return id;
-    }
+	private Integer	status;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public String getId() {
+		return id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setId(String id) {
+		this.id = id == null ? null : id.trim();
+	}
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public void setName(String name) {
+		this.name = name == null ? null : name.trim();
+	}
 
-    public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public String getPhone() {
-        return phone;
-    }
+	public void setEmail(String email) {
+		this.email = email == null ? null : email.trim();
+	}
 
-    public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
-    }
+	public String getPhone() {
+		return phone;
+	}
 
-    public String getLanguage() {
-        return language;
-    }
+	public void setPhone(String phone) {
+		this.phone = phone == null ? null : phone.trim();
+	}
 
-    public void setLanguage(String language) {
-        this.language = language == null ? null : language.trim();
-    }
+	public String getLanguage() {
+		return language;
+	}
 
-    public String getPlatform() {
-        return platform;
-    }
+	public void setLanguage(String language) {
+		this.language = language == null ? null : language.trim();
+	}
 
-    public void setPlatform(String platform) {
-        this.platform = platform == null ? null : platform.trim();
-    }
+	public String getPlatform() {
+		return platform;
+	}
 
-    public Integer getAllnumber() {
-        return allnumber;
-    }
+	public void setPlatform(String platform) {
+		this.platform = platform == null ? null : platform.trim();
+	}
 
-    public void setAllnumber(Integer allnumber) {
-        this.allnumber = allnumber;
-    }
+	public Integer getAllnumber() {
+		return allnumber;
+	}
 
-    public Integer getCurrentnumber() {
-        return currentnumber;
-    }
+	public void setAllnumber(Integer allnumber) {
+		this.allnumber = allnumber;
+	}
 
-    public void setCurrentnumber(Integer currentnumber) {
-        this.currentnumber = currentnumber;
-    }
+	public Integer getCurrentnumber() {
+		return currentnumber;
+	}
 
-    public String getTutor() {
-        return tutor;
-    }
+	public void setCurrentnumber(Integer currentnumber) {
+		this.currentnumber = currentnumber;
+	}
 
-    public void setTutor(String tutor) {
-        this.tutor = tutor == null ? null : tutor.trim();
-    }
+	public String getTutor() {
+		return tutor;
+	}
 
-    public Double getBudget() {
-        return budget;
-    }
+	public void setTutor(String tutor) {
+		this.tutor = tutor == null ? null : tutor.trim();
+	}
 
-    public void setBudget(Double budget) {
-        this.budget = budget;
-    }
+	public Double getBudget() {
+		return budget;
+	}
 
-    public String getBudgetfile() {
-        return budgetfile;
-    }
+	public void setBudget(Double budget) {
+		this.budget = budget;
+	}
 
-    public void setBudgetfile(String budgetfile) {
-        this.budgetfile = budgetfile == null ? null : budgetfile.trim();
-    }
+	public String getBudgetfile() {
+		return budgetfile;
+	}
 
-    public String getDescribe() {
-        return describe;
-    }
+	public void setBudgetfile(String budgetfile) {
+		this.budgetfile = budgetfile == null ? null : budgetfile.trim();
+	}
 
-    public void setDescribe(String describe) {
-        this.describe = describe == null ? null : describe.trim();
-    }
+	public String getProgectfile() {
+		return progectfile;
+	}
 
-    public String getLogo() {
-        return logo;
-    }
+	public void setProgectfile(String progectfile) {
+		this.progectfile = progectfile == null ? null : progectfile.trim();
+	}
 
-    public void setLogo(String logo) {
-        this.logo = logo == null ? null : logo.trim();
-    }
+	public String getDescribe() {
+		return describe;
+	}
 
-    public Date getCreattime() {
-        return creattime;
-    }
+	public void setDescribe(String describe) {
+		this.describe = describe == null ? null : describe.trim();
+	}
 
-    public void setCreattime(Date creattime) {
-        this.creattime = creattime;
-    }
+	public String getLogo() {
+		return logo;
+	}
 
-    public Date getStartuptime() {
-        return startuptime;
-    }
+	public void setLogo(String logo) {
+		this.logo = logo == null ? null : logo.trim();
+	}
 
-    public void setStartuptime(Date startuptime) {
-        this.startuptime = startuptime;
-    }
+	public Date getCreattime() {
+		return creattime;
+	}
 
-    public Date getUpdatetime() {
-        return updatetime;
-    }
+	public void setCreattime(Date creattime) {
+		this.creattime = creattime;
+	}
 
-    public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
-    }
+	public Date getStartuptime() {
+		return startuptime;
+	}
 
-    public Date getEndtime() {
-        return endtime;
-    }
+	public void setStartuptime(Date startuptime) {
+		this.startuptime = startuptime;
+	}
 
-    public void setEndtime(Date endtime) {
-        this.endtime = endtime;
-    }
+	public Date getUpdatetime() {
+		return updatetime;
+	}
 
-    public String getStartupevaluation() {
-        return startupevaluation;
-    }
+	public void setUpdatetime(Date updatetime) {
+		this.updatetime = updatetime;
+	}
 
-    public void setStartupevaluation(String startupevaluation) {
-        this.startupevaluation = startupevaluation == null ? null : startupevaluation.trim();
-    }
+	public Date getEndtime() {
+		return endtime;
+	}
 
-    public String getResultevaluation() {
-        return resultevaluation;
-    }
+	public void setEndtime(Date endtime) {
+		this.endtime = endtime;
+	}
 
-    public void setResultevaluation(String resultevaluation) {
-        this.resultevaluation = resultevaluation == null ? null : resultevaluation.trim();
-    }
+	public String getStartupevaluation() {
+		return startupevaluation;
+	}
 
-    public String getGrade() {
-        return grade;
-    }
+	public void setStartupevaluation(String startupevaluation) {
+		this.startupevaluation = startupevaluation == null ? null : startupevaluation.trim();
+	}
 
-    public void setGrade(String grade) {
-        this.grade = grade == null ? null : grade.trim();
-    }
+	public String getResultevaluation() {
+		return resultevaluation;
+	}
 
-    public Integer getStatus() {
-        return status;
-    }
+	public void setResultevaluation(String resultevaluation) {
+		this.resultevaluation = resultevaluation == null ? null : resultevaluation.trim();
+	}
 
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
+	public String getGrade() {
+		return grade;
+	}
+
+	public void setGrade(String grade) {
+		this.grade = grade == null ? null : grade.trim();
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 }

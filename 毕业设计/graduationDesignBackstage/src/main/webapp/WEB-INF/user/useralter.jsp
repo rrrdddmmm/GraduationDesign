@@ -157,8 +157,15 @@
 			</div>
 			<div class="sytxq_conment_bc">
 				<button type="button" id="tsave" class="chaxun_but">保 存</button>
-				<button type="button" onclick="location.href='userList.do'" class="chaxun_but">返
+				<c:if test="${statefalse==2 }">
+					<button type="button" onclick="location.href='userList.do'" class="chaxun_but">返
 					回</button>
+				</c:if>
+				<c:if test="${statefalse==1 }">
+					<button type="button" onclick="location.href='userStateList.do?state=2'" class="chaxun_but">返
+					回</button>
+				</c:if>
+				
 			</div>
 		</div>
 	</div>

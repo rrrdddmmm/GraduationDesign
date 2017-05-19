@@ -37,17 +37,16 @@ public class UserLoginController implements Serializable {
 	@Resource(name = "userLoginService")
 	private UserLoginService	userLoginService;
 
-	@RequestMapping("/toLogin.do")
-	public String toLogin() {
-		return "user/login";
-	}
+	// @RequestMapping("/toLogin.do")
+	// public String toLogin() {
+	// return "user/login";
+	// }
 
 	@RequestMapping("/loginHandle.do")
 	@ResponseBody
 	public StateResult loginHandle(BaseUser user, Model model, StateResult stateResult) {
 		BaseUser dbuser = userLoginService.loginHandle(user, stateResult);
 		if (dbuser != null) {
-			System.out.println(dbuser);
 			model.addAttribute(ConfigStr.userInfomation, dbuser);
 		}
 		return stateResult;

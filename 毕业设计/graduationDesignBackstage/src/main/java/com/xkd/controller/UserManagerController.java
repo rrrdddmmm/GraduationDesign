@@ -41,10 +41,10 @@ public class UserManagerController implements Serializable {
 		List<BaseConfig> educationconfiglist = (List<BaseConfig>) configManagerService.configList(1);
 		model.addAttribute("educationconfiglist", educationconfiglist);
 		@SuppressWarnings("unchecked")
-		List<BaseConfig> titleconfiglist = (List<BaseConfig>) configManagerService.configList(2);
+		List<BaseConfig> titleconfiglist = (List<BaseConfig>) configManagerService.configList(3);
 		model.addAttribute("titleconfiglist", titleconfiglist);
 		@SuppressWarnings("unchecked")
-		List<BaseConfig> directionconfiglist = (List<BaseConfig>) configManagerService.configList(3);
+		List<BaseConfig> directionconfiglist = (List<BaseConfig>) configManagerService.configList(2);
 		model.addAttribute("directionconfiglist", directionconfiglist);
 		return "user/useradd";
 	}
@@ -64,18 +64,19 @@ public class UserManagerController implements Serializable {
 	}
 
 	@RequestMapping("/userAlter.do")
-	public String userAlter(Model model, Integer id) {
+	public String userAlter(Model model, Integer id, Integer statefalse) {
 		BaseUser user = userManagerService.userAlterHandle(id);
 		@SuppressWarnings("unchecked")
 		List<BaseConfig> educationconfiglist = (List<BaseConfig>) configManagerService.configList(1);
 		model.addAttribute("educationconfiglist", educationconfiglist);
 		@SuppressWarnings("unchecked")
-		List<BaseConfig> titleconfiglist = (List<BaseConfig>) configManagerService.configList(2);
+		List<BaseConfig> titleconfiglist = (List<BaseConfig>) configManagerService.configList(3);
 		model.addAttribute("titleconfiglist", titleconfiglist);
 		@SuppressWarnings("unchecked")
-		List<BaseConfig> directionconfiglist = (List<BaseConfig>) configManagerService.configList(3);
+		List<BaseConfig> directionconfiglist = (List<BaseConfig>) configManagerService.configList(2);
 		model.addAttribute("directionconfiglist", directionconfiglist);
 		model.addAttribute("user", user);
+		model.addAttribute("statefalse", statefalse);
 		return "user/useralter";
 	}
 
@@ -93,6 +94,7 @@ public class UserManagerController implements Serializable {
 	public String userList(Model model) {
 		List<BaseUser> list = userManagerService.userList();
 		model.addAttribute("baseUserList", list);
+		model.addAttribute("statefalse", 2);
 		return "user/userlist";
 	}
 
@@ -100,6 +102,7 @@ public class UserManagerController implements Serializable {
 	public String userStateList(Model model, String state) {
 		List<BaseUser> list = userManagerService.userStateList(model, state);
 		model.addAttribute("baseUserList", list);
+		model.addAttribute("statefalse", 1);
 		return "user/userlist";
 	}
 

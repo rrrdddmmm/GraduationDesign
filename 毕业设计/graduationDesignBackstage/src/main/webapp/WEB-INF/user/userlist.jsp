@@ -58,7 +58,7 @@
 					<td><fmt:formatDate value="${li.updatetime }" pattern="yyyy-MM-dd"/></td>
 	            	<c:if test="${li.state==1}"><td>启用</td></c:if>
 	            	<c:if test="${li.state==2}"><td>停用</td></c:if>
-	            	<td><a href="userAlter.do?id=${li.id }">修改(查看)</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a class="font-red-sunglo" >删除</a>
+	            	<td><a href="userAlter.do?id=${li.id }&statefalse=${statefalse}">修改(查看)</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a class="font-red-sunglo" >删除</a>
 	            	</td>
 	            </tr>
             </c:forEach>

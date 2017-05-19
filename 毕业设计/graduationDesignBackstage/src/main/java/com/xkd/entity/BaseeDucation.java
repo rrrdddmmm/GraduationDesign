@@ -2,6 +2,12 @@ package com.xkd.entity;
 
 import java.util.Date;
 
+/**
+ * 学历
+ * 
+ * @author RBB
+ *
+ */
 public class BaseeDucation extends BaseConfig {
 	private Integer	id;
 
@@ -52,4 +58,5 @@ public class BaseeDucation extends BaseConfig {
 	public void setState(String state) {
 		this.state = state == null ? null : state.trim();
 	}
+
 }

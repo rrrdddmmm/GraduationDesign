@@ -3,83 +3,89 @@ package com.xkd.entity;
 import java.util.Date;
 
 public class BaseNews {
-    private Integer id;
+	private Integer	id;
 
-    private String title;
+	private String	title;
 
-    private String explain;
+	private String	explain;
 
-    private String logo;
+	private String	logo;
 
-    private String details;
+	private String	details;
 
-    private Date creattime;
+	private Date	creattime;
 
-    private Date updatetime;
+	private Date	updatetime;
 
-    private String state;
+	private String	state;
 
-    public Integer getId() {
-        return id;
-    }
+	@Override
+	public String toString() {
+		return "BaseNews [id=" + id + ", title=" + title + ", explain=" + explain + ", logo=" + logo + ", details="
+				+ details + ", creattime=" + creattime + ", updatetime=" + updatetime + ", state=" + state + "]";
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public String getTitle() {
-        return title;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public void setTitle(String title) {
-        this.title = title == null ? null : title.trim();
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public String getExplain() {
-        return explain;
-    }
+	public void setTitle(String title) {
+		this.title = title == null ? null : title.trim();
+	}
 
-    public void setExplain(String explain) {
-        this.explain = explain == null ? null : explain.trim();
-    }
+	public String getExplain() {
+		return explain;
+	}
 
-    public String getLogo() {
-        return logo;
-    }
+	public void setExplain(String explain) {
+		this.explain = explain == null ? null : explain.trim();
+	}
 
-    public void setLogo(String logo) {
-        this.logo = logo == null ? null : logo.trim();
-    }
+	public String getLogo() {
+		return logo;
+	}
 
-    public String getDetails() {
-        return details;
-    }
+	public void setLogo(String logo) {
+		this.logo = logo == null ? null : logo.trim();
+	}
 
-    public void setDetails(String details) {
-        this.details = details == null ? null : details.trim();
-    }
+	public String getDetails() {
+		return details;
+	}
 
-    public Date getCreattime() {
-        return creattime;
-    }
+	public void setDetails(String details) {
+		this.details = details == null ? null : details.trim();
+	}
 
-    public void setCreattime(Date creattime) {
-        this.creattime = creattime;
-    }
+	public Date getCreattime() {
+		return creattime;
+	}
 
-    public Date getUpdatetime() {
-        return updatetime;
-    }
+	public void setCreattime(Date creattime) {
+		this.creattime = creattime;
+	}
 
-    public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
-    }
+	public Date getUpdatetime() {
+		return updatetime;
+	}
 
-    public String getState() {
-        return state;
-    }
+	public void setUpdatetime(Date updatetime) {
+		this.updatetime = updatetime;
+	}
 
-    public void setState(String state) {
-        this.state = state == null ? null : state.trim();
-    }
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state == null ? null : state.trim();
+	}
 }

@@ -8,7 +8,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.xkd.dao.BaseDirectionMapper;
 import com.xkd.dao.BaseUserMapper;
+import com.xkd.entity.BaseDirection;
 import com.xkd.entity.BaseUser;
 import com.xkd.entity.StateResult;
 import com.xkd.util.DateDealwith;
@@ -17,9 +19,17 @@ import com.xkd.util.DateDealwith;
 @Scope("prototype")
 public class UserManagerService {
 	@Resource(name = "baseUserMapper")
-	private BaseUserMapper	baseUserMapper;
+	private BaseUserMapper		baseUserMapper;
+	/**
+	 * 方向常量表
+	 */
+	@Resource(name = "baseDirectionMapper")
+	private BaseDirectionMapper	baseDirectionMapper;
 
 	public StateResult userAddHandle(BaseUser user, StateResult stateResult) {
+		user.setCreattime(DateDealwith.getCurrDate());
+		user.setUpdatetime(DateDealwith.getCurrDate());
+		user.setImage(null);
 		if (verifyEmailAndPhone(user.getEmail(), null)) {
 			if (verifyEmailAndPhone(null, user.getPhone())) {
 				if (baseUserMapper.insertSelective(user) > 0) {
@@ -77,6 +87,15 @@ public class UserManagerService {
 	public BaseUser userAlterHandle(Integer id) {
 		BaseUser user = baseUserMapper.selectByPrimaryKey(id);
 		return user;
+	}
+
+	public List<BaseDirection> getTeacherMenuForCreat() {
+		List<BaseDirection> baseDirectionList = baseDirectionMapper.selectAll();
+		for (BaseDirection baseDirection : baseDirectionList) {
+			baseDirection.setUserList(baseUserMapper.selectByBaseDirection(baseDirection.getName()));
+			System.out.println(baseDirection.getUserList().size());
+		}
+		return baseDirectionList;
 	}
 
 	/**

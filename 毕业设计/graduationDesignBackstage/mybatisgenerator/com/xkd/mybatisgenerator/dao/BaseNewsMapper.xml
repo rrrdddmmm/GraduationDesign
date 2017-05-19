@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xkd.mybatisgenerator.dao.BaseNewsMapper">
+  <resultMap id="BaseResultMap" type="com.xkd.mybatisgenerator.model.BaseNews">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="newstitle" jdbcType="VARCHAR" property="newstitle" />
+    <result column="newsexplain" jdbcType="VARCHAR" property="newsexplain" />
+    <result column="newslogo" jdbcType="VARCHAR" property="newslogo" />
+    <result column="newsdetails" jdbcType="VARCHAR" property="newsdetails" />
+    <result column="creatTime" jdbcType="DATE" property="creattime" />
+    <result column="updateTime" jdbcType="DATE" property="updatetime" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, newstitle, newsexplain, newslogo, newsdetails, creatTime, updateTime, state
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_news
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_news
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xkd.mybatisgenerator.model.BaseNews">
+    insert into t_news (id, newstitle, newsexplain, 
+      newslogo, newsdetails, creatTime, 
+      updateTime, state)
+    values (#{id,jdbcType=INTEGER}, #{newstitle,jdbcType=VARCHAR}, #{newsexplain,jdbcType=VARCHAR}, 
+      #{newslogo,jdbcType=VARCHAR}, #{newsdetails,jdbcType=VARCHAR}, #{creattime,jdbcType=DATE}, 
+      #{updatetime,jdbcType=DATE}, #{state,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xkd.mybatisgenerator.model.BaseNews">
+    insert into t_news
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="newstitle != null">
+        newstitle,
+      </if>
+      <if test="newsexplain != null">
+        newsexplain,
+      </if>
+      <if test="newslogo != null">
+        newslogo,
+      </if>
+      <if test="newsdetails != null">
+        newsdetails,
+      </if>
+      <if test="creattime != null">
+        creatTime,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="newstitle != null">
+        #{newstitle,jdbcType=VARCHAR},
+      </if>
+      <if test="newsexplain != null">
+        #{newsexplain,jdbcType=VARCHAR},
+      </if>
+      <if test="newslogo != null">
+        #{newslogo,jdbcType=VARCHAR},
+      </if>
+      <if test="newsdetails != null">
+        #{newsdetails,jdbcType=VARCHAR},
+      </if>
+      <if test="creattime != null">
+        #{creattime,jdbcType=DATE},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=DATE},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xkd.mybatisgenerator.model.BaseNews">
+    update t_news
+    <set>
+      <if test="newstitle != null">
+        newstitle = #{newstitle,jdbcType=VARCHAR},
+      </if>
+      <if test="newsexplain != null">
+        newsexplain = #{newsexplain,jdbcType=VARCHAR},
+      </if>
+      <if test="newslogo != null">
+        newslogo = #{newslogo,jdbcType=VARCHAR},
+      </if>
+      <if test="newsdetails != null">
+        newsdetails = #{newsdetails,jdbcType=VARCHAR},
+      </if>
+      <if test="creattime != null">
+        creatTime = #{creattime,jdbcType=DATE},
+      </if>
+      <if test="updatetime != null">
+        updateTime = #{updatetime,jdbcType=DATE},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xkd.mybatisgenerator.model.BaseNews">
+    update t_news
+    set newstitle = #{newstitle,jdbcType=VARCHAR},
+      newsexplain = #{newsexplain,jdbcType=VARCHAR},
+      newslogo = #{newslogo,jdbcType=VARCHAR},
+      newsdetails = #{newsdetails,jdbcType=VARCHAR},
+      creatTime = #{creattime,jdbcType=DATE},
+      updateTime = #{updatetime,jdbcType=DATE},
+      state = #{state,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -60,7 +60,6 @@ public class UserMyInfomationController implements Serializable {
 	@ResponseBody
 	public StateResult myInfomationAlter(Model model, BaseUser user, StateResult stateResult, HttpServletRequest request) {
 		user = userMyInfomationService.myInfomationAlter(user, stateResult, request);
-		System.out.println(user);
 		model.addAttribute(ConfigStr.userInfomation, user);
 		return stateResult;
 	}

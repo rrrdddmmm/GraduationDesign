@@ -6,7 +6,11 @@
 <title>添加新闻</title>
 <link href="../content/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../content/js/jquery.1.7.2.min.js"></script>
+<script type="text/javascript" src="../content/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../content/js/jquery-form.js"></script>
 <script type="text/javascript" src="../content/js/user/opuser.js"></script>
+<script type="text/javascript" src="../content/js/commonalert.js"></script>
+<script type="text/javascript" src="../content/js/commonutil.js"></script>
 </head>
 <body>
 	<input type="hidden" id="id" value="" />
@@ -19,29 +23,32 @@
 				<h1 class="syt_lb_top_titleh2">新闻信息表</h1>
 			</div>
 			<div class="sytxq_conment">
+			<form id="addNewsForm" enctype="multipart/form-data">
 				<table width="100%" border="0" cellspacing="0" cellpadding="0"
 					class="table_xq">
 					<tr>
 						<td class="table_xqa">新闻标题：</td>
-						<td class="table_xqb"><input type="text" placeholder="新闻标题"
-							id="departmentname" class="syt_lb_top_conment_txt"
-							style=" float:left;" /> <span class="bitian">*</span> <span
-							class="yzsb" style="display: none;">请填写名称！</span> <span
-							class="yzcg" style="display: none;">验证通过</span>
-							<div class="clear"></div></td>
+						<td class="table_xqb">
+							<input type="text" placeholder="新闻标题" name="title"
+							id="title" class="syt_lb_top_conment_txt" /> 
+						</td>
 					</tr>
 					<tr>
 				      <td class="table_xqa">logo上传：</td>
-				      <td class="table_xqb"><input type="file" style="width:137px; height:27px" class="syt_lb_top_conment_txt"/></td>
+				      <td class="table_xqb"><input type="file" name="file" id="logo" style="width:137px; height:27px" class="syt_lb_top_conment_txt"/>
+				      <a style="color:red;text-align:left;">注：1.照片的像素为160*180px。2.照片格式为BMP/JPG/JPEG。3.建议照片大小不超过40k。</a>
+				      </td>
 				    </tr>
 				    <tr>
 				    	<td class="table_xqa">新闻简介：</td>
-				      	<td colspan="3" class="table_xqb"><textarea name="txtOpinion" rows="3" class="textarea_wby" id="txtOpinion" ></textarea></td>
+				      	<td colspan="3" class="table_xqb"><textarea name="explain" id="explain" class="textarea_wby" rows="5"  maxlength="300" style="width:468px;resize: none;"></textarea>
+				      	<p style="color:red;text-align:left;"><br>注意：不能超过300个字符。</p>
+				      	</td>
 				    </tr>
 				    <tr>
 						<td class="table_xqa">详情连接：</td>
 						<td class="table_xqb">
-						<input type="text" placeholder="详情连接" id="uname" class="syt_lb_top_conment_txt" />
+						<input type="text" name="details" placeholder="详情连接" id="details" class="syt_lb_top_conment_txt" />
 						</td>
 					</tr>
 					<tr>
@@ -56,91 +63,44 @@
 								style="padding-top: 0px;">停用</span></label></td>
 					</tr>
 				</table>
+			</form>
 			</div>
 			<div class="sytxq_conment_bc">
-				<button type="button" id="tsave" onclick="save()" class="chaxun_but">保
+				<button type="button" id="tsave" class="chaxun_but">保
 					存</button>
-				<button type="submit" onclick="callback()" class="chaxun_but">返
+				<button type="button" onclick="location.href='newsList.do'" class="chaxun_but">返
 					回</button>
 			</div>
 		</div>
 	</div>
 	<script type="text/javascript">
-		var cTG = $(".yzcg");
-		var cSB = $(".yzsb");
 		$(document).ready(function() {
-			//GetData();
-			$("#departmentname").blur(function() {
-				departmentname()
-			})
+			$("#tsave").click(function () {
+				var dateObj=new Date();
+				if(verifynull("title") && verifynull("logo") &&
+			       verifynull("explain") &&verifynull("details")) {
+			    }else{
+			    	return;
+			    }
+				$("#addNewsForm").ajaxSubmit({  
+			        type : 'POST',  
+			        url : 'newsAddHandle.do?logo='+dateObj.getTime()+'',  
+			        success : function(result) {  
+			        	if(result.status=='0'){
+							_alert(result.msg);
+				            $("#title").val("");
+				            $("#logo").val("");
+				            $("#explain").val("");
+				            $("#details").val("");
+			        	}else{
+			        		_alert(result.msg,2);
+			        	}
+			        },  
+			        error : function() {  
+			            _alert("上传失败，请检查网络后重试",2);  
+			        }  
+			    });  
+	        })
 		})
-		function departmentname() {
-			if ($("#departmentname").val() != "") {
-				cTG.eq(0).show();
-				cSB.eq(0).hide();
-				return true;
-			} else {
-				cTG.eq(0).hide();
-				cSB.eq(0).show();
-				return false;
-			}
-		}
-
-		function GetData() {
-			$.ajax({
-				type : "POST",
-				url : "",
-				data : {
-					func : "GetDepartById",
-					id : $("#id").val()
-				},
-				dataType : "text",
-				error : function() {
-					//alert("出错了"); 
-				},
-				success : function(data) {
-					$("#FundsTypeName").val(data.data.departmentname);
-					if (data.data.State == 2) {
-						$("input[name='departmenttype']:eq(1)").attr("checked",
-								'checked');
-					}
-					if (data.data.State == 2) {
-						$("input[name='state']:eq(1)").attr("checked",
-								'checked');
-					}
-				}
-			});
-		};
-		function save() {
-			if (departmentname()) {
-				$.ajax({
-					type : "POST",
-					url : "",
-					data : {
-						func : "savedepart",
-						id : $("#id").val(),
-						FundsTypeName : $("#departmentname").val(),
-						state : $("input[name='departmenttype']:checked").val(),
-						state : $("input[name='state']:checked").val()
-					},
-					dataType : "text",
-					error : function() {
-						//alert("出错了"); 
-					},
-					success : function(data) {
-						alert(response);
-						if ($("#id").val() < 1) {
-							$("#departmentname").val("");
-							$("input[name='departmenttype']:eq(0)").attr("checked",
-									'checked');
-							$("input[name='state']:eq(0)").attr("checked",
-									'checked');
-							$(".yzcg").hide();
-							$(".yzsb").hide();
-						}
-					}
-				});
-			}
-		};
 	</script>
 </body>

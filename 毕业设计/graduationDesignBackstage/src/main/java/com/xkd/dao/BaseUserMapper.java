@@ -19,6 +19,8 @@ public interface BaseUserMapper {
 
 	List<BaseUser> selectBystate(String state);
 
+	List<BaseUser> selectByBaseDirection(String direction);
+
 	int updateByPrimaryKeySelective(BaseUser record);
 
 	int updateByPrimaryKey(BaseUser record);
