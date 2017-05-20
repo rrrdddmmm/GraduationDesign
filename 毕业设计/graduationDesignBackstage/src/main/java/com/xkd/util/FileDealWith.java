@@ -109,19 +109,13 @@ public class FileDealWith {
 	}
 
 	/**
-	 * 文件下载、预览、打印
+	 * 文件下载
 	 * 
 	 * @return
 	 * @throws IOException
 	 */
 	public static void downloadFile(HttpServletResponse response, String materialAddress) throws IOException {
-
 		File file = new File(materialAddress);
-		if (!file.exists()) {
-			file.createNewFile();
-		}
-		System.out.println(file.getAbsolutePath());
-		// 去掉下面两行可作为预览、下载、打印pdf功能，其他会直接下载download.do、如果没有下面两行则会直接调用下载对话框
 		response.setContentType("multipart/form-data;charset=UTF-8");
 		response.setHeader("Content-Disposition", "attachment;fileName="
 				+ new String(file.getName().getBytes("UTF-8"), "ISO8859-1"));

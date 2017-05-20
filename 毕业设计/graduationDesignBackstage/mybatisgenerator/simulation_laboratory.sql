@@ -255,3 +255,14 @@ CREATE TABLE `t_task` (
   `status` int(10) NOT NULL DEFAULT '0' COMMENT '任务是否有效',
   PRIMARY KEY (`projectId`,`email`,`startupTime`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+-- ----------------------------
+-- 数据库备份表：Table structure for `t_dbbackup`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_dbbackup`;
+CREATE TABLE `t_dbbackup` (
+  `id` varchar(100) NOT NULL  COMMENT '主键',
+  `creatTime` date DEFAULT NULL COMMENT '建创时间',
+  `creatTimeStr` varchar(20) DEFAULT NULL COMMENT '建创时间',
+  `backuppath` varchar(100) NOT NULL COMMENT '数据库备份地址',
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

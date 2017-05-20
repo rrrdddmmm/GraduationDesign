@@ -79,15 +79,12 @@
 	          <dl><a href="../newsManagerController/newsList.do" target="rightT">新闻管理</a></dl>          
 	    </dd>
 	    <dd class="snav dis">
-	          <dl><a href="../newsManagerController/newsList.do" target="rightT">数据库备份</a></dl>          
-	    </dd>
-	    <dd class="snav dis">
-	          <dl><a href="../newsManagerController/newsList.do" target="rightT">数据库恢复</a></dl>          
+	          <dl><a href="../dbRecBackupController/list.do" target="rightT">数据库备份恢复</a></dl>          
 	    </dd>
       </li>
       <li> <i class="i5"></i><em>个人信息管理</em>
         <dd class="snav dis">
-          <dl><a href="../userMyInfomationController/myInfomation.do" target="rightT">更新我的信息</a></dl>          
+          <dl><a href="../userMyInfomationController/myInfomation.do" target="rightT">わたしの信息</a></dl>          
         </dd>
       </li>
       

@@ -50,7 +50,6 @@ public class ConfigManagerController implements Serializable {
 	@RequestMapping("configHandle.do")
 	@ResponseBody
 	public StateResult configHandle(BaseConfig baseConfig, StateResult stateResult) {
-		System.out.println(baseConfig);
 		stateResult = configManagerService.configHandle(baseConfig, stateResult);
 		return stateResult;
 	}

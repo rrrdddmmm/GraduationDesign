@@ -23,6 +23,7 @@ public class ProjectManagerController implements Serializable {
 
 	@RequestMapping("/projectList.do")
 	public String projectList(Model model) {
+
 		// 添加处理代码
 		return "project/projectlist";
 	}

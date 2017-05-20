@@ -31,7 +31,7 @@ import com.xkd.util.GetResousePath;
 @Scope("prototype")
 public class ProjectCreatService {
 	/**
-	 * 新闻常量表
+	 * 项目表
 	 */
 	@Resource(name = "baseProjectMapper")
 	private BaseProjectMapper	baseProjectMapper;

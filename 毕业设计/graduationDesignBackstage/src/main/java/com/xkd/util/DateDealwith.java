@@ -12,7 +12,7 @@ public class DateDealwith {
 	 */
 	public static Date getCurrDate() {
 		// 获取系统当前时间
-		SimpleDateFormat std = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat std = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		// 将字符串转换为Date格式
 		Date date = null;
 		try {
@@ -23,6 +23,14 @@ public class DateDealwith {
 		}
 		// 给定格式和参数格式要统一不然就会抛出异常
 		return date;
+	}
+
+	public static String getCurrDateStr() {
+		// 获取系统当前时间
+		SimpleDateFormat std = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		// 将字符串转换为Date格式
+		return std.format(new Date()).toString();
+		// 给定格式和参数格式要统一不然就会抛出异常
 	}
 
 	/**
