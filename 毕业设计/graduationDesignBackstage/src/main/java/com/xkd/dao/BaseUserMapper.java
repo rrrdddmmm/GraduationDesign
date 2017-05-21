@@ -17,6 +17,8 @@ public interface BaseUserMapper {
 
 	List<BaseUser> selectAll();
 
+	List<BaseUser> selectAllRoleList(String role);
+
 	List<BaseUser> selectBystate(String state);
 
 	List<BaseUser> selectByBaseDirection(String direction);

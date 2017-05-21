@@ -9,6 +9,8 @@ public class BaseProject {
 
     private String projemail;
 
+    private String creatpersionname;
+
     private String projphone;
 
     private String projlanguage;
@@ -20,6 +22,8 @@ public class BaseProject {
     private Integer projcurrentnumber;
 
     private String projtutor;
+
+    private String projtutorname;
 
     private Double projbudget;
 
@@ -41,7 +45,15 @@ public class BaseProject {
 
     private String projstartupevaluation;
 
-    private String projresultevaluation;
+    private Integer projstartupevaluationvalue;
+
+    private Integer projstartupevaluationstate;
+
+    private String projresultevaluationvalue;
+
+    private Integer projresultevaluation;
+
+    private Integer projresultevaluationstate;
 
     private String projgrade;
 
@@ -69,6 +81,14 @@ public class BaseProject {
 
     public void setProjemail(String projemail) {
         this.projemail = projemail == null ? null : projemail.trim();
+    }
+
+    public String getCreatpersionname() {
+        return creatpersionname;
+    }
+
+    public void setCreatpersionname(String creatpersionname) {
+        this.creatpersionname = creatpersionname == null ? null : creatpersionname.trim();
     }
 
     public String getProjphone() {
@@ -117,6 +137,14 @@ public class BaseProject {
 
     public void setProjtutor(String projtutor) {
         this.projtutor = projtutor == null ? null : projtutor.trim();
+    }
+
+    public String getProjtutorname() {
+        return projtutorname;
+    }
+
+    public void setProjtutorname(String projtutorname) {
+        this.projtutorname = projtutorname == null ? null : projtutorname.trim();
     }
 
     public Double getProjbudget() {
@@ -199,12 +227,44 @@ public class BaseProject {
         this.projstartupevaluation = projstartupevaluation == null ? null : projstartupevaluation.trim();
     }
 
-    public String getProjresultevaluation() {
+    public Integer getProjstartupevaluationvalue() {
+        return projstartupevaluationvalue;
+    }
+
+    public void setProjstartupevaluationvalue(Integer projstartupevaluationvalue) {
+        this.projstartupevaluationvalue = projstartupevaluationvalue;
+    }
+
+    public Integer getProjstartupevaluationstate() {
+        return projstartupevaluationstate;
+    }
+
+    public void setProjstartupevaluationstate(Integer projstartupevaluationstate) {
+        this.projstartupevaluationstate = projstartupevaluationstate;
+    }
+
+    public String getProjresultevaluationvalue() {
+        return projresultevaluationvalue;
+    }
+
+    public void setProjresultevaluationvalue(String projresultevaluationvalue) {
+        this.projresultevaluationvalue = projresultevaluationvalue == null ? null : projresultevaluationvalue.trim();
+    }
+
+    public Integer getProjresultevaluation() {
         return projresultevaluation;
     }
 
-    public void setProjresultevaluation(String projresultevaluation) {
-        this.projresultevaluation = projresultevaluation == null ? null : projresultevaluation.trim();
+    public void setProjresultevaluation(Integer projresultevaluation) {
+        this.projresultevaluation = projresultevaluation;
+    }
+
+    public Integer getProjresultevaluationstate() {
+        return projresultevaluationstate;
+    }
+
+    public void setProjresultevaluationstate(Integer projresultevaluationstate) {
+        this.projresultevaluationstate = projresultevaluationstate;
     }
 
     public String getProjgrade() {

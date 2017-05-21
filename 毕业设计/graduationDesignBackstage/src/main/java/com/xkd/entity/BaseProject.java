@@ -3,223 +3,299 @@ package com.xkd.entity;
 import java.util.Date;
 
 public class BaseProject {
-    private String projid;
+	private String	projid;
 
-    private String projname;
+	private String	projname;
 
-    private String projemail;
+	private String	projemail;
 
-    private String projphone;
+	private String	creatpersionname;
 
-    private String projlanguage;
+	private String	projphone;
 
-    private String projplatform;
+	private String	projlanguage;
 
-    private Integer projallnumber;
+	private String	projplatform;
 
-    private Integer projcurrentnumber;
+	private Integer	projallnumber;
 
-    private String projtutor;
+	private Integer	projcurrentnumber;
 
-    private Double projbudget;
+	private String	projtutor;
 
-    private String projbudgetfile;
+	private String	projtutorname;
 
-    private String projprogectfile;
+	private Double	projbudget;
 
-    private String projdescribe;
+	private String	projbudgetfile;
 
-    private String projlogo;
+	private String	projprogectfile;
 
-    private Date projcreattime;
+	private String	projdescribe;
 
-    private Date projstartuptime;
+	private String	projlogo;
 
-    private Date projupdatetime;
+	private Date	projcreattime;
 
-    private Date projendtime;
+	private Date	projstartuptime;
 
-    private String projstartupevaluation;
+	private Date	projupdatetime;
 
-    private String projresultevaluation;
+	private Date	projendtime;
 
-    private String projgrade;
+	private String	projstartupevaluation;
 
-    private Integer projstatus;
+	private Integer	projstartupevaluationvalue;
 
-    public String getProjid() {
-        return projid;
-    }
+	private Integer	projstartupevaluationstate;
 
-    public void setProjid(String projid) {
-        this.projid = projid == null ? null : projid.trim();
-    }
+	private String	projresultevaluationvalue;
 
-    public String getProjname() {
-        return projname;
-    }
+	private Integer	projresultevaluation;
 
-    public void setProjname(String projname) {
-        this.projname = projname == null ? null : projname.trim();
-    }
+	private Integer	projresultevaluationstate;
 
-    public String getProjemail() {
-        return projemail;
-    }
+	private String	projgrade;
 
-    public void setProjemail(String projemail) {
-        this.projemail = projemail == null ? null : projemail.trim();
-    }
+	private Integer	projstatus;
 
-    public String getProjphone() {
-        return projphone;
-    }
+	@Override
+	public String toString() {
+		return "BaseProject [projid=" + projid + ", projname=" + projname + ", projemail=" + projemail
+				+ ", creatpersionname=" + creatpersionname + ", projphone=" + projphone + ", projlanguage="
+				+ projlanguage + ", projplatform=" + projplatform + ", projallnumber=" + projallnumber
+				+ ", projcurrentnumber=" + projcurrentnumber + ", projtutor=" + projtutor + ", projtutorname="
+				+ projtutorname + ", projbudget=" + projbudget + ", projbudgetfile=" + projbudgetfile
+				+ ", projprogectfile=" + projprogectfile + ", projdescribe=" + projdescribe + ", projlogo=" + projlogo
+				+ ", projcreattime=" + projcreattime + ", projstartuptime=" + projstartuptime + ", projupdatetime="
+				+ projupdatetime + ", projendtime=" + projendtime + ", projstartupevaluation=" + projstartupevaluation
+				+ ", projstartupevaluationvalue=" + projstartupevaluationvalue + ", projstartupevaluationstate="
+				+ projstartupevaluationstate + ", projresultevaluationvalue=" + projresultevaluationvalue
+				+ ", projresultevaluation=" + projresultevaluation + ", projresultevaluationstate="
+				+ projresultevaluationstate + ", projgrade=" + projgrade + ", projstatus=" + projstatus + "]";
+	}
 
-    public void setProjphone(String projphone) {
-        this.projphone = projphone == null ? null : projphone.trim();
-    }
+	public String getProjid() {
+		return projid;
+	}
 
-    public String getProjlanguage() {
-        return projlanguage;
-    }
+	public void setProjid(String projid) {
+		this.projid = projid == null ? null : projid.trim();
+	}
 
-    public void setProjlanguage(String projlanguage) {
-        this.projlanguage = projlanguage == null ? null : projlanguage.trim();
-    }
+	public String getProjname() {
+		return projname;
+	}
 
-    public String getProjplatform() {
-        return projplatform;
-    }
+	public void setProjname(String projname) {
+		this.projname = projname == null ? null : projname.trim();
+	}
 
-    public void setProjplatform(String projplatform) {
-        this.projplatform = projplatform == null ? null : projplatform.trim();
-    }
+	public String getProjemail() {
+		return projemail;
+	}
 
-    public Integer getProjallnumber() {
-        return projallnumber;
-    }
+	public void setProjemail(String projemail) {
+		this.projemail = projemail == null ? null : projemail.trim();
+	}
 
-    public void setProjallnumber(Integer projallnumber) {
-        this.projallnumber = projallnumber;
-    }
+	public String getCreatpersionname() {
+		return creatpersionname;
+	}
 
-    public Integer getProjcurrentnumber() {
-        return projcurrentnumber;
-    }
-
-    public void setProjcurrentnumber(Integer projcurrentnumber) {
-        this.projcurrentnumber = projcurrentnumber;
-    }
-
-    public String getProjtutor() {
-        return projtutor;
-    }
-
-    public void setProjtutor(String projtutor) {
-        this.projtutor = projtutor == null ? null : projtutor.trim();
-    }
-
-    public Double getProjbudget() {
-        return projbudget;
-    }
-
-    public void setProjbudget(Double projbudget) {
-        this.projbudget = projbudget;
-    }
-
-    public String getProjbudgetfile() {
-        return projbudgetfile;
-    }
-
-    public void setProjbudgetfile(String projbudgetfile) {
-        this.projbudgetfile = projbudgetfile == null ? null : projbudgetfile.trim();
-    }
-
-    public String getProjprogectfile() {
-        return projprogectfile;
-    }
-
-    public void setProjprogectfile(String projprogectfile) {
-        this.projprogectfile = projprogectfile == null ? null : projprogectfile.trim();
-    }
-
-    public String getProjdescribe() {
-        return projdescribe;
-    }
-
-    public void setProjdescribe(String projdescribe) {
-        this.projdescribe = projdescribe == null ? null : projdescribe.trim();
-    }
-
-    public String getProjlogo() {
-        return projlogo;
-    }
-
-    public void setProjlogo(String projlogo) {
-        this.projlogo = projlogo == null ? null : projlogo.trim();
-    }
-
-    public Date getProjcreattime() {
-        return projcreattime;
-    }
-
-    public void setProjcreattime(Date projcreattime) {
-        this.projcreattime = projcreattime;
-    }
-
-    public Date getProjstartuptime() {
-        return projstartuptime;
-    }
-
-    public void setProjstartuptime(Date projstartuptime) {
-        this.projstartuptime = projstartuptime;
-    }
-
-    public Date getProjupdatetime() {
-        return projupdatetime;
-    }
-
-    public void setProjupdatetime(Date projupdatetime) {
-        this.projupdatetime = projupdatetime;
-    }
-
-    public Date getProjendtime() {
-        return projendtime;
-    }
-
-    public void setProjendtime(Date projendtime) {
-        this.projendtime = projendtime;
-    }
-
-    public String getProjstartupevaluation() {
-        return projstartupevaluation;
-    }
-
-    public void setProjstartupevaluation(String projstartupevaluation) {
-        this.projstartupevaluation = projstartupevaluation == null ? null : projstartupevaluation.trim();
-    }
-
-    public String getProjresultevaluation() {
-        return projresultevaluation;
-    }
-
-    public void setProjresultevaluation(String projresultevaluation) {
-        this.projresultevaluation = projresultevaluation == null ? null : projresultevaluation.trim();
-    }
-
-    public String getProjgrade() {
-        return projgrade;
-    }
-
-    public void setProjgrade(String projgrade) {
-        this.projgrade = projgrade == null ? null : projgrade.trim();
-    }
-
-    public Integer getProjstatus() {
-        return projstatus;
-    }
-
-    public void setProjstatus(Integer projstatus) {
-        this.projstatus = projstatus;
-    }
+	public void setCreatpersionname(String creatpersionname) {
+		this.creatpersionname = creatpersionname == null ? null : creatpersionname.trim();
+	}
+
+	public String getProjphone() {
+		return projphone;
+	}
+
+	public void setProjphone(String projphone) {
+		this.projphone = projphone == null ? null : projphone.trim();
+	}
+
+	public String getProjlanguage() {
+		return projlanguage;
+	}
+
+	public void setProjlanguage(String projlanguage) {
+		this.projlanguage = projlanguage == null ? null : projlanguage.trim();
+	}
+
+	public String getProjplatform() {
+		return projplatform;
+	}
+
+	public void setProjplatform(String projplatform) {
+		this.projplatform = projplatform == null ? null : projplatform.trim();
+	}
+
+	public Integer getProjallnumber() {
+		return projallnumber;
+	}
+
+	public void setProjallnumber(Integer projallnumber) {
+		this.projallnumber = projallnumber;
+	}
+
+	public Integer getProjcurrentnumber() {
+		return projcurrentnumber;
+	}
+
+	public void setProjcurrentnumber(Integer projcurrentnumber) {
+		this.projcurrentnumber = projcurrentnumber;
+	}
+
+	public String getProjtutor() {
+		return projtutor;
+	}
+
+	public void setProjtutor(String projtutor) {
+		this.projtutor = projtutor == null ? null : projtutor.trim();
+	}
+
+	public String getProjtutorname() {
+		return projtutorname;
+	}
+
+	public void setProjtutorname(String projtutorname) {
+		this.projtutorname = projtutorname == null ? null : projtutorname.trim();
+	}
+
+	public Double getProjbudget() {
+		return projbudget;
+	}
+
+	public void setProjbudget(Double projbudget) {
+		this.projbudget = projbudget;
+	}
+
+	public String getProjbudgetfile() {
+		return projbudgetfile;
+	}
+
+	public void setProjbudgetfile(String projbudgetfile) {
+		this.projbudgetfile = projbudgetfile == null ? null : projbudgetfile.trim();
+	}
+
+	public String getProjprogectfile() {
+		return projprogectfile;
+	}
+
+	public void setProjprogectfile(String projprogectfile) {
+		this.projprogectfile = projprogectfile == null ? null : projprogectfile.trim();
+	}
+
+	public String getProjdescribe() {
+		return projdescribe;
+	}
+
+	public void setProjdescribe(String projdescribe) {
+		this.projdescribe = projdescribe == null ? null : projdescribe.trim();
+	}
+
+	public String getProjlogo() {
+		return projlogo;
+	}
+
+	public void setProjlogo(String projlogo) {
+		this.projlogo = projlogo == null ? null : projlogo.trim();
+	}
+
+	public Date getProjcreattime() {
+		return projcreattime;
+	}
+
+	public void setProjcreattime(Date projcreattime) {
+		this.projcreattime = projcreattime;
+	}
+
+	public Date getProjstartuptime() {
+		return projstartuptime;
+	}
+
+	public void setProjstartuptime(Date projstartuptime) {
+		this.projstartuptime = projstartuptime;
+	}
+
+	public Date getProjupdatetime() {
+		return projupdatetime;
+	}
+
+	public void setProjupdatetime(Date projupdatetime) {
+		this.projupdatetime = projupdatetime;
+	}
+
+	public Date getProjendtime() {
+		return projendtime;
+	}
+
+	public void setProjendtime(Date projendtime) {
+		this.projendtime = projendtime;
+	}
+
+	public String getProjstartupevaluation() {
+		return projstartupevaluation;
+	}
+
+	public void setProjstartupevaluation(String projstartupevaluation) {
+		this.projstartupevaluation = projstartupevaluation == null ? null : projstartupevaluation.trim();
+	}
+
+	public Integer getProjstartupevaluationvalue() {
+		return projstartupevaluationvalue;
+	}
+
+	public void setProjstartupevaluationvalue(Integer projstartupevaluationvalue) {
+		this.projstartupevaluationvalue = projstartupevaluationvalue;
+	}
+
+	public Integer getProjstartupevaluationstate() {
+		return projstartupevaluationstate;
+	}
+
+	public void setProjstartupevaluationstate(Integer projstartupevaluationstate) {
+		this.projstartupevaluationstate = projstartupevaluationstate;
+	}
+
+	public String getProjresultevaluationvalue() {
+		return projresultevaluationvalue;
+	}
+
+	public void setProjresultevaluationvalue(String projresultevaluationvalue) {
+		this.projresultevaluationvalue = projresultevaluationvalue == null ? null : projresultevaluationvalue.trim();
+	}
+
+	public Integer getProjresultevaluation() {
+		return projresultevaluation;
+	}
+
+	public void setProjresultevaluation(Integer projresultevaluation) {
+		this.projresultevaluation = projresultevaluation;
+	}
+
+	public Integer getProjresultevaluationstate() {
+		return projresultevaluationstate;
+	}
+
+	public void setProjresultevaluationstate(Integer projresultevaluationstate) {
+		this.projresultevaluationstate = projresultevaluationstate;
+	}
+
+	public String getProjgrade() {
+		return projgrade;
+	}
+
+	public void setProjgrade(String projgrade) {
+		this.projgrade = projgrade == null ? null : projgrade.trim();
+	}
+
+	public Integer getProjstatus() {
+		return projstatus;
+	}
+
+	public void setProjstatus(Integer projstatus) {
+		this.projstatus = projstatus;
+	}
 }

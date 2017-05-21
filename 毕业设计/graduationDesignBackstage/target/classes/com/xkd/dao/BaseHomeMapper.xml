@@ -18,6 +18,21 @@
     where projectId = #{projectid,jdbcType=VARCHAR}
       and email = #{email,jdbcType=VARCHAR}
   </select>
+  
+  <select id="selectByPrimaryAll" parameterType="com.xkd.entity.BaseHome" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_home
+    where 1=1
+    <if test="projectid != null">
+        and projectId = #{projectid,jdbcType=VARCHAR}
+    </if>
+    <if test="email != null">
+        and email = #{email,jdbcType=VARCHAR}
+    </if>
+  </select>
+  
+  
   <delete id="deleteByPrimaryKey" parameterType="map">
     delete from t_home
     where projectId = #{projectid,jdbcType=VARCHAR}

@@ -94,12 +94,9 @@ CREATE TABLE `t_user` (
   `grade` varchar(5)  DEFAULT '1000' COMMENT '用户等级数据',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
-INSERT INTO `t_user` VALUES ('1', '任勃', '314187985@qq.com','18829348437',
-'e10adc3949ba59abbe56e057f20f883e', '3','职称','学历','方向','简介和补充说明',
-'/resource/default.jpg','2017-04-13','2017-04-13','1','10');
-INSERT INTO `t_user` VALUES ('2', '董美丽', '850263340@qq.com','18292960987',
-'e10adc3949ba59abbe56e057f20f883e', '3','职称','学历','方向','简介和补充说明',
-'/resource/default.jpg','2017-04-13','2017-04-13','1','10');
+INSERT INTO `t_user` VALUES (1, '任勃', '314187985@qq.com','18829348437','e10adc3949ba59abbe56e057f20f883e', '3','职称','学历','方向','简介和补充说明','/resource/default.jpg','2017-04-13','2017-04-13','1','10');
+INSERT INTO `t_user` VALUES (2, '董美丽', '850263340@qq.com','18292960987','e10adc3949ba59abbe56e057f20f883e', '3','职称','学历','方向','简介和补充说明','/resource/default.jpg','2017-04-13','2017-04-13','1','10');
+INSERT INTO `t_user` VALUES (21,'ypf','111111111@qq.com','15225454879','e10adc3949ba59abbe56e057f20f883e','1','职称','本科','方向','qwdeqweqweqwe','/resource/default.jpg','2017-05-21','2017-05-21','1','1000');
 -- ----------------------------
 -- 职称常量表：Table structure for `t_title`
 -- ----------------------------
@@ -170,12 +167,14 @@ CREATE TABLE `t_project` (
   `projid` varchar(100) NOT NULL  COMMENT '主键',
   `projname` varchar(50)  NOT NULL COMMENT '项目名称',
   `projemail` varchar(50)  NOT NULL COMMENT '创建人邮件账号',
+  `creatpersionname` varchar(50)  NOT NULL COMMENT '创建人姓名',
   `projphone` varchar(20) NOT NULL COMMENT '手机号',
   `projlanguage` varchar(50)  NOT NULL COMMENT '开发语言',
   `projplatform` varchar(50)  NOT NULL COMMENT '开发平台',
   `projallNumber` int(11) NOT NULL DEFAULT '0' COMMENT '项目总人数',
   `projcurrentNumber` int(11) NOT NULL DEFAULT '0' COMMENT '项目当前人数',
   `projtutor` varchar(10)  NOT NULL COMMENT '指导老师账号',
+  `projtutorname` varchar(10)  NOT NULL COMMENT '指导老师姓名',
   `projbudget` double(10,0) DEFAULT NULL COMMENT '项目预算价格',
   `projbudgetFile` varchar(200)  DEFAULT NULL COMMENT '预算账单地址',
   `projprogectFile` varchar(200)  DEFAULT NULL COMMENT '立项书',
@@ -186,12 +185,21 @@ CREATE TABLE `t_project` (
   `projupdateTime` date DEFAULT NULL COMMENT '更新时间',
   `projendTime` date NOT NULL COMMENT '结束时间',
   `projstartupEvaluation` varchar(500) DEFAULT NULL COMMENT '项目启动审核评价',
-  `projresultEvaluation` varchar(500) DEFAULT NULL COMMENT '项目结题审核评价',
-  `projgrade` varchar(5) NOT NULL DEFAULT '0' COMMENT '项目等级数据',
-  `projstatus` int(10) NOT NULL DEFAULT '0' COMMENT '项目状态',
+  `projstartupEvaluationvalue` int(5) DEFAULT NULL COMMENT '项目启动审核评价等级',
+  `projstartupEvaluationstate` int(5) DEFAULT 0 COMMENT '项目启动审核状态',
+  
+  `projresultEvaluationvalue` varchar(500) DEFAULT NULL COMMENT '项目结题审核评价',
+  `projresultEvaluation` int(5) DEFAULT NULL COMMENT '项目结题审核评价等级',
+  `projresultEvaluationstate` int(5) DEFAULT 0 COMMENT '项目结题审核状态',
+  
+  `projgrade` varchar(5) NOT NULL DEFAULT '0' COMMENT '项目最终等级数据',
+  `projstatus` int(5) NOT NULL DEFAULT 0 COMMENT '项目最终结果状态',
   PRIMARY KEY (`projid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
+INSERT INTO `t_project` VALUES ('20170520212720','计算机开发','314187985@qq.com','任勃','18829348437','java语言','windows平台',12,1,'2','董美丽',123,'/resource/1/20170520212720/ffe6e3ea-9114-470b-b069-7c83fe6e295a日语学习计划.docx',NULL,'微型计算机开发',NULL,'2017-05-20',NULL,'2017-05-20','2017-05-25',NULL,NULL,0,NULL,NULL,0,0,0);
+INSERT INTO `t_project` VALUES ('20170520213053','企业管理','314187985@qq.com','任勃','18829348437','java语言','windows平台',23,1,'1','任勃',456,'/resource/1/20170520213053/30119bc2-5eeb-4ec4-bb38-84c1d5aa8673日语学习计划.docx',NULL,'企业人事管理',NULL,'2017-05-20',NULL,'2017-05-20','2017-05-26',NULL,NULL,0,NULL,NULL,0,0,0);
+INSERT INTO `t_project` VALUES ('20170520213214','学生系统管理','314187985@qq.com','任勃','18829348437','java语言','windows平台',123,1,'1','任勃',789,'/resource/1/20170520213214/1dea01f2-bd43-4d66-b6b6-baff267e3134日语学习计划.docx',NULL,'管理学生生活、学习、资费等',NULL,'2017-05-20',NULL,'2017-05-20','2017-06-10',NULL,NULL,0,NULL,NULL,0,0,0);
+INSERT INTO `t_project` VALUES ('20170521105026','论文查重平台','850263340@qq.com','董美丽','18292960987','java语言','windows平台',12,1,'2','董美丽',456,'/resource/2/20170521105026/aa955e5a-f594-41a3-8aac-084edf943659913.docx',NULL,'123456489789765432123456',NULL,'2017-05-21',NULL,'2017-05-21','2017-05-30',NULL,NULL,0,NULL,NULL,0,'0',0);
 
 -- ----------------------------
 -- 开发语言常量表：Table structure for `t_language`
@@ -236,7 +244,10 @@ CREATE TABLE `t_home` (
   `status` int(10) NOT NULL DEFAULT '0' COMMENT '加入项目状态',
   PRIMARY KEY (`projectId`,`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
-
+INSERT INTO `t_home` VALUES ('20170520212720', '111111111@qq.com','2017-04-13','2017-04-13','0');
+INSERT INTO `t_home` VALUES ('20170520212720', '850263340@qq.com','2017-04-13','2017-04-13','0');
+INSERT INTO `t_home` VALUES ('20170520213053', '111111111@qq.com','2017-04-13','2017-04-13','0');
+INSERT INTO `t_home` VALUES ('20170520213053', '850263340@qq.com','2017-04-13','2017-04-13','0');
 -- ----------------------------
 -- 任务表：Table structure for `t_task`
 -- ----------------------------

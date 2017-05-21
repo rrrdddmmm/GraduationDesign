@@ -72,10 +72,14 @@ public class ProjectCreatService {
 			baseProject.setProjcreattime(DateDealwith.getCurrDate());
 			baseProject.setProjcurrentnumber(ConfigStr.currentnumber);
 			baseProject.setProjemail(users.getEmail());
+			baseProject.setCreatpersionname(users.getName());
 			baseProject.setProjphone(users.getPhone());
 			baseProject.setProjstatus(Integer.parseInt(ConfigStr.close));
 			baseProject.setProjupdatetime(DateDealwith.getCurrDate());
+			baseProject.setProjstartupevaluationstate(0);
+			baseProject.setProjresultevaluationstate(0);
 			baseProject.setProjgrade("0");
+			baseProject.setProjstatus(0);
 			baseProjectMapper.insert(baseProject);
 			stateResult.setMsg("服务器端：项目创建成功!");
 			stateResult.setStatus(0);

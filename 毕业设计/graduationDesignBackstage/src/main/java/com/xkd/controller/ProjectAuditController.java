@@ -21,7 +21,7 @@ public class ProjectAuditController implements Serializable {
 	private static final long	serialVersionUID	= 1L;
 
 	@RequestMapping("projectChakan.do")
-	public String projectChakan() {
+	public String projectChakan(String projid) {
 		return "project/projectchakan";
 	}
 }

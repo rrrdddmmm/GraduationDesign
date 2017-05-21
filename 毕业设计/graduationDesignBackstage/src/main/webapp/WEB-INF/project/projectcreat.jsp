@@ -210,7 +210,7 @@ $(document).ready(function() {
 	      <td class="table_xqa">指导教师：</td>
 	      <td class="table_xqb">
 	      	<input type="text" id="tutoreid" name="projtutor" style="display:none"/>
-	      	<input type="text" id="tutorname" class="syt_lb_top_conment_txt" />
+	      	<input type="text" id="tutorname" name="projtutorname" class="syt_lb_top_conment_txt" />
 	      	<input type="button" class="cc cjxm_but" value="指导教师" />
 	      </td>
 	      <td class="table_xqa">项目总人数：</td>

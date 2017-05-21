@@ -28,6 +28,12 @@
     from t_user
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectAllRoleList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where role = #{role,jdbcType=VARCHAR} and state='1'
+  </select>
    <select id="selectBystate" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -38,7 +44,7 @@
     select 
     <include refid="Base_Column_List" />
     from t_user
-    where direction = #{direction,jdbcType=VARCHAR}
+    where direction = #{direction,jdbcType=VARCHAR} and role='2'
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select 

@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.xkd.entity.BaseHome;
+import com.xkd.entity.Page.Home;
 
 public interface BaseHomeMapper {
 	int deleteByPrimaryKey(@Param("projectid") Integer projectid, @Param("email") String email);
@@ -14,6 +15,8 @@ public interface BaseHomeMapper {
 	int insertSelective(BaseHome record);
 
 	BaseHome selectByPrimaryKey(@Param("projectid") Integer projectid, @Param("email") String email);
+
+	List<BaseHome> selectByPrimaryAll(Home home);
 
 	List<BaseHome> selectAll();
 

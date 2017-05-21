@@ -5,12 +5,14 @@
     <id column="projid" jdbcType="VARCHAR" property="projid" />
     <result column="projname" jdbcType="VARCHAR" property="projname" />
     <result column="projemail" jdbcType="VARCHAR" property="projemail" />
+    <result column="creatpersionname" jdbcType="VARCHAR" property="creatpersionname" />
     <result column="projphone" jdbcType="VARCHAR" property="projphone" />
     <result column="projlanguage" jdbcType="VARCHAR" property="projlanguage" />
     <result column="projplatform" jdbcType="VARCHAR" property="projplatform" />
     <result column="projallNumber" jdbcType="INTEGER" property="projallnumber" />
     <result column="projcurrentNumber" jdbcType="INTEGER" property="projcurrentnumber" />
     <result column="projtutor" jdbcType="VARCHAR" property="projtutor" />
+    <result column="projtutorname" jdbcType="VARCHAR" property="projtutorname" />
     <result column="projbudget" jdbcType="DOUBLE" property="projbudget" />
     <result column="projbudgetFile" jdbcType="VARCHAR" property="projbudgetfile" />
     <result column="projprogectFile" jdbcType="VARCHAR" property="projprogectfile" />
@@ -21,15 +23,21 @@
     <result column="projupdateTime" jdbcType="DATE" property="projupdatetime" />
     <result column="projendTime" jdbcType="DATE" property="projendtime" />
     <result column="projstartupEvaluation" jdbcType="VARCHAR" property="projstartupevaluation" />
-    <result column="projresultEvaluation" jdbcType="VARCHAR" property="projresultevaluation" />
+    <result column="projstartupEvaluationvalue" jdbcType="INTEGER" property="projstartupevaluationvalue" />
+    <result column="projstartupEvaluationstate" jdbcType="INTEGER" property="projstartupevaluationstate" />
+    <result column="projresultEvaluationvalue" jdbcType="VARCHAR" property="projresultevaluationvalue" />
+    <result column="projresultEvaluation" jdbcType="INTEGER" property="projresultevaluation" />
+    <result column="projresultEvaluationstate" jdbcType="INTEGER" property="projresultevaluationstate" />
     <result column="projgrade" jdbcType="VARCHAR" property="projgrade" />
     <result column="projstatus" jdbcType="INTEGER" property="projstatus" />
   </resultMap>
   <sql id="Base_Column_List">
-    projid, projname, projemail, projphone, projlanguage, projplatform, projallNumber, 
-    projcurrentNumber, projtutor, projbudget, projbudgetFile, projprogectFile, projdescribe, 
-    projlogo, projcreatTime, projstartupTime, projupdateTime, projendTime, projstartupEvaluation, 
-    projresultEvaluation, projgrade, projstatus
+    projid, projname, projemail, creatpersionname, projphone, projlanguage, projplatform, 
+    projallNumber, projcurrentNumber, projtutor, projtutorname, projbudget, projbudgetFile, 
+    projprogectFile, projdescribe, projlogo, projcreatTime, projstartupTime, projupdateTime, 
+    projendTime, projstartupEvaluation, projstartupEvaluationvalue, projstartupEvaluationstate, 
+    projresultEvaluationvalue, projresultEvaluation, projresultEvaluationstate, projgrade, 
+    projstatus
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
@@ -37,27 +45,83 @@
     from t_project
     where projid = #{projid,jdbcType=VARCHAR}
   </select>
+  
+  <select id="selectByPrimaryAll" parameterType="com.xkd.entity.BaseProject" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_project 
+    where 1=1
+    <if test="projid != null">
+       and projid = #{projid,jdbcType=VARCHAR}
+    </if>
+    <if test="projtutor != null">
+       and projtutor = #{projtutor,jdbcType=VARCHAR}
+    </if>
+    <if test="projemail != null">
+       and projemail = #{projemail,jdbcType=VARCHAR}
+    </if>
+    <if test="projstatus != null">
+       and projstatus = #{projstatus,jdbcType=VARCHAR}
+    </if>
+  </select>
+  
+  <select id="selectByPrimaryHome" parameterType="map" resultMap="BaseResultMap">
+    select 
+		<include refid="Base_Column_List" />
+    from t_project 
+    where projid in
+		<foreach collection="list"
+	      			item="pp"  index="index"  
+	      			open="(" 
+	      			separator="," 
+	                close=")" > 
+                    #{pp.projectid}
+        </foreach>
+  </select>
+  
+  
+  <select id="selectAllApplication" parameterType="com.xkd.entity.Page.Project" resultMap="BaseResultMap">
+    select 
+    		projemail, creatpersionname, projphone
+    from t_project 
+    where 1=1
+    <if test="projtutor != null">
+       and projtutor = #{projtutor,jdbcType=VARCHAR}
+    </if>
+    <if test="projstatus != null">
+       and projstatus = #{projstatus,jdbcType=VARCHAR}
+    </if>
+  </select>
+  
+  
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from t_project
     where projid = #{projid,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.xkd.entity.BaseProject">
     insert into t_project (projid, projname, projemail, 
-      projphone, projlanguage, projplatform, 
-      projallNumber, projcurrentNumber, projtutor, 
-      projbudget, projbudgetFile, projprogectFile, 
-      projdescribe, projlogo, projcreatTime, 
-      projstartupTime, projupdateTime, projendTime, 
-      projstartupEvaluation, projresultEvaluation, 
-      projgrade, projstatus)
+      creatpersionname, projphone, projlanguage, 
+      projplatform, projallNumber, projcurrentNumber, 
+      projtutor, projtutorname, projbudget, 
+      projbudgetFile, projprogectFile, projdescribe, 
+      projlogo, projcreatTime, projstartupTime, 
+      projupdateTime, projendTime, projstartupEvaluation, 
+      projstartupEvaluationvalue, projstartupEvaluationstate, 
+      projresultEvaluationvalue, projresultEvaluation, 
+      projresultEvaluationstate, projgrade, projstatus
+      )
     values (#{projid,jdbcType=VARCHAR}, #{projname,jdbcType=VARCHAR}, #{projemail,jdbcType=VARCHAR}, 
-      #{projphone,jdbcType=VARCHAR}, #{projlanguage,jdbcType=VARCHAR}, #{projplatform,jdbcType=VARCHAR}, 
-      #{projallnumber,jdbcType=INTEGER}, #{projcurrentnumber,jdbcType=INTEGER}, #{projtutor,jdbcType=VARCHAR}, 
-      #{projbudget,jdbcType=DOUBLE}, #{projbudgetfile,jdbcType=VARCHAR}, #{projprogectfile,jdbcType=VARCHAR}, 
-      #{projdescribe,jdbcType=VARCHAR}, #{projlogo,jdbcType=VARCHAR}, #{projcreattime,jdbcType=DATE}, 
-      #{projstartuptime,jdbcType=DATE}, #{projupdatetime,jdbcType=DATE}, #{projendtime,jdbcType=DATE}, 
-      #{projstartupevaluation,jdbcType=VARCHAR}, #{projresultevaluation,jdbcType=VARCHAR}, 
-      #{projgrade,jdbcType=VARCHAR}, #{projstatus,jdbcType=INTEGER})
+      #{creatpersionname,jdbcType=VARCHAR}, #{projphone,jdbcType=VARCHAR}, #{projlanguage,jdbcType=VARCHAR}, 
+      #{projplatform,jdbcType=VARCHAR}, #{projallnumber,jdbcType=INTEGER}, #{projcurrentnumber,jdbcType=INTEGER}, 
+      #{projtutor,jdbcType=VARCHAR}, #{projtutorname,jdbcType=VARCHAR}, #{projbudget,jdbcType=DOUBLE}, 
+      #{projbudgetfile,jdbcType=VARCHAR}, #{projprogectfile,jdbcType=VARCHAR}, #{projdescribe,jdbcType=VARCHAR}, 
+      #{projlogo,jdbcType=VARCHAR}, #{projcreattime,jdbcType=DATE}, #{projstartuptime,jdbcType=DATE}, 
+      #{projupdatetime,jdbcType=DATE}, #{projendtime,jdbcType=DATE}, #{projstartupevaluation,jdbcType=VARCHAR}, 
+      #{projstartupevaluationvalue,jdbcType=INTEGER}, #{projstartupevaluationstate,jdbcType=INTEGER}, 
+      #{projresultevaluationvalue,jdbcType=VARCHAR}, #{projresultevaluation,jdbcType=INTEGER}, 
+      #{projresultevaluationstate,jdbcType=INTEGER}, #{projgrade,jdbcType=VARCHAR}, #{projstatus,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.xkd.entity.BaseProject">
     insert into t_project
@@ -70,6 +134,9 @@
       </if>
       <if test="projemail != null">
         projemail,
+      </if>
+      <if test="creatpersionname != null">
+        creatpersionname,
       </if>
       <if test="projphone != null">
         projphone,
@@ -88,6 +155,9 @@
       </if>
       <if test="projtutor != null">
         projtutor,
+      </if>
+      <if test="projtutorname != null">
+        projtutorname,
       </if>
       <if test="projbudget != null">
         projbudget,
@@ -119,8 +189,20 @@
       <if test="projstartupevaluation != null">
         projstartupEvaluation,
       </if>
+      <if test="projstartupevaluationvalue != null">
+        projstartupEvaluationvalue,
+      </if>
+      <if test="projstartupevaluationstate != null">
+        projstartupEvaluationstate,
+      </if>
+      <if test="projresultevaluationvalue != null">
+        projresultEvaluationvalue,
+      </if>
       <if test="projresultevaluation != null">
         projresultEvaluation,
+      </if>
+      <if test="projresultevaluationstate != null">
+        projresultEvaluationstate,
       </if>
       <if test="projgrade != null">
         projgrade,
@@ -139,6 +221,9 @@
       <if test="projemail != null">
         #{projemail,jdbcType=VARCHAR},
       </if>
+      <if test="creatpersionname != null">
+        #{creatpersionname,jdbcType=VARCHAR},
+      </if>
       <if test="projphone != null">
         #{projphone,jdbcType=VARCHAR},
       </if>
@@ -156,6 +241,9 @@
       </if>
       <if test="projtutor != null">
         #{projtutor,jdbcType=VARCHAR},
+      </if>
+      <if test="projtutorname != null">
+        #{projtutorname,jdbcType=VARCHAR},
       </if>
       <if test="projbudget != null">
         #{projbudget,jdbcType=DOUBLE},
@@ -187,8 +275,20 @@
       <if test="projstartupevaluation != null">
         #{projstartupevaluation,jdbcType=VARCHAR},
       </if>
+      <if test="projstartupevaluationvalue != null">
+        #{projstartupevaluationvalue,jdbcType=INTEGER},
+      </if>
+      <if test="projstartupevaluationstate != null">
+        #{projstartupevaluationstate,jdbcType=INTEGER},
+      </if>
+      <if test="projresultevaluationvalue != null">
+        #{projresultevaluationvalue,jdbcType=VARCHAR},
+      </if>
       <if test="projresultevaluation != null">
-        #{projresultevaluation,jdbcType=VARCHAR},
+        #{projresultevaluation,jdbcType=INTEGER},
+      </if>
+      <if test="projresultevaluationstate != null">
+        #{projresultevaluationstate,jdbcType=INTEGER},
       </if>
       <if test="projgrade != null">
         #{projgrade,jdbcType=VARCHAR},
@@ -207,6 +307,9 @@
       <if test="projemail != null">
         projemail = #{projemail,jdbcType=VARCHAR},
       </if>
+      <if test="creatpersionname != null">
+        creatpersionname = #{creatpersionname,jdbcType=VARCHAR},
+      </if>
       <if test="projphone != null">
         projphone = #{projphone,jdbcType=VARCHAR},
       </if>
@@ -224,6 +327,9 @@
       </if>
       <if test="projtutor != null">
         projtutor = #{projtutor,jdbcType=VARCHAR},
+      </if>
+      <if test="projtutorname != null">
+        projtutorname = #{projtutorname,jdbcType=VARCHAR},
       </if>
       <if test="projbudget != null">
         projbudget = #{projbudget,jdbcType=DOUBLE},
@@ -255,8 +361,20 @@
       <if test="projstartupevaluation != null">
         projstartupEvaluation = #{projstartupevaluation,jdbcType=VARCHAR},
       </if>
+      <if test="projstartupevaluationvalue != null">
+        projstartupEvaluationvalue = #{projstartupevaluationvalue,jdbcType=INTEGER},
+      </if>
+      <if test="projstartupevaluationstate != null">
+        projstartupEvaluationstate = #{projstartupevaluationstate,jdbcType=INTEGER},
+      </if>
+      <if test="projresultevaluationvalue != null">
+        projresultEvaluationvalue = #{projresultevaluationvalue,jdbcType=VARCHAR},
+      </if>
       <if test="projresultevaluation != null">
-        projresultEvaluation = #{projresultevaluation,jdbcType=VARCHAR},
+        projresultEvaluation = #{projresultevaluation,jdbcType=INTEGER},
+      </if>
+      <if test="projresultevaluationstate != null">
+        projresultEvaluationstate = #{projresultevaluationstate,jdbcType=INTEGER},
       </if>
       <if test="projgrade != null">
         projgrade = #{projgrade,jdbcType=VARCHAR},
@@ -271,12 +389,14 @@
     update t_project
     set projname = #{projname,jdbcType=VARCHAR},
       projemail = #{projemail,jdbcType=VARCHAR},
+      creatpersionname = #{creatpersionname,jdbcType=VARCHAR},
       projphone = #{projphone,jdbcType=VARCHAR},
       projlanguage = #{projlanguage,jdbcType=VARCHAR},
       projplatform = #{projplatform,jdbcType=VARCHAR},
       projallNumber = #{projallnumber,jdbcType=INTEGER},
       projcurrentNumber = #{projcurrentnumber,jdbcType=INTEGER},
       projtutor = #{projtutor,jdbcType=VARCHAR},
+      projtutorname = #{projtutorname,jdbcType=VARCHAR},
       projbudget = #{projbudget,jdbcType=DOUBLE},
       projbudgetFile = #{projbudgetfile,jdbcType=VARCHAR},
       projprogectFile = #{projprogectfile,jdbcType=VARCHAR},
@@ -287,7 +407,11 @@
       projupdateTime = #{projupdatetime,jdbcType=DATE},
       projendTime = #{projendtime,jdbcType=DATE},
       projstartupEvaluation = #{projstartupevaluation,jdbcType=VARCHAR},
-      projresultEvaluation = #{projresultevaluation,jdbcType=VARCHAR},
+      projstartupEvaluationvalue = #{projstartupevaluationvalue,jdbcType=INTEGER},
+      projstartupEvaluationstate = #{projstartupevaluationstate,jdbcType=INTEGER},
+      projresultEvaluationvalue = #{projresultevaluationvalue,jdbcType=VARCHAR},
+      projresultEvaluation = #{projresultevaluation,jdbcType=INTEGER},
+      projresultEvaluationstate = #{projresultevaluationstate,jdbcType=INTEGER},
       projgrade = #{projgrade,jdbcType=VARCHAR},
       projstatus = #{projstatus,jdbcType=INTEGER}
     where projid = #{projid,jdbcType=VARCHAR}

@@ -33,6 +33,13 @@ public class BaseUser {
 
 	private String	grade;
 
+	public BaseUser(String email) {
+		this.email = email;
+	}
+
+	public BaseUser() {
+	}
+
 	@Override
 	public String toString() {
 		return "BaseUser [id=" + id + ", name=" + name + ", email=" + email + ", phone=" + phone + ", password="

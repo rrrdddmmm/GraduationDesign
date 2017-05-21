@@ -55,6 +55,11 @@ public class UserManagerService {
 		return LIST;
 	}
 
+	public List<BaseUser> userAllStudentList() {
+		List<BaseUser> LIST = baseUserMapper.selectAllRoleList("1");
+		return LIST;
+	}
+
 	public StateResult userAlterHandle(BaseUser user, StateResult stateResult) {
 		user.setUpdatetime(DateDealwith.getCurrDate());
 		user.setCreattime(null);
@@ -93,7 +98,6 @@ public class UserManagerService {
 		List<BaseDirection> baseDirectionList = baseDirectionMapper.selectAll();
 		for (BaseDirection baseDirection : baseDirectionList) {
 			baseDirection.setUserList(baseUserMapper.selectByBaseDirection(baseDirection.getName()));
-			System.out.println(baseDirection.getUserList().size());
 		}
 		return baseDirectionList;
 	}

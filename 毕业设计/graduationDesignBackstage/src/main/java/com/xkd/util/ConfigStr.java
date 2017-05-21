@@ -9,6 +9,13 @@ public interface ConfigStr {
 	// 状态配置
 	public static String	start			= "1";
 	public static String	close			= "2";
+	// 项目状态
+	public static String	projectstate	= "0 1 2";
+	// 待启动审核（0）:（projectstate=0）,
+	// 开发中（1）:（projectstate=1 and endtime>当前时间），
+	// 待结题审核（2）:(projectstate=1 and endtime<当前时间)，
+	// 已完成项目（3）:（projectstate=2）
+
 	// 文件配置
 	public static String	ResourcesPath	= "F:/resource/";
 	public static String	netPathAbs		= "/resource/";

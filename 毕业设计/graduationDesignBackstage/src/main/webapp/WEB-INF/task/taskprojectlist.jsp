@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -77,21 +78,23 @@
       <td>项目描述</td>
       <td>操作</td>
     </tr>
-    <tr class="whittr">
-      <td>计算机开发</td>
-      <td>任勃</td>
-      <td>18829348437</td>
-      <td>2014-05-06</td>
-      <td>2014-05-06</td>
-      <td title="djhf速度快放假的第四部分金卡戴珊焚枯食淡">
-      	<a href="#" >此任务目的在于。。。</a>
-      </td>
-      <td>
-      	  <a href="taskProjectList.do" >创建任务</a>&nbsp;&nbsp;
-      	  <a href="taskDistribution.do" >分配任务</a>&nbsp;&nbsp;
-      	  <a href="taskChakan.do" >查看任务</a>
-      </td>
-    </tr>
+    <c:forEach items="${homeprojectlist }" var="li" varStatus="idxStatus">
+	   <tr class="whittr" data-itemid="${li.projid }">
+	     <td>${li.projname }</td>
+	     <td>${li.creatpersionname }</td>
+	     <td title="${li.projemail }">${li.projphone }</td>
+	     <td><fmt:formatDate value="${li.projstartuptime }"pattern="yyyy-MM-dd" /></td>
+		 <td><fmt:formatDate value="${li.projendtime }"pattern="yyyy-MM-dd" /></td>
+	     <td title="${li.projdescribe }">
+	      	<a href="#" >${li.projdescribe }</a>
+	     </td>
+	     <td>
+	      	  <a href="taskProjectList.do" >创建任务</a>&nbsp;&nbsp;
+	      	  <a href="taskDistribution.do" >分配任务</a>&nbsp;&nbsp;
+	      	  <a href="taskChakan.do" >查看任务</a>
+	      </td>
+	    </tr>
+    </c:forEach>
   </table>
   <div class="sytxq_conment"></div>
 </body>
