@@ -72,7 +72,7 @@
     where projid in
 		<foreach collection="list"
 	      			item="pp"  index="index"  
-	      			open="(" 
+	      			open="("
 	      			separator="," 
 	                close=")" > 
                     #{pp.projectid}

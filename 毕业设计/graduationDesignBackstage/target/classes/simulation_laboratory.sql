@@ -185,11 +185,11 @@ CREATE TABLE `t_project` (
   `projupdateTime` date DEFAULT NULL COMMENT '更新时间',
   `projendTime` date NOT NULL COMMENT '结束时间',
   `projstartupEvaluation` varchar(500) DEFAULT NULL COMMENT '项目启动审核评价',
-  `projstartupEvaluationvalue` int(5) DEFAULT NULL COMMENT '项目启动审核评价等级',
+  `projstartupEvaluationvalue` int(5) DEFAULT 0 COMMENT '项目启动审核评价等级',
   `projstartupEvaluationstate` int(5) DEFAULT 0 COMMENT '项目启动审核状态',
   
   `projresultEvaluationvalue` varchar(500) DEFAULT NULL COMMENT '项目结题审核评价',
-  `projresultEvaluation` int(5) DEFAULT NULL COMMENT '项目结题审核评价等级',
+  `projresultEvaluation` int(5) DEFAULT 0 COMMENT '项目结题审核评价等级',
   `projresultEvaluationstate` int(5) DEFAULT 0 COMMENT '项目结题审核状态',
   
   `projgrade` varchar(5) NOT NULL DEFAULT '0' COMMENT '项目最终等级数据',

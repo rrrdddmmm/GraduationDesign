@@ -1,6 +1,7 @@
 package com.xkd.controller;
 
 import java.io.Serializable;
+import java.text.ParseException;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,6 +21,7 @@ import com.xkd.entity.BaseProject;
 import com.xkd.entity.StateResult;
 import com.xkd.service.ConfigManagerService;
 import com.xkd.service.ProjectCreatService;
+import com.xkd.service.ProjectManageService;
 import com.xkd.service.UserManagerService;
 
 /**
@@ -39,7 +42,8 @@ public class ProjectCreatController implements Serializable {
 	private ConfigManagerService	configManagerService;
 	@Resource(name = "userManagerService")
 	private UserManagerService		userManagerService;
-
+	@Resource(name = "projectManageService")
+	private ProjectManageService	projectManageService;
 	@Resource(name = "projectCreatService")
 	private ProjectCreatService		projectCreatService;
 
@@ -64,4 +68,10 @@ public class ProjectCreatController implements Serializable {
 			@RequestParam(value = "file", required = true) MultipartFile[] file, HttpServletRequest request) {
 		return projectCreatService.creatProjectHandle(baseProject, stateResult, file, request);
 	}
+
+	@ModelAttribute
+	public void populateModel(HttpServletRequest request, Model model) throws ControllerException, ParseException {
+		projectManageService.setProjstatus();
+		SessionController.noSeeiondelwith(request);
+	};
 }

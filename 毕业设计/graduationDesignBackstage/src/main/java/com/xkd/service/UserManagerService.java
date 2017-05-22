@@ -60,6 +60,11 @@ public class UserManagerService {
 		return LIST;
 	}
 
+	public BaseUser findByEmail(String email) {
+		BaseUser obj = baseUserMapper.selectByEmailRolePwd(new BaseUser(email));
+		return obj;
+	}
+
 	public StateResult userAlterHandle(BaseUser user, StateResult stateResult) {
 		user.setUpdatetime(DateDealwith.getCurrDate());
 		user.setCreattime(null);

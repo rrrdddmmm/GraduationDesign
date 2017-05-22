@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -72,4 +73,9 @@ public class UserMyInfomationController implements Serializable {
 		userMyInfomationService.uploadMyimage(id, stateResult, model, file, request);
 		return stateResult;
 	}
+
+	@ModelAttribute
+	public void populateModel(HttpServletRequest request, Model model) throws ControllerException {
+		SessionController.noSeeiondelwith(request);
+	};
 }

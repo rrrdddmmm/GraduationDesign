@@ -9,6 +9,7 @@
 <title>团队列表</title>
 <link href="../content/css/style.css" rel="stylesheet" type="text/css" />
 <script src="../content/js/jquery.js" language="javascript"></script>
+<script type="text/javascript" src="../content/js/commonalert.js"></script>
 <script src="../content/js/globle_select.js"></script>
 <style>
 .cp {
@@ -237,7 +238,6 @@
 									<option selected="selected" value="-1">---------全部---------</option>
 								<c:forEach items="${myprojectlist }" var="li" varStatus="idxStatus">
 									<option value="${li.projid }">${li.projname }</option>
-<%-- 									<input type="hidden" id="projectname" value="${li.projname }" /> --%>
 								</c:forEach>
 							</select>
 						</div>
@@ -268,16 +268,15 @@
 					<td>简介</td>
 					<td>操作</td>
 				</tr>
-				<c:forEach items="${homeprojectlist }" var="li"
-					varStatus="idxStatus">
-					<tr class="whittr" data-itemid="${li.projectid }">
+				<c:forEach items="${homeprojectlist }" var="li" varStatus="idxStatus">
+					<tr class="whittr" data-itemid="${li.projectid }" data-itemname="${li.use.email }">
 						<td>${li.projectname}</td>
 						<td>${li.use.name}</td>
 						<td title="${li.use.email}">${li.use.phone}</td>
 						<td>${li.use.education}</td>
 						<td>${li.use.direction}</td>
 						<td title="${li.use.introduce}">${fn:substring(li.use.introduce, 0, 5)}...</td>
-						<td><a href="#">删除</a></td>
+						<td><a class="font-red-sunglo">删除</a></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -302,30 +301,27 @@
 				<table width="100%" border="0" cellspacing="1" cellpadding="0"
 					class="autotable2" style="margin: 1px auto">
 					<tr>
-						<td class="table_xqb">项目： <select name="select4"
-							class="input_b">
-								<option selected="selected" value="-1">请选择</option>
-								<option value="1">待审核</option>
-								<option value="2">进行中</option>
-								<option value="3">已完成</option>
+						<td class="table_xqb">
+						项目： <select name="select4" id="projid" class="input_b">
+								<c:forEach items="${myprojectlist }" var="li" varStatus="idxStatus">
+									<option value="${li.projid }">${li.projname }</option>
+								</c:forEach>
+							 </select>
+						</td>
+						<td class="table_xqb">
+						学生： <select name="select4" id="email" class="input_b">
+								<c:forEach items="${studentlist }" var="li" varStatus="idxStatus">
+									<option value="${li.email }">${li.name }</option>
+								</c:forEach>
 						</select>
 						</td>
-						<td class="table_xqb">学生： <select name="select4"
-							class="input_b">
-								<option selected="selected" value="-1">请选择</option>
-								<option value="1">待审核</option>
-								<option value="2">进行中</option>
-								<option value="3">已完成</option>
-						</select>
-						</td>
-						<tr>
+					<tr>
 				</table>
 				<div class="win_btn">
-					<button type="submit" class="chaxun_but2">确认</button>
-					<button type="submit" class="chaxun_but2">取消</button>
+					<button type="button" id="add" class="chaxun_but2">确认</button>
+					<button type="button" onclick="CloseDiv2('MyDiv','fade')" class="chaxun_but2">取消</button>
 				</div>
 			</div>
-
 			<div class="sdcq_tck_baidi"></div>
 
 		</div>
@@ -333,6 +329,8 @@
 </body>
 <script>
 	$(document).ready(function() {
+		var add='${add}';
+		if(add==1){_alert("添加成功!");}else if(add==2){_alert("非法操作,不能重复添加且不能添加项目申请人!",2);}
 		$("#projectid").val("${home.projectid}");//回显
 		$("#projectname").val("${home.projectname}");
 		$("#CriteriaQuery").click(function() {
@@ -340,21 +338,27 @@
 				"teamList.do?"+
 				"projectid="+$("#projectid").val()+"&projectname="+$("#projectid option:selected").text()+"";
 		});
+		$("#add").click(function() {
+			window.location.href =
+				"addHandle.do?"+
+				"projectid="+$("#projid").val()+"&email="+$("#email").val()+"&projectname="+$("#projid option:selected").text()+"";
+		});
 	})
-	var _parent;
+	var _parent;var id;var email;
 	$(".font-red-sunglo").live("click", function() {
 		var _this = $(this);
 		_parent = _this.parent().parent();
-		var id = _parent.attr("data-itemID");
-		alert(id);
-		_confirm("是否删除此记录？", 1, "del(" + id + ")");
+		id = _parent.attr("data-itemID");
+		email = _parent.attr("data-itemname");
+		_confirm("是否删除此记录？", 1, "del()");
 	});
-	function del(id) {
+	function del() {
 		$.ajax({
 			type : "POST",
 			url : "delHandle.do",
 			data : {
-				projid : id,
+				email : email,
+				projectid:id
 			},
 			datatype : "json",
 			error : function() {

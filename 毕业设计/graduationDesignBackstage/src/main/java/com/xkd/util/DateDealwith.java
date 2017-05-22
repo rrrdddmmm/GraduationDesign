@@ -56,7 +56,6 @@ public class DateDealwith {
 		java.util.Date now = df.parse(df.format(new Date()).toString());
 		java.util.Date date = df.parse(df.format(da).toString());
 		long l = now.getTime() - date.getTime();
-		System.out.println(l);
 		return l;
 	}
 

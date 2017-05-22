@@ -4,9 +4,11 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -53,4 +55,9 @@ public class ConfigManagerController implements Serializable {
 		stateResult = configManagerService.configHandle(baseConfig, stateResult);
 		return stateResult;
 	}
+
+	@ModelAttribute
+	public void populateModel(HttpServletRequest request, Model model) throws ControllerException {
+		SessionController.noSeeiondelwith(request);
+	};
 }

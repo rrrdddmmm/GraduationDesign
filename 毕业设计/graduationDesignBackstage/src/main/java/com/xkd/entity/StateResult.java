@@ -4,6 +4,7 @@ public class StateResult {
 	private int		status;
 	private String	msg;
 	private String	newpath;
+	private BaseProject		baseProject;
 
 	public int getStatus() {
 		return status;
@@ -27,6 +28,14 @@ public class StateResult {
 
 	public void setNewpath(String newpath) {
 		this.newpath = newpath;
+	}
+
+	public BaseProject getBaseProject() {
+		return baseProject;
+	}
+
+	public void setBaseProject(BaseProject baseProject) {
+		this.baseProject = baseProject;
 	}
 
 }

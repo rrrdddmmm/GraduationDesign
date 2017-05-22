@@ -31,7 +31,7 @@
   <!--left-->
   <div class="sys-content-left"> <img src="../content/images/title.fw.png" />
     <ul class="ulnav">
-      <li> <i class="i1"></i><em><a href="getIndex.do" class="lan" target="rightT">系统首页</a></em> </li>
+      <li> <i class="i1"></i><em><a href="../userLoginController/getIndex.do" class="lan" target="rightT">系统首页</a></em> </li>
       <li> <i class="i2"></i><em>项目管理</em>
       <dd class="snav dis">  
       		<dl><a href="../projectCreatController/toCreatProject.do" target="rightT">创建项目</a></dl>        
@@ -97,7 +97,7 @@
 
       <div class="sys-content-right-iframe">
       
-        <iframe frameborder="0" class="main" id="rightT" name="rightT" scrolling="auto" src="getIndex.do"></iframe>
+        <iframe frameborder="0" class="main" id="rightT" name="rightT" scrolling="auto" src="../userLoginController/getIndex.do"></iframe>
         <script type="text/javascript">
 				var oFrm = document.getElementById('rightT');
 				oFrm.onload = oFrm.onreadystatechange = function () {

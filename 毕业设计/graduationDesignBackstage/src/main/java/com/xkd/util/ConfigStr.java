@@ -16,6 +16,8 @@ public interface ConfigStr {
 	// 待结题审核（2）:(projectstate=1 and endtime<当前时间)，
 	// 已完成项目（3）:（projectstate=2）
 
+	// 等级划分：4 3优秀，2良好，
+
 	// 文件配置
 	public static String	ResourcesPath	= "F:/resource/";
 	public static String	netPathAbs		= "/resource/";

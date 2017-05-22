@@ -161,4 +161,324 @@
       and email = #{email,jdbcType=VARCHAR}
       and startupTime = #{startuptime,jdbcType=DATE}
   </update>
+  <resultMap id="BaseResultMap" type="com.xkd.mybatisgenerator.model.BaseTask">
+    <id column="projectId" jdbcType="VARCHAR" property="projectid" />
+    <id column="email" jdbcType="VARCHAR" property="email" />
+    <id column="startupTime" jdbcType="DATE" property="startuptime" />
+    <result column="updateTime" jdbcType="DATE" property="updatetime" />
+    <result column="endTime" jdbcType="DATE" property="endtime" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="taskFile" jdbcType="VARCHAR" property="taskfile" />
+    <result column="resultDescription" jdbcType="VARCHAR" property="resultdescription" />
+    <result column="resultFile" jdbcType="VARCHAR" property="resultfile" />
+    <result column="resultEvaluation" jdbcType="VARCHAR" property="resultevaluation" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    projectId, email, startupTime, updateTime, endTime, description, taskFile, resultDescription, 
+    resultFile, resultEvaluation, status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_task
+    where projectId = #{projectid,jdbcType=VARCHAR}
+      and email = #{email,jdbcType=VARCHAR}
+      and startupTime = #{startuptime,jdbcType=DATE}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from t_task
+    where projectId = #{projectid,jdbcType=VARCHAR}
+      and email = #{email,jdbcType=VARCHAR}
+      and startupTime = #{startuptime,jdbcType=DATE}
+  </delete>
+  <insert id="insert" parameterType="com.xkd.mybatisgenerator.model.BaseTask">
+    insert into t_task (projectId, email, startupTime, 
+      updateTime, endTime, description, 
+      taskFile, resultDescription, resultFile, 
+      resultEvaluation, status)
+    values (#{projectid,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{startuptime,jdbcType=DATE}, 
+      #{updatetime,jdbcType=DATE}, #{endtime,jdbcType=DATE}, #{description,jdbcType=VARCHAR}, 
+      #{taskfile,jdbcType=VARCHAR}, #{resultdescription,jdbcType=VARCHAR}, #{resultfile,jdbcType=VARCHAR}, 
+      #{resultevaluation,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xkd.mybatisgenerator.model.BaseTask">
+    insert into t_task
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="projectid != null">
+        projectId,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="startuptime != null">
+        startupTime,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
+      </if>
+      <if test="endtime != null">
+        endTime,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="taskfile != null">
+        taskFile,
+      </if>
+      <if test="resultdescription != null">
+        resultDescription,
+      </if>
+      <if test="resultfile != null">
+        resultFile,
+      </if>
+      <if test="resultevaluation != null">
+        resultEvaluation,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="projectid != null">
+        #{projectid,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="startuptime != null">
+        #{startuptime,jdbcType=DATE},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=DATE},
+      </if>
+      <if test="endtime != null">
+        #{endtime,jdbcType=DATE},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="taskfile != null">
+        #{taskfile,jdbcType=VARCHAR},
+      </if>
+      <if test="resultdescription != null">
+        #{resultdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="resultfile != null">
+        #{resultfile,jdbcType=VARCHAR},
+      </if>
+      <if test="resultevaluation != null">
+        #{resultevaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xkd.mybatisgenerator.model.BaseTask">
+    update t_task
+    <set>
+      <if test="updatetime != null">
+        updateTime = #{updatetime,jdbcType=DATE},
+      </if>
+      <if test="endtime != null">
+        endTime = #{endtime,jdbcType=DATE},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="taskfile != null">
+        taskFile = #{taskfile,jdbcType=VARCHAR},
+      </if>
+      <if test="resultdescription != null">
+        resultDescription = #{resultdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="resultfile != null">
+        resultFile = #{resultfile,jdbcType=VARCHAR},
+      </if>
+      <if test="resultevaluation != null">
+        resultEvaluation = #{resultevaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where projectId = #{projectid,jdbcType=VARCHAR}
+      and email = #{email,jdbcType=VARCHAR}
+      and startupTime = #{startuptime,jdbcType=DATE}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xkd.mybatisgenerator.model.BaseTask">
+    update t_task
+    set updateTime = #{updatetime,jdbcType=DATE},
+      endTime = #{endtime,jdbcType=DATE},
+      description = #{description,jdbcType=VARCHAR},
+      taskFile = #{taskfile,jdbcType=VARCHAR},
+      resultDescription = #{resultdescription,jdbcType=VARCHAR},
+      resultFile = #{resultfile,jdbcType=VARCHAR},
+      resultEvaluation = #{resultevaluation,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER}
+    where projectId = #{projectid,jdbcType=VARCHAR}
+      and email = #{email,jdbcType=VARCHAR}
+      and startupTime = #{startuptime,jdbcType=DATE}
+  </update>
+  <resultMap id="BaseResultMap" type="com.xkd.mybatisgenerator.model.BaseTask">
+    <id column="projectId" jdbcType="VARCHAR" property="projectid" />
+    <id column="email" jdbcType="VARCHAR" property="email" />
+    <id column="startupTime" jdbcType="DATE" property="startuptime" />
+    <result column="updateTime" jdbcType="DATE" property="updatetime" />
+    <result column="endTime" jdbcType="DATE" property="endtime" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="taskFile" jdbcType="VARCHAR" property="taskfile" />
+    <result column="resultDescription" jdbcType="VARCHAR" property="resultdescription" />
+    <result column="resultFile" jdbcType="VARCHAR" property="resultfile" />
+    <result column="resultEvaluation" jdbcType="VARCHAR" property="resultevaluation" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    projectId, email, startupTime, updateTime, endTime, description, taskFile, resultDescription, 
+    resultFile, resultEvaluation, status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_task
+    where projectId = #{projectid,jdbcType=VARCHAR}
+      and email = #{email,jdbcType=VARCHAR}
+      and startupTime = #{startuptime,jdbcType=DATE}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from t_task
+    where projectId = #{projectid,jdbcType=VARCHAR}
+      and email = #{email,jdbcType=VARCHAR}
+      and startupTime = #{startuptime,jdbcType=DATE}
+  </delete>
+  <insert id="insert" parameterType="com.xkd.mybatisgenerator.model.BaseTask">
+    insert into t_task (projectId, email, startupTime, 
+      updateTime, endTime, description, 
+      taskFile, resultDescription, resultFile, 
+      resultEvaluation, status)
+    values (#{projectid,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{startuptime,jdbcType=DATE}, 
+      #{updatetime,jdbcType=DATE}, #{endtime,jdbcType=DATE}, #{description,jdbcType=VARCHAR}, 
+      #{taskfile,jdbcType=VARCHAR}, #{resultdescription,jdbcType=VARCHAR}, #{resultfile,jdbcType=VARCHAR}, 
+      #{resultevaluation,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xkd.mybatisgenerator.model.BaseTask">
+    insert into t_task
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="projectid != null">
+        projectId,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="startuptime != null">
+        startupTime,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
+      </if>
+      <if test="endtime != null">
+        endTime,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="taskfile != null">
+        taskFile,
+      </if>
+      <if test="resultdescription != null">
+        resultDescription,
+      </if>
+      <if test="resultfile != null">
+        resultFile,
+      </if>
+      <if test="resultevaluation != null">
+        resultEvaluation,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="projectid != null">
+        #{projectid,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="startuptime != null">
+        #{startuptime,jdbcType=DATE},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=DATE},
+      </if>
+      <if test="endtime != null">
+        #{endtime,jdbcType=DATE},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="taskfile != null">
+        #{taskfile,jdbcType=VARCHAR},
+      </if>
+      <if test="resultdescription != null">
+        #{resultdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="resultfile != null">
+        #{resultfile,jdbcType=VARCHAR},
+      </if>
+      <if test="resultevaluation != null">
+        #{resultevaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xkd.mybatisgenerator.model.BaseTask">
+    update t_task
+    <set>
+      <if test="updatetime != null">
+        updateTime = #{updatetime,jdbcType=DATE},
+      </if>
+      <if test="endtime != null">
+        endTime = #{endtime,jdbcType=DATE},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="taskfile != null">
+        taskFile = #{taskfile,jdbcType=VARCHAR},
+      </if>
+      <if test="resultdescription != null">
+        resultDescription = #{resultdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="resultfile != null">
+        resultFile = #{resultfile,jdbcType=VARCHAR},
+      </if>
+      <if test="resultevaluation != null">
+        resultEvaluation = #{resultevaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where projectId = #{projectid,jdbcType=VARCHAR}
+      and email = #{email,jdbcType=VARCHAR}
+      and startupTime = #{startuptime,jdbcType=DATE}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xkd.mybatisgenerator.model.BaseTask">
+    update t_task
+    set updateTime = #{updatetime,jdbcType=DATE},
+      endTime = #{endtime,jdbcType=DATE},
+      description = #{description,jdbcType=VARCHAR},
+      taskFile = #{taskfile,jdbcType=VARCHAR},
+      resultDescription = #{resultdescription,jdbcType=VARCHAR},
+      resultFile = #{resultfile,jdbcType=VARCHAR},
+      resultEvaluation = #{resultevaluation,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER}
+    where projectId = #{projectid,jdbcType=VARCHAR}
+      and email = #{email,jdbcType=VARCHAR}
+      and startupTime = #{startuptime,jdbcType=DATE}
+  </update>
 </mapper>

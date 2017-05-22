@@ -3,9 +3,11 @@ package com.xkd.controller;
 import java.io.Serializable;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -76,4 +78,9 @@ public class NewsManagerController implements Serializable {
 		newsManagerService.userDelHandle(baseNews, stateResult);
 		return stateResult;
 	}
+
+	@ModelAttribute
+	public void populateModel(HttpServletRequest request, Model model) throws ControllerException {
+		SessionController.noSeeiondelwith(request);
+	};
 }

@@ -72,15 +72,17 @@
 					</select>
 			 	</c:if>
 				</div>
+				<c:if test="${userInfomation.role!=3 }">	
 				<button type="button" id="CriteriaQuery" class="chaxun_but"
 					id="search">查询</button>
+				</c:if>
 			</div>
 			<div class="clearfix"></div>
 		</div>
 	</div>
 	<div class="globle_bck">
 		<div class="syt_lb_top">
-			<h1 class="syt_lb_top_titleh1">∷审核项目列表∷</h1>
+			<h1 class="syt_lb_top_titleh1">∷项目列表∷</h1>
 		</div>
 		<table width="100%" border="0" cellspacing="1" cellpadding="0"
 			class="autotable2">
@@ -112,8 +114,20 @@
 						<c:if test="${li.projstatus==2 }">待结题审核</c:if>
 						<c:if test="${li.projstatus==3 }">已完成</c:if>
 					</td>
-					<td><a href="../projectAuditController/projectChakan.do?projid=${li.projid }">审核</a>&nbsp;&nbsp;
+					<td>
+					<c:if test="${userInfomation.role==1 }">
+						<a href="../projectAuditController/projectChakan.do?projid=${li.projid }">查看</a>&nbsp;&nbsp;
+						<c:if test="${userInfomation.email==li.projemail }">
+							<a class="font-red-sunglo">删除</a>
+						</c:if>
+					</c:if>
+					<c:if test="${userInfomation.role==2 }">
+						<a href="../projectAuditController/projectChakan.do?projid=${li.projid }">审核</a>&nbsp;&nbsp;
+					</c:if>
+					<c:if test="${userInfomation.role==3 }">
+						<a href="../projectAuditController/projectChakan.do?projid=${li.projid }">查看</a>&nbsp;&nbsp;
 						<a class="font-red-sunglo">删除</a>
+					</c:if>
 					</td>
 				</tr>
 			</c:forEach>
@@ -128,11 +142,15 @@
 		$("#auditstate").val("${project.projstatus}");//回显
 		$("#jointype").val("${project.jointype}");//回显
 		$("#CriteriaQuery").click(function() {
-			window.location.href =
-				"projectList.do?"+
-				"projemail="+$("#application").val()+
-				"&projstatus="+$("#auditstate").val()+
-				"&jointype="+$("#jointype").val()+"";
+			if('${userInfomation.role }'=='1'){
+				window.location.href ="projectList.do?jointype="+$("#jointype").val()+"";
+			}else if('${userInfomation.role }'=='2'){
+				alert($("#application").val());
+				alert($("#auditstate").val());
+				window.location.href ="projectList.do?projemail="+$("#application").val()+"&projstatus="+$("#auditstate").val()+"";
+			}else  if('${userInfomation.role }'=='3'){
+			
+			}
 		});
 	})
 	var _parent;
@@ -140,7 +158,6 @@
 		var _this = $(this);
 		_parent = _this.parent().parent();
 		var id = _parent.attr("data-itemID");
-		alert(id);
 		_confirm("是否删除此记录？", 1, "del(" + id + ")");
 	});
 	function del(id) {

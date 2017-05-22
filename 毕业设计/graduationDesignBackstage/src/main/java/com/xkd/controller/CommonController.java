@@ -29,14 +29,8 @@ public class CommonController implements Serializable {
 		return "common/default";
 	}
 
-	@RequestMapping("/getIndex.do")
-	public String getIndex(Model model) {
-		// 处理代码
-		return "common/index";
-	}
-
 	@ModelAttribute
 	public void populateModel(HttpServletRequest request, Model model) throws ControllerException {
-		SessionController.noSeeiondelwith(request);
+		SessionController.noSeeiondelwithdefalt(request);
 	};
 }

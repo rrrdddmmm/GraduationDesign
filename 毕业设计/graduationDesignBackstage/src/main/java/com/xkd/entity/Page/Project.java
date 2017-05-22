@@ -7,6 +7,14 @@ public class Project extends BaseProject {
 	private String	application;
 	private String	auditstate;
 	private String	jointype;
+	private String	advice;
+	private Integer	values;
+
+	@Override
+	public String toString() {
+		return "Project [application=" + application + ", auditstate=" + auditstate + ", jointype=" + jointype
+				+ ", advice=" + advice + ", values=" + values + "]";
+	}
 
 	public Project() {
 
@@ -16,9 +24,10 @@ public class Project extends BaseProject {
 		super.setProjtutor(projtutor);
 	}
 
-	public Project(String email, Integer projstatus) {
+	public Project(String email, Integer projstatus, String projid) {
 		super.setProjstatus(projstatus);
 		super.setProjemail(email);
+		super.setProjid(projid);
 	}
 
 	public String getApplication() {
@@ -43,5 +52,21 @@ public class Project extends BaseProject {
 
 	public void setJointype(String jointype) {
 		this.jointype = jointype;
+	}
+
+	public String getAdvice() {
+		return advice;
+	}
+
+	public void setAdvice(String advice) {
+		this.advice = advice;
+	}
+
+	public Integer getValues() {
+		return values;
+	}
+
+	public void setValues(Integer values) {
+		this.values = values;
 	}
 }

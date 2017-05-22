@@ -46,16 +46,10 @@ public class ProjectCreatService {
 			// 预算文件物理地址
 			String BudgetfilePath = GetResousePath.getUserProjectFilePath(users.getId().toString(), projectid, uuid1
 					+ file[1].getOriginalFilename());
-			// 预算文件网络地址
-			String BudgetfileNetPath = GetResousePath.getUserNetProjectFilePath(users.getId().toString(), projectid,
-					uuid1 + file[1].getOriginalFilename());
 
 			// 立项书物理地址
 			String ProgectfilePath = GetResousePath.getUserProjectFilePath(users.getId().toString(), projectid, uuid0
 					+ file[0].getOriginalFilename());
-			// 立项书网络地址
-			String ProgectfileNetPath = GetResousePath.getUserNetProjectFilePath(users.getId().toString(), projectid,
-					uuid0 + file[0].getOriginalFilename());
 
 			if (!upload(stateResult, file[0], ProgectfilePath)) {
 				stateResult.setMsg("0" + stateResult.getMsg());
@@ -67,8 +61,8 @@ public class ProjectCreatService {
 			}
 			baseProject.setProjid(projectid);
 			// 设置网络地址
-			baseProject.setProjbudgetfile(BudgetfileNetPath);
-			baseProject.setProjbudgetfile(ProgectfileNetPath);
+			baseProject.setProjbudgetfile(BudgetfilePath);
+			baseProject.setProjprogectfile(ProgectfilePath);
 			baseProject.setProjcreattime(DateDealwith.getCurrDate());
 			baseProject.setProjcurrentnumber(ConfigStr.currentnumber);
 			baseProject.setProjemail(users.getEmail());

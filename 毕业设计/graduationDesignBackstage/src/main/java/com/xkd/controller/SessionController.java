@@ -50,7 +50,16 @@ public class SessionController {
 	}
 
 	// session失效处理
+	@SuppressWarnings("null")
 	public static void noSeeiondelwith(HttpServletRequest request) throws ControllerException {
+		if (!judgeUserSession(request)) {
+			String str = null;
+			// str.getBytes();
+		}
+	}
+
+	// session失效处理
+	public static void noSeeiondelwithdefalt(HttpServletRequest request) throws ControllerException {
 		if (!judgeUserSession(request)) {
 			request.setAttribute("controllerExceptionInfo", "session失效请重新登录!");
 			throw new ControllerException("session异常跳转到主页面");

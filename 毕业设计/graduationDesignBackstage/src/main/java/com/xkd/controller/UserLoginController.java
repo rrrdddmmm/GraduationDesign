@@ -37,10 +37,11 @@ public class UserLoginController implements Serializable {
 	@Resource(name = "userLoginService")
 	private UserLoginService	userLoginService;
 
-	// @RequestMapping("/toLogin.do")
-	// public String toLogin() {
-	// return "user/login";
-	// }
+	@RequestMapping("/getIndex.do")
+	public String getIndex(Model model) {
+		// 处理代码
+		return "common/index";
+	}
 
 	@RequestMapping("/loginHandle.do")
 	@ResponseBody

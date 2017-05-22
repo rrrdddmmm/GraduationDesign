@@ -1,10 +1,17 @@
 package com.xkd.controller;
 
 import java.io.Serializable;
+import java.text.ParseException;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.xkd.service.ProjectManageService;
 
 /**
  * 任务管理
@@ -19,7 +26,9 @@ public class TaskManagerController implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long		serialVersionUID	= 1L;
+	@Resource(name = "projectManageService")
+	private ProjectManageService	projectManageService;
 
 	/**
 	 * 进入任务主页面
@@ -72,4 +81,10 @@ public class TaskManagerController implements Serializable {
 	public String taskAlter(Model model) {
 		return "task/taskalter";
 	}
+
+	@ModelAttribute
+	public void populateModel(HttpServletRequest request, Model model) throws ControllerException, ParseException {
+		projectManageService.setProjstatus();
+		SessionController.noSeeiondelwith(request);
+	};
 }

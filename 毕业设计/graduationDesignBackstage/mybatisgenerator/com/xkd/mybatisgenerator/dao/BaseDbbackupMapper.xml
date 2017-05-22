@@ -79,4 +79,160 @@
       backuppath = #{backuppath,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+  <resultMap id="BaseResultMap" type="com.xkd.mybatisgenerator.model.BaseDbbackup">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="creatTime" jdbcType="DATE" property="creattime" />
+    <result column="creatTimeStr" jdbcType="VARCHAR" property="creattimestr" />
+    <result column="backuppath" jdbcType="VARCHAR" property="backuppath" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, creatTime, creatTimeStr, backuppath
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_dbbackup
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_dbbackup
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xkd.mybatisgenerator.model.BaseDbbackup">
+    insert into t_dbbackup (id, creatTime, creatTimeStr, 
+      backuppath)
+    values (#{id,jdbcType=VARCHAR}, #{creattime,jdbcType=DATE}, #{creattimestr,jdbcType=VARCHAR}, 
+      #{backuppath,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xkd.mybatisgenerator.model.BaseDbbackup">
+    insert into t_dbbackup
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="creattime != null">
+        creatTime,
+      </if>
+      <if test="creattimestr != null">
+        creatTimeStr,
+      </if>
+      <if test="backuppath != null">
+        backuppath,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="creattime != null">
+        #{creattime,jdbcType=DATE},
+      </if>
+      <if test="creattimestr != null">
+        #{creattimestr,jdbcType=VARCHAR},
+      </if>
+      <if test="backuppath != null">
+        #{backuppath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xkd.mybatisgenerator.model.BaseDbbackup">
+    update t_dbbackup
+    <set>
+      <if test="creattime != null">
+        creatTime = #{creattime,jdbcType=DATE},
+      </if>
+      <if test="creattimestr != null">
+        creatTimeStr = #{creattimestr,jdbcType=VARCHAR},
+      </if>
+      <if test="backuppath != null">
+        backuppath = #{backuppath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xkd.mybatisgenerator.model.BaseDbbackup">
+    update t_dbbackup
+    set creatTime = #{creattime,jdbcType=DATE},
+      creatTimeStr = #{creattimestr,jdbcType=VARCHAR},
+      backuppath = #{backuppath,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.xkd.mybatisgenerator.model.BaseDbbackup">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="creatTime" jdbcType="DATE" property="creattime" />
+    <result column="creatTimeStr" jdbcType="VARCHAR" property="creattimestr" />
+    <result column="backuppath" jdbcType="VARCHAR" property="backuppath" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, creatTime, creatTimeStr, backuppath
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_dbbackup
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_dbbackup
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xkd.mybatisgenerator.model.BaseDbbackup">
+    insert into t_dbbackup (id, creatTime, creatTimeStr, 
+      backuppath)
+    values (#{id,jdbcType=VARCHAR}, #{creattime,jdbcType=DATE}, #{creattimestr,jdbcType=VARCHAR}, 
+      #{backuppath,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xkd.mybatisgenerator.model.BaseDbbackup">
+    insert into t_dbbackup
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="creattime != null">
+        creatTime,
+      </if>
+      <if test="creattimestr != null">
+        creatTimeStr,
+      </if>
+      <if test="backuppath != null">
+        backuppath,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="creattime != null">
+        #{creattime,jdbcType=DATE},
+      </if>
+      <if test="creattimestr != null">
+        #{creattimestr,jdbcType=VARCHAR},
+      </if>
+      <if test="backuppath != null">
+        #{backuppath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xkd.mybatisgenerator.model.BaseDbbackup">
+    update t_dbbackup
+    <set>
+      <if test="creattime != null">
+        creatTime = #{creattime,jdbcType=DATE},
+      </if>
+      <if test="creattimestr != null">
+        creatTimeStr = #{creattimestr,jdbcType=VARCHAR},
+      </if>
+      <if test="backuppath != null">
+        backuppath = #{backuppath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xkd.mybatisgenerator.model.BaseDbbackup">
+    update t_dbbackup
+    set creatTime = #{creattime,jdbcType=DATE},
+      creatTimeStr = #{creattimestr,jdbcType=VARCHAR},
+      backuppath = #{backuppath,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
 </mapper>

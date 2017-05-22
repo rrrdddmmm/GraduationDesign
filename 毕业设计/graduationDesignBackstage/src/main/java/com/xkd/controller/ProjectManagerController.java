@@ -1,12 +1,14 @@
 package com.xkd.controller;
 
 import java.io.Serializable;
+import java.text.ParseException;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -44,8 +46,14 @@ public class ProjectManagerController implements Serializable {
 
 	@RequestMapping("/delHandle.do")
 	@ResponseBody
-	public StateResult delHandle(String projid, StateResult stateResult) {
-		projectManageService.delHandle(projid, stateResult);
+	public StateResult delHandle(String projid, StateResult stateResult, HttpServletRequest request) {
+		projectManageService.delHandle(projid, stateResult, request);
 		return stateResult;
 	}
+
+	@ModelAttribute
+	public void populateModel(HttpServletRequest request, Model model) throws ControllerException, ParseException {
+		projectManageService.setProjstatus();
+		SessionController.noSeeiondelwith(request);
+	};
 }

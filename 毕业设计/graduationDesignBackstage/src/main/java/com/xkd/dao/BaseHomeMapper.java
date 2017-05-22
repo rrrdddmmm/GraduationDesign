@@ -8,13 +8,13 @@ import com.xkd.entity.BaseHome;
 import com.xkd.entity.Page.Home;
 
 public interface BaseHomeMapper {
-	int deleteByPrimaryKey(@Param("projectid") Integer projectid, @Param("email") String email);
+	int deleteByPrimaryKey(@Param("projectid") String projectid, @Param("email") String email);
 
 	int insert(BaseHome record);
 
 	int insertSelective(BaseHome record);
 
-	BaseHome selectByPrimaryKey(@Param("projectid") Integer projectid, @Param("email") String email);
+	BaseHome selectByPrimaryKey(@Param("projectid") String projectid, @Param("email") String email);
 
 	List<BaseHome> selectByPrimaryAll(Home home);
 

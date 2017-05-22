@@ -1,6 +1,8 @@
 package com.xkd.service;
 
+import java.io.File;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +23,9 @@ import com.xkd.entity.BaseUser;
 import com.xkd.entity.StateResult;
 import com.xkd.entity.Page.Home;
 import com.xkd.entity.Page.Project;
+import com.xkd.util.ConfigStr;
 import com.xkd.util.DateDealwith;
+import com.xkd.util.FileDealWith;
 
 /**
  * 
@@ -51,7 +55,9 @@ public class ProjectManageService {
 	public List<BaseProject> teamProjectList(Home home, HttpServletRequest request) {
 		BaseUser sessionUser = SessionController.getLoginInfomation(request);
 		home.setEmail(sessionUser.getEmail());
-		List<BaseHome> list = baseHomeMapper.selectByPrimaryAll(home);
+		List<BaseHome> list = new ArrayList<BaseHome>();
+		list = baseHomeMapper.selectByPrimaryAll(home);
+		list.add(new Home("-1"));
 		Map<String, Object> map = new LinkedHashMap<String, Object>();
 		map.put("list", list);
 		return baseProjectMapper.selectByPrimaryHome(map);
@@ -64,8 +70,13 @@ public class ProjectManageService {
 	 */
 	public List<BaseProject> getCreatProject(HttpServletRequest request) {
 		BaseUser sessionUser = SessionController.getLoginInfomation(request);
-		List<BaseProject> list = baseProjectMapper.selectByPrimaryAll(new Project(sessionUser.getEmail(), null));
+		List<BaseProject> list = baseProjectMapper.selectByPrimaryAll(new Project(sessionUser.getEmail(), null, null));
 		return list;
+	}
+
+	public BaseProject getProjectById(String projid) {
+		BaseProject obj = baseProjectMapper.selectByPrimaryKey(projid);
+		return obj;
 	}
 
 	/**
@@ -110,22 +121,16 @@ public class ProjectManageService {
 		}
 	}
 
+	/**
+	 * @2、查找出自己满足条件的项目：
+	 * @教师(2)：
+	 * @学生(1)：创建项目的学生， 参与项目的学生
+	 * @application : 申请人email
+	 * @auditstate : 1 启动审核 2 结题审核 3已完成(启动和结题均完成)审核
+	 * @jointype: 1参与项目 2创建项目
+	 * 
+	 */
 	public List<BaseProject> projectList(Project project, HttpServletRequest request) {
-		try {
-			setProjstatus();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		/**
-		 * @2、查找出自己满足条件的项目：
-		 * @教师(2)：
-		 * @学生(1)：创建项目的学生， 参与项目的学生
-		 * @application : 申请人email
-		 * @auditstate : 1 启动审核 2 结题审核 3已完成(启动和结题均完成)审核
-		 * @jointype: 1参与项目 2创建项目
-		 * 
-		 */
 		BaseUser sessionUser = SessionController.getLoginInfomation(request);
 		List<BaseProject> list = null;
 
@@ -135,11 +140,19 @@ public class ProjectManageService {
 			 */
 			project.setProjemail(sessionUser.getEmail().trim());
 			if ("1".equals(project.getJointype())) {// 参与的
-
+				Home home = new Home();
+				home.setEmail(sessionUser.getEmail().trim());
+				list = teamProjectList(home, request);
 			} else if ("2".equals(project.getJointype())) {// 创建的
-				list = baseProjectMapper.selectByPrimaryAll(project);
+				list = getCreatProject(request);
 			} else {// 全部
-				list = baseProjectMapper.selectByPrimaryAll(project);
+				Home home = new Home();
+				home.setEmail(sessionUser.getEmail().trim());
+				list = teamProjectList(home, request);
+				List<BaseProject> list1 = getCreatProject(request);
+				for (BaseProject baseProject : list1) {
+					list.add(baseProject);
+				}
 			}
 		} else if ("2".equals(sessionUser.getRole())) {// 教师登陆情况
 			if (project.getProjstatus() != null && project.getProjstatus() == -1) {
@@ -165,12 +178,14 @@ public class ProjectManageService {
 		return list;
 	}
 
-	public StateResult delHandle(String projid, StateResult stateResult) {
+	public StateResult delHandle(String projid, StateResult stateResult, HttpServletRequest request) {
+		BaseUser baseUser = SessionController.getLoginInfomation(request);
 		if (baseProjectMapper.deleteByPrimaryKey(projid) > 0) {
+			FileDealWith.deleteAllFilesOfDir(new File(ConfigStr.ResourcesPath + baseUser.getId() + "/" + projid));
 			stateResult.setStatus(0);
 			stateResult.setMsg("服务器端：del success");
 		} else {
-			stateResult.setStatus(1);
+			stateResult.setStatus(2);
 			stateResult.setMsg("服务器端：del fail");
 		}
 		return stateResult;

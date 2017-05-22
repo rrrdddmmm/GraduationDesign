@@ -1,19 +1,23 @@
 package com.xkd.controller;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.xkd.entity.BaseDbbackup;
 import com.xkd.service.DbRecBackupService;
+import com.xkd.service.ProjectManageService;
 import com.xkd.util.FileDealWith;
 
 /***
@@ -27,7 +31,9 @@ import com.xkd.util.FileDealWith;
 public class DbRecBackupController {
 
 	@Resource(name = "dbRecBackupService")
-	private DbRecBackupService	dbRecBackupService;
+	private DbRecBackupService		dbRecBackupService;
+	@Resource(name = "projectManageService")
+	private ProjectManageService	projectManageService;
 
 	@RequestMapping("list.do")
 	public String list(Model model) {
@@ -57,4 +63,10 @@ public class DbRecBackupController {
 			e.printStackTrace();
 		}
 	}
+
+	@ModelAttribute
+	public void populateModel(HttpServletRequest request, Model model) throws ControllerException, ParseException {
+		projectManageService.setProjstatus();
+		SessionController.noSeeiondelwith(request);
+	};
 }
