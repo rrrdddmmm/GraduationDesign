@@ -1,24 +1,21 @@
 package com.xkd.dao;
 
-import java.util.Date;
 import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
 
 import com.xkd.entity.BaseTask;
 
 public interface BaseTaskMapper {
-	int deleteByPrimaryKey(@Param("projectid") Integer projectid, @Param("email") String email,
-			@Param("startuptime") Date startuptime);
+	int deleteByPrimaryKey(Integer id);
+
+	int deleteByall(BaseTask record);
 
 	int insert(BaseTask record);
 
 	int insertSelective(BaseTask record);
 
-	BaseTask selectByPrimaryKey(@Param("projectid") Integer projectid, @Param("email") String email,
-			@Param("startuptime") Date startuptime);
+	BaseTask selectByPrimaryKey(Integer id);
 
-	List<BaseTask> selectAll();
+	List<BaseTask> selectByPrimaryAll(BaseTask baseTask);
 
 	int updateByPrimaryKeySelective(BaseTask record);
 

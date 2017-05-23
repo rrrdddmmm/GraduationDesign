@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.xkd.mybatisgenerator.dao.BaseDbbackupMapper">
-  <resultMap id="BaseResultMap" type="com.xkd.mybatisgenerator.model.BaseDbbackup">
+<mapper namespace="com.xkd.dao.BaseDbbackupMapper">
+  <resultMap id="BaseResultMap" type="com.xkd.entity.BaseDbbackup">
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="creatTime" jdbcType="DATE" property="creattime" />
     <result column="creatTimeStr" jdbcType="VARCHAR" property="creattimestr" />
@@ -14,19 +14,22 @@
     select 
     <include refid="Base_Column_List" />
     from t_dbbackup
-    where id = #{id,jdbcType=VARCHAR}
+    where 1=1
+    <if test="id != null">
+        and id = #{id,jdbcType=VARCHAR}
+    </if> 
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from t_dbbackup
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.xkd.mybatisgenerator.model.BaseDbbackup">
+  <insert id="insert" parameterType="com.xkd.entity.BaseDbbackup">
     insert into t_dbbackup (id, creatTime, creatTimeStr, 
       backuppath)
     values (#{id,jdbcType=VARCHAR}, #{creattime,jdbcType=DATE}, #{creattimestr,jdbcType=VARCHAR}, 
       #{backuppath,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.xkd.mybatisgenerator.model.BaseDbbackup">
+  <insert id="insertSelective" parameterType="com.xkd.entity.BaseDbbackup">
     insert into t_dbbackup
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -57,7 +60,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.xkd.mybatisgenerator.model.BaseDbbackup">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xkd.entity.BaseDbbackup">
     update t_dbbackup
     <set>
       <if test="creattime != null">
@@ -72,7 +75,7 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.xkd.mybatisgenerator.model.BaseDbbackup">
+  <update id="updateByPrimaryKey" parameterType="com.xkd.entity.BaseDbbackup">
     update t_dbbackup
     set creatTime = #{creattime,jdbcType=DATE},
       creatTimeStr = #{creattimestr,jdbcType=VARCHAR},

@@ -52,11 +52,11 @@ public class ProjectCreatService {
 					+ file[0].getOriginalFilename());
 
 			if (!upload(stateResult, file[0], ProgectfilePath)) {
-				stateResult.setMsg("0" + stateResult.getMsg());
+				stateResult.setMsg(stateResult.getMsg());
 				return stateResult;
 			}
 			if (!upload(stateResult, file[1], BudgetfilePath)) {
-				stateResult.setMsg("1" + stateResult.getMsg());
+				stateResult.setMsg(stateResult.getMsg());
 				return stateResult;
 			}
 			baseProject.setProjid(projectid);

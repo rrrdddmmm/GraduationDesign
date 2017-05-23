@@ -59,6 +59,13 @@ public class BaseProject {
 
 	private Integer	projstatus;
 
+	public BaseProject() {
+	}
+
+	public BaseProject(String projemail) {
+		this.projemail = projemail;
+	}
+
 	@Override
 	public String toString() {
 		return "BaseProject [projid=" + projid + ", projname=" + projname + ", projemail=" + projemail

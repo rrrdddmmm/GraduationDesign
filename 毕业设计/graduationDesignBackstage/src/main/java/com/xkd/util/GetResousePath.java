@@ -52,6 +52,26 @@ public class GetResousePath {
 	}
 
 	/**
+	 * 获取用户存放项目任务文件的物理文件夹目录文件
+	 * 
+	 * @param request
+	 * @return
+	 */
+	public static String getUserProjectTaskFilePath(String id, String projectid, String filename) {
+		return getUserResouresPath(id) + projectid + "/task/" + filename;
+	}
+
+	/**
+	 * 获取用户存放项目任务文件的物理目录
+	 * 
+	 * @param request
+	 * @return
+	 */
+	public static String getUserProjectTaskDirPath(String id, String projectid) {
+		return getUserResouresPath(id) + projectid + "/task/";
+	}
+
+	/**
 	 * 获取用户存放项目文件的网络根路径
 	 * 
 	 * @param request

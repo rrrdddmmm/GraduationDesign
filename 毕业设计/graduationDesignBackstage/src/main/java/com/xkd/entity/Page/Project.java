@@ -12,8 +12,8 @@ public class Project extends BaseProject {
 
 	@Override
 	public String toString() {
-		return "Project [application=" + application + ", auditstate=" + auditstate + ", jointype=" + jointype
-				+ ", advice=" + advice + ", values=" + values + "]";
+		return "Project [projid=" + super.getProjid() + ",application=" + application + ", auditstate=" + auditstate
+				+ ", jointype=" + jointype + ", advice=" + advice + ", values=" + values + "]";
 	}
 
 	public Project() {

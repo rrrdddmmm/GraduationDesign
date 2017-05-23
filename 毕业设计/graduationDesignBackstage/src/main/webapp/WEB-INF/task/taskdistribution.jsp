@@ -1,5 +1,8 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -8,6 +11,10 @@
 <link href="../content/css/style.css" rel="stylesheet" type="text/css" />
 <script src="../content/js/jquery.js" language="javascript"></script>
 <script src="../content/js/globle_select.js"></script>
+<script type="text/javascript" src="../content/js/commonutil.js"></script>
+<script type="text/javascript" src="../content/js/commonalert.js"></script>
+<script type="text/javascript" src="../content/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../content/js/jquery-form.js"></script>
 <script src="../laydate/laydate.js"></script>
 <style>
 .cp{width:500px; height:auto; background:#FFF; border:1px solid #ccc; padding:10px; position:absolute; box-shadow:5px 5px #ccc; margin-top:10px;}
@@ -116,8 +123,9 @@ function closeDiv(obj){
       	执行人：
         <select id="state" class="input_b">
           <option selected="selected" value="-1">---全部---</option>
-          <option value="1">任勃</option>
-          <option value="2">董美丽</option>
+           <c:forEach items="${map }" var="li" varStatus="idxStatus">
+          	<option value="${li.key }">${li.value }</option>
+          </c:forEach>
       	</select>
       </div>
       <button type="submit" class="chaxun_but" id="search">查询</button>
@@ -132,20 +140,30 @@ function closeDiv(obj){
   </div>
   <table width="100%" border="0" cellspacing="1" cellpadding="0" class="autotable2">
     <tr class="titletr">
+      <td>项目</td>
       <td>执行人</td>
       <td>开始时间</td>
       <td>截止时间</td>
       <td>任务描述</td>
       <td>操作</td>
     </tr>
-    <tr class="whittr">
-      <td>任勃</td>
-      <td>2014-05-06</td>
-      <td>2014-05-06</td>
-      <td title="djhf速度快放假的时刻华东师范加快速度是电话费加快速度是电话费加快速度函数大富科技第四部分金卡戴珊焚枯食淡">
-      	<a href="chakantask.html" >此任务目的在于。。。</a></td>
-      <td><a href="javascript:void(0);" onclick="ShowDiv2('MyDiv', 'fade');">分配</a></td>
+   <c:forEach items="${tasklist }" var="li" varStatus="idxStatus">
+    <tr class="whittr" data-itemid="${li.id }">
+      <td>${project.projname }</td>
+      <td>${li.name}</td>
+      <td><fmt:formatDate value="${li.startuptime }"pattern="yyyy-MM-dd" /></td>
+	  <td><fmt:formatDate value="${li.endtime }"pattern="yyyy-MM-dd" /></td>
+      <c:if test="${li.description!=null }">
+		  <td title="${li.description }">
+		   <a href="download.do?filePath=${li.taskfile }" >${fn:substring(li.description, 0, 10)}...</a>
+		  </td>
+	   </c:if>
+	   <c:if test="${li.description==null }">
+		  <td>待分配</td>
+	  </c:if>
+      <td><a href="javascript:void(0);" onclick="ShowDiv2('MyDiv', 'fade');">分配(修改)</a></td>
     </tr>
+   </c:forEach>
   </table>
   <div class="sytxq_conment"></div>
 </div>

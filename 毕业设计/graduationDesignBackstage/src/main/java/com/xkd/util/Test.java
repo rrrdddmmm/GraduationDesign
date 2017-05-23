@@ -4,9 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import org.mybatis.generator.exception.InvalidConfigurationException;
-import org.mybatis.generator.exception.XMLParserException;
-
 public class Test {
 
 	/**
@@ -17,8 +14,7 @@ public class Test {
 	 * @throws InterruptedException
 	 * @throws SQLException
 	 */
-	public static void main(String[] args) throws IOException, XMLParserException, InvalidConfigurationException,
-			SQLException, InterruptedException {
+	public static void main(String[] args) {
 		FileDealWith.deleteAllFilesOfDir(new File("F:/resource/1/20170519140228"));
 
 	}

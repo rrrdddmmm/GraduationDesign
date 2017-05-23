@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.xkd.mybatisgenerator.dao.BasePlatformMapper">
-  <resultMap id="BaseResultMap" type="com.xkd.mybatisgenerator.model.BasePlatform">
+<mapper namespace="com.xkd.dao.BasePlatformMapper">
+  <resultMap id="BaseResultMap" type="com.xkd.entity.BasePlatform">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="creatTime" jdbcType="DATE" property="creattime" />
@@ -17,17 +17,30 @@
     from t_platform
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_platform
+  </select>
+  
+  <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_platform
+    where name = #{name,jdbcType=VARCHAR}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_platform
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.xkd.mybatisgenerator.model.BasePlatform">
+  <insert id="insert" parameterType="com.xkd.entity.BasePlatform">
     insert into t_platform (id, name, creatTime, 
       updateTime, state)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{creattime,jdbcType=DATE}, 
       #{updatetime,jdbcType=DATE}, #{state,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.xkd.mybatisgenerator.model.BasePlatform">
+  <insert id="insertSelective" parameterType="com.xkd.entity.BasePlatform">
     insert into t_platform
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -64,7 +77,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.xkd.mybatisgenerator.model.BasePlatform">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xkd.entity.BasePlatform">
     update t_platform
     <set>
       <if test="name != null">
@@ -82,7 +95,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.xkd.mybatisgenerator.model.BasePlatform">
+  <update id="updateByPrimaryKey" parameterType="com.xkd.entity.BasePlatform">
     update t_platform
     set name = #{name,jdbcType=VARCHAR},
       creatTime = #{creattime,jdbcType=DATE},

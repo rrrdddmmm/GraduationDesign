@@ -253,18 +253,20 @@ INSERT INTO `t_home` VALUES ('20170520213053', '850263340@qq.com','2017-04-13','
 -- ----------------------------
 DROP TABLE IF EXISTS `t_task`;
 CREATE TABLE `t_task` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `projectId` varchar(100)  NOT NULL COMMENT '项目id',
   `email` varchar(50) NOT NULL COMMENT '用户email',
+  `name` varchar(50) NOT NULL COMMENT '用户name',
   `startupTime` date NOT NULL COMMENT '开始时间',
   `updateTime` date DEFAULT NULL COMMENT '更新时间',
   `endTime` date NOT NULL COMMENT '结束时间',
   `description` varchar(500) DEFAULT NULL COMMENT '任务描述',
-  `taskFile` varchar(20)  DEFAULT NULL COMMENT '详细任务文件地址',
+  `taskFile` varchar(200)  DEFAULT NULL COMMENT '详细任务文件地址',
   `resultDescription` varchar(20)  DEFAULT NULL COMMENT '成果描述',
   `resultFile` varchar(20)  DEFAULT NULL COMMENT '成果文件地址',
   `resultEvaluation` varchar(500) DEFAULT NULL COMMENT '成果评价',
   `status` int(10) NOT NULL DEFAULT '0' COMMENT '任务是否有效',
-  PRIMARY KEY (`projectId`,`email`,`startupTime`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 -- ----------------------------
 -- 数据库备份表：Table structure for `t_dbbackup`

@@ -15,6 +15,10 @@ import java.util.zip.ZipOutputStream;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import com.xkd.entity.StateResult;
+
 public class FileDealWith {
 	/**
 	 * 该方法实现配置一个property文件属性
@@ -229,6 +233,36 @@ public class FileDealWith {
 			}
 		}
 		return flag;
+	}
+
+	public static boolean upload(StateResult stateResult, MultipartFile file, String absPath)
+			throws IllegalStateException, IOException {
+		if (file != null) {
+			if (file.getName() != null || "".equals(file.getName())) {
+				System.out.println(file.getOriginalFilename());
+				String[] name = file.getOriginalFilename().split("\\.");
+				System.out.println(name[0]);
+				if ("txt".equals(name[name.length - 1]) || "doc".equals(name[name.length - 1])
+						|| "docx".equals(name[name.length - 1]) || "pdf".equals(name[name.length - 1])) {
+					File f = new File(absPath);
+					if (!f.exists()) {
+						f.mkdirs();
+					}
+					file.transferTo(f);
+					return true;
+				} else {
+					stateResult.setStatus(1);
+					stateResult.setMsg("服务器端：请上传规定格式!");
+				}
+			} else {
+				stateResult.setStatus(2);
+				stateResult.setMsg("服务器端：文件名不能为空!");
+			}
+		} else {
+			stateResult.setStatus(3);
+			stateResult.setMsg("服务器端：请选择文件!");
+		}
+		return false;
 	}
 
 	public static void deleteAllFilesOfDir(File path) {

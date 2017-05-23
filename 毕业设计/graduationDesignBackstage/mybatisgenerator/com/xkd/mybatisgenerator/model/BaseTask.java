@@ -3,113 +3,142 @@ package com.xkd.mybatisgenerator.model;
 import java.util.Date;
 
 public class BaseTask {
-    private String projectid;
+	private Integer	id;
 
-    private String email;
+	private String	projectid;
 
-    private Date startuptime;
+	private String	email;
 
-    private Date updatetime;
+	private String	name;
 
-    private Date endtime;
+	private Date	startuptime;
 
-    private String description;
+	private Date	updatetime;
 
-    private String taskfile;
+	private Date	endtime;
 
-    private String resultdescription;
+	private String	description;
 
-    private String resultfile;
+	private String	taskfile;
 
-    private String resultevaluation;
+	private String	resultdescription;
 
-    private Integer status;
+	private String	resultfile;
 
-    public String getProjectid() {
-        return projectid;
-    }
+	private String	resultevaluation;
 
-    public void setProjectid(String projectid) {
-        this.projectid = projectid == null ? null : projectid.trim();
-    }
+	private Integer	status;
 
-    public String getEmail() {
-        return email;
-    }
+	public BaseTask(String projectid, String email) {
+		this.projectid = projectid;
+		this.email = email;
+	}
 
-    public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
-    }
+	public BaseTask() {
 
-    public Date getStartuptime() {
-        return startuptime;
-    }
+	}
 
-    public void setStartuptime(Date startuptime) {
-        this.startuptime = startuptime;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public Date getUpdatetime() {
-        return updatetime;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
-    }
+	public String getProjectid() {
+		return projectid;
+	}
 
-    public Date getEndtime() {
-        return endtime;
-    }
+	public void setProjectid(String projectid) {
+		this.projectid = projectid == null ? null : projectid.trim();
+	}
 
-    public void setEndtime(Date endtime) {
-        this.endtime = endtime;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public void setEmail(String email) {
+		this.email = email == null ? null : email.trim();
+	}
 
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getTaskfile() {
-        return taskfile;
-    }
+	public void setName(String name) {
+		this.name = name == null ? null : name.trim();
+	}
 
-    public void setTaskfile(String taskfile) {
-        this.taskfile = taskfile == null ? null : taskfile.trim();
-    }
+	public Date getStartuptime() {
+		return startuptime;
+	}
 
-    public String getResultdescription() {
-        return resultdescription;
-    }
+	public void setStartuptime(Date startuptime) {
+		this.startuptime = startuptime;
+	}
 
-    public void setResultdescription(String resultdescription) {
-        this.resultdescription = resultdescription == null ? null : resultdescription.trim();
-    }
+	public Date getUpdatetime() {
+		return updatetime;
+	}
 
-    public String getResultfile() {
-        return resultfile;
-    }
+	public void setUpdatetime(Date updatetime) {
+		this.updatetime = updatetime;
+	}
 
-    public void setResultfile(String resultfile) {
-        this.resultfile = resultfile == null ? null : resultfile.trim();
-    }
+	public Date getEndtime() {
+		return endtime;
+	}
 
-    public String getResultevaluation() {
-        return resultevaluation;
-    }
+	public void setEndtime(Date endtime) {
+		this.endtime = endtime;
+	}
 
-    public void setResultevaluation(String resultevaluation) {
-        this.resultevaluation = resultevaluation == null ? null : resultevaluation.trim();
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public Integer getStatus() {
-        return status;
-    }
+	public void setDescription(String description) {
+		this.description = description == null ? null : description.trim();
+	}
 
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
+	public String getTaskfile() {
+		return taskfile;
+	}
+
+	public void setTaskfile(String taskfile) {
+		this.taskfile = taskfile == null ? null : taskfile.trim();
+	}
+
+	public String getResultdescription() {
+		return resultdescription;
+	}
+
+	public void setResultdescription(String resultdescription) {
+		this.resultdescription = resultdescription == null ? null : resultdescription.trim();
+	}
+
+	public String getResultfile() {
+		return resultfile;
+	}
+
+	public void setResultfile(String resultfile) {
+		this.resultfile = resultfile == null ? null : resultfile.trim();
+	}
+
+	public String getResultevaluation() {
+		return resultevaluation;
+	}
+
+	public void setResultevaluation(String resultevaluation) {
+		this.resultevaluation = resultevaluation == null ? null : resultevaluation.trim();
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 }

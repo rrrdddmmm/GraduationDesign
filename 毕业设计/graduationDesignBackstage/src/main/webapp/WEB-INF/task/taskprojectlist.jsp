@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -52,13 +53,13 @@
     <div class="fandr">
       <div class="form-groupl">
                担任角色：
-      <select id="state" class="input_b">
+      <select id="jointype" class="input_b">
           <option selected="selected" value="-1">---全部---</option>
           <option value="1">参与项目</option>
           <option value="2">创建项目</option>
       </select>
       </div>
-      <button type="submit" class="chaxun_but" id="search">查询</button>
+      <button type="button" id="CriteriaQuery" class="chaxun_but">查询</button>
     </div>
     <div class="clearfix"></div>
   </div>
@@ -78,24 +79,42 @@
       <td>项目描述</td>
       <td>操作</td>
     </tr>
-    <c:forEach items="${homeprojectlist }" var="li" varStatus="idxStatus">
+    <c:forEach items="${projectlist }" var="li" varStatus="idxStatus">
 	   <tr class="whittr" data-itemid="${li.projid }">
 	     <td>${li.projname }</td>
 	     <td>${li.creatpersionname }</td>
 	     <td title="${li.projemail }">${li.projphone }</td>
-	     <td><fmt:formatDate value="${li.projstartuptime }"pattern="yyyy-MM-dd" /></td>
+	     <c:if test="${li.projstartuptime!=null }">
+	     	<td><fmt:formatDate value="${li.projstartuptime }"pattern="yyyy-MM-dd" /></td>
+	     </c:if>
+	     <c:if test="${li.projstartuptime==null }">
+	     	<td>项目未启动</td>
+	     </c:if>
 		 <td><fmt:formatDate value="${li.projendtime }"pattern="yyyy-MM-dd" /></td>
-	     <td title="${li.projdescribe }">
-	      	<a href="#" >${li.projdescribe }</a>
-	     </td>
-	     <td>
-	      	  <a href="taskProjectList.do" >创建任务</a>&nbsp;&nbsp;
-	      	  <a href="taskDistribution.do" >分配任务</a>&nbsp;&nbsp;
-	      	  <a href="taskChakan.do" >查看任务</a>
-	      </td>
+	     <td title="${li.projdescribe }">${fn:substring(li.projdescribe, 0, 10)}...</td>
+	     <c:if test="${li.projstartuptime!=null }">
+		     <td>
+		     <c:if test="${li.projemail==userInfomation.email }">
+		     	<a href="taskProjectList.do?projid=${li.projid }&projemail=${li.projemail }" >创建任务</a>&nbsp;&nbsp;
+		     	<a href="taskDistribution.do?projid=${li.projid }&projemail=${li.projemail }" >分配任务</a>&nbsp;&nbsp;
+		     </c:if>
+		        <a href="taskChakan.do?projid=${li.projid }&projemail=${li.projemail }" >任务</a>
+		      </td>
+	      </c:if>
+	      <c:if test="${li.projstartuptime==null }">
+	       <td>项目未启动</td>
+	      </c:if>
 	    </tr>
     </c:forEach>
   </table>
   <div class="sytxq_conment"></div>
+  <script>
+  $(document).ready(function() {
+		$("#jointype").val("${project.jointype}");//回显
+		$("#CriteriaQuery").click(function() {
+			window.location.href ="taskProject.do?jointype="+$("#jointype").val()+"";
+		});
+	})
+</script>
 </body>
 </html>

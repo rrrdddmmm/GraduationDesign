@@ -3,113 +3,161 @@ package com.xkd.entity;
 import java.util.Date;
 
 public class BaseTask {
-    private String projectid;
+	private Integer	id;
 
-    private String email;
+	private String	projectid;
 
-    private Date startuptime;
+	private String	email;
 
-    private Date updatetime;
+	private String	name;
 
-    private Date endtime;
+	private Date	startuptime;
 
-    private String description;
+	private Date	updatetime;
 
-    private String taskfile;
+	private Date	endtime;
 
-    private String resultdescription;
+	private String	description;
 
-    private String resultfile;
+	private String	taskfile;
 
-    private String resultevaluation;
+	private String	resultdescription;
 
-    private Integer status;
+	private String	resultfile;
 
-    public String getProjectid() {
-        return projectid;
-    }
+	private String	resultevaluation;
 
-    public void setProjectid(String projectid) {
-        this.projectid = projectid == null ? null : projectid.trim();
-    }
+	private Integer	status;
 
-    public String getEmail() {
-        return email;
-    }
+	public BaseTask(String projectid, String email) {
+		this.projectid = projectid;
+		this.email = email;
+	}
 
-    public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
-    }
+	public BaseTask(String projectid) {
+		this.projectid = projectid;
+	}
 
-    public Date getStartuptime() {
-        return startuptime;
-    }
+	public BaseTask(String projectid, Date startuptime, Date endtime) {
+		this.projectid = projectid;
+		this.startuptime = startuptime;
+		this.endtime = endtime;
+	}
 
-    public void setStartuptime(Date startuptime) {
-        this.startuptime = startuptime;
-    }
+	@Override
+	public String toString() {
+		return "BaseTask [id=" + id + ", projectid=" + projectid + ", email=" + email + ", name=" + name
+				+ ", startuptime=" + startuptime + ", updatetime=" + updatetime + ", endtime=" + endtime
+				+ ", description=" + description + ", taskfile=" + taskfile + ", resultdescription="
+				+ resultdescription + ", resultfile=" + resultfile + ", resultevaluation=" + resultevaluation
+				+ ", status=" + status + "]";
+	}
 
-    public Date getUpdatetime() {
-        return updatetime;
-    }
+	public BaseTask() {
 
-    public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
-    }
+	}
 
-    public Date getEndtime() {
-        return endtime;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public void setEndtime(Date endtime) {
-        this.endtime = endtime;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public String getProjectid() {
+		return projectid;
+	}
 
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
-    }
+	public void setProjectid(String projectid) {
+		this.projectid = projectid == null ? null : projectid.trim();
+	}
 
-    public String getTaskfile() {
-        return taskfile;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setTaskfile(String taskfile) {
-        this.taskfile = taskfile == null ? null : taskfile.trim();
-    }
+	public void setEmail(String email) {
+		this.email = email == null ? null : email.trim();
+	}
 
-    public String getResultdescription() {
-        return resultdescription;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setResultdescription(String resultdescription) {
-        this.resultdescription = resultdescription == null ? null : resultdescription.trim();
-    }
+	public void setName(String name) {
+		this.name = name == null ? null : name.trim();
+	}
 
-    public String getResultfile() {
-        return resultfile;
-    }
+	public Date getStartuptime() {
+		return startuptime;
+	}
 
-    public void setResultfile(String resultfile) {
-        this.resultfile = resultfile == null ? null : resultfile.trim();
-    }
+	public void setStartuptime(Date startuptime) {
+		this.startuptime = startuptime;
+	}
 
-    public String getResultevaluation() {
-        return resultevaluation;
-    }
+	public Date getUpdatetime() {
+		return updatetime;
+	}
 
-    public void setResultevaluation(String resultevaluation) {
-        this.resultevaluation = resultevaluation == null ? null : resultevaluation.trim();
-    }
+	public void setUpdatetime(Date updatetime) {
+		this.updatetime = updatetime;
+	}
 
-    public Integer getStatus() {
-        return status;
-    }
+	public Date getEndtime() {
+		return endtime;
+	}
 
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
+	public void setEndtime(Date endtime) {
+		this.endtime = endtime;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description == null ? null : description.trim();
+	}
+
+	public String getTaskfile() {
+		return taskfile;
+	}
+
+	public void setTaskfile(String taskfile) {
+		this.taskfile = taskfile == null ? null : taskfile.trim();
+	}
+
+	public String getResultdescription() {
+		return resultdescription;
+	}
+
+	public void setResultdescription(String resultdescription) {
+		this.resultdescription = resultdescription == null ? null : resultdescription.trim();
+	}
+
+	public String getResultfile() {
+		return resultfile;
+	}
+
+	public void setResultfile(String resultfile) {
+		this.resultfile = resultfile == null ? null : resultfile.trim();
+	}
+
+	public String getResultevaluation() {
+		return resultevaluation;
+	}
+
+	public void setResultevaluation(String resultevaluation) {
+		this.resultevaluation = resultevaluation == null ? null : resultevaluation.trim();
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 }

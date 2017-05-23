@@ -147,7 +147,7 @@ function closeDiv(obj){
       	<a href="chakantask.html" >此任务目的在于。。。</a></td>
       <td title="待提交"><a href="chakantask.html" >待提交</a></td>	
       <td title="djhf速度快放假的时刻华东师范加快速度是电话费加快速度是电话费加快速度函">提交的成果有效</td>	
-      <td><a href="javascript:void(0);" onclick="ShowDiv2('MyDiv', 'fade');">提交任务</a>&nbsp;&nbsp;<a href="taskAlter.do" >修改任务</a>&nbsp;&nbsp;<a href="#" >删除</a></td>
+      <td><a href="javascript:void(0);" onclick="ShowDiv2('MyDiv', 'fade');">提交任务</a></td>
     </tr>
     <tr class="lantr">
       <td align="center">...</td>

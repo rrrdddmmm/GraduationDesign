@@ -73,8 +73,7 @@
 			 	</c:if>
 				</div>
 				<c:if test="${userInfomation.role!=3 }">	
-				<button type="button" id="CriteriaQuery" class="chaxun_but"
-					id="search">查询</button>
+				<button type="button" id="CriteriaQuery" class="chaxun_but">查询</button>
 				</c:if>
 			</div>
 			<div class="clearfix"></div>
@@ -101,7 +100,7 @@
 				<tr class="whittr" data-itemid="${li.projid }">
 					<td>${li.projname }</td>
 					<td title="${li.projphone }">${li.creatpersionname }</td>
-					<td title="${li.projphone }">${li.projtutorname }</td>
+					<td>${li.projtutorname }</td>
 					<td>${li.projallnumber }</td>
 					<td>${li.projcurrentnumber }</td>
 					<td><fmt:formatDate value="${li.projcreattime }"
@@ -136,7 +135,6 @@
 </body>
 
 <script>
-	//查询事件onclick="_confirm('是否删除此记录？',1,'del()');"
 	$(document).ready(function() {
 		$("#application").val("${project.projemail}");//回显
 		$("#auditstate").val("${project.projstatus}");//回显
@@ -145,8 +143,6 @@
 			if('${userInfomation.role }'=='1'){
 				window.location.href ="projectList.do?jointype="+$("#jointype").val()+"";
 			}else if('${userInfomation.role }'=='2'){
-				alert($("#application").val());
-				alert($("#auditstate").val());
 				window.location.href ="projectList.do?projemail="+$("#application").val()+"&projstatus="+$("#auditstate").val()+"";
 			}else  if('${userInfomation.role }'=='3'){
 			

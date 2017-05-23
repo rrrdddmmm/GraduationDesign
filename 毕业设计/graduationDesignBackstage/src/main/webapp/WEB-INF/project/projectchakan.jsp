@@ -310,7 +310,7 @@
 $(document).ready(function() {
 	$("#language").val("${project.projlanguage}");
 	$("#platform").val("${project.projplatform}");
-	var msg='${msg}';if(msg!=""){_alert(msg)}
+	var msg='${msg}';if(msg!="" && msg!=null){_alert(msg)}
 	$("#t_auditing").click(function(){
 		_confirm("是否确认审核？",1,"audit()");
 		
