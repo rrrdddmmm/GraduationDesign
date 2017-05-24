@@ -34,20 +34,25 @@
       <li> <i class="i1"></i><em><a href="../userLoginController/getIndex.do" class="lan" target="rightT">系统首页</a></em> </li>
       <li> <i class="i2"></i><em>项目管理</em>
       <dd class="snav dis">  
+      		<c:if test="${userInfomation.role=='1' }">
       		<dl><a href="../projectCreatController/toCreatProject.do" target="rightT">创建项目</a></dl>        
+            </c:if>
             <dl><a href="../projectManagerController/projectList.do" target="rightT">项目列表</a></dl>
         </dd>
       </li>
-      <li> <i class="i3"></i><em>任务管理</em>
-      	<dd class="snav dis">
-          	<dl><a href="../taskManagerController/taskProject.do" target="rightT">任务列表</a></dl>
-        </dd>
-      </li>
-      <li> <i class="i3"></i><em>团队管理</em>
-      <dd class="snav dis">
-          <dl><a href="../teamManagerController/teamList.do" target="rightT">团队列表</a></dl>
-        </dd>
-      </li>
+      <c:if test="${userInfomation.role=='1' }">
+	      <li> <i class="i3"></i><em>任务管理</em>
+	      	<dd class="snav dis">
+	          	<dl><a href="../taskManagerController/taskProject.do" target="rightT">任务列表</a></dl>
+	        </dd>
+	      </li>
+	      <li> <i class="i3"></i><em>团队管理</em>
+	      <dd class="snav dis">
+	          <dl><a href="../teamManagerController/teamList.do" target="rightT">团队列表</a></dl>
+	        </dd>
+	      </li>
+      </c:if>
+      <c:if test="${userInfomation.role=='3' }">
       <li> <i class="i4"></i><em>用户管理</em>
       <dd class="snav dis">
           <dl><a href="../userManagerController/userAdd.do" target="rightT">添加用户</a></dl>
@@ -82,6 +87,7 @@
 	          <dl><a href="../dbRecBackupController/list.do" target="rightT">数据库备份恢复</a></dl>          
 	    </dd>
       </li>
+      </c:if>
       <li> <i class="i5"></i><em>个人信息管理</em>
         <dd class="snav dis">
           <dl><a href="../userMyInfomationController/myInfomation.do" target="rightT">わたしの信息</a></dl>          

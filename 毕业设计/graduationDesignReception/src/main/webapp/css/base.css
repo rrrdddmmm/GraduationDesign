@@ -1,6 +1,6 @@
 /* 公共样式 */
 html{overflow-x:hidden;}
-body{ font:14px "SimSun","Microsoft Yahei";  background:#e8e7e7; color:#474344;}
+body{ font:14px "SimSun","Microsoft Yahei";color:#474344;background: url("../images/123.jpg") 0% 0% / 1366px 877px no-repeat;}
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
 h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
 li{list-style:none}
@@ -19,17 +19,17 @@ table{ border-collapse: collapse;}
 .img-z span{ background:#000;}
 .img-z em{ z-index:2; font:14px/37px '微软雅黑'; color:#fff; text-align:center;}
 /*header*/
-#header{ width: 1143px;overflow:hidden;height:auto;}
-.topbar{ height:113px;}
-.topbar .logo{ margin: 30px 0 10px 15px;}
-.topbar .nav{ width:858px; height:50px; background:#006725; box-shadow:3px 3px 3px #ccc;  margin-top: 45px;}
-.topbar .nav li{ float:left; font:16px/50px '微软雅黑'; text-align:center; width:94px; position:relative;}
-.topbar .nav li a{ color:#fff;}
+#header{ width:900px;overflow:hidden;height:auto;}
+.topbar{ height:110px;}
+.topbar .logo{ margin: 45px 15px 10px 5px;}
+.topbar .nav{ width:630px; height:50px; background:#006725; box-shadow:3px 3px 3px #ccc;  margin-top: 45px;}
+.topbar .nav li{ float:left; font:14px/50px '微软雅黑'; text-align:center; width:70px; height:50px;position:relative;}
+.topbar .nav li a{color:#fff;}
 .topbar .nav li:hover{ background:#ff6709;}
-.topphoto{height:100px; margin-bottom:10px;margin-left: 65px;}
+.topphoto{margin-bottom:10px;}
 .topphoto img{border:2px solid gold;}
 /*main*/
-#main{width:1043px;overflow:hidden;height:auto;background-color: #E7F1FA;}
+#main{width:900px;overflow:hidden;height:auto;background-color: #E7F1FA;}
 #main .l_box {width: 710px;}
 #main .r_box {width: 300px;}
 #main .l_box_title{border-bottom:2px solid #bebebe; height:46px; line-height:46px;}

@@ -128,6 +128,7 @@ function closeDiv(obj){
 			<c:forEach items="${newslist }" var="li" varStatus="idxStatus">
 				<tr class="whittr" data-itemid="${li.id }">
 					<td id="imagesidP" title="${li.title }">
+<!-- 						<video width="300" height="150" src="/resource/VID_20130916_115355.mp4" controls loop="loop" autoplay="autoplay">132465</video> -->
 						<img id="imagesid" src="${li.logo }" width="168" height="80"/>
 					</td>
 					<td title="${li.explain }"><a href="${li.details }">${fn:substring(li.explain, 0, 15)}..</a></td>

@@ -32,9 +32,7 @@
             color: #fff;
             text-decoration: none;
             display: block;
-            width: 100px;
-            height:50px;
-            line-height:50px;
+            width: 70px;
             text-align: center;
         }
         #wrap li:hover{
@@ -53,7 +51,7 @@
         });
     </script>
 </head>
-<body style="background:url(../images/123.jpg) no-repeat center 0px;">
+<body style="background:url(../images/123.jpg) no-repeat ;background-size:1366px 877px">
 	
 	<!-- 头部开始 -->
 	<jsp:include page="common/header.jsp"/>
@@ -64,9 +62,9 @@
 			<div class="focus">
 				<div class="photo">
 					<ul>
-						<li style="left:0;"><a><img src="../images/banner_01.jpg" alt="" width="1042" height="320"></a></li>
-						<li><a><img src="../images/banner_03.jpg" alt="" width="1042" height="320"></a></li>
-						<li><a><img src="../images/banner_04.jpg" alt="" width="1042" height="320"></a></li>
+						<li style="left:0;"><a><img src="../images/banner_01.jpg" alt="" width="900px" height="220px"></a></li>
+						<li><a><img src="../images/banner_03.jpg" alt="" width="900px" height="220px"></a></li>
+						<li><a><img src="../images/banner_04.jpg" alt="" width="900px" height="220px"></a></li>
 					</ul>
 				</div>
 				<div class="focus_btn"></div>
@@ -81,12 +79,12 @@
 			        <div class="b">
 			            <div id="scroll">
 			                <ul class="img-z">
-			                 	<li><a href="javascript:;"><img alt="" src="../images/ly01.jpg" width="292" height="193" /><span class="transparent"></span><em>人员合照</em></a></li> 
-			                 	<li><a href="javascript:;"><img alt="" src="../images/ly02.jpg" width="292" height="193" /><span class="transparent"></span><em>开场致辞</em></a></li>                     
-			                 	<li><a href="javascript:;"><img alt="" src="../images/ly03.jpg" width="292" height="193" /><span class="transparent"></span><em>参会领导</em></a></li>
-			                 	<li><a href="javascript:;"><img alt="" src="../images/ly04.jpg" width="292" height="193" /><span class="transparent"></span><em>互动环节</em></a></li>
-			                 	<li><a href="javascript:;"><img alt="" src="../images/ly05.jpg" width="292" height="193" /><span class="transparent"></span><em>交流探讨</em></a></li> 
-			                 	<li><a href="javascript:;"><img alt="" src="../images/ly06.jpg" width="292" height="193" /><span class="transparent"></span><em>热烈讨论</em></a></li>           
+			                 	<li><a href="javascript:;"><img alt="" src="../images/ly01.jpg" width="240" height="140" /><span class="transparent"></span><em>人员合照</em></a></li> 
+			                 	<li><a href="javascript:;"><img alt="" src="../images/ly02.jpg" width="240" height="140" /><span class="transparent"></span><em>开场致辞</em></a></li>                     
+			                 	<li><a href="javascript:;"><img alt="" src="../images/ly03.jpg" width="240" height="140" /><span class="transparent"></span><em>参会领导</em></a></li>
+			                 	<li><a href="javascript:;"><img alt="" src="../images/ly04.jpg" width="240" height="140" /><span class="transparent"></span><em>互动环节</em></a></li>
+			                 	<li><a href="javascript:;"><img alt="" src="../images/ly05.jpg" width="240" height="140" /><span class="transparent"></span><em>交流探讨</em></a></li> 
+			                 	<li><a href="javascript:;"><img alt="" src="../images/ly06.jpg" width="240" height="140" /><span class="transparent"></span><em>热烈讨论</em></a></li>           
 			                </ul>
 			            </div>
 			        </div>
@@ -121,10 +119,10 @@
 						<li><a href="../login/toLogin.do"><img src="../images/hcwz.jpg"></a></li>
 					</ul>
 					<ul class="yq">
-						<li><img src="../images/yqlj.png" width="205" height="60"></li>
-						<li><a href="http://www.cnki.net/" target="_blank"><img src="../images/yq01.jpg" width="205" height="60"></li></a>
-						<li><a href="http://www.csdn.net/" target="_blank"><img src="../images/yq02.png" width="205" height="60"></li></a>
-						<li><a href="http://www.w3school.com.cn/" target="_blank"><img src="../images/yq03.png" width="205" height="60"></li></a>
+						<li><img src="../images/yqlj.png" width="285" height="70"></li>
+						<li><a href="http://www.cnki.net/" target="_blank"><img src="../images/yq01.jpg" width="285" height="70"></li></a>
+						<li><a href="http://www.csdn.net/" target="_blank"><img src="../images/yq02.png" width="285" height="70"></li></a>
+						<li><a href="http://www.w3school.com.cn/" target="_blank"><img src="../images/yq03.png" width="285" height="70"></li></a>
 					</ul>
 				</div>
 				<div class="main_tz_r fl">
@@ -155,7 +153,7 @@
 								</div>
 								<span class="dateview">2017-04-17</span>
 							</li>
-						</ul><ul><li><br></li></ul>
+						</ul>
 						<ul class="arrow_box">
 							<li>
 								<div class="sy">
@@ -169,40 +167,42 @@
 			</div>
 			<!--通知公告结束-->
             <!--内容-->
-             <div class="tab2" style="padding-top: 15px; text-align: center; background-color: #E7E7E7;">
-        	<div class="container">
-        		<div class="col-md-6 col-sm-6" style="margin-top: 35px;">
-        			<h3>校园软件管理系统</h3>
-        			<p style="color: #337AB7;">为你提供更多的项目、让你不再因为有能力而没有锻炼的机会</p>
+            <div id="tab">
+            	<div class="tab2" style="padding-top: 15px; text-align: center; background-color: #E7E7E7;">
+        			<div class="container">
+        				<div class="col-md-6 col-sm-6" style="margin-top: 35px;">
+        					<h3>校园软件管理系统</h3>
+        					<p style="color: #337AB7;">为你提供更多的项目、让你不再因为有能力而没有锻炼的机会</p>
+        				</div>
+        				<div class="col-md-6 col-sm-6 ">
+        					<img src="../images/list5.jpg" class="img-reponsive center-block" alt="科技" />
+        				</div>
+        			</div>
         		</div>
-        		<div class="col-md-6 col-sm-6 ">
-        			<img src="../images/list5.jpg" class="img-reponsive center-block" alt="科技" />
-        		</div>
-        	</div>
-        </div>
-        <div class="tab2" style="padding-top: 15px; text-align: center; background-color: #E7E7E7;">
-        	<div class="container">
-        		<div class="col-md-6 col-sm-6">
-        			<img src="../images/list6.jpg" class="img-reponsive center-block" alt="科技" />
-        		</div>
-        		<div class="col-md-6 col-sm-6" style="margin-top: 35px;">
-        			<h3>最快的线上验收功能</h3>
-        			<p style="color: #337AB7;">在如今的校园中，项目的规划还不是多么健全。具备验收功能的管理平台，减轻了学生与老师之间的工作</p>
-        		</div>
+        		<div class="tab2" style="padding-top: 15px; text-align: center; background-color: #E7E7E7;">
+        			<div class="container">
+        				<div class="col-md-6 col-sm-6">
+        					<img src="../images/list6.jpg" class="img-reponsive center-block" alt="科技" />
+        				</div>
+        				<div class="col-md-6 col-sm-6" style="margin-top: 35px;">
+        					<h3>最快的线上验收功能</h3>
+        					<p style="color: #337AB7;">在如今的校园中，项目的规划还不是多么健全。具备验收功能的管理平台，减轻了学生与老师之间的工作</p>
+        				</div>
         		
-        	</div>
-        </div>
-        <div class="tab2" style="padding-top: 15px; text-align: center; background-color: #E7E7E7;">
-        	<div class="container">
-        		<div class="col-md-6 col-sm-6" \ style="margin-top: 35px;">
-        			<h3>智能推送功能</h3>
-        			<p style="color: #337AB7;">当完成了一个项目的时候，该平台通过智能推送、筛选，向成员提供下一个项目任务</p>
+        			</div>
         		</div>
-        		<div class="col-md-6 col-sm-6">
-        			<img src="../images/list7.jpg" class="img-reponsive center-block" alt="科技" />
+        		<div class="tab2" style="padding-top: 15px; text-align: center; background-color: #E7E7E7;">
+        			<div class="container">
+        				<div class="col-md-6 col-sm-6" \ style="margin-top: 35px;">
+        					<h3>智能推送功能</h3>
+        					<p style="color: #337AB7;">当完成了一个项目的时候，该平台通过智能推送、筛选，向成员提供下一个项目任务</p>
+        				</div>
+        				<div class="col-md-6 col-sm-6">
+        					<img src="../images/list7.jpg" class="img-reponsive center-block" alt="科技" />
+        				</div>
+        			</div>
         		</div>
-        	</div>
-        </div>
+            </div>
 			<!--会议简介结束-->
 			
 		</div>
@@ -224,12 +224,12 @@
 		        _hdbtn.find('a').mouseover(function(i){
 		            clearInterval(ImgSlideInt)
 		            if(!jQuery(this).hasClass('cur')){
-		                _hdfocus.eq(_hdpage).stop(false,true).animate({left:"-=1043"},500,function(){
-		                    jQuery(this).css("left","1043px")
+		                _hdfocus.eq(_hdpage).stop(false,true).animate({left:"-=900"},500,function(){
+		                    jQuery(this).css("left","900px")
 		                    jQuery(this).find('span,em').css("bottom",'-='+50+'px')
 		                })
 		                _hdpage=_hdbtn.find('a').index(this)
-		                _hdfocus.eq(_hdpage).stop(false,true).animate({left:"-=1043"},500)
+		                _hdfocus.eq(_hdpage).stop(false,true).animate({left:"-=900"},500)
 		                _hdfocus.eq(_hdpage).find('span,em').stop().animate({bottom:0},500)
 		            }
 		            jQuery(this).addClass('cur').siblings('a').removeClass('cur')
@@ -237,13 +237,13 @@
 		                    ImgSlideInt=setInterval(ImgSlide,5000)
 		                })
 		        ImgSlide=function(){
-		            _hdfocus.eq(_hdpage).stop(false,true).animate({left:"-=1043"},500,function(){
-		                jQuery(this).css("left","1043px")
+		            _hdfocus.eq(_hdpage).stop(false,true).animate({left:"-=900"},500,function(){
+		                jQuery(this).css("left","900px")
 		                jQuery(this).find('span,em').css("bottom",'-='+50+'px')
 		            })
 		            _hdpage >= _hdlen-1 ? _hdpage=0 : _hdpage++
 		            _hdbtn.find('a').removeClass('cur').eq(_hdpage).addClass('cur')
-		            _hdfocus.eq(_hdpage).stop(false,true).animate({left:"-=1043"},500)
+		            _hdfocus.eq(_hdpage).stop(false,true).animate({left:"-=900"},500)
 		            _hdfocus.eq(_hdpage).find('span,em').stop().animate({bottom:0},500)
 		        }
 		        ImgSlideInt=setInterval(ImgSlide,7000)
@@ -260,7 +260,7 @@
 		        });
 		        scro=function(des){
 		            des ? _scroPage>=_scroMax ? _scroPage=0 : _scroPage++ :	 _scroPage<=0 ? _scroPage=_scroMax : _scroPage--
-		            jQuery('#scroll ul').stop(false,true).animate({marginLeft:"-"+_scroPage*624+"px"},500)
+		            jQuery('#scroll ul').stop(false,true).animate({marginLeft:"-"+_scroPage*520+"px"},500)
 		        };
 		        jQuery('.s_in').animate({width:parseInt(jQuery('.in_article .h li:eq(0)').width())+20+'px'},500)
 		        jQuery('.in_article .h li').mouseover(function(){

@@ -95,8 +95,7 @@ CREATE TABLE `t_user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 INSERT INTO `t_user` VALUES (1, '任勃', '314187985@qq.com','18829348437','e10adc3949ba59abbe56e057f20f883e', '3','职称','学历','方向','简介和补充说明','/resource/default.jpg','2017-04-13','2017-04-13','1','10');
-INSERT INTO `t_user` VALUES (2, '董美丽', '850263340@qq.com','18292960987','e10adc3949ba59abbe56e057f20f883e', '3','职称','学历','方向','简介和补充说明','/resource/default.jpg','2017-04-13','2017-04-13','1','10');
-INSERT INTO `t_user` VALUES (21,'ypf','111111111@qq.com','15225454879','e10adc3949ba59abbe56e057f20f883e','1','职称','本科','方向','qwdeqweqweqwe','/resource/default.jpg','2017-05-21','2017-05-21','1','1000');
+
 -- ----------------------------
 -- 职称常量表：Table structure for `t_title`
 -- ----------------------------
@@ -109,8 +108,7 @@ CREATE TABLE `t_title` (
   `state` varchar(5) NOT NULL DEFAULT '1' COMMENT '职称状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
-INSERT INTO `t_title` VALUES ('1', '职称','2017-04-13','2017-04-13','1');
-INSERT INTO `t_title` VALUES ('2', '讲师','2017-04-13','2017-04-13','1');
+
 -- ----------------------------
 -- 学历常量表：Table structure for `t_education`
 -- ----------------------------
@@ -123,8 +121,7 @@ CREATE TABLE `t_education` (
   `state` varchar(5) NOT NULL DEFAULT '1' COMMENT '学历状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
-INSERT INTO `t_education` VALUES ('1', '学历','2017-04-13','2017-04-13','1');
-INSERT INTO `t_education` VALUES ('2', '本科','2017-04-13','2017-04-13','1');
+
 
 -- ----------------------------
 -- 方向常量表：Table structure for `t_direction`
@@ -138,8 +135,7 @@ CREATE TABLE `t_direction` (
   `state` varchar(5) NOT NULL DEFAULT '1' COMMENT '方向状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
-INSERT INTO `t_direction` VALUES ('1', '方向','2017-04-13','2017-04-13','1');
-INSERT INTO `t_direction` VALUES ('2', '大数据','2017-04-13','2017-04-13','1');
+
 
 -- ----------------------------
 -- 新闻表：Table structure for `t_news`
@@ -156,9 +152,7 @@ CREATE TABLE `t_news` (
   `state` varchar(5) NOT NULL DEFAULT '0' COMMENT '新闻状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
-INSERT INTO `t_news` VALUES ('1', '大数据有大新闻啦!!!','后视镜的痕','/resource/default.jpg','#','2017-04-13','2017-04-13','1');
-INSERT INTO `t_news` VALUES ('2', '大数据有大新闻啦!!!','后视镜的痕','/resource/default.jpg','#','2017-04-13','2017-04-13','1');
-INSERT INTO `t_news` VALUES ('3', '大数据有大新闻啦!!!','后视镜的痕','/resource/default.jpg','#','2017-04-13','2017-04-13','1');
+
 -- ----------------------------
 -- 项目表Table structure for `t_project`
 -- ----------------------------
@@ -196,10 +190,6 @@ CREATE TABLE `t_project` (
   `projstatus` int(5) NOT NULL DEFAULT 0 COMMENT '项目最终结果状态',
   PRIMARY KEY (`projid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-INSERT INTO `t_project` VALUES ('20170520212720','计算机开发','314187985@qq.com','任勃','18829348437','java语言','windows平台',12,1,'2','董美丽',123,'/resource/1/20170520212720/ffe6e3ea-9114-470b-b069-7c83fe6e295a日语学习计划.docx',NULL,'微型计算机开发',NULL,'2017-05-20',NULL,'2017-05-20','2017-05-25',NULL,NULL,0,NULL,NULL,0,0,0);
-INSERT INTO `t_project` VALUES ('20170520213053','企业管理','314187985@qq.com','任勃','18829348437','java语言','windows平台',23,1,'1','任勃',456,'/resource/1/20170520213053/30119bc2-5eeb-4ec4-bb38-84c1d5aa8673日语学习计划.docx',NULL,'企业人事管理',NULL,'2017-05-20',NULL,'2017-05-20','2017-05-26',NULL,NULL,0,NULL,NULL,0,0,0);
-INSERT INTO `t_project` VALUES ('20170520213214','学生系统管理','314187985@qq.com','任勃','18829348437','java语言','windows平台',123,1,'1','任勃',789,'/resource/1/20170520213214/1dea01f2-bd43-4d66-b6b6-baff267e3134日语学习计划.docx',NULL,'管理学生生活、学习、资费等',NULL,'2017-05-20',NULL,'2017-05-20','2017-06-10',NULL,NULL,0,NULL,NULL,0,0,0);
-INSERT INTO `t_project` VALUES ('20170521105026','论文查重平台','850263340@qq.com','董美丽','18292960987','java语言','windows平台',12,1,'2','董美丽',456,'/resource/2/20170521105026/aa955e5a-f594-41a3-8aac-084edf943659913.docx',NULL,'123456489789765432123456',NULL,'2017-05-21',NULL,'2017-05-21','2017-05-30',NULL,NULL,0,NULL,NULL,0,'0',0);
 
 -- ----------------------------
 -- 开发语言常量表：Table structure for `t_language`
@@ -213,9 +203,6 @@ CREATE TABLE `t_language` (
   `state` varchar(5) NOT NULL DEFAULT '1' COMMENT '语言状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
-INSERT INTO `t_language` VALUES ('1', 'java语言','2017-04-13','2017-04-13','1');
-INSERT INTO `t_language` VALUES ('2', 'c语言','2017-04-13','2017-04-13','1');
-INSERT INTO `t_language` VALUES ('3', 'c#语言','2017-04-13','2017-04-13','1');
 
 -- ----------------------------
 -- 开发平台常量表：Table structure for `t_platform`
@@ -229,8 +216,6 @@ CREATE TABLE `t_platform` (
   `state` varchar(5) NOT NULL DEFAULT '1' COMMENT '方向状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
-INSERT INTO `t_platform` VALUES ('1', 'windows平台','2017-04-13','2017-04-13','1');
-INSERT INTO `t_platform` VALUES ('2', 'linux平台','2017-04-13','2017-04-13','1');
 
 -- ----------------------------
 -- 用户-项目表（不包括负责人）：Table structure for `home`
@@ -244,10 +229,7 @@ CREATE TABLE `t_home` (
   `status` int(10) NOT NULL DEFAULT '0' COMMENT '加入项目状态',
   PRIMARY KEY (`projectId`,`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
-INSERT INTO `t_home` VALUES ('20170520212720', '111111111@qq.com','2017-04-13','2017-04-13','0');
-INSERT INTO `t_home` VALUES ('20170520212720', '850263340@qq.com','2017-04-13','2017-04-13','0');
-INSERT INTO `t_home` VALUES ('20170520213053', '111111111@qq.com','2017-04-13','2017-04-13','0');
-INSERT INTO `t_home` VALUES ('20170520213053', '850263340@qq.com','2017-04-13','2017-04-13','0');
+
 -- ----------------------------
 -- 任务表：Table structure for `t_task`
 -- ----------------------------

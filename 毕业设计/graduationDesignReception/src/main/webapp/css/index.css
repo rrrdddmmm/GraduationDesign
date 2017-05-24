@@ -1,6 +1,6 @@
 ﻿/* 公共样式 */
 html{overflow-x:hidden;}
-body{ font:14px "SimSun","Microsoft Yahei";  background:#e8e7e7; color:#474344;}
+body{ font:14px "SimSun","Microsoft Yahei";  background:#e8e7e7; color:#474344;background: url("../images/123.jpg") 0% 0% / 1366px 877px no-repeat;}
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
 h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
 li{list-style:none}
@@ -20,40 +20,39 @@ table{ border-collapse: collapse;}
 .img-z span{ background:#000;}
 .img-z em{ z-index:2; font:14px/37px '微软雅黑'; color:#fff; text-align:center;}
 /*header*/
-#header{ width:1143px;overflow:hidden;height:auto;}
-.topbar{ height:113px;}
-.topbar .logo{ margin: 30px 0 10px 15px;}
-.topbar .nav{ width:858px; height:50px; background:#006725; box-shadow:3px 3px 3px #ccc;  margin-top: 45px;}
-.topbar .nav li{ float:left; font:16px/50px '微软雅黑'; text-align:center; width:94px; position:relative;}
+#header{ width:900px;overflow:hidden;height:auto;}
+.topbar{ height:110px;}
+.topbar .logo{ margin: 45px 15px 10px 5px;}
+.topbar .nav{ width:630px; height:50px; background:#006725; box-shadow:3px 3px 3px #ccc;  margin-top: 45px;}
+.topbar .nav li{ float:left; font:14px/50px '微软雅黑'; text-align:center; width:70px; height:50px;position:relative;}
 .topbar .nav li a{ color:#fff;}
 .topbar .nav li:hover{ background:#ff6709;}
-.topphoto{margin-left: 65px;height:100px; margin-bottom:10px;}
+.topphoto{margin-bottom:10px;}
 .topphoto img{border:2px solid gold;}
-#main{width:1043px;overflow:hidden;height:auto;}
+#main{width:900px;overflow:hidden;height:auto;}
 /* 焦点图 */
-.focus .photo{ height:320px; position:relative; background:url(../images/loading.gif) center center no-repeat; overflow:hidden;}
-.focus .photo li{ position:absolute; left:1043px; top:0; height:320x; overflow:hidden;}
-.focus .photo li a{position:relative; width:1043px; height:320px;}
-.focus .photo li span,.focus .photo li em{ position:absolute; left:0; bottom:-50px; width:1043px; height:50px; }
+.focus .photo{ height:220px; position:relative; background:url(../images/loading.gif) center center no-repeat; overflow:hidden;}
+.focus .photo li{ position:absolute; left:900px; top:0; height:220px; overflow:hidden;}
+.focus .photo li a{position:relative; width:900px; height:220px;}
+.focus .photo li span,.focus .photo li em{ position:absolute; left:0; bottom:-50px; width:900px; height:50px; }
 .focus .photo li span{ background:#000;}
 .focus .photo li em{ text-align:center; font:16px/50px '微软雅黑'; color:#fff;}
 .focus_btn{ height:25px; text-align:center;}
 .focus_btn a{ display:inline-block; width:30px; height:10px; background:#fff; margin:10px 10px 0 0; overflow:hidden;}
 .focus_btn a.cur{ background:#8fc31f;}
 /*园区掠影*/
-.w744{ width:744px;}
-.sketch{ background:url(../images/sketch.jpg) no-repeat; height:315px;}
-.sketch .h{ height:77px; text-align:center;}
-.sketch .h a{ position:absolute; width:108px; height:33px; background-image: url("about:blank"); left:322px; top:19px;}
-#scroll ul{ width:10000%}
-#scroll{ width:624px; margin:0 auto; overflow:hidden; position:relative;}
-.sketch .b li{ float:left; width:292px; height:193px; border-radius:5px; background:#efe6db; margin:0 10px; display:inline; position:relative;}
+.w744{ width:620px;}
+.sketch{ background:url(../images/sketch.jpg) no-repeat;background-size:620px 230px; height:230px;}
+.sketch .h{ height:60px; text-align:center;}
+.sketch .h a{ position:absolute; width:108px; height:33px; background-image: url("about:blank"); left:322px; top:9px;}
+#scroll{ width:520px; margin:0 auto; overflow:hidden; position:relative;}
+.sketch .b li{ float:left; width:240px; height:140px; border-radius:5px; background:#efe6db; margin:0 10px 30px; display:inline; position:relative;}
 #scroll img{border-radius:5px;}
-#scroll span,#scroll em{ width:292px; border-radius:0 0 5px 5px}
-#iLeft_btn,#iRight_btn{ position:absolute; top:141px;background-image: url("about:blank"); width:28px; height:55px;}
-#iLeft_btn{ left:20px;}#iRight_btn{ right:20px;}
+#scroll span,#scroll em{ width:240px; border-radius:0 0 5px 5px}
+#iLeft_btn,#iRight_btn{ position:absolute; top:95px;background-image: url("about:blank"); width:28px; height:55px;}
+#iLeft_btn{ left:15px;}#iRight_btn{ right:15px;}
 /*会议简介*/
-.main_hy{ width:287px;height:315px;background:#fbfdf1;border-radius:5px;}
+.main_hy{ width:270px;height:230px;background:#fbfdf1;border-radius:5px;}
 .main_hy .ht{height:30px;line-height:30px;margin:10px;border-bottom:2px solid green;}
 .main_hy .ht .ht_l{line-height:30px;}
 .main_hy .ht .ht_r{line-height:30px;float:right;}
@@ -63,7 +62,7 @@ table{ border-collapse: collapse;}
 .main_hy .ht_r .gd a:hover{text-decoration:underline;}
 .main_hy .hc{font-size:13px;line-height:23px;text-indent:2em;margin:0 10px;color:#444;}
 /*通知公告*/
-.main_tz{width:1043px;height:auto;overflow:hidden;}
+.main_tz{width:1366px;height:auto;overflow:hidden;background-color: #e8e7e7;padding-left: 170px;}
 .main_tz_l ul li{width:287px;height:97px;margin-top:5px;margin-bottom:20px;}
 .main_tz_l .hy li a:hover img{border:2px solid #a4c2f4;}
 .main_tz_l .yq {background:#e8e7e7;height:376px;}
@@ -71,8 +70,8 @@ table{ border-collapse: collapse;}
 .main_tz_l .yq li{text-align:center;height:70px;line-height:70px;}
 .main_tz_l .yq li a:hover img{border:2px solid #ff6709;}
 .main_tz_r{ width:716px;height:auto;margin: 5px 0px 5px 20px;background:#e8e7e7;padding:10px;}
-.main_tz_r .new .arrow_box { background: #f8f8f8; box-shadow: 0px 1px 0px rgba(255,255,255,.1), inset 0px 1px 1px rgba(214, 214, 214, 0.7); width: 500px; height:100px;border-radius: 6px; position: relative; padding: 10px 0; margin: 10px 0; }
-.main_tz_r .new .arrow_box img { width: 120px; height:100px;float: left; margin: 0 20px 0 20px; }
+.main_tz_r .new .arrow_box { background: #f8f8f8; box-shadow: 0px 1px 0px rgba(255,255,255,.1), inset 0px 1px 1px rgba(214, 214, 214, 0.7); width: 500px; height:100px;border-radius: 6px; position: relative; padding: 10px 0; margin: 30px 0; }
+.main_tz_r .new .arrow_box img { width: 120px; height:100px;float: left; margin: -10px 20px 0 20px; }
 .main_tz_r .new .arrow_box p { float: left;line-height: 100px;height:100px;}
 .main_tz_r .new .arrow_box a:hover { color:#ff6709;}
 .main_tz_r .new .arrow_box::after { content: ""; width: 10px; height: 10px; border-radius: 50%; position: absolute; left: 526px; top: 36px; background: #CCCCCE; border: 2px solid #fff; transition: all 0.5s; }/* 圆形 */

@@ -6,13 +6,6 @@
 	<title>新闻动态-基于项目管理流程的校园软件项目协同平台</title>
     <link rel="stylesheet" type="text/css" href="../css/index.css">
 	<link rel="stylesheet" type="text/css" href="../css/base.css">
-	<style type="text/css">
-		body{ margin:0; padding:0; font:normal 14px/24px "\5FAE\8F6F\96C5\9ED1";}
-		#fr1{
-			    margin-top: -708px;
-                margin-right: 450px;
-			}
-	</style>
 	<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
 	<script type="text/javascript">
 	    $(function(){
@@ -30,7 +23,7 @@
     </script>
 	</script>
 </head>
-<body style="background:url(../images/123.jpg) no-repeat center 0px;">
+<body style="background:url(../images/123.jpg) no-repeat center 0px;background-size:1366px 877px;">
 	
 	<!-- 头部开始 -->
 	<jsp:include page="../common/header.jsp"/>

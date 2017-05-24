@@ -54,7 +54,7 @@ public class SessionController {
 	public static void noSeeiondelwith(HttpServletRequest request) throws ControllerException {
 		if (!judgeUserSession(request)) {
 			String str = null;
-			// str.getBytes();
+			str.getBytes();
 		}
 	}
 
