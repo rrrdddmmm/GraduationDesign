@@ -123,10 +123,13 @@ public class TaskManagerController implements Serializable {
 	@RequestMapping("/taskDistribution.do")
 	public String taskDistribution(Model model, Project project) {
 		Map<String, String> map = new HashMap<String, String>();
-		List<BaseTask> list = baseTaskMapper.selectByPrimaryAll(new BaseTask(project.getProjid()));
-		for (BaseTask baseTask : list) {
+		List<BaseTask> list = baseTaskMapper.selectByPrimaryAll(new BaseTask(project.getProjid(), project
+				.getProjemail()));
+		List<BaseTask> list1 = baseTaskMapper.selectByPrimaryAll(new BaseTask(project.getProjid()));
+		for (BaseTask baseTask : list1) {
 			map.put(baseTask.getEmail(), baseTask.getName());
 		}
+		model.addAttribute("backemail", project.getProjemail());
 		model.addAttribute("map", map);
 		model.addAttribute("tasklist", list);
 		model.addAttribute("project", projectManageService.getProjectById(project.getProjid()));

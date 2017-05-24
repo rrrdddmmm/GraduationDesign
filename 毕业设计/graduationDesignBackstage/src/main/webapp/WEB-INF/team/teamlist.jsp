@@ -329,8 +329,8 @@
 </body>
 <script>
 	$(document).ready(function() {
-		var add='${add}';
-		if(add==1){_alert("添加成功!");}else if(add==2){_alert("非法操作,不能重复添加且不能添加项目申请人!",2);}
+		var add='${stateResult.status}';
+		if(add==1){_alert('${stateResult.msg}');}else if(add==2){_alert('${stateResult.msg}',2);}
 		$("#projectid").val("${home.projectid}");//回显
 		$("#projectname").val("${home.projectname}");
 		$("#CriteriaQuery").click(function() {

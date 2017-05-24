@@ -61,11 +61,7 @@ public class TeamManagerController implements Serializable {
 		model.addAttribute("myprojectlist", projectManageService.getCreatProject(request));
 		model.addAttribute("homeprojectlist", teamManagerService.teamList(home, request));
 		model.addAttribute("studentlist", userManagerService.userAllStudentList());
-		if (stateResult.getStatus() != 0) {
-			model.addAttribute("add", 1);
-		} else {
-			model.addAttribute("add", 2);
-		}
+		model.addAttribute("stateResult", stateResult);
 		return "team/teamlist";
 	}
 

@@ -80,10 +80,10 @@ public class TeamManagerService {
 		home.setUpdatetime(DateDealwith.getCurrDate());
 		home.setStatus(0);
 		List<BaseProject> pp = baseProjectMapper.selectByPrimaryAll(new Project(home.getEmail(), null, home
-				.getProjectid()));
-		BaseHome hh = baseHomeMapper.selectByPrimaryKey(home.getProjectid(), home.getEmail());
-		if (hh != null || pp != null) {
-			stateResult.setStatus(0);
+				.getProjectid()));// 不能添加项目负责人
+		BaseHome hh = baseHomeMapper.selectByPrimaryKey(home.getProjectid(), home.getEmail());// 不能重复添加
+		if (hh != null || pp.size() > 0) {
+			stateResult.setStatus(2);
 			stateResult.setMsg("服务器端:数据添加失败!");
 			return stateResult;
 		} else {
@@ -91,7 +91,7 @@ public class TeamManagerService {
 				stateResult.setStatus(1);
 				stateResult.setMsg("服务器端:数据添加成功!");
 			} else {
-				stateResult.setStatus(0);
+				stateResult.setStatus(2);
 				stateResult.setMsg("服务器端:数据添加失败!");
 			}
 			return stateResult;

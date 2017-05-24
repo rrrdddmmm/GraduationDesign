@@ -119,16 +119,16 @@ function closeDiv(obj){
     <div class="fandr">
       <div class="form-groupl">
       	项目名称： 
-      	<input type="text" id="departmentname" value="计算机开发" class="syt_lb_top_conment_txt" readonly></input>
+      	<input type="text" value="${project.projname }" class="syt_lb_top_conment_txt" readonly></input>
       	执行人：
-        <select id="state" class="input_b">
+        <select id="email" class="input_b">
           <option selected="selected" value="-1">---全部---</option>
            <c:forEach items="${map }" var="li" varStatus="idxStatus">
           	<option value="${li.key }">${li.value }</option>
           </c:forEach>
       	</select>
       </div>
-      <button type="submit" class="chaxun_but" id="search">查询</button>
+      <button type="button" class="chaxun_but" id="CriteriaQuery">查询</button>
     </div>
     <div class="clearfix"></div>
   </div>
@@ -155,13 +155,18 @@ function closeDiv(obj){
 	  <td><fmt:formatDate value="${li.endtime }"pattern="yyyy-MM-dd" /></td>
       <c:if test="${li.description!=null }">
 		  <td title="${li.description }">
-		   <a href="download.do?filePath=${li.taskfile }" >${fn:substring(li.description, 0, 10)}...</a>
+		   	<a href="download.do?filePath=${li.taskfile }" >${fn:substring(li.description, 0, 10)}...</a>
 		  </td>
 	   </c:if>
 	   <c:if test="${li.description==null }">
 		  <td>待分配</td>
 	  </c:if>
-      <td><a href="javascript:void(0);" onclick="ShowDiv2('MyDiv', 'fade');">分配(修改)</a></td>
+      <td>
+      <c:if test="${li.email==project.projemail }">已分配</c:if>
+      <c:if test="${li.email!=project.projemail }">
+      <a href="javascript:void(0);" onclick="ShowDiv2('MyDiv', 'fade');">分配(修改)</a>
+	  </c:if>
+      </td>
     </tr>
    </c:forEach>
   </table>
@@ -193,14 +198,6 @@ function closeDiv(obj){
             <textarea name="txtOpinion" rows="4" class="textarea_wby" id="txtOpinion" ></textarea>
           </td>
         </tr>
-        <tr>
-        	<td width="15%" align="center"; bgcolor="#FFFFFF" >开始时间</td>
-      		<td  height="38" width="88%" bgcolor="#FFFFFF" ><input name="newreturnTime" placeholder="请输入日期" class="syt_lb_top_conment_txt" onclick="laydate()" id="newreturnTime"/></td>
-        </tr>
-        <tr>
-        	<td width="15%" align="center"; bgcolor="#FFFFFF" >截至时间</td>
-      		<td  height="38" width="88%" bgcolor="#FFFFFF" ><input name="newreturnTime" placeholder="请输入日期" class="syt_lb_top_conment_txt" onclick="laydate()" id="newreturnTime"/></td>
-        </tr>
       </table>
               <div class="win_btn"><button type="submit" class="chaxun_but2">确认</button> <button type="submit" class="chaxun_but2">取消</button></div>
             </div>
@@ -209,7 +206,17 @@ function closeDiv(obj){
 
 </div>
 </div>
-        
-      
+ <script>
+  $(document).ready(function() {
+		$("#email").val("${backemail}");//回显
+		$("#CriteriaQuery").click(function() {
+			if($("#email").val()!='-1'){
+				window.location.href ="taskDistribution.do?projid=${project.projid }&projemail="+$("#email").val()+"";
+			}else{
+				window.location.href ="taskDistribution.do?projid=${project.projid }";
+			}
+		});
+	})
+</script>     
 </body>
 </html>

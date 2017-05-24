@@ -96,7 +96,7 @@
 		     <td>
 		     <c:if test="${li.projemail==userInfomation.email }">
 		     	<a href="taskProjectList.do?projid=${li.projid }&projemail=${li.projemail }" >创建任务</a>&nbsp;&nbsp;
-		     	<a href="taskDistribution.do?projid=${li.projid }&projemail=${li.projemail }" >分配任务</a>&nbsp;&nbsp;
+		     	<a href="taskDistribution.do?projid=${li.projid }" >分配任务</a>&nbsp;&nbsp;
 		     </c:if>
 		        <a href="taskChakan.do?projid=${li.projid }&projemail=${li.projemail }" >任务</a>
 		      </td>
