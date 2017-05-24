@@ -134,7 +134,14 @@ function closeDiv(obj){
 	      <c:if test="${li.description==null }">
 		      <td>待分配</td>
 	      </c:if>
-	      <td><a class="font-red-sunglo">删除</a></td>
+	      <td>
+	      <c:if test="${defaultTaskview!=li.description }">
+	      	<a class="font-red-sunglo">删除</a>
+	      </c:if>
+	      <c:if test="${defaultTaskview==li.description }">
+	      	系统默认任务
+	      </c:if>
+	      </td>
 	    </tr>
     </c:forEach>
   </table>

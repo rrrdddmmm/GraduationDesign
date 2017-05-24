@@ -42,7 +42,7 @@
             <tr>
                 <td height="40" align="right">角&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;色：</td>
                  <td height="40">
-                   <select id="role" class="input_b" style="width:129px;height:34px">
+                   <select id="role" class="input_b" style="width:148px;height:34px">
 			          <option selected="selected" value="-1">---请选择---</option>
 			          <option value="1">学生</option>
 			          <option value="2">教师</option>

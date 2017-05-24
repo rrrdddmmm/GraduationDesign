@@ -1,5 +1,6 @@
 package com.xkd.controller;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
@@ -10,7 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.xkd.entity.BaseConfig;
 import com.xkd.entity.BaseUser;
@@ -106,6 +109,15 @@ public class UserManagerController implements Serializable {
 		model.addAttribute("baseUserList", list);
 		model.addAttribute("statefalse", 1);
 		return "user/userlist";
+	}
+
+	@RequestMapping("uploadMyimage.do")
+	@ResponseBody
+	public StateResult uploadMyimage(StateResult stateResult, Model model, BaseUser user,
+			@RequestParam(value = "file", required = true) MultipartFile file, HttpServletRequest request)
+			throws IOException {
+		userManagerService.uploadMyimage(user, stateResult, model, file, request);
+		return stateResult;
 	}
 
 	@ModelAttribute

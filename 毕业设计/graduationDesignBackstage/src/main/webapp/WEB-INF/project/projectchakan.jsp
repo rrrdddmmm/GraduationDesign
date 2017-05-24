@@ -136,8 +136,15 @@
       	<td><a href="javascript:void(0);" onclick="ShowDiv2('MyDiv', 'fade');">查看详情</a></td>
       </c:if>
     </tr>
+    <tr class="lantr">
+<!--   autoplay="autoplay" -->
+	<td colspan="10">
+    	<video width="600" height="250"  controls loop="loop" poster="${videodefaultimage }"><source src="${video.resultfile }"/></video>
+  </td>
+  </tr>
   </table>
   <!--分页-->
+  
 </div>
 <c:if test="${userInfomation.role==2 }">
   <div class="syt_lb_top">

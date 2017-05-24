@@ -116,7 +116,7 @@
 					<td>
 					<c:if test="${userInfomation.role==1 }">
 						<a href="../projectAuditController/projectChakan.do?projid=${li.projid }">查看</a>&nbsp;&nbsp;
-						<c:if test="${userInfomation.email==li.projemail }">
+						<c:if test="${userInfomation.email==li.projemail and li.projstatus==0}">
 							<a class="font-red-sunglo">删除</a>
 						</c:if>
 					</c:if>

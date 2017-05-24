@@ -103,25 +103,6 @@ function closeDiv(obj){
 <div class="sytxq_conment_wk">
 
 <div class="sytxq_conment_wk_bx">
-  <div class="syt_lb">
-    <div class="syt_lb_top">
-      <h1 class="syt_lb_top_titleh1">查询条件</h1>
-    </div>
-    <div class="syt_lb_top_conment">
-    <div class="fandr">
-      <div class="form-groupl">
-      	执行人：
-        <select id="state" class="input_b">
-          <option selected="selected" value="-1">---全部---</option>
-          <option value="1">任勃</option>
-          <option value="2">董美丽</option>
-      </select>
-      </div>
-      <button type="submit" class="chaxun_but" id="search">查询</button>
-    </div>
-    <div class="clearfix"></div>
-  </div>
-  </div>
   <div id="blockquote_content">
   <div class="globle_bck">
     <h1>  ∷ 任务表 ∷</h1>

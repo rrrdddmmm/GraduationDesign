@@ -244,8 +244,8 @@ CREATE TABLE `t_task` (
   `endTime` date NOT NULL COMMENT '结束时间',
   `description` varchar(500) DEFAULT NULL COMMENT '任务描述',
   `taskFile` varchar(200)  DEFAULT NULL COMMENT '详细任务文件地址',
-  `resultDescription` varchar(20)  DEFAULT NULL COMMENT '成果描述',
-  `resultFile` varchar(20)  DEFAULT NULL COMMENT '成果文件地址',
+  `resultDescription` varchar(200)  DEFAULT NULL COMMENT '成果描述',
+  `resultFile` varchar(200)  DEFAULT NULL COMMENT '成果文件地址',
   `resultEvaluation` varchar(500) DEFAULT NULL COMMENT '成果评价',
   `status` int(10) NOT NULL DEFAULT '0' COMMENT '任务是否有效',
   PRIMARY KEY (`id`)

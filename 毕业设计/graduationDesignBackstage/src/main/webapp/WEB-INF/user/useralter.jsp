@@ -242,7 +242,7 @@
 		    }  
 		    $("#upload").ajaxSubmit({  
 		        type : 'POST',  
-		        url : '../userMyInfomationController/uploadMyimage.do?id='+id+'',  
+		        url : 'uploadMyimage.do?id='+id+'',  
 		        success : function(result) {  
 		        	if(result.status=='0'){
 						_alert(result.msg);

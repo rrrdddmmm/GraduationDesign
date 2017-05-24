@@ -241,7 +241,6 @@ public class FileDealWith {
 			if (file.getName() != null || "".equals(file.getName())) {
 				System.out.println(file.getOriginalFilename());
 				String[] name = file.getOriginalFilename().split("\\.");
-				System.out.println(name[0]);
 				if ("txt".equals(name[name.length - 1]) || "doc".equals(name[name.length - 1])
 						|| "docx".equals(name[name.length - 1]) || "pdf".equals(name[name.length - 1])) {
 					File f = new File(absPath);

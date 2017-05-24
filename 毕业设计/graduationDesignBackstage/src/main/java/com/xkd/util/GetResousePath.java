@@ -101,4 +101,14 @@ public class GetResousePath {
 		return ConfigStr.newsNetPathAbs + imagsname;
 	}
 
+	/**
+	 * 获取用户存放项目视频任务文件的物理文件夹目录文件
+	 * 
+	 * @param request
+	 * @return
+	 */
+	public static String getUserDefaultTaskviewresultPath(String id, String projectid, String filename) {
+		return getUserResouresPath(id) + projectid + "/task/" + filename;
+	}
+
 }

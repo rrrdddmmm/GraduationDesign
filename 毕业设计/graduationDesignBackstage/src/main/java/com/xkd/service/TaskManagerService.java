@@ -84,6 +84,29 @@ public class TaskManagerService {
 		return stateResult;
 	}
 
+	public StateResult taskDistributionHandle(StateResult stateResult, BaseTask baseTask, MultipartFile file,
+			HttpServletRequest request) throws IllegalStateException, IOException {
+		BaseUser users = SessionController.getLoginInfomation(request);
+		String uuid1 = UUID.randomUUID().toString();
+		String absPath = GetResousePath.getUserProjectTaskFilePath(users.getId().toString(), baseTask.getProjectid(),
+				uuid1 + file.getOriginalFilename());
+		if (FileDealWith.upload(stateResult, file, absPath)) {
+			baseTask.setTaskfile(absPath);
+			baseTask.setUpdatetime(DateDealwith.getCurrDate());
+			if (baseTaskMapper.updateByPrimaryKeySelective(baseTask) > 0) {
+				stateResult.setStatus(0);
+				stateResult.setMsg("任务分配成功，重新进入将会生效哦!");
+			} else {
+				stateResult.setStatus(1);
+				stateResult.setMsg("数据更新，任务分配失败!");
+			}
+		} else {
+			stateResult.setStatus(2);
+			stateResult.setMsg("文档上传，任务分配失败!");
+		}
+		return stateResult;
+	}
+
 	/**
 	 * 
 	 * @param stateResult

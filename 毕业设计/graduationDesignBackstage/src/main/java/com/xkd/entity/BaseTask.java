@@ -38,6 +38,14 @@ public class BaseTask {
 		this.projectid = projectid;
 	}
 
+	public BaseTask(String projectid, String email, String name, Date startuptime, Date endtime) {
+		this.projectid = projectid;
+		this.startuptime = startuptime;
+		this.endtime = endtime;
+		this.email = email;
+		this.name = name;
+	}
+
 	public BaseTask(String projectid, Date startuptime, Date endtime) {
 		this.projectid = projectid;
 		this.startuptime = startuptime;

@@ -14,7 +14,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.xkd.controller.SessionController;
 import com.xkd.dao.BaseProjectMapper;
+import com.xkd.dao.BaseTaskMapper;
 import com.xkd.entity.BaseProject;
+import com.xkd.entity.BaseTask;
 import com.xkd.entity.BaseUser;
 import com.xkd.entity.StateResult;
 import com.xkd.util.ConfigStr;
@@ -35,6 +37,11 @@ public class ProjectCreatService {
 	 */
 	@Resource(name = "baseProjectMapper")
 	private BaseProjectMapper	baseProjectMapper;
+	/**
+	 * 任务表
+	 */
+	@Resource(name = "baseTaskMapper")
+	private BaseTaskMapper		baseTaskMapper;
 
 	public StateResult creatProjectHandle(BaseProject baseProject, StateResult stateResult,
 			@RequestParam(value = "file", required = true) MultipartFile[] file, HttpServletRequest request) {
@@ -75,6 +82,14 @@ public class ProjectCreatService {
 			baseProject.setProjgrade("0");
 			baseProject.setProjstatus(0);
 			baseProjectMapper.insert(baseProject);
+			// 添加默认任务：数据库插入默认任务，最后一天上传视频
+			BaseTask bt = new BaseTask(projectid, baseProject.getProjemail(), users.getName(),
+					baseProject.getProjendtime(), baseProject.getProjendtime());
+			bt.setDescription(ConfigStr.defaultTaskview);
+			bt.setResultfile(ConfigStr.defaultTaskviewResultFile);
+			bt.setTaskfile(ConfigStr.defaultTaskTXTResultFile);
+			bt.setUpdatetime(DateDealwith.getCurrDate());
+			baseTaskMapper.insertSelective(bt);
 			stateResult.setMsg("服务器端：项目创建成功!");
 			stateResult.setStatus(0);
 		} catch (IllegalStateException e) {

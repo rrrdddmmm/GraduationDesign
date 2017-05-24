@@ -27,6 +27,7 @@ import com.xkd.entity.Page.Project;
 import com.xkd.service.ProjectManageService;
 import com.xkd.service.TaskManagerService;
 import com.xkd.service.UserManagerService;
+import com.xkd.util.ConfigStr;
 import com.xkd.util.FileDealWith;
 
 /**
@@ -83,6 +84,7 @@ public class TaskManagerController implements Serializable {
 		model.addAttribute("tasklist",
 				baseTaskMapper.selectByPrimaryAll(new BaseTask(project.getProjid(), project.getProjemail())));
 		model.addAttribute("msg", msg);
+		model.addAttribute("defaultTaskview", ConfigStr.defaultTaskview);
 		return "task/taskstartcreat";
 	}
 
@@ -102,19 +104,6 @@ public class TaskManagerController implements Serializable {
 		return stateResult;
 	}
 
-	@RequestMapping("download.do")
-	public void download(HttpServletResponse response, String filePath) {
-		try {
-			if (new File(filePath).isDirectory()) {
-				FileDealWith.iteratorDirdownjoad(response, filePath);
-			} else {
-				FileDealWith.downloadFile(response, filePath);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
 	/**
 	 * 分配任务
 	 * 
@@ -123,17 +112,26 @@ public class TaskManagerController implements Serializable {
 	@RequestMapping("/taskDistribution.do")
 	public String taskDistribution(Model model, Project project) {
 		Map<String, String> map = new HashMap<String, String>();
-		List<BaseTask> list = baseTaskMapper.selectByPrimaryAll(new BaseTask(project.getProjid(), project
-				.getProjemail()));
 		List<BaseTask> list1 = baseTaskMapper.selectByPrimaryAll(new BaseTask(project.getProjid()));
 		for (BaseTask baseTask : list1) {
 			map.put(baseTask.getEmail(), baseTask.getName());
 		}
-		model.addAttribute("backemail", project.getProjemail());
 		model.addAttribute("map", map);
+		List<BaseTask> list = baseTaskMapper.selectByPrimaryAll(new BaseTask(project.getProjid(), project
+				.getProjemail()));
 		model.addAttribute("tasklist", list);
+		model.addAttribute("backemail", project.getProjemail());
 		model.addAttribute("project", projectManageService.getProjectById(project.getProjid()));
 		return "task/taskdistribution";
+	}
+
+	@RequestMapping("/taskDistributionHandle.do")
+	@ResponseBody
+	public StateResult taskDistributionHandle(StateResult stateResult, BaseTask baseTask,
+			@RequestParam(value = "file", required = true) MultipartFile file, HttpServletRequest request)
+			throws IllegalStateException, IOException {
+		taskManagerService.taskDistributionHandle(stateResult, baseTask, file, request);
+		return stateResult;
 	}
 
 	/**
@@ -156,6 +154,19 @@ public class TaskManagerController implements Serializable {
 	public String taskAlter(Model model, Project project) {
 		System.out.println(project);
 		return "task/taskalter";
+	}
+
+	@RequestMapping("download.do")
+	public void download(HttpServletResponse response, String filePath) {
+		try {
+			if (new File(filePath).isDirectory()) {
+				FileDealWith.iteratorDirdownjoad(response, filePath);
+			} else {
+				FileDealWith.downloadFile(response, filePath);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@ModelAttribute

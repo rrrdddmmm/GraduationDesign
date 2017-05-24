@@ -15,8 +15,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.xkd.dao.BaseTaskMapper;
 import com.xkd.entity.BaseConfig;
 import com.xkd.entity.BaseProject;
+import com.xkd.entity.BaseTask;
 import com.xkd.entity.BaseUser;
 import com.xkd.entity.StateResult;
 import com.xkd.entity.Page.Project;
@@ -49,9 +51,20 @@ public class ProjectAuditController implements Serializable {
 	private UserManagerService		userManagerService;
 	@Resource(name = "configManagerService")
 	private ConfigManagerService	configManagerService;
+	/**
+	 * 任务表
+	 */
+	@Resource(name = "baseTaskMapper")
+	private BaseTaskMapper			baseTaskMapper;
 
 	@RequestMapping("projectChakan.do")
 	public String projectChakan(Model model, String msg, String projid) {
+		BaseTask baseTask = new BaseTask(projid);
+		baseTask.setDescription(ConfigStr.defaultTaskview);
+		List<BaseTask> baseTaskview = baseTaskMapper.selectByPrimaryAll(baseTask);
+		if (baseTaskview.size() > 0) {
+			model.addAttribute("video", baseTaskview.get(0));
+		}
 		@SuppressWarnings("unchecked")
 		List<BaseConfig> languageconfiglist = (List<BaseConfig>) configManagerService.configList(4);
 		model.addAttribute("languageconfiglist", languageconfiglist);
@@ -64,6 +77,7 @@ public class ProjectAuditController implements Serializable {
 		model.addAttribute("allResultPath", ConfigStr.ResourcesPath + user.getId() + "/" + obj.getProjid() + "");
 		model.addAttribute("project", obj);
 		model.addAttribute("msg", msg);
+		model.addAttribute("videodefaultimage", ConfigStr.videodefaultimage);
 		return "project/projectchakan";
 	}
 

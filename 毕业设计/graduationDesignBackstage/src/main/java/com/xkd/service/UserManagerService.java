@@ -1,12 +1,16 @@
 package com.xkd.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.xkd.dao.BaseDirectionMapper;
 import com.xkd.dao.BaseUserMapper;
@@ -14,6 +18,7 @@ import com.xkd.entity.BaseDirection;
 import com.xkd.entity.BaseUser;
 import com.xkd.entity.StateResult;
 import com.xkd.util.DateDealwith;
+import com.xkd.util.GetResousePath;
 
 @Service("userManagerService")
 @Scope("prototype")
@@ -105,6 +110,51 @@ public class UserManagerService {
 			baseDirection.setUserList(baseUserMapper.selectByBaseDirection(baseDirection.getName()));
 		}
 		return baseDirectionList;
+	}
+
+	public StateResult uploadMyimage(BaseUser user, StateResult stateResult, Model model, MultipartFile file,
+			HttpServletRequest request) throws IOException {
+		try {
+			if (file != null) {
+				if (file.getName() != null || "".equals(file.getName())) {
+					String[] name = file.getContentType().split("/");
+					if ("BMP".equals(name[name.length - 1]) || "JPG".equals(name[name.length - 1])
+							|| "JPEG".equals(name[name.length - 1]) || "bmp".equals(name[name.length - 1])
+							|| "jpg".equals(name[name.length - 1]) || "jpeg".equals(name[name.length - 1])) {
+						String images = DateDealwith.getSHC();
+						// 物理地址
+						File f = new File(GetResousePath.getUserTopImagesPath(user.getId().toString(), images));
+						if (!f.exists()) {
+							f.mkdirs();
+						}
+						file.transferTo(f);
+						// 网络地址
+						user.setImage(GetResousePath.getUserTopNetImagesPath(user.getId().toString(), images));
+						if (baseUserMapper.updateByPrimaryKeySelective(user) > 0) {
+							stateResult.setStatus(0);
+							stateResult.setMsg("服务器端：上传成功!");
+						} else {
+							stateResult.setStatus(5);
+							stateResult.setMsg("服务器端：数据库更改失败!");
+						}
+					} else {
+						stateResult.setStatus(1);
+						stateResult.setMsg("服务器端：请上传规定格式!");
+					}
+				} else {
+					stateResult.setStatus(2);
+					stateResult.setMsg("服务器端：文件名不能为空!");
+				}
+			} else {
+				stateResult.setStatus(3);
+				stateResult.setMsg("服务器端：请选择文件!");
+			}
+		} catch (IllegalStateException e) {
+			stateResult.setStatus(4);
+			stateResult.setMsg("服务器端：上传失败，服务器异常，请稍后上传!");
+		}
+		stateResult.setNewpath(user.getImage());
+		return stateResult;
 	}
 
 	/**

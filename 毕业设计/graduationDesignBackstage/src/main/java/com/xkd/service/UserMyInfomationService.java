@@ -76,7 +76,9 @@ public class UserMyInfomationService {
 						file.transferTo(f);
 						// 网络地址
 						sessionUser.setImage(GetResousePath.getUserTopNetImagesPath(idStr, images));
-						model.addAttribute(ConfigStr.userInfomation, sessionUser);
+						if (id == null) {
+							model.addAttribute(ConfigStr.userInfomation, sessionUser);
+						}
 						myInfomationAlter(sessionUser, new StateResult(), request);
 						stateResult.setStatus(0);
 						stateResult.setMsg("服务器端：上传成功!");

@@ -162,9 +162,9 @@ function closeDiv(obj){
 		  <td>待分配</td>
 	  </c:if>
       <td>
-      <c:if test="${li.email==project.projemail }">已分配</c:if>
+      <c:if test="${li.email==project.projemail }">已分配(禁止操作)</c:if>
       <c:if test="${li.email!=project.projemail }">
-      <a href="javascript:void(0);" onclick="ShowDiv2('MyDiv', 'fade');">分配(修改)</a>
+      <a href="javascript:void(0);" onclick="distributionfunct('${li.id}');">分配(修改)</a>
 	  </c:if>
       </td>
     </tr>
@@ -181,25 +181,33 @@ function closeDiv(obj){
 <div class="sdcq_tck">
             <img src="../content/images/hong.gif" class="sdcq_tck_right_cha" width="1" height="16" onclick="CloseDiv2('MyDiv','fade')" />
             <div class="sdcq_tck_hong">
-                <h1 class="globle_title3"><img src="../content/images/tcc_b.png" style=" vertical-align:middle" /> 提交任务</h1>
-                
+                <h1 class="globle_title3"><img src="../content/images/tcc_b.png" style=" vertical-align:middle" /> 分配任务
+                <a style="color:red;text-align:left;">注：1.上传文件格式为txt/doc/docx/pdf。2.建议文件大小不超过40k。</a>
+                </h1>
     </div>
             <div class="sdcq_tck_conment">
-      <table width="100%" border="0" cellspacing="1" cellpadding="0" class="autotable2" style="margin:1px auto">
-        <tr>
-          <td width="15%" align="center"; bgcolor="#FFFFFF" >任务上传</td>
-          <td  height="38" width="88%" bgcolor="#FFFFFF" >
-            <input  type="file"  class="syt_lb_top_conment_txt" style="margin:10px; width:223px;" />
-          </td>
-        </tr>
-        <tr>
-          <td width="15%" align="center"; bgcolor="#FFFFFF" >任务简要描述</td>
-          <td  height="38" width="88%" bgcolor="#FFFFFF" >
-            <textarea name="txtOpinion" rows="4" class="textarea_wby" id="txtOpinion" ></textarea>
-          </td>
-        </tr>
-      </table>
-              <div class="win_btn"><button type="submit" class="chaxun_but2">确认</button> <button type="submit" class="chaxun_but2">取消</button></div>
+      <form id="taskDistributionHandle" enctype="multipart/form-data">
+	      <table width="100%" border="0" cellspacing="1" cellpadding="0" class="autotable2" style="margin:1px auto">
+	        <tr>
+	          <td width="15%" align="center"; bgcolor="#FFFFFF" >任务上传</td>
+	          <td  height="38" width="88%" bgcolor="#FFFFFF" >
+	            <input  type="file"  name="file" id="resultfile" class="syt_lb_top_conment_txt" style="margin:10px; width:223px;" />
+	            <input  type="text"  name="id" id="id" style="display:none" />
+	            <input  type="text"  name="projectid" value="${project.projid}" style="display:none" />
+	          </td>
+	        </tr>
+	        <tr>
+	          <td width="15%" align="center"; bgcolor="#FFFFFF" >任务简要描述</td>
+	          <td  height="38" width="88%" bgcolor="#FFFFFF" >
+	            <textarea name="description" rows="4" class="textarea_wby" id="description" ></textarea>
+	          </td>
+	        </tr>
+	      </table>
+	   </form>
+              <div class="win_btn">
+              <button type="button" id="tsave" class="chaxun_but2">确认</button> 
+              <button type="button" class="chaxun_but2" onclick="CloseDiv2('MyDiv','fade');">取消</button>
+              </div>
             </div>
            
             <div class="sdcq_tck_baidi"></div>
@@ -207,6 +215,10 @@ function closeDiv(obj){
 </div>
 </div>
  <script>
+ function distributionfunct(id){
+	 ShowDiv2('MyDiv', 'fade');
+	 $("#id").val(id);
+ }
   $(document).ready(function() {
 		$("#email").val("${backemail}");//回显
 		$("#CriteriaQuery").click(function() {
@@ -216,7 +228,41 @@ function closeDiv(obj){
 				window.location.href ="taskDistribution.do?projid=${project.projid }";
 			}
 		});
+		$("#tsave").click(function(){
+			var resultfile = $("#resultfile").val();  
+			var resultfileExtension = resultfile.substr(resultfile.lastIndexOf('.') + 1);  
+			var dateObj=new Date();
+			if(verifynull("resultfile") && verifynull("description")) {
+			}else{
+				return;
+			}
+			if($("#resultfile").val()!=''){
+				if (resultfileExtension != 'txt' && resultfileExtension != 'doc'  
+				&& resultfileExtension != 'docx' && resultfileExtension != 'pdf') {  
+					_alert("please upload file that is a file",2);  
+					return ;  
+				}  
+			}
+			_confirm("是否分配此项任务？",1,"add()");
+		});
 	})
+	function add(){
+		$("#taskDistributionHandle").ajaxSubmit({  
+			type : 'POST',
+			url : 'taskDistributionHandle.do', 
+			success : function(result) {
+				CloseDiv2('MyDiv','fade');
+				if (result.status == '0') {
+					_alert(result.msg);
+				}else{
+					_alert(result.msg,2);
+				}
+			},  
+			error : function() {  
+			   _alert("任务分配失败，请检查网络后重试",2);  
+			}  
+		}); 
+	}
 </script>     
 </body>
 </html>
