@@ -49,10 +49,10 @@ public class UserMyInfomationController implements Serializable {
 		List<BaseConfig> educationconfiglist = (List<BaseConfig>) configManagerService.configList(1);
 		model.addAttribute("educationconfiglist", educationconfiglist);
 		@SuppressWarnings("unchecked")
-		List<BaseConfig> titleconfiglist = (List<BaseConfig>) configManagerService.configList(2);
+		List<BaseConfig> titleconfiglist = (List<BaseConfig>) configManagerService.configList(3);
 		model.addAttribute("titleconfiglist", titleconfiglist);
 		@SuppressWarnings("unchecked")
-		List<BaseConfig> directionconfiglist = (List<BaseConfig>) configManagerService.configList(3);
+		List<BaseConfig> directionconfiglist = (List<BaseConfig>) configManagerService.configList(2);
 		model.addAttribute("directionconfiglist", directionconfiglist);
 		return "user/myinfomation";
 	}
