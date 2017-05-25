@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>任务续表</title>
+<title>我的任务</title>
 <link href="../content/css/style.css" rel="stylesheet" type="text/css" />
 <script src="../content/js/jquery.js" language="javascript"></script>
 <script src="../content/js/globle_select.js"></script>
@@ -139,12 +139,12 @@ function closeDiv(obj){
 	      <td title="${li.resultdescription }"><a href="download.do?filePath=${li.resultfile }" >${fn:substring(li.resultdescription, 0, 5)}...</a></td>	
 	      </c:if>
 	      <c:if test="${li.resultdescription!=null and li.description==defaultTaskview}">
-	      <td title="${li.resultdescription }">${fn:substring(li.resultdescription, 0, 5)}...</td>	
+	      	<td title="${li.resultdescription }">${fn:substring(li.resultdescription, 0, 5)}...</td>	
 	      </c:if>
 	      <c:if test="${li.resultdescription==null }">
 	      <td>待提交</td>
 	      </c:if>
-	      <td><a href="javascript:void(0);"  onclick="tasksubmit'${li.id}');">提交任务</a></td>
+	      <td><a href="javascript:void(0);"  onclick="tasksubmit('${li.id}');">提交任务</a></td>
 	    </tr>
     </c:forEach>
   </table>
@@ -160,10 +160,9 @@ function closeDiv(obj){
             <img src="../content/images/hong.gif" class="sdcq_tck_right_cha" width="1" height="16" onclick="CloseDiv2('MyDiv','fade')" />
             <div class="sdcq_tck_hong">
                 <h1 class="globle_title3"><img src="../content/images/tcc_b.png" style=" vertical-align:middle" /> 提交任务
-                <a style="color:red;text-align:left;">注：1.上传文件格式为txt/doc/docx/pdf。2.建议文件大小不超过40k。</a>
+                <a style="color:red;text-align:left;">注:文件格式:txt/doc/docx/pdf(上限40k),默认任务MP4格式(上限40M)</a>
                 </h1>
-                
-    </div>
+    	    </div>
             <div class="sdcq_tck_conment">
             <form id="taskSubmitHandle" enctype="multipart/form-data">
 		      <table width="100%" border="0" cellspacing="1" cellpadding="0" class="autotable2" style="margin:1px auto">
@@ -203,14 +202,14 @@ function closeDiv(obj){
 		$("#tsave").click(function(){
 			var resultfile = $("#resultfile").val();  
 			var resultfileExtension = resultfile.substr(resultfile.lastIndexOf('.') + 1);  
-			var dateObj=new Date();
 			if(verifynull("resultfile") && verifynull("resultdescription")) {
 			}else{
 				return;
 			}
 			if($("#resultfile").val()!=''){
 				if (resultfileExtension != 'txt' && resultfileExtension != 'doc'  
-				&& resultfileExtension != 'docx' && resultfileExtension != 'pdf') {  
+				&& resultfileExtension != 'docx' && resultfileExtension != 'pdf'
+					&& resultfileExtension != 'mp4') {  
 					_alert("please upload file that is a file",2);  
 					return ;  
 				}  
@@ -225,6 +224,8 @@ function closeDiv(obj){
 			success : function(result) {
 				CloseDiv2('MyDiv','fade');
 				if (result.status == '0') {
+					$("#resultdescription").val("");
+					$("#resultfile").val("");
 					_alert(result.msg);
 				}else{
 					_alert(result.msg,2);

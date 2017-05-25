@@ -1,5 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,18 +10,8 @@
 	<title>校园软件开发在线协同平台</title>
 		<link rel="stylesheet" type="text/css" href="../bootstrap/dist/css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="../css/index.css">
-
 	<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
 	<script type="text/javascript" src="../js/Validform_v5.3.2_min.js"></script>
-	<script type="text/javascript">
-	    $(function(){
-	        $('#off-body').click(function(){
-	            $('body').css({'background':'#e8e7e7 '})
-	            $(this).hide();
-	        });
-	    });
-	     
-	</script>
 	<style type="text/css">
          ul{
             list-style-type: none;
@@ -43,16 +35,8 @@
             display: none;
         }
     </style>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $("#wrap li").hover(function(){
-                $(this).children("ul").slideToggle();
-            });
-        });
-    </script>
 </head>
 <body style="background:url(../images/123.jpg) no-repeat ;background-size:1366px 877px">
-	
 	<!-- 头部开始 -->
 	<jsp:include page="common/header.jsp"/>
 	<!-- 头部结束 -->
@@ -99,11 +83,11 @@
 			<!--会议简介开始-->
 			<div class="main_hy fr">
 					<div class="ht">
-						<div class="ht_l">
-							<a href="hyjj.htm" target="_blank"><img src="../images/icon-hy.png" width="24" height="24" /><h2 style="margin-top:-5px;">平台简介</h2></a>
+						<div class="ht_l"><!-- target="_blank" -->
+							<a href="#"><img src="../images/icon-hy.png" width="24" height="24" /><h2 style="margin-top:-5px;">平台简介</h2></a>
 						</div>
 						<div class="ht_r">
-							<span class="gd"><a href="hyjj.htm" target="_blank">更多>></a></span>
+							<span class="gd"><a href="#">更多>></a></span>
 						</div>
 					</div>
 					<div class="hc">
@@ -115,8 +99,8 @@
 			<div class="main_tz mt15 w">
 				<div class="main_tz_l fl">
 					<ul class="hy">
-						<li><a href="../register/toRegister.do"><img src="../images/zcsq.jpg"></a></li>
-						<li><a href="../login/toLogin.do"><img src="../images/hcwz.jpg"></a></li>
+						<li><a href="register.do"><img src="../images/zcsq.jpg"></a></li>
+						<li><a href="../userLoginController/loginOut.do"><img src="../images/hcwz.jpg"></a></li>
 					</ul>
 					<ul class="yq">
 						<li><img src="../images/yqlj.png" width="285" height="70"></li>
@@ -130,38 +114,16 @@
 						<img src="../images/tzgg.jpg" width="505" height="56">
 					</div>
 					<div class="new">
+					<c:forEach items="${newslist }" var="li" varStatus="idxStatus">
 						<ul class="arrow_box">
-							<li>
+							<li title="${li.explain }">
 								<div class="sy">
-									<img src="../images/tz01.jpg"><a href="http://www.xazwy.com/News/18/778.html"><p>陕西省西安科技大学校园协同开发平台启动仪式</p></a>
+									<img src="${li.logo }"><a href="${li.details }" target="_blank"><p>${fn:substring(li.explain, 0, 15)}..</p></a>
 								</div>
-								<span class="dateview">2017-06-30</span>
+								<span class="dateview"><fmt:formatDate value="${li.updatetime }" pattern="yyyy-MM-dd"/></span>
 							</li>
 						</ul>
-						<ul class="arrow_box">
-							<li>
-								<div class="sy">
-									<img src="../images/tz02.jpg"><a href="http://www.xazwy.com/News/18/777.html"><p>2017年陕西省西安科技大学校园协同开发平台试运行</p></a>
-								</div>
-								<span class="dateview">2017-05-01</span>
-							</li>
-						</ul>
-						<ul class="arrow_box">
-							<li>
-								<div class="sy">
-									<img src="../images/tz03.jpg"><a href="http://www.xazwy.com/news/18/779.html"><p>西安科技大学举办平台授权活动</p></a>
-								</div>
-								<span class="dateview">2017-04-17</span>
-							</li>
-						</ul>
-						<ul class="arrow_box">
-							<li>
-								<div class="sy">
-									<img src="../images/tz04.jpg"><a href="http://www.xazwy.com/News/18/784.html"><p>日本花甲协会农学专家佐藤千秋一行访问西安科技大学</p></a>
-								</div>
-								<span class="dateview">2017-03-27</span>
-							</li>
-						</ul>
+					</c:forEach>
 					</div>
 				</div>
 			</div>

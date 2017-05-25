@@ -24,6 +24,7 @@ import com.xkd.entity.BaseUser;
 import com.xkd.entity.StateResult;
 import com.xkd.entity.Page.Home;
 import com.xkd.entity.Page.Project;
+import com.xkd.util.ConfigStr;
 import com.xkd.util.DateDealwith;
 import com.xkd.util.FileDealWith;
 import com.xkd.util.GetResousePath;
@@ -122,12 +123,21 @@ public class TaskManagerService {
 
 	public StateResult taskSubmitHandle(StateResult stateResult, BaseTask baseTask, MultipartFile file,
 			HttpServletRequest request) throws IllegalStateException, IOException {
+		BaseTask task = baseTaskMapper.selectByPrimaryKey(baseTask.getId());
 		BaseUser users = SessionController.getLoginInfomation(request);
 		String uuid1 = UUID.randomUUID().toString();
 		String absPath = GetResousePath.getUserProjectTaskFilePath(users.getId().toString(), baseTask.getProjectid(),
 				uuid1 + file.getOriginalFilename());
+		String netPath = GetResousePath.getUserProjectNetTaskFilePath(users.getId().toString(),
+				baseTask.getProjectid(), uuid1 + file.getOriginalFilename());
+		stateResult.setMp4(task.getDescription().equals(ConfigStr.defaultTaskview));
 		if (FileDealWith.upload(stateResult, file, absPath)) {
-			baseTask.setResultfile(absPath);
+			if (stateResult.isMp4()) {
+				// 应该上传视屏格式,设置网络地址
+				baseTask.setResultfile(netPath);
+			} else {
+				baseTask.setResultfile(absPath);
+			}
 			baseTask.setUpdatetime(DateDealwith.getCurrDate());
 			if (baseTaskMapper.updateByPrimaryKeySelective(baseTask) > 0) {
 				stateResult.setStatus(0);
@@ -136,9 +146,6 @@ public class TaskManagerService {
 				stateResult.setStatus(1);
 				stateResult.setMsg("数据更新，任务提交失败!");
 			}
-		} else {
-			stateResult.setStatus(2);
-			stateResult.setMsg("文档上传，任务提交失败!");
 		}
 		return stateResult;
 	}

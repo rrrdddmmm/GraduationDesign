@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-	<title>师资力量-基于项目管理流程的校园软件项目协同平台</title>
+	<title>师资力量-校园软件开发在线协同平台</title>
     <link rel="stylesheet" type="text/css" href="bootstrap/dist/../css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="../css/base.css">
 	<style type="text/css">
@@ -29,7 +29,7 @@
         });
 	</script>
 </head>
-<body style="background:url(../images/123.jpg) no-repeat center 0px;">
+<body style="background:url(../images/123.jpg) no-repeat ;background-size:1366px 877px">
 	
 	<!-- 头部开始 -->
 	<jsp:include page="../common/header.jsp"/>

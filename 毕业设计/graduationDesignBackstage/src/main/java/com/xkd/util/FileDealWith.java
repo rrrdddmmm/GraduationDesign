@@ -241,17 +241,31 @@ public class FileDealWith {
 			if (file.getName() != null || "".equals(file.getName())) {
 				System.out.println(file.getOriginalFilename());
 				String[] name = file.getOriginalFilename().split("\\.");
-				if ("txt".equals(name[name.length - 1]) || "doc".equals(name[name.length - 1])
-						|| "docx".equals(name[name.length - 1]) || "pdf".equals(name[name.length - 1])) {
-					File f = new File(absPath);
-					if (!f.exists()) {
-						f.mkdirs();
+				if (stateResult.isMp4()) {
+					if ("mp4".equalsIgnoreCase(name[name.length - 1])) {
+						File f = new File(absPath);
+						if (!f.exists()) {
+							f.mkdirs();
+						}
+						file.transferTo(f);
+						return true;
+					} else {
+						stateResult.setStatus(1);
+						stateResult.setMsg("服务器端：请上传mp4视频格式!");
 					}
-					file.transferTo(f);
-					return true;
 				} else {
-					stateResult.setStatus(1);
-					stateResult.setMsg("服务器端：请上传规定格式!");
+					if ("txt".equals(name[name.length - 1]) || "doc".equals(name[name.length - 1])
+							|| "docx".equals(name[name.length - 1]) || "pdf".equals(name[name.length - 1])) {
+						File f = new File(absPath);
+						if (!f.exists()) {
+							f.mkdirs();
+						}
+						file.transferTo(f);
+						return true;
+					} else {
+						stateResult.setStatus(1);
+						stateResult.setMsg("服务器端：请上传规定格式!");
+					}
 				}
 			} else {
 				stateResult.setStatus(2);

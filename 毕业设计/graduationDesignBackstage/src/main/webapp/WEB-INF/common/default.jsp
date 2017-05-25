@@ -97,7 +97,6 @@
       <li> <i class="i5"></i><em>系统维护</em>
 	    <dd class="snav dis">
 	          <dl><a href="../dbRecBackupController/list.do" target="rightT">数据库备份恢复</a></dl> 
-	          <dl><a href="../dbRecBackupController/list.do" target="rightT">系统默认任务</a></dl>         
 	    </dd>
       </li>
       </c:if>

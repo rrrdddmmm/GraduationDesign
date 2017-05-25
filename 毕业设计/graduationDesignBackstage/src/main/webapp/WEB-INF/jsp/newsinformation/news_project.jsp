@@ -1,9 +1,12 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>新闻动态-基于项目管理流程的校园软件项目协同平台</title>
+	<title>新闻动态-校园软件开发在线协同平台</title>
     <link rel="stylesheet" type="text/css" href="../css/index.css">
 	<link rel="stylesheet" type="text/css" href="../css/base.css">
 	<style type="text/css">
@@ -45,7 +48,7 @@
     </script>
 	</script>
 </head>
-<body style="background:url(../images/123.jpg) no-repeat center 0px;background-size:1366px 877px;">
+<body style="background:url(../images/123.jpg) no-repeat ;background-size:1366px 877px">
 	
 	<!-- 头部开始 -->
 	<jsp:include page="../common/header.jsp"/>
@@ -59,42 +62,33 @@
 		
             <div class="main_tz_r fl" style="margin-left:-10px;">
 					<div class="new">
+						<c:forEach items="${list }" var="li" varStatus="idxStatus">
 						<ul class="arrow_box">
-							<li>
-								<div class="sy">
-									<video width="510" height="110"  controls loop="loop" poster="/resource/videodefault.jpg">
-										<source src="/resource/default.mp4"/>
+							<li title="${li.resultdescription }">
+							<div class="sy">
+								
+								<c:if test="${li.resultdescription!=null }">
+									<video width="220" height="110"  controls loop="loop">
+										<source src="${li.resultfile }"/>
 									</video>
-								</div>
-								<span class="dateview">2017-06-30</span>
+									<a>
+										<span style="height: inherit;left: 212px;top: 51px;position: absolute;">${fn:substring(li.resultdescription, 0, 20)}..</span>
+									</a>
+								</c:if>
+								<c:if test="${li.resultdescription==null }">
+									<video width="220" height="110"  controls loop="loop" poster="/resource/videodefault.jpg">
+										<source src="${li.resultfile }"/>
+									</video>
+									<a>
+										<span style="height: inherit;left: 212px;top: 51px;position: absolute;">${fn:substring(li.description, 0, 20)}..</span>
+									</a>
+								</c:if>
+								
+							</div>
+								<span class="dateview"><fmt:formatDate value="${li.updatetime }" pattern="yyyy-MM-dd"/></span>
 							</li>
 						</ul>
-						<ul class="arrow_box">
-							<li>
-								<video width="510" height="110"  controls loop="loop" poster="/resource/videodefault.jpg">
-										<source src="/resource/default.mp4"/>
-								</video>
-								<span class="dateview">2017-05-01</span>
-							</li>
-						</ul>
-						<ul class="arrow_box">
-							<li>
-								<div class="sy">
-								<video width="510" height="110"  controls loop="loop" poster="/resource/videodefault.jpg">
-										<source src="/resource/default.mp4"/>
-								</video>
-								</div>
-								<span class="dateview">2017-04-17</span>
-							</li>
-						</ul>
-						<ul class="arrow_box">
-							<li>
-								<video width="510" height="110"  controls loop="loop" poster="/resource/videodefault.jpg">
-										<source src="/resource/default.mp4"/>
-								</video>
-								<span class="dateview">2017-03-27</span>
-							</li>
-						</ul>
+					</c:forEach>
 					</div>
 			</div>
 		</div>

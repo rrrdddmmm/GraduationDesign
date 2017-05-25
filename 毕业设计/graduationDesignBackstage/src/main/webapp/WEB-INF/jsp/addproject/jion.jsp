@@ -1,12 +1,10 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>加入项目-基于项目管理流程的校园软件项目协同平台</title>
+	<title>加入项目-校园软件开发在线协同平台</title>
 	<link rel="stylesheet" type="text/css" href="../css/base.css">
 		<link rel="stylesheet" type="text/css" href="../css/table.css">
 	<style type="text/css">
@@ -28,7 +26,7 @@
         });
 	</script>
 </head>
-<body style="background:url(../images/123.jpg) no-repeat center 0px;">
+<body style="background:url(../images/123.jpg) no-repeat ;background-size:1366px 877px">
 	
 	<!-- 头部开始 -->
 	<jsp:include page="../common/header.jsp"/>

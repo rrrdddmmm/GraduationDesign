@@ -21,9 +21,9 @@ table{ border-collapse: collapse;}
 .img-z em{ z-index:2; font:14px/37px '微软雅黑'; color:#fff; text-align:center;}
 /*header*/
 #header{ width:900px;overflow:hidden;height:auto;}
-.topbar{ height:110px;}
+.topbar{ height:110px;overflow:hidden;}
 .topbar .logo{ margin: 45px 15px 10px 5px;}
-.topbar .nav{ width:630px; height:50px; background:#006725; box-shadow:3px 3px 3px #ccc;  margin-top: 45px;}
+.topbar .nav{ width:630px; height:50px; background:#006725; box-shadow:3px 3px 3px #ccc;  margin-top: 45px;overflow:hidden;}
 .topbar .nav li{ float:left; font:14px/50px '微软雅黑'; text-align:center; width:70px; height:50px;position:relative;}
 .topbar .nav li a{ color:#fff;}
 .topbar .nav li:hover{ background:#ff6709;}
@@ -71,7 +71,7 @@ table{ border-collapse: collapse;}
 .main_tz_l .yq li a:hover img{border:2px solid #ff6709;}
 .main_tz_r{ width:716px;height:auto;margin: 5px 0px 5px 20px;background:#e8e7e7;padding:10px;}
 .main_tz_r .new .arrow_box { background: #f8f8f8; box-shadow: 0px 1px 0px rgba(255,255,255,.1), inset 0px 1px 1px rgba(214, 214, 214, 0.7); width: 500px; height:100px;border-radius: 6px; position: relative; padding: 10px 0; margin: 30px 0; }
-.main_tz_r .new .arrow_box img { width: 120px; height:100px;float: left; margin: -10px 20px 0 20px; }
+.main_tz_r .new .arrow_box img { width: 185px; height:100px;float: left; margin: -10px 20px 0 20px; }
 .main_tz_r .new .arrow_box p { float: left;line-height: 100px;height:100px;}
 .main_tz_r .new .arrow_box a:hover { color:#ff6709;}
 .main_tz_r .new .arrow_box::after { content: ""; width: 10px; height: 10px; border-radius: 50%; position: absolute; left: 526px; top: 36px; background: #CCCCCE; border: 2px solid #fff; transition: all 0.5s; }/* 圆形 */

@@ -20,9 +20,9 @@ table{ border-collapse: collapse;}
 .img-z em{ z-index:2; font:14px/37px '微软雅黑'; color:#fff; text-align:center;}
 /*header*/
 #header{ width:900px;overflow:hidden;height:auto;}
-.topbar{ height:110px;}
+.topbar{ height:110px;overflow:hidden;}
 .topbar .logo{ margin: 45px 15px 10px 5px;}
-.topbar .nav{ width:630px; height:50px; background:#006725; box-shadow:3px 3px 3px #ccc;  margin-top: 45px;}
+.topbar .nav{ width:630px; height:50px; background:#006725; box-shadow:3px 3px 3px #ccc;  margin-top: 45px;overflow:hidden;}
 .topbar .nav li{ float:left; font:14px/50px '微软雅黑'; text-align:center; width:70px; height:50px;position:relative;}
 .topbar .nav li a{color:#fff;}
 .topbar .nav li:hover{ background:#ff6709;}

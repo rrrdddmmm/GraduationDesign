@@ -6,6 +6,7 @@ public class StateResult {
 	private String		newpath;
 	private BaseProject	baseProject;
 	private BaseTask	baseTask;
+	private boolean		isMp4	= false;
 
 	public int getStatus() {
 		return status;
@@ -45,6 +46,14 @@ public class StateResult {
 
 	public void setBaseTask(BaseTask baseTask) {
 		this.baseTask = baseTask;
+	}
+
+	public boolean isMp4() {
+		return isMp4;
+	}
+
+	public void setMp4(boolean isMp4) {
+		this.isMp4 = isMp4;
 	}
 
 }

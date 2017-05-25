@@ -138,9 +138,16 @@
     </tr>
     <tr class="lantr">
 <!--   autoplay="autoplay" -->
+	<c:if test="${video.resultdescription!=null }">
+	<td colspan="10">
+    	<video width="600" height="250"  controls loop="loop"><source src="${video.resultfile }"/></video>
+  	</td>
+	</c:if>
+	<c:if test="${video.resultdescription==null }">
 	<td colspan="10">
     	<video width="600" height="250"  controls loop="loop" poster="${videodefaultimage }"><source src="${video.resultfile }"/></video>
-  </td>
+  	</td>
+  	</c:if>
   </tr>
   </table>
   <!--分页-->

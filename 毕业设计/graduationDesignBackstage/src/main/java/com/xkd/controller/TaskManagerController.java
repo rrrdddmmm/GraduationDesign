@@ -139,7 +139,7 @@ public class TaskManagerController implements Serializable {
 	public StateResult taskSubmitHandle(StateResult stateResult, BaseTask baseTask,
 			@RequestParam(value = "file", required = true) MultipartFile file, HttpServletRequest request)
 			throws IllegalStateException, IOException {
-		taskManagerService.taskDistributionHandle(stateResult, baseTask, file, request);
+		taskManagerService.taskSubmitHandle(stateResult, baseTask, file, request);
 		return stateResult;
 	}
 

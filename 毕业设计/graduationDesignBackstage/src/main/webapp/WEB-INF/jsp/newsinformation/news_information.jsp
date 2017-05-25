@@ -1,9 +1,12 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>新闻动态-基于项目管理流程的校园软件项目协同平台</title>
+	<title>新闻动态-校园软件开发在线协同平台</title>
     <link rel="stylesheet" type="text/css" href="../css/index.css">
 	<link rel="stylesheet" type="text/css" href="../css/base.css">
 	<style type="text/css">
@@ -20,7 +23,7 @@
 		.main_tz{width:1366px;height:auto;overflow:hidden;background-color: #e8e7e7;padding-left: 170px;}
 		.main_tz_r{ width:100%;height:auto;margin: 5px 0px 5px 20px;background:#e8e7e7;padding:10px;}
 		.main_tz_r .new .arrow_box { background: #f8f8f8; box-shadow: 0px 1px 0px rgba(255,255,255,.1), inset 0px 1px 1px rgba(214, 214, 214, 0.7); width: 800px; height:100px;border-radius: 6px; position: relative; padding: 10px 0; margin: 30px 50px; }
-		.main_tz_r .new .arrow_box img { width: 120px; height:100px;float: left; margin: -10px 20px 0 20px; }
+		.main_tz_r .new .arrow_box img { width: 185px; height:120px;float: left; margin: -10px 20px 0 20px; }
 		.main_tz_r .new .arrow_box p { float: left;line-height: 100px;height:100px;}
 		.main_tz_r .new .arrow_box a:hover { color:#ff6709;}
 		.main_tz_r .new .arrow_box::after { content: ""; width: 10px; height: 10px; border-radius: 50%; position: absolute; left: 526px; top: 36px; background: #CCCCCE; border: 2px solid #fff; transition: all 0.5s; }/* 圆形 */
@@ -45,7 +48,7 @@
     </script>
 	</script>
 </head>
-<body style="background:url(../images/123.jpg) no-repeat center 0px;background-size:1366px 877px;">
+<body style="background:url(../images/123.jpg) no-repeat ;background-size:1366px 877px">
 	
 	<!-- 头部开始 -->
 	<jsp:include page="../common/header.jsp"/>
@@ -59,38 +62,16 @@
 		
             <div class="main_tz_r fl" style="margin-left:-10px;">
 					<div class="new">
+						<c:forEach items="${newslist }" var="li" varStatus="idxStatus">
 						<ul class="arrow_box">
-							<li>
+							<li title="${li.explain }">
 								<div class="sy">
-									<img src="../images/tz01.jpg"><a href="http://www.xazwy.com/News/18/778.html"><p>陕西省西安科技大学校园协同开发平台启动仪式</p></a>
+									<img src="${li.logo }"><a href="${li.details }" target="_blank"><p>${fn:substring(li.explain, 0, 15)}..</p></a>
 								</div>
-								<span class="dateview">2017-06-30</span>
+								<span class="dateview"><fmt:formatDate value="${li.updatetime }" pattern="yyyy-MM-dd"/></span>
 							</li>
 						</ul>
-						<ul class="arrow_box">
-							<li>
-								<div class="sy">
-									<img src="../images/tz02.jpg"><a href="http://www.xazwy.com/News/18/777.html"><p>2017年陕西省西安科技大学校园协同开发平台试运行</p></a>
-								</div>
-								<span class="dateview">2017-05-01</span>
-							</li>
-						</ul>
-						<ul class="arrow_box">
-							<li>
-								<div class="sy">
-									<img src="../images/tz03.jpg"><a href="http://www.xazwy.com/news/18/779.html"><p>西安科技大学举办平台授权活动</p></a>
-								</div>
-								<span class="dateview">2017-04-17</span>
-							</li>
-						</ul>
-						<ul class="arrow_box">
-							<li>
-								<div class="sy">
-									<img src="../images/tz04.jpg"><a href="http://www.xazwy.com/News/18/784.html"><p>日本花甲协会农学专家佐藤千秋一行访问西安科技大学</p></a>
-								</div>
-								<span class="dateview">2017-03-27</span>
-							</li>
-						</ul>
+					</c:forEach>
 					</div>
 			</div>
 		</div>
