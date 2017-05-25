@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.xkd.controller.SessionController;
@@ -22,6 +23,7 @@ import com.xkd.entity.BaseTask;
 import com.xkd.entity.BaseUser;
 import com.xkd.entity.StateResult;
 import com.xkd.entity.Page.Home;
+import com.xkd.entity.Page.Project;
 import com.xkd.util.DateDealwith;
 import com.xkd.util.FileDealWith;
 import com.xkd.util.GetResousePath;
@@ -40,6 +42,17 @@ public class TaskManagerService {
 	private BaseHomeMapper		baseHomeMapper;
 	@Resource(name = "baseUserMapper")
 	private BaseUserMapper		baseUserMapper;
+
+	public List<BaseTask> taskChakan(Model model, Project project, HttpServletRequest request) {
+		BaseUser users = SessionController.getLoginInfomation(request);
+		List<BaseTask> list = null;
+		if (project.getProjemail().equals(users.getEmail())) {
+			list = baseTaskMapper.selectByPrimaryAll(new BaseTask(project.getProjid()));
+		} else {
+			list = baseTaskMapper.selectByPrimaryAll(new BaseTask(project.getProjid(), users.getEmail()));
+		}
+		return list;
+	}
 
 	/**
 	 * 给创建者添加
@@ -103,6 +116,29 @@ public class TaskManagerService {
 		} else {
 			stateResult.setStatus(2);
 			stateResult.setMsg("文档上传，任务分配失败!");
+		}
+		return stateResult;
+	}
+
+	public StateResult taskSubmitHandle(StateResult stateResult, BaseTask baseTask, MultipartFile file,
+			HttpServletRequest request) throws IllegalStateException, IOException {
+		BaseUser users = SessionController.getLoginInfomation(request);
+		String uuid1 = UUID.randomUUID().toString();
+		String absPath = GetResousePath.getUserProjectTaskFilePath(users.getId().toString(), baseTask.getProjectid(),
+				uuid1 + file.getOriginalFilename());
+		if (FileDealWith.upload(stateResult, file, absPath)) {
+			baseTask.setResultfile(absPath);
+			baseTask.setUpdatetime(DateDealwith.getCurrDate());
+			if (baseTaskMapper.updateByPrimaryKeySelective(baseTask) > 0) {
+				stateResult.setStatus(0);
+				stateResult.setMsg("任务提交成功，重新进入将会生效哦!");
+			} else {
+				stateResult.setStatus(1);
+				stateResult.setMsg("数据更新，任务提交失败!");
+			}
+		} else {
+			stateResult.setStatus(2);
+			stateResult.setMsg("文档上传，任务提交失败!");
 		}
 		return stateResult;
 	}

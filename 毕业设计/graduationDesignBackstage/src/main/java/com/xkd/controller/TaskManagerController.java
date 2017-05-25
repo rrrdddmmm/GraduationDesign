@@ -134,26 +134,26 @@ public class TaskManagerController implements Serializable {
 		return stateResult;
 	}
 
+	@RequestMapping("/taskSubmitHandle.do")
+	@ResponseBody
+	public StateResult taskSubmitHandle(StateResult stateResult, BaseTask baseTask,
+			@RequestParam(value = "file", required = true) MultipartFile file, HttpServletRequest request)
+			throws IllegalStateException, IOException {
+		taskManagerService.taskDistributionHandle(stateResult, baseTask, file, request);
+		return stateResult;
+	}
+
 	/**
-	 * 查看任务
+	 * 我的任务
 	 * 
 	 * @return
 	 */
 	@RequestMapping("/taskChakan.do")
-	public String taskChakan(Model model, Project project) {
-		System.out.println(project);
+	public String taskChakan(Model model, Project project, HttpServletRequest request) {
+		model.addAttribute("mytasklist", taskManagerService.taskChakan(model, project, request));
+		model.addAttribute("project", project);
+		model.addAttribute("defaultTaskview", ConfigStr.defaultTaskview);
 		return "task/taskchakan";
-	}
-
-	/**
-	 * 修改任务
-	 * 
-	 * @return
-	 */
-	@RequestMapping("/taskAlter.do")
-	public String taskAlter(Model model, Project project) {
-		System.out.println(project);
-		return "task/taskalter";
 	}
 
 	@RequestMapping("download.do")

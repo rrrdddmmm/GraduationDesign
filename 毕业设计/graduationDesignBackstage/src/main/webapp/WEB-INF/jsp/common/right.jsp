@@ -4,11 +4,11 @@
 						<div class="l_box_title">
 							<span class="name">注册入口</span>
 						</div>
-						<li class="b"><a href="../register/toRegister.do"><img src="../images/zcsq.jpg"></a></li>
+						<li class="b"><a href="register.do"><img src="../images/zcsq.jpg"></a></li>
 						<div class="l_box_title">
 							<span class="name">登录入口</span>
 						</div>
-						<li class="b"><a href="../login/toLogin.do"><img src="../images/hcwz.jpg"></a></li>
+						<li class="b"><a href="../userLoginController/loginOut.do"><img src="../images/hcwz.jpg"></a></li>
 					</ul>
 					<ul class="yq">
 						<li><img src="../images/yqlj.png" width="205" height="60"></li>

@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
      <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-	<title>基于项目管理流程的校园软件项目协同平台</title>
+	<title>校园软件开发在线协同平台</title>
 		<link rel="stylesheet" type="text/css" href="../bootstrap/dist/css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="../css/index.css">
 

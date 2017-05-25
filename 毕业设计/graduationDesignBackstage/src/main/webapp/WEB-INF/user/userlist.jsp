@@ -43,7 +43,12 @@
             </thead>
             <tbody>
             <c:forEach items="${baseUserList }" var="li" varStatus="idxStatus">
-	            <tr class="whittr" data-itemid="${li.id }">
+	             <c:if test="${idxStatus.index%2==1 }">
+				 <tr class="whittr" data-itemid="${li.id }">
+				 </c:if>
+				 <c:if test="${idxStatus.index%2==0 }">
+				 <tr class="lantr" data-itemid="${li.id }">
+				 </c:if>
 	            	<td align="center">${li.name}</td>
 	            	<td>${li.email}</td>
 	            	<td>${li.phone}</td>

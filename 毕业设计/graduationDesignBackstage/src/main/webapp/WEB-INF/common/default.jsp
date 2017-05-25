@@ -64,27 +64,40 @@
           <dl><a href="../userManagerController/userStateList.do?state=2" target="rightT">停用用户</a></dl>
         </dd>
       </li>
+      <li> <i class="i4"></i><em>学历管理</em>
+      <dd class="snav dis">
+          <dl><a href="../configManagerController/configList.do?flage=1" target="rightT">学历管理</a></dl>
+      </dd>
+      </li>
+      <li> <i class="i4"></i><em>方向管理</em>
+      <dd class="snav dis">
+          <dl><a href="../configManagerController/configList.do?flage=2" target="rightT">方向管理</a></dl>
+      </dd>
+      </li>
+      <li> <i class="i4"></i><em>职称管理</em>
+      <dd class="snav dis">
+          <dl><a href="../configManagerController/configList.do?flage=3" target="rightT">职称管理</a></dl>
+      </dd>
+      </li>
+      <li> <i class="i4"></i><em>开发语言管理</em>
+      <dd class="snav dis">
+          <dl><a href="../configManagerController/configList.do?flage=4" target="rightT">开发语言管理</a></dl>
+      </dd>
+      </li>
+      <li> <i class="i4"></i><em>开发平台管理</em>
+      <dd class="snav dis">
+          <dl><a href="../configManagerController/configList.do?flage=5" target="rightT">开发平台管理</a></dl>
+      </dd>
+      </li>
+      <li> <i class="i4"></i><em>新闻管理</em>
+      <dd class="snav dis">
+          <dl><a href="../newsManagerController/newsList.do" target="rightT">新闻管理</a></dl>
+      </dd>
+      </li>
       <li> <i class="i5"></i><em>系统维护</em>
-        <dd class="snav dis">
-          <dl><a href="../configManagerController/configList.do?flage=1" target="rightT">学历管理</a></dl>          
-        </dd>
-		<dd class="snav dis">
-	          <dl><a href="../configManagerController/configList.do?flage=2" target="rightT">方向管理</a></dl>          
-	    </dd>
-		<dd class="snav dis">
-	          <dl><a href="../configManagerController/configList.do?flage=3" target="rightT">职称管理</a></dl>          
-	    </dd>
 	    <dd class="snav dis">
-	          <dl><a href="../configManagerController/configList.do?flage=4" target="rightT">开发语言管理</a></dl>          
-	    </dd>
-	    <dd class="snav dis">
-	          <dl><a href="../configManagerController/configList.do?flage=5" target="rightT">开发平台管理</a></dl>          
-	    </dd>
-	    <dd class="snav dis">
-	          <dl><a href="../newsManagerController/newsList.do" target="rightT">新闻管理</a></dl>          
-	    </dd>
-	    <dd class="snav dis">
-	          <dl><a href="../dbRecBackupController/list.do" target="rightT">数据库备份恢复</a></dl>          
+	          <dl><a href="../dbRecBackupController/list.do" target="rightT">数据库备份恢复</a></dl> 
+	          <dl><a href="../dbRecBackupController/list.do" target="rightT">系统默认任务</a></dl>         
 	    </dd>
       </li>
       </c:if>

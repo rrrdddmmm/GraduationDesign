@@ -29,7 +29,12 @@
 			</thead>
 			<tbody id="tbody">
 			<c:forEach items="${list }" var="li" varStatus="idxStatus">
-				<tr class="whittr" data-itemid="${li.id }">
+				<c:if test="${idxStatus.index%2==1 }">
+				 <tr class="whittr" data-itemid="${li.id }">
+				 </c:if>
+				 <c:if test="${idxStatus.index%2==0 }">
+				 <tr class="lantr" data-itemid="${li.id }">
+				 </c:if>
 					<td>${li.creattimestr }</td>
 					<td>
 					<a href="javascript:void(0);" onclick="recoversave('${li.backuppath }');">恢复</a>&nbsp;&nbsp;/&nbsp;&nbsp;

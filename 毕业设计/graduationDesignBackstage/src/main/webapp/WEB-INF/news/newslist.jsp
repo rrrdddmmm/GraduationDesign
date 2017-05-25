@@ -126,7 +126,12 @@ function closeDiv(obj){
 			</thead>
 			<tbody>
 			<c:forEach items="${newslist }" var="li" varStatus="idxStatus">
-				<tr class="whittr" data-itemid="${li.id }">
+				<c:if test="${idxStatus.index%2==1 }">
+				 <tr class="whittr" data-itemid="${li.id }">
+				 </c:if>
+				 <c:if test="${idxStatus.index%2==0 }">
+				 <tr class="lantr" data-itemid="${li.id }">
+				 </c:if>
 					<td id="imagesidP" title="${li.title }">
 <!-- 						<video width="300" height="150" src="/resource/VID_20130916_115355.mp4" controls loop="loop" autoplay="autoplay">132465</video> -->
 						<img id="imagesid" src="${li.logo }" width="168" height="80"/>

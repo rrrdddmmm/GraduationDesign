@@ -13,15 +13,15 @@
 			</div>
 			<div class="nav fr" id="wrap">
 				<ul class="clearfix">
-						<li><a href="../index/toIndex.do">首页</a></li>
-						<li><a href="../news/toNews.do">新闻动态</a></li>
-						<li><a href="../jion/toJion.do">加入项目</a></li>
-						<li><a href="../creatProject/toCreatProject.do">创建项目</a></li>
-						<li><a href="../myProject/toMyProject.do">我的项目</a></li>
-						<li><a href="../register/toRegister.do">注册</a></li>
-						<li><a href="../login/toLogin.do">登陆</a></li>
-						<li><a href="../news/toNews.do">项目动态</a></li>
-						<li><a href="../teacherStrength/toTeachersStrength.do">师资力量</a></li>
+						<li><a href="index.do">首页</a></li>
+						<li><a href="news.do">新闻动态</a></li>
+						<li><a href="jion.do">加入项目</a></li>
+						<li><a href="../userLoginController/loginOut.do">创建项目</a></li>
+						<li><a href="../userLoginController/loginOut.do">我的项目</a></li>
+						<li><a href="register.do">注册</a></li>
+						<li><a href="../userLoginController/loginOut.do">登陆</a></li>
+						<li><a href="projectNews.do">项目动态</a></li>
+						<li><a href="teachersStrength.do">师资力量</a></li>
 				</ul>
 			</div>
 		</div>

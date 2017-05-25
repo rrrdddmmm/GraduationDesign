@@ -1,5 +1,7 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -8,6 +10,11 @@
 <link href="../content/css/style.css" rel="stylesheet" type="text/css" />
 <script src="../content/js/jquery.js" language="javascript"></script>
 <script src="../content/js/globle_select.js"></script>
+<script type="text/javascript" src="../content/js/commonutil.js"></script>
+<script type="text/javascript" src="../content/js/commonalert.js"></script>
+<script type="text/javascript" src="../content/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../content/js/jquery-form.js"></script>
+<script src="../laydate/laydate.js"></script>
 <style>
 .cp{width:500px; height:auto; background:#FFF; border:1px solid #ccc; padding:10px; position:absolute; box-shadow:5px 5px #ccc; margin-top:10px;}
 .cp i{font-style:normal}
@@ -111,35 +118,35 @@ function closeDiv(obj){
   <table width="100%" border="0" cellspacing="1" cellpadding="0" class="autotable2">
     <tr class="titletr">
       <td>项目名称</td>
+      <td>项目负责人</td>
       <td>执行人</td>
-      <td>联系方式</td>
       <td>截止时间</td>
       <td>任务描述</td>
       <td>任务成果</td>
-      <td>成果评价</td>
       <td>操作</td>
     </tr>
-    <tr class="whittr">
-      <td>计算机开发</td>
-      <td>任勃</td>
-      <td>18829348437</td>
-      <td>2014-05-06</td>
-      <td title="djhf速度快放假的时刻华东师范加快速度是电话费加快速度是电话费加快速度函数大富科技第四部分金卡戴珊焚枯食淡">
-      	<a href="chakantask.html" >此任务目的在于。。。</a></td>
-      <td title="待提交"><a href="chakantask.html" >待提交</a></td>	
-      <td title="djhf速度快放假的时刻华东师范加快速度是电话费加快速度是电话费加快速度函">提交的成果有效</td>	
-      <td><a href="javascript:void(0);" onclick="ShowDiv2('MyDiv', 'fade');">提交任务</a></td>
-    </tr>
-    <tr class="lantr">
-      <td align="center">...</td>
-      <td align="center">...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
+    <c:forEach items="${mytasklist }" var="li" varStatus="idxStatus">
+	    <tr class="whittr">
+	      <td>${project.projname }</td>
+	      <td title="${project.projphone }">${project.creatpersionname }</td>
+	      <td title="${li.email }">${li.name }</td>
+	      <td><fmt:formatDate value="${li.endtime }"pattern="yyyy-MM-dd" /></td>
+	      
+	      <td title="${li.description}">
+	      	<a href="download.do?filePath=${li.taskfile}" >${fn:substring(li.description, 0, 10)}...</a></td>
+	      
+	      <c:if test="${li.resultdescription!=null and li.description!=defaultTaskview}">
+	      <td title="${li.resultdescription }"><a href="download.do?filePath=${li.resultfile }" >${fn:substring(li.resultdescription, 0, 5)}...</a></td>	
+	      </c:if>
+	      <c:if test="${li.resultdescription!=null and li.description==defaultTaskview}">
+	      <td title="${li.resultdescription }">${fn:substring(li.resultdescription, 0, 5)}...</td>	
+	      </c:if>
+	      <c:if test="${li.resultdescription==null }">
+	      <td>待提交</td>
+	      </c:if>
+	      <td><a href="javascript:void(0);"  onclick="tasksubmit'${li.id}');">提交任务</a></td>
+	    </tr>
+    </c:forEach>
   </table>
   <div class="sytxq_conment"></div>
 </div>
@@ -152,33 +159,82 @@ function closeDiv(obj){
 <div class="sdcq_tck">
             <img src="../content/images/hong.gif" class="sdcq_tck_right_cha" width="1" height="16" onclick="CloseDiv2('MyDiv','fade')" />
             <div class="sdcq_tck_hong">
-                <h1 class="globle_title3"><img src="../content/images/tcc_b.png" style=" vertical-align:middle" /> 提交任务</h1>
+                <h1 class="globle_title3"><img src="../content/images/tcc_b.png" style=" vertical-align:middle" /> 提交任务
+                <a style="color:red;text-align:left;">注：1.上传文件格式为txt/doc/docx/pdf。2.建议文件大小不超过40k。</a>
+                </h1>
                 
     </div>
             <div class="sdcq_tck_conment">
-      <table width="100%" border="0" cellspacing="1" cellpadding="0" class="autotable2" style="margin:1px auto">
-        <tr>
-          <td width="15%" align="center"; bgcolor="#FFFFFF" >成果上传</td>
-          <td  height="38" width="88%" bgcolor="#FFFFFF" >
-            <input  type="file"  class="syt_lb_top_conment_txt" style="margin:10px; width:223px;" />
-          </td>
-        </tr>
-        <tr>
-          <td width="15%" align="center"; bgcolor="#FFFFFF" >成果简要描述</td>
-          <td  height="38" width="88%" bgcolor="#FFFFFF" >
-            <textarea name="txtOpinion" rows="4" class="textarea_wby" id="txtOpinion" ></textarea>
-          </td>
-        </tr>
-        
-      </table>
-              <div class="win_btn"><button type="submit" class="chaxun_but2">确认</button> <button type="submit" class="chaxun_but2">取消</button></div>
+            <form id="taskSubmitHandle" enctype="multipart/form-data">
+		      <table width="100%" border="0" cellspacing="1" cellpadding="0" class="autotable2" style="margin:1px auto">
+		        <tr>
+	          		<td width="15%" align="center"; bgcolor="#FFFFFF" >任务上传</td>
+	          		<td  height="38" width="88%" bgcolor="#FFFFFF" >
+	            		<input  type="file"  name="file" id="resultfile" class="syt_lb_top_conment_txt" style="margin:10px; width:223px;" />
+	            		<input  type="text"  name="id" id="id" style="display:none" />
+	            		<input  type="text"  name="projectid" value="${project.projid}" style="display:none" />
+	          		</td>
+	        	</tr>
+	        	
+		        <tr>
+		          <td width="15%" align="center"; bgcolor="#FFFFFF" >成果简要描述</td>
+		          <td  height="38" width="88%" bgcolor="#FFFFFF" >
+	            	<textarea id="resultdescription" name="resultdescription" rows="4" class="textarea_wby" ></textarea>
+	          	  </td>
+	        </tr>
+		      </table>
+		     </form>
+              <div class="win_btn">
+              <button type="button" id="tsave" class="chaxun_but2">确认</button> 
+              <button type="button" class="chaxun_but2" onclick="CloseDiv2('MyDiv','fade');">取消</button>
+              </div>
             </div>
            
             <div class="sdcq_tck_baidi"></div>
 
 </div>
 </div>
-        
-      
+<script>
+ function tasksubmit(id){
+	 ShowDiv2('MyDiv', 'fade');
+	 $("#id").val(id);
+ }
+  $(document).ready(function() {
+		$("#tsave").click(function(){
+			var resultfile = $("#resultfile").val();  
+			var resultfileExtension = resultfile.substr(resultfile.lastIndexOf('.') + 1);  
+			var dateObj=new Date();
+			if(verifynull("resultfile") && verifynull("resultdescription")) {
+			}else{
+				return;
+			}
+			if($("#resultfile").val()!=''){
+				if (resultfileExtension != 'txt' && resultfileExtension != 'doc'  
+				&& resultfileExtension != 'docx' && resultfileExtension != 'pdf') {  
+					_alert("please upload file that is a file",2);  
+					return ;  
+				}  
+			}
+			_confirm("是否分配此项任务？",1,"add()");
+		});
+	})
+	function add(){
+		$("#taskSubmitHandle").ajaxSubmit({  
+			type : 'POST',
+			url : 'taskSubmitHandle.do', 
+			success : function(result) {
+				CloseDiv2('MyDiv','fade');
+				if (result.status == '0') {
+					_alert(result.msg);
+				}else{
+					_alert(result.msg,2);
+				}
+			},  
+			error : function() {  
+			   _alert("任务分配失败，请检查网络后重试",2);  
+			}  
+		}); 
+	}
+</script>           
 </body>
 </html>

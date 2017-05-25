@@ -79,22 +79,37 @@ public class TeamManagerService {
 		home.setCreattime(DateDealwith.getCurrDate());
 		home.setUpdatetime(DateDealwith.getCurrDate());
 		home.setStatus(0);
-		List<BaseProject> pp = baseProjectMapper.selectByPrimaryAll(new Project(home.getEmail(), null, home
-				.getProjectid()));// 不能添加项目负责人
-		BaseHome hh = baseHomeMapper.selectByPrimaryKey(home.getProjectid(), home.getEmail());// 不能重复添加
-		if (hh != null || pp.size() > 0) {
-			stateResult.setStatus(2);
-			stateResult.setMsg("服务器端:数据添加失败!");
-			return stateResult;
-		} else {
-			if (baseHomeMapper.insert(home) > 0) {
-				stateResult.setStatus(1);
-				stateResult.setMsg("服务器端:数据添加成功!");
+		BaseProject pp = baseProjectMapper.selectByPrimaryKey(home.getProjectid());// 不能添加项目负责人
+		if (pp.getProjcurrentnumber() <= pp.getProjallnumber()) {
+			BaseHome hh = baseHomeMapper.selectByPrimaryKey(home.getProjectid(), home.getEmail());// 不能重复添加
+			if (hh != null || home.getEmail().equals(pp.getProjemail())) {
+				if (hh != null) {
+					stateResult.setStatus(4);
+					stateResult.setMsg("服务器端:不能重复添加!");
+				}
+				if (home.getEmail().equals(pp.getProjemail())) {
+					stateResult.setStatus(5);
+					stateResult.setMsg("服务器端:不能添加创建者!");
+				}
+				return stateResult;
 			} else {
-				stateResult.setStatus(2);
-				stateResult.setMsg("服务器端:数据添加失败!");
+				if (baseHomeMapper.insert(home) > 0) {
+					// 更新当前人数
+					pp.setProjcurrentnumber(pp.getProjcurrentnumber() + 1);
+					baseProjectMapper.updateByPrimaryKeySelective(pp);
+					stateResult.setStatus(1);
+					stateResult.setMsg("服务器端:数据添加成功!");
+				} else {
+					stateResult.setStatus(2);
+					stateResult.setMsg("服务器端:数据添加失败!");
+				}
+				return stateResult;
 			}
+		} else {
+			stateResult.setStatus(3);
+			stateResult.setMsg("服务器端:该项目所需人数已满!");
 			return stateResult;
 		}
+
 	}
 }

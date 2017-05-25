@@ -82,7 +82,7 @@ CREATE TABLE `t_user` (
   `email` varchar(50) NOT NULL COMMENT '邮件地址',
   `phone` varchar(20) NOT NULL COMMENT '手机号',
   `password` varchar(50) NOT NULL DEFAULT 'e10adc3949ba59abbe56e057f20f883e' COMMENT '密码',
-  `role` varchar(5) NOT NULL COMMENT '角色',
+  `role` varchar(5) NOT NULL COMMENT '1',
   `title` varchar(5) DEFAULT '完善职称' COMMENT '职称',
   `education` varchar(5) DEFAULT '完善学历' COMMENT '学历',
   `direction` varchar(5) DEFAULT '完善方向' COMMENT '方向',

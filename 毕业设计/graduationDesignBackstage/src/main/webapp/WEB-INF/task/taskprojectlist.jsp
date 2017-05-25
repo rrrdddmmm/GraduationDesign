@@ -80,7 +80,12 @@
       <td>操作</td>
     </tr>
     <c:forEach items="${projectlist }" var="li" varStatus="idxStatus">
-	   <tr class="whittr" data-itemid="${li.projid }">
+    	 <c:if test="${idxStatus.index%2==1 }">
+		 <tr class="whittr" data-itemid="${li.projid }">
+		 </c:if>
+		 <c:if test="${idxStatus.index%2==0 }">
+		 <tr class="lantr" data-itemid="${li.projid }">
+		 </c:if>
 	     <td>${li.projname }</td>
 	     <td>${li.creatpersionname }</td>
 	     <td title="${li.projemail }">${li.projphone }</td>
@@ -98,7 +103,7 @@
 		     	<a href="taskProjectList.do?projid=${li.projid }&projemail=${li.projemail }" >创建任务</a>&nbsp;&nbsp;
 		     	<a href="taskDistribution.do?projid=${li.projid }" >分配任务</a>&nbsp;&nbsp;
 		     </c:if>
-		        <a href="taskChakan.do?projid=${li.projid }&projemail=${li.projemail }" >我的任务</a>
+		        <a href="taskChakan.do?projphone=${li.projphone }&projid=${li.projid }&projemail=${li.projemail }&projname=${li.projname }&creatpersionname=${li.creatpersionname }" >我的任务</a>
 		      </td>
 	      </c:if>
 	      <c:if test="${li.projstartuptime==null }">

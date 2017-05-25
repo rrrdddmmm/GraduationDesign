@@ -50,11 +50,6 @@
 			</div>
 			</div>
 		</div>
-		<div class="r_box fr">
-		<div class="r_box_hy">
-			<jsp:include page="../common/right.jsp"/>
-		</div>
-		</div>
 	</div>
 	<!-- 主体结束 -->
 	<!-- 页脚开始 -->

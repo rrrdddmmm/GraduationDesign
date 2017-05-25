@@ -11,42 +11,13 @@
 <!--内容区-->
 <div class="xtsy_wk">
  <div class="xtsy_wk_kjtop">
- <div class="syt_a">快捷入口</div>
+ <div class="syt_a">项目介绍</div>
  </div>
  <div class="syt_0a">
-   <ul>
-      <li>
-        <div class="sys-stat_kja"><img src="../content/images/kj01.png" width="62" height="62" /></div>
-        <div class="sys-stat_kjb">
-        <dt class="ct_lvse" >67</dt>
-       <dt class="huise"><a href="#">项目启动审核</a></dt>
-        </div>
-        <div class="oval ovala" >5%↓</div>
-      </li>
-       
-       
-      <li> 
-       <div class="sys-stat_kja"><img src="../content/images/kj03.png" width="62" height="62" /></div>
-        <div class="sys-stat_kjb">
-        <dt class="ct_lvse" >27</dt>
-       <dt class="huise"><a href="#">项目结题审核</a></dt>
-        </div>
-        <div class="oval ovala" >5%↓</div>
-      </li>
-      
-      <li>
-       <div class="sys-stat_kja"><img src="../content/images/kj02.png" width="62" height="62" /></div>
-        <div class="sys-stat_kjb">
-        <dt class="ct_lvse" >17</dt>
-       <dt class="huise"><a href="#">新增用户审核<a href=""></dt>
-        </div>
-        <div class="oval ovala" >5%↓</div>
-      </li>
-    </ul>
-    <div class="clear"></div>
- 
- 
- 
+     <video width="1100" height="410"  controls loop="loop">
+		<source src="/resource/indexdefault.mp4"/>
+	</video>
+	
  </div>
  <div class="xtsy_wk_kjtop">
    <div class="syt_a">系统说明</div>

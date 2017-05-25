@@ -269,7 +269,12 @@
 					<td>操作</td>
 				</tr>
 				<c:forEach items="${homeprojectlist }" var="li" varStatus="idxStatus">
-					<tr class="whittr" data-itemid="${li.projectid }" data-itemname="${li.use.email }">
+				<c:if test="${idxStatus.index%2==1 }">
+				 <tr class="whittr" data-itemid="${li.projectid }" data-itemname="${li.use.email }">
+				 </c:if>
+				 <c:if test="${idxStatus.index%2==0 }">
+				 <tr class="lantr" data-itemid="${li.projectid }" data-itemname="${li.use.email }">
+				 </c:if>
 						<td>${li.projectname}</td>
 						<td>${li.use.name}</td>
 						<td title="${li.use.email}">${li.use.phone}</td>
@@ -330,7 +335,7 @@
 <script>
 	$(document).ready(function() {
 		var add='${stateResult.status}';
-		if(add==1){_alert('${stateResult.msg}');}else if(add==2){_alert('${stateResult.msg}',2);}
+		if(add==1){_alert('${stateResult.msg}');}else if(add==2 || add==3 || add==4 ||add==5){_alert('${stateResult.msg}',2);}
 		$("#projectid").val("${home.projectid}");//回显
 		$("#projectname").val("${home.projectname}");
 		$("#CriteriaQuery").click(function() {

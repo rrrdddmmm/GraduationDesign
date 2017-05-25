@@ -97,7 +97,12 @@
 				<td>操作</td>
 			</tr>
 			<c:forEach items="${projectlist }" var="li" varStatus="idxStatus">
-				<tr class="whittr" data-itemid="${li.projid }">
+				 <c:if test="${idxStatus.index%2==1 }">
+				 <tr class="whittr" data-itemid="${li.projid }">
+				 </c:if>
+				 <c:if test="${idxStatus.index%2==0 }">
+				 <tr class="lantr" data-itemid="${li.projid }">
+				 </c:if>
 					<td>${li.projname }</td>
 					<td title="${li.projphone }">${li.creatpersionname }</td>
 					<td>${li.projtutorname }</td>

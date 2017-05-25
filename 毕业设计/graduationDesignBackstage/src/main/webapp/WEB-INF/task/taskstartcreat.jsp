@@ -121,7 +121,12 @@ function closeDiv(obj){
       <td>操作</td>
     </tr>
     <c:forEach items="${tasklist }" var="li" varStatus="idxStatus">
-	    <tr class="whittr" data-itemid="${li.id }">
+	    <c:if test="${idxStatus.index%2==1 }">
+		 <tr class="whittr" data-itemid="${li.id }">
+		 </c:if>
+		 <c:if test="${idxStatus.index%2==0 }">
+		 <tr class="lantr" data-itemid="${li.id }">
+		 </c:if>
 	      <td>${project.projname }</td>
 	      <td title="${project.projphone }">${project.creatpersionname }</td>
 	      <td><fmt:formatDate value="${li.startuptime }"pattern="yyyy-MM-dd" /></td>

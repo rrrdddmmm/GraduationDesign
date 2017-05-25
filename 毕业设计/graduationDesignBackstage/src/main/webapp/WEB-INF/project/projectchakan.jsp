@@ -107,7 +107,7 @@
       <td>项目等级</td>
       <td width="8%" >操作</td>
     </tr>
-    <tr class="lantr">
+    <tr class="whittr">
       <td>${project.projlanguage }</td>
       <td>${project.projplatform }</td>
       <td title="${project.projdescribe}">${fn:substring(project.projdescribe, 0, 5)}...</td>
