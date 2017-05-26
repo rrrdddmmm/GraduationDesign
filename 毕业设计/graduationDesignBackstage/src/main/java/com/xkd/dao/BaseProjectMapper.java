@@ -17,6 +17,8 @@ public interface BaseProjectMapper {
 
 	List<BaseProject> selectByPrimaryAll(Project record);
 
+	List<BaseProject> selectByPrimaryTaskAll(Project record);
+
 	List<BaseProject> selectByPrimaryHome(Map<String, Object> map);
 
 	List<BaseProject> selectAllApplication(Project record);

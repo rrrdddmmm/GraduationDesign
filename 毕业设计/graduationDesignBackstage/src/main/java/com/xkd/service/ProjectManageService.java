@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import com.xkd.controller.SessionController;
 import com.xkd.dao.BaseHomeMapper;
 import com.xkd.dao.BaseProjectMapper;
+import com.xkd.dao.BaseTaskMapper;
 import com.xkd.dao.BaseUserMapper;
 import com.xkd.entity.BaseHome;
 import com.xkd.entity.BaseProject;
@@ -44,6 +45,11 @@ public class ProjectManageService {
 	private BaseUserMapper		baseUserMapper;
 	@Resource(name = "baseHomeMapper")
 	private BaseHomeMapper		baseHomeMapper;
+	/**
+	 * 任务表
+	 */
+	@Resource(name = "baseTaskMapper")
+	private BaseTaskMapper		baseTaskMapper;
 
 	/**
 	 * 通过账号email查询参与项目
@@ -74,6 +80,17 @@ public class ProjectManageService {
 		return list;
 	}
 
+	/**
+	 * 通过账号email查询当前人数等于总人数的项目
+	 * 
+	 * @return
+	 */
+	public List<BaseProject> getTaskCreatProject(HttpServletRequest request) {
+		BaseUser sessionUser = SessionController.getLoginInfomation(request);
+		List<BaseProject> list = baseProjectMapper.selectByPrimaryTaskAll(new Project(sessionUser.getEmail()));
+		return list;
+	}
+
 	public BaseProject getProjectById(String projid) {
 		BaseProject obj = baseProjectMapper.selectByPrimaryKey(projid);
 		return obj;
@@ -84,8 +101,10 @@ public class ProjectManageService {
 	 * 
 	 * @待启动审核（projstatus=0）:
 	 * @（projresultEvaluationstate=0 && projstartupEvaluationstate=0）
+	 * 
 	 * @开发中（projstatus=1）:
 	 * @（projstartupEvaluationstate=1 and endtime>当前时间）
+	 * 
 	 * @待结题审核（projstatus=2）:
 	 * @(projstartupEvaluationstate=1 and projstartupEvaluationstate=0 and
 	 *                                endtime<当前时间)，
@@ -181,7 +200,12 @@ public class ProjectManageService {
 	public StateResult delHandle(String projid, StateResult stateResult, HttpServletRequest request) {
 		BaseUser baseUser = SessionController.getLoginInfomation(request);
 		if (baseProjectMapper.deleteByPrimaryKey(projid) > 0) {
+			// 删除项目相关的所有文件
 			FileDealWith.deleteAllFilesOfDir(new File(ConfigStr.ResourcesPath + baseUser.getId() + "/" + projid));
+			// 删除项目所有相关的任务
+			baseTaskMapper.deleteByProjectId(projid);
+			// 删除项目所有相关的团队
+			baseHomeMapper.deleteHomeByprojId(projid);
 			stateResult.setStatus(0);
 			stateResult.setMsg("服务器端：del success");
 		} else {

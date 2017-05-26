@@ -62,6 +62,7 @@ public class UserLoginController implements Serializable {
 	@RequestMapping("/loginOut.do")
 	public String loginOut(HttpServletRequest request) {
 		HttpSession session = request.getSession();
+		session.setAttribute(ConfigStr.userInfomation, null);
 		session.invalidate();
 		return "user/login";
 	}

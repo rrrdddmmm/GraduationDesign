@@ -14,11 +14,12 @@
     <result column="resultDescription" jdbcType="VARCHAR" property="resultdescription" />
     <result column="resultFile" jdbcType="VARCHAR" property="resultfile" />
     <result column="resultEvaluation" jdbcType="VARCHAR" property="resultevaluation" />
+    <result column="parentTask" jdbcType="INTEGER" property="parentTask" />
     <result column="status" jdbcType="INTEGER" property="status" />
   </resultMap>
   <sql id="Base_Column_List">
     id, projectId, email, name, startupTime, updateTime, endTime, description, taskFile, 
-    resultDescription, resultFile, resultEvaluation, status
+    resultDescription, resultFile, resultEvaluation, parentTask,status
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -44,31 +45,27 @@
         and description = #{description,jdbcType=VARCHAR}
     </if>
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByTaskId" parameterType="java.lang.Integer">
     delete from t_task
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER} or parentTask = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByall" parameterType="com.xkd.entity.BaseTask">
+  
+   <delete id="deleteByProjectId" parameterType="java.lang.String">
     delete from t_task
     where 
     projectid = #{projectid,jdbcType=VARCHAR}
-    and
-    startuptime = #{startuptime,jdbcType=DATE}
-    and
-    endtime = #{endtime,jdbcType=DATE}
-     
   </delete>
   <insert id="insert" parameterType="com.xkd.entity.BaseTask">
     insert into t_task (id, projectId, email, 
       name, startupTime, updateTime, 
       endTime, description, taskFile, 
-      resultDescription, resultFile, resultEvaluation, 
+      resultDescription, resultFile, resultEvaluation,parentTask, 
       status)
     values (#{id,jdbcType=INTEGER}, #{projectid,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
       #{name,jdbcType=VARCHAR}, #{startuptime,jdbcType=DATE}, #{updatetime,jdbcType=DATE}, 
       #{endtime,jdbcType=DATE}, #{description,jdbcType=VARCHAR}, #{taskfile,jdbcType=VARCHAR}, 
-      #{resultdescription,jdbcType=VARCHAR}, #{resultfile,jdbcType=VARCHAR}, #{resultevaluation,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER})
+      #{resultdescription,jdbcType=VARCHAR}, #{resultfile,jdbcType=VARCHAR}, #{resultevaluation,jdbcType=VARCHAR},
+      #{parentTask,jdbcType=INTEGER}, #{status,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.xkd.entity.BaseTask">
     insert into t_task
@@ -108,6 +105,9 @@
       </if>
       <if test="resultevaluation != null">
         resultEvaluation,
+      </if>
+      <if test="parentTask != null">
+        parentTask,
       </if>
       <if test="status != null">
         status,
@@ -150,6 +150,9 @@
       <if test="resultevaluation != null">
         #{resultevaluation,jdbcType=VARCHAR},
       </if>
+      <if test="parentTask != null">
+        #{parentTask,jdbcType=INTEGER},
+      </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
       </if>
@@ -191,6 +194,9 @@
       <if test="resultevaluation != null">
         resultEvaluation = #{resultevaluation,jdbcType=VARCHAR},
       </if>
+      <if test="parentTask != null">
+        parentTask = #{parentTask,jdbcType=INTEGER},
+      </if>
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
       </if>
@@ -210,6 +216,7 @@
       resultDescription = #{resultdescription,jdbcType=VARCHAR},
       resultFile = #{resultfile,jdbcType=VARCHAR},
       resultEvaluation = #{resultevaluation,jdbcType=VARCHAR},
+      parentTask = #{parentTask,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>

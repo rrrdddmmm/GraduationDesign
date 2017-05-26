@@ -5,9 +5,10 @@ import java.util.List;
 import com.xkd.entity.BaseTask;
 
 public interface BaseTaskMapper {
-	int deleteByPrimaryKey(Integer id);
 
-	int deleteByall(BaseTask record);
+	int deleteByTaskId(Integer taskid);
+
+	int deleteByProjectId(String projectid);
 
 	int insert(BaseTask record);
 

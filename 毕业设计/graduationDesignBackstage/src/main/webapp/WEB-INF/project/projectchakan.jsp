@@ -109,24 +109,27 @@
     </tr>
     <tr class="whittr">
       <td>${project.projlanguage }</td>
-      <td>${project.projplatform }</td>
+      <td>${project.projplatform }</td> 
       <td title="${project.projdescribe}">${fn:substring(project.projdescribe, 0, 5)}...</td>
       <td><a href="download.do?filePath=${project.projbudgetfile }">${project.projbudget }</a></td>
       <td><a href="download.do?filePath=${project.projprogectfile }">立项书查看</a></td>
       <td><a href="download.do?filePath=${allResultPath }">结题文档及成果</a></td>
-      <c:if test="${project.projstatus==0 }"><td>待评价</td></c:if>
-      <c:if test="${project.projstatus!=0 }">
+      
+      <!-- 启动评价 -->
+      <c:if test="${project.projstatus==0 and project.projallnumber!=project.projcurrentnumber}"><td>组建团队中</td></c:if>
+      <c:if test="${project.projstatus==0 and project.projallnumber==project.projcurrentnumber}"><td>待评价</td></c:if>
+      <c:if test="${project.projstatus!=0 and project.projallnumber==project.projcurrentnumber}">
       <td title="${project.projstartupevaluation }">${fn:substring(project.projstartupevaluation, 0, 5)}...</td>
       </c:if>
       
-      
+      <!-- 结题评价 -->
       <c:if test="${project.projstatus==0 or project.projstatus==1}"><td>评价未开始</td></c:if>
       <c:if test="${project.projstatus==2}"><td>待评价</td></c:if>
       <c:if test="${project.projstatus==3 }">
       <td title="${project.projresultevaluationvalue }">${fn:substring(project.projresultevaluationvalue, 0, 5)}...</td>
 	  </c:if>
 	  
-	  
+	  <!-- 等价划分 -->
 	  <c:if test="${project.projstatus==0 }"><td>等级待定</td></c:if>
 	  <c:if test="${project.projstatus!=0 }"><td>${project.projgrade}</td></c:if>
       <c:if test="${userInfomation.email==project.projemail }">
@@ -153,7 +156,7 @@
   <!--分页-->
   
 </div>
-<c:if test="${userInfomation.role==2 }">
+<c:if test="${userInfomation.role==2 and project.projallnumber==project.projcurrentnumber}">
   <div class="syt_lb_top">
     <h1 class="syt_lb_top_titleh2">审批意见</h1>
   </div>
@@ -186,7 +189,7 @@
   <img src="../content/images/hong.gif" class="sdcq_tck_right_cha" width="1" height="16" onclick="CloseDiv2('MyDiv','fade')" />
   <div class="sdcq_tck_hong">
   <h1 class="globle_title3"><img src="../content/images/tcc_b.png" style=" vertical-align:middle" /> 项目详情  
-	 <c:if test="${userInfomation.email==project.projemail }">
+	 <c:if test="${userInfomation.email==project.projemail}">
 		 <a style="color:red;text-align:left;">注意：* 标示的栏目可修改哦!</a>
 	 </c:if> 
   </h1>

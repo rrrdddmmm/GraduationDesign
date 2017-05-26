@@ -113,21 +113,31 @@
 					<td><fmt:formatDate value="${li.projendtime }"
 							pattern="yyyy-MM-dd" /></td>
 					<td>
-						<c:if test="${li.projstatus==0 }">待启动审核</c:if>
-						<c:if test="${li.projstatus==1 }">开发中</c:if>
-						<c:if test="${li.projstatus==2 }">待结题审核</c:if>
-						<c:if test="${li.projstatus==3 }">已完成</c:if>
+						<c:if test="${li.projallnumber!=li.projcurrentnumber }">组件团队中</c:if>
+						<c:if test="${li.projstatus==0 and li.projallnumber==li.projcurrentnumber}">待启动审核</c:if>
+						<c:if test="${li.projstatus==1 and li.projallnumber==li.projcurrentnumber }">开发中</c:if>
+						<c:if test="${li.projstatus==2 and li.projallnumber==li.projcurrentnumber }">待结题审核</c:if>
+						<c:if test="${li.projstatus==3 and li.projallnumber==li.projcurrentnumber }">已完成</c:if>
 					</td>
 					<td>
 					<c:if test="${userInfomation.role==1 }">
 						<a href="../projectAuditController/projectChakan.do?projid=${li.projid }">查看</a>&nbsp;&nbsp;
-						<c:if test="${userInfomation.email==li.projemail and li.projstatus==0}">
+						<c:if test="${userInfomation.email==li.projemail and li.projstatus==0  and li.projallnumber!=li.projcurrentnumber}">
 							<a class="font-red-sunglo">删除</a>
 						</c:if>
 					</c:if>
-					<c:if test="${userInfomation.role==2 }">
-						<a href="../projectAuditController/projectChakan.do?projid=${li.projid }">审核</a>&nbsp;&nbsp;
+					
+					<c:if test="${userInfomation.role==2}">
+						<a href="../projectAuditController/projectChakan.do?projid=${li.projid }">
+							<c:if test="${li.projallnumber==li.projcurrentnumber}">
+							审核
+							</c:if>
+							<c:if test="${li.projallnumber!=li.projcurrentnumber}">
+							查看
+							</c:if>
+						</a>&nbsp;&nbsp;
 					</c:if>
+					
 					<c:if test="${userInfomation.role==3 }">
 						<a href="../projectAuditController/projectChakan.do?projid=${li.projid }">查看</a>&nbsp;&nbsp;
 						<a class="font-red-sunglo">删除</a>

@@ -65,6 +65,16 @@
     </if>
   </select>
   
+   <select id="selectByPrimaryTaskAll" parameterType="com.xkd.entity.BaseProject" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_project 
+    where and projcurrentNumber = projallNumber
+    <if test="projemail != null">
+       and projemail = #{projemail,jdbcType=VARCHAR}
+    </if>
+  </select>
+  
   <select id="selectByPrimaryHome" parameterType="map" resultMap="BaseResultMap">
     select 
 		<include refid="Base_Column_List" />
@@ -92,13 +102,12 @@
        and projstatus = #{projstatus,jdbcType=VARCHAR}
     </if>
   </select>
-  
-  
-  
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from t_project
     where projid = #{projid,jdbcType=VARCHAR}
   </delete>
+    
   <insert id="insert" parameterType="com.xkd.entity.BaseProject">
     insert into t_project (projid, projname, projemail, 
       creatpersionname, projphone, projlanguage, 

@@ -65,7 +65,11 @@ public class TeamManagerService {
 	}
 
 	public StateResult delHandle(Home home, StateResult stateResult) {
+		BaseProject pp = baseProjectMapper.selectByPrimaryKey(home.getProjectid());// 不能添加项目负责人
 		if (baseHomeMapper.deleteByPrimaryKey(home.getProjectid(), home.getEmail()) > 0) {
+			// 更新当前人数
+			pp.setProjcurrentnumber(pp.getProjcurrentnumber() - 1);
+			baseProjectMapper.updateByPrimaryKeySelective(pp);
 			stateResult.setStatus(0);
 			stateResult.setMsg("服务器端:数据删除成功!");
 		} else {

@@ -26,7 +26,7 @@ public class BaseTask {
 	private String	resultfile;
 
 	private String	resultevaluation;
-
+	private Integer	parentTask;
 	private Integer	status;
 
 	public BaseTask(String projectid, String email) {
@@ -167,5 +167,13 @@ public class BaseTask {
 
 	public void setStatus(Integer status) {
 		this.status = status;
+	}
+
+	public Integer getParentTask() {
+		return parentTask;
+	}
+
+	public void setParentTask(Integer parentTask) {
+		this.parentTask = parentTask;
 	}
 }

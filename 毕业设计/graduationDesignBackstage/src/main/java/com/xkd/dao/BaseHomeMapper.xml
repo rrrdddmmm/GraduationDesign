@@ -38,6 +38,11 @@
     where projectId = #{projectid,jdbcType=VARCHAR}
       and email = #{email,jdbcType=VARCHAR}
   </delete>
+  <delete id="deleteHomeByprojId" parameterType="map">
+    delete from t_home
+    where projectId = #{projectid,jdbcType=VARCHAR}
+  </delete>
+  
   <insert id="insert" parameterType="com.xkd.entity.BaseHome">
     insert into t_home (projectId, email, creatTime, 
       updateTime, status)

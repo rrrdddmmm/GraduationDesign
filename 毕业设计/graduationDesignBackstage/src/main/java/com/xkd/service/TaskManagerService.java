@@ -159,9 +159,8 @@ public class TaskManagerService {
 	public StateResult delHandle(StateResult stateResult, Integer id, HttpServletRequest request) {
 		BaseTask baseTask = baseTaskMapper.selectByPrimaryKey(id);
 		FileDealWith.deleteAllFilesOfDir(new File(baseTask.getTaskfile()));
-		if (baseTaskMapper.deleteByall(new BaseTask(baseTask.getProjectid(), baseTask.getStartuptime(), baseTask
-				.getEndtime())) > 0) {
-			stateResult.setMsg("服务器端：该项目相关任务全部删除!");
+		if (baseTaskMapper.deleteByTaskId(id) > 0) {
+			stateResult.setMsg("服务器端：该任务删除成功!");
 			stateResult.setStatus(0);
 		} else {
 			stateResult.setMsg("服务器端：删除失败!");

@@ -82,6 +82,7 @@ public class ProjectCreatService {
 			baseProject.setProjgrade("0");
 			baseProject.setProjstatus(0);
 			baseProjectMapper.insert(baseProject);
+
 			// 添加默认任务：数据库插入默认任务，最后一天上传视频
 			BaseTask bt = new BaseTask(projectid, baseProject.getProjemail(), users.getName(),
 					baseProject.getProjendtime(), baseProject.getProjendtime());
@@ -89,7 +90,7 @@ public class ProjectCreatService {
 			bt.setResultfile(ConfigStr.defaultTaskviewResultFile);
 			bt.setTaskfile(ConfigStr.defaultTaskTXTResultFile);
 			bt.setUpdatetime(DateDealwith.getCurrDate());
-			baseTaskMapper.insertSelective(bt);
+			baseTaskMapper.insert(bt);
 			stateResult.setMsg("服务器端：项目创建成功!");
 			stateResult.setStatus(0);
 		} catch (IllegalStateException e) {
