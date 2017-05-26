@@ -56,6 +56,11 @@ public class ConfigManagerController implements Serializable {
 		return stateResult;
 	}
 
+	@RequestMapping("configDefaultTask.do")
+	public String configDefaultTask() {
+		return "config/defaulttask";
+	}
+
 	@ModelAttribute
 	public void populateModel(HttpServletRequest request, Model model) throws ControllerException {
 		SessionController.noSeeiondelwith(request);

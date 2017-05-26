@@ -114,7 +114,7 @@ CREATE TABLE `t_news` (
   `newsdetails` varchar(200) DEFAULT '#' COMMENT '详情连接',
   `creatTime` date DEFAULT NULL COMMENT '建创时间',
   `updateTime` date DEFAULT NULL COMMENT '修改时间',
-  `state` varchar(5) NOT NULL DEFAULT '0' COMMENT '新闻状态',
+  `state` varchar(5) NOT NULL DEFAULT '1' COMMENT '新闻状态',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 -- ----------------------------
@@ -167,8 +167,8 @@ CREATE TABLE `t_project` (
 -- ----------------------------
 -- Records of t_project
 -- ----------------------------
-INSERT INTO `t_project` VALUES ('20170523193658', '计算机开发', '123456789@qq.com', '邝忠震', '15548752689', 'Python', 'Windows', '12', '12', '22', '董美丽', '1255', 'F:/resource/21/20170523193658/4c978c3c-df44-4c3e-8699-cc0e75e9a57d新版标准日本语初级单词文本(1-48课)电子文档.doc', 'F:/resource/21/20170523193658/c1d4aab9-7330-4b4d-9aeb-74ee37ea47c7日语学习计划.docx', '微型计算机开发西安科技大学。', null, '2017-05-23', '2017-05-23', '2017-05-23', '2017-05-30', '该项目具有创新性', '4', '1', null, null, '0', '初审：优', '1');
-INSERT INTO `t_project` VALUES ('20170524182337', '校园软件在线协同平台', '456789123@qq.com', '姚鹏飞', '18825478965', 'Java', 'Windows', '23', '23', '22', '董美丽', '1522', 'F:/resource/23/20170524182337/9f7cbb2f-0355-48dd-9981-94d354bf3d43913.docx', 'F:/resource/23/20170524182337/fa11b9f2-4ec1-456e-a372-9f9b1b68bf77日语学习计划.docx', '本项目主要针对在校学生开发的一款项目在线协同开发平台，学生自行管理整个项目的创建，管理，交付等，老师仅仅项目的验收和评价。', null, '2017-05-24', '2017-05-24', '2017-05-24', '2017-05-31', '本项目具有创新性，搭建了老师和学生的桥梁，以及可以培养学生的能力，值得给予优秀。', '4', '1', null, null, '0', '初审：优', '1');
+INSERT INTO `t_project` VALUES ('20170523193658', '计算机开发', '123456789@qq.com', '邝忠震', '15548752689', 'Python', 'Windows', '3', '3', '22', '董美丽', '1255', 'F:/resource/21/20170523193658/4c978c3c-df44-4c3e-8699-cc0e75e9a57d新版标准日本语初级单词文本(1-48课)电子文档.doc', 'F:/resource/21/20170523193658/c1d4aab9-7330-4b4d-9aeb-74ee37ea47c7日语学习计划.docx', '微型计算机开发西安科技大学。', null, '2017-05-23', '2017-05-23', '2017-05-23', '2017-05-30', '该项目具有创新性', '4', '1', null, null, '0', '初审：优', '1');
+INSERT INTO `t_project` VALUES ('20170526141328', '校园导航系统', '123456789@qq.com', '邝忠震', '15548752689', 'C++语言', 'Linux', '2', '2', '22', '董美丽', '1500', 'F:/resource/21/20170526141328/cc03a7e7-b397-4357-b2e0-8e3e0f630997预算书.docx', 'F:/resource/21/20170526141328/99a2cb21-4367-487b-8150-fb42ccaed1df立项书.docx', '校园导航系统目的在于为广大学生提供优质服务，尤其是为新生报到提供服务。', null, '2017-05-26', '2017-05-26', '2017-05-26', '2017-06-08', '该系统个很大程度解决了校园的项目开发困难的问题，具有很强的应用性。', '4', '1', null, null, '0', '初审：优', '1');
 
 -- ----------------------------
 -- 开发语言常量表：Table structure for `t_language`
@@ -220,7 +220,7 @@ CREATE TABLE `t_home` (
   `email` varchar(50) NOT NULL COMMENT '用户email',
   `creatTime` date DEFAULT NULL COMMENT '建创时间',
   `updateTime` date DEFAULT NULL COMMENT '修改时间',
-  `status` int(10) NOT NULL DEFAULT '0' COMMENT '加入项目状态',
+  `status` varchar(5) DEFAULT '1' COMMENT '加入项目状态',
   PRIMARY KEY (`projectId`,`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 -- ----------------------------
@@ -228,8 +228,7 @@ CREATE TABLE `t_home` (
 -- ----------------------------
 INSERT INTO `t_home` VALUES ('20170523193658', '456789123@qq.com', '2017-05-24', '2017-05-24', '0');
 INSERT INTO `t_home` VALUES ('20170523193658', '789123456@qq.com', '2017-05-25', '2017-05-25', '0');
-INSERT INTO `t_home` VALUES ('20170524182337', '123456789@qq.com', '2017-05-24', '2017-05-24', '0');
-INSERT INTO `t_home` VALUES ('20170524182337', '789123456@qq.com', '2017-05-24', '2017-05-24', '0');
+INSERT INTO `t_home` VALUES ('20170526141328', '456789123@qq.com', '2017-05-26', '2017-05-26', '0');
 
 -- ----------------------------
 -- 任务表：Table structure for `t_task`
@@ -249,19 +248,32 @@ CREATE TABLE `t_task` (
   `resultFile` varchar(200)  DEFAULT NULL COMMENT '成果文件地址',
   `resultEvaluation` varchar(500) DEFAULT NULL COMMENT '成果评价',
   `parentTask` int(11) DEFAULT -1 COMMENT '父任务',
-  `status` int(10) DEFAULT 0 COMMENT '任务是否有效',
+  `status` varchar(5) DEFAULT '1' COMMENT '任务是否有效',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 -- ----------------------------
 -- Records of t_task
 -- ----------------------------
-INSERT INTO `t_task` VALUES ('22', '20170523193658', '123456789@qq.com', '邝忠震', '2017-05-24', '2017-05-25', '2017-05-30', '默认任务：本系统默认任务终期成果视屏上传', 'F:/resource/default.txt', '该视屏展示了本系统的基本功能的演示', '/resource/21/20170523193658/task/6ffc5c15-1138-4978-8ad0-68f522ebe9b6indexdefault.mp4', null, -1, 0);
-INSERT INTO `t_task` VALUES ('27', '20170523193658', '123456789@qq.com', '邝忠震', '2017-05-23', '2017-05-25', '2017-05-24', '未启动却无法阿萨德撒大所啊实打实多', 'F:/resource/21/20170523193658/task/5f49322c-3518-4ad1-8c58-e2a989bb2300郝永升毕业论文.docx', '任务已完成，有一些bug有待解决，如果有什么问题可以在以任务的形式反馈给我。', 'F:/resource/21/20170523193658/task/23e3ccae-480b-4049-a7ef-184a2d7bc0d6郝永升毕业论文.docx', null, -1, 0);
-INSERT INTO `t_task` VALUES ('28', '20170523193658', '456789123@qq.com', '姚鹏飞', '2017-05-23', '2017-05-25', '2017-05-24', '负责页面的设计，和后台人员交流实现页面的讲解，以及在截止时间上交本项目所有设计页面的初稿。', 'F:/resource/21/20170523193658/task/d276888f-2366-4a94-a00d-004dd3c56339论文章节.docx', null, null, null, 27, 0);
-INSERT INTO `t_task` VALUES ('29', '20170524182337', '456789123@qq.com', '姚鹏飞', '2017-05-24', '2017-05-24', '2017-05-31', '默认任务：本系统默认任务终期成果视屏上传', 'F:/resource/default.txt', null, '/resource/default.mp4', null, -1,0);
-INSERT INTO `t_task` VALUES ('30', '20170524182337', '456789123@qq.com', '姚鹏飞', '2017-05-24', '2017-05-24', '2017-05-25', '设计阶段，数据字典，页面成果。', 'F:/resource/23/20170524182337/task/b228ce68-2aad-426c-8dda-0929178a7d26913.docx', null, null, null, -1,0);
-INSERT INTO `t_task` VALUES ('31', '20170524182337', '123456789@qq.com', '邝忠震', '2017-05-24', '2017-05-25', '2017-05-25', '实现算法的实现，基于高数基础扎实，算法的核心思想以文档的形式上传', 'F:/resource/23/20170524182337/task/52a7c169-fa91-4e4c-8476-805819dc1e76郝永升毕业论文.docx', null, null, null, 30, 0);
-INSERT INTO `t_task` VALUES ('32', '20170524182337', '789123456@qq.com', '王朝', '2017-05-24', '2017-05-25', '2017-05-25', '代码的实现实现登陆注册功能，任务文件中已经给予了你所需的所有页面', 'F:/resource/23/20170524182337/task/02640be6-5aa5-44fd-8280-da00be4ec6c3日语学习计划.docx', null, null, null, 30, 0);
+INSERT INTO `t_task` VALUES ('22', '20170523193658', '123456789@qq.com', '邝忠震', '2017-05-30', '2017-05-25', '2017-05-30', '默认任务：本系统默认任务终期成果视屏上传', 'F:/resource/default.txt', '该视屏展示了本系统的基本功能的演示', '/resource/21/20170523193658/task/6ffc5c15-1138-4978-8ad0-68f522ebe9b6indexdefault.mp4', null, '-1', '0');
+INSERT INTO `t_task` VALUES ('33', '20170526141328', '123456789@qq.com', '邝忠震', '2017-06-08', '2017-05-26', '2017-06-08', '默认任务：本系统默认任务终期成果视屏上传', 'F:/resource/default.txt', null, '/resource/default.mp4', null, null, null);
+INSERT INTO `t_task` VALUES ('34', '20170526141328', '123456789@qq.com', '邝忠震', '2017-05-27', '2017-05-26', '2017-05-28', '项目需求的理解', 'F:/resource/21/20170526141328/task/aca2c476-f4b4-417d-9734-f620c622e22a预算书.docx', null, null, null, null, '0');
+INSERT INTO `t_task` VALUES ('35', '20170526141328', '456789123@qq.com', '姚鹏飞', '2017-05-27', '2017-05-26', '2017-05-28', '理解项目业务需求', 'F:/resource/21/20170526141328/task/5a7e2f72-4763-47af-97ac-f45d7f502f5a预算书.docx', '完成理解。理解文档已经上传，下载可以看到。', 'F:/resource/23/20170526141328/task/b532ae79-6b15-45ed-8bfc-05ba7c55c04c预算书.docx', null, null, '0');
+INSERT INTO `t_task` VALUES ('36', '20170523193658', '123456789@qq.com', '邝忠震', '2017-05-24', '2017-05-26', '2017-05-25', '研究计算机开发搭建的环境如何搭建', 'F:/resource/21/20170523193658/task/76d6d7d1-8439-4c1e-9281-a955392af84f预算书.docx', null, null, null, null, '0');
+INSERT INTO `t_task` VALUES ('37', '20170523193658', '456789123@qq.com', '姚鹏飞', '2017-05-24', '2017-05-26', '2017-05-25', null, null, null, null, null, null, '0');
+INSERT INTO `t_task` VALUES ('38', '20170523193658', '789123456@qq.com', '王朝', '2017-05-24', '2017-05-26', '2017-05-25', null, null, null, null, null, null, '0');
+
+-- ----------------------------
+-- 自定义任务表：Table structure for `t_mytask`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_mytask`;
+CREATE TABLE `t_mytask` (
+  `id` int(11) NOT NULL  COMMENT '主键',
+  `description` varchar(500) DEFAULT NULL COMMENT '任务描述',
+  `taskFile` varchar(200)  DEFAULT NULL COMMENT '详细任务文件地址',
+  `state` varchar(5) DEFAULT '1' COMMENT '默认任务是否有效',
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `t_mytask` VALUES (1, '默认任务：本系统默认任务终期成果视屏上传', 'F:/resource/default.txt', '1');
 
 -- ----------------------------
 -- 数据库备份表：Table structure for `t_dbbackup`
@@ -269,7 +281,7 @@ INSERT INTO `t_task` VALUES ('32', '20170524182337', '789123456@qq.com', '王朝
 DROP TABLE IF EXISTS `t_dbbackup`;
 CREATE TABLE `t_dbbackup` (
   `id` varchar(100) NOT NULL  COMMENT '主键',
-  `creatTime` date DEFAULT NULL COMMENT '建创时间',
+  `creatTime` date DEFAULT NULL COMMENT '建创日期',
   `creatTimeStr` varchar(20) DEFAULT NULL COMMENT '建创时间',
   `backuppath` varchar(100) NOT NULL COMMENT '数据库备份地址',
   PRIMARY KEY (id)
@@ -286,3 +298,4 @@ INSERT INTO `t_dbbackup` VALUES ('20170525033428', '2017-05-25', '2017-05-25 03:
 INSERT INTO `t_dbbackup` VALUES ('20170525161516', '2017-05-25', '2017-05-25 16:15:16', 'F:/resource/db/20170525161516.sql');
 INSERT INTO `t_dbbackup` VALUES ('20170525162319', '2017-05-25', '2017-05-25 16:23:19', 'F:/resource/db/20170525162319.sql');
 INSERT INTO `t_dbbackup` VALUES ('20170526012923', '2017-05-26', '2017-05-26 01:29:23', 'F:/resource/db/20170526012923.sql');
+INSERT INTO `t_dbbackup` VALUES ('20170526144810', '2017-05-26', '2017-05-26 14:48:10', 'F:/resource/db/20170526144810.sql');

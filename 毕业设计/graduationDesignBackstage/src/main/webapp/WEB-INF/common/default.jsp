@@ -40,6 +40,13 @@
             <dl><a href="../projectManagerController/projectList.do" target="rightT">项目列表</a></dl>
         </dd>
       </li>
+      <c:if test="${userInfomation.role=='3' }">
+	      <li> <i class="i3"></i><em>任务管理</em>
+	      	<dd class="snav dis">
+	          	<dl><a href="../configManagerController/configDefaultTask.do" target="rightT">默认任务</a></dl>
+	        </dd>
+	      </li>
+      </c:if>
       <c:if test="${userInfomation.role=='1' }">
 	      <li> <i class="i3"></i><em>任务管理</em>
 	      	<dd class="snav dis">
