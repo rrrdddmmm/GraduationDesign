@@ -132,10 +132,10 @@
 	  <!-- 等价划分 -->
 	  <c:if test="${project.projstatus==0 }"><td>等级待定</td></c:if>
 	  <c:if test="${project.projstatus!=0 }"><td>${project.projgrade}</td></c:if>
-      <c:if test="${userInfomation.email==project.projemail }">
+      <c:if test="${userInfomation.email==project.projemail and project.projstatus!=3}">
       	<td><a href="javascript:void(0);" onclick="ShowDiv2('MyDiv', 'fade');">修改</a></td>
       </c:if>
-      <c:if test="${userInfomation.email!=project.projemail }">
+      <c:if test="${userInfomation.email!=project.projemail or project.projstatus==3}">
       	<td><a href="javascript:void(0);" onclick="ShowDiv2('MyDiv', 'fade');">查看详情</a></td>
       </c:if>
     </tr>
@@ -189,7 +189,7 @@
   <img src="../content/images/hong.gif" class="sdcq_tck_right_cha" width="1" height="16" onclick="CloseDiv2('MyDiv','fade')" />
   <div class="sdcq_tck_hong">
   <h1 class="globle_title3"><img src="../content/images/tcc_b.png" style=" vertical-align:middle" /> 项目详情  
-	 <c:if test="${userInfomation.email==project.projemail}">
+	 <c:if test="${userInfomation.email==project.projemail and project.projstatus!=3}">
 		 <a style="color:red;text-align:left;">注意：* 标示的栏目可修改哦!</a>
 	 </c:if> 
   </h1>
@@ -250,7 +250,10 @@
       
       <td class="table_xqa">项目状态：</td>
       <td class="table_xqb">
-      <c:if test="${project.projstatus==0 }">
+      <c:if test="${project.projstatus==0 and project.projallnumber!=project.projcurrentnumber }">
+   		<input type="text" value=" 组件团队中" class="syt_lb_top_conment_txt" disabled="true"/>   
+      </c:if>
+      <c:if test="${project.projstatus==0 and project.projallnumber==project.projcurrentnumber  }">
       <input type="text" value="待启动审核" class="syt_lb_top_conment_txt" disabled="true"/>
       </c:if>
       <c:if test="${project.projstatus==1 }">
@@ -313,7 +316,7 @@
     </tr>
   </table>
   </form>
-  <c:if test="${userInfomation.email==project.projemail }">
+  <c:if test="${userInfomation.email==project.projemail  and project.projstatus!=3}">
      <div class="win_btn">
      <button type="button" id="tsave" class="chaxun_but2">确认</button>
      <button type="button" onclick="CloseDiv2('MyDiv','fade')" class="chaxun_but2">取消</button>

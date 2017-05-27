@@ -24,7 +24,7 @@ table{ border-collapse: collapse;}
 .topbar{ height:110px;overflow:hidden;}
 .topbar .logo{ margin: 45px 15px 10px 5px;}
 .topbar .nav{ width:630px; height:50px; background:#006725; box-shadow:3px 3px 3px #ccc;  margin-top: 45px;overflow:hidden;}
-.topbar .nav li{ float:left; font:14px/50px '微软雅黑'; text-align:center; width:70px; height:50px;position:relative;}
+.topbar .nav li{ float:left; font:14px/50px '微软雅黑'; text-align:center; width:78px; height:50px;position:relative;}
 .topbar .nav li a{ color:#fff;}
 .topbar .nav li:hover{ background:#ff6709;}
 .topphoto{margin-bottom:10px;}

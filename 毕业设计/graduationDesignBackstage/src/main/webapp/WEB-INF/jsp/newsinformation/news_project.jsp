@@ -64,15 +64,19 @@
 					<div class="new">
 						<c:forEach items="${list }" var="li" varStatus="idxStatus">
 						<ul class="arrow_box">
+						<c:if test="${li.resultdescription!=null }">
 							<li title="${li.resultdescription }">
+						</c:if>
+						<c:if test="${li.resultdescription==null }">
+							<li title="该项目负责人将项目演示视屏还未上传，项目可能未结题，可能该项目负责人没有上传，您可以观看默认视屏...">
+						</c:if>
 							<div class="sy">
-								
 								<c:if test="${li.resultdescription!=null }">
 									<video width="220" height="110"  controls loop="loop">
 										<source src="${li.resultfile }"/>
 									</video>
 									<a>
-										<span style="height: inherit;left: 212px;top: 51px;position: absolute;">${fn:substring(li.resultdescription, 0, 20)}..</span>
+										<span style="height: inherit;left: 212px;top: 51px;position: absolute;">${fn:substring(li.resultdescription, 0, 20)}...</span>
 									</a>
 								</c:if>
 								<c:if test="${li.resultdescription==null }">
@@ -80,7 +84,7 @@
 										<source src="${li.resultfile }"/>
 									</video>
 									<a>
-										<span style="height: inherit;left: 212px;top: 51px;position: absolute;">${fn:substring(li.description, 0, 20)}..</span>
+										<span style="height: inherit;left: 212px;top: 51px;position: absolute;">${fn:substring("该项目负责人将项目演示视屏还未上传，项目可能未结题，可能该项目负责人没有上传，您可以观看默认视屏", 0, 20)}..</span>
 									</a>
 								</c:if>
 								

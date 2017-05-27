@@ -12,9 +12,9 @@ CREATE TABLE `t_user` (
   `phone` varchar(20) NOT NULL COMMENT '手机号',
   `password` varchar(50) NOT NULL DEFAULT 'e10adc3949ba59abbe56e057f20f883e' COMMENT '密码',
   `role` varchar(5) NOT NULL COMMENT '角色',
-  `title` varchar(5) DEFAULT '学生' COMMENT '职称',
-  `education` varchar(5) DEFAULT '本科' COMMENT '学历',
-  `direction` varchar(5) DEFAULT '大数据' COMMENT '方向',
+  `title` varchar(10) DEFAULT '学生' COMMENT '职称',
+  `education` varchar(10) DEFAULT '本科' COMMENT '学历',
+  `direction` varchar(10) DEFAULT '大数据' COMMENT '方向',
   `introduce` varchar(500) DEFAULT '该用户没有留下任何痕迹!' COMMENT '简介和补充说明',
   `image` varchar(200) DEFAULT '/resource/default.jpg' COMMENT '头像照片',
   `creatTime` date DEFAULT NULL COMMENT '建创时间',
@@ -32,6 +32,7 @@ INSERT INTO `t_user` VALUES ('21', '邝忠震', '123456789@qq.com', '15548752689
 INSERT INTO `t_user` VALUES ('22', '董美丽', '850263341@qq.com', '15548785826', 'e10adc3949ba59abbe56e057f20f883e', '2', '教授', '研究生', '大数据', '本人本科在西安科技大学，研究生在西安交通大学，曾获得国家级奖项多项', '/resource/22/TopImages/20170523193238', '2017-05-23', '2017-05-23', '1', '1000');
 INSERT INTO `t_user` VALUES ('23', '姚鹏飞', '456789123@qq.com', '18825478965', 'e10adc3949ba59abbe56e057f20f883e', '1', '学生', '本科', 'web开发', '本人在西安科技大学计算机学院软件工程专业学习四年，在这四年获得国家级软件奖项2项，省级5项，校级多项。', '/resource/23/TopImages/20170524144932', '2017-05-23', '2017-05-23', '1', '1000');
 INSERT INTO `t_user` VALUES ('24', '王朝', '789123456@qq.com', '15228086532', 'e10adc3949ba59abbe56e057f20f883e', '1', '学生', '研究生', '大数据', '曾经参加数学建模大赛在其中取得了很大的经验，并具有很强的泡妞能力，擅长数学，计算机软件使用，大数据。', '/resource/24/TopImages/20170524145245', '2017-05-24', '2017-05-24', '1', '1000');
+INSERT INTO `t_user` VALUES ('25', '史晓楠', 'sxn314187985@qq.com', '15229086531', 'e10adc3949ba59abbe56e057f20f883e', '2', '讲师', '博士', '算法', '本人对算法颇有理解，尤其在地理信息方面，其次多次带领学生团队参加我校以及国家级各种重大比赛，并取得了优异的成绩!', '/resource/default.jpg', '2017-05-27', '2017-05-27', '1', '1000');
 
 
 -- ----------------------------
@@ -299,3 +300,12 @@ INSERT INTO `t_dbbackup` VALUES ('20170525161516', '2017-05-25', '2017-05-25 16:
 INSERT INTO `t_dbbackup` VALUES ('20170525162319', '2017-05-25', '2017-05-25 16:23:19', 'F:/resource/db/20170525162319.sql');
 INSERT INTO `t_dbbackup` VALUES ('20170526012923', '2017-05-26', '2017-05-26 01:29:23', 'F:/resource/db/20170526012923.sql');
 INSERT INTO `t_dbbackup` VALUES ('20170526144810', '2017-05-26', '2017-05-26 14:48:10', 'F:/resource/db/20170526144810.sql');
+
+-- ----------------------------
+-- 用户登陆信息表：Table structure for `t_logininfo`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_logininfo`;
+CREATE TABLE `t_logininfo` (
+  `id` varchar(10) NOT NULL  COMMENT '主键（userid）',
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

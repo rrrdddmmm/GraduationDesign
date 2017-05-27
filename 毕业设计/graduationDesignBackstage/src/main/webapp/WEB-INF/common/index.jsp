@@ -1,8 +1,17 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+response.setHeader("cache-control", "no-cache");
+response.setHeader("cache-control", "no-nostore");
+response.setHeader("expire", "0");
+response.setHeader("progma", "no-cache");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<meta HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+<meta HTTP-EQUIV="expires" CONTENT="0">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>系统主页</title>
 <link href="../content/css/style.css" rel="stylesheet" type="text/css" />

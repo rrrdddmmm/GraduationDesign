@@ -144,7 +144,14 @@ function closeDiv(obj){
 	      <c:if test="${li.resultdescription==null }">
 	      <td>待提交</td>
 	      </c:if>
-	      <td><a href="javascript:void(0);"  onclick="tasksubmit('${li.id}');">提交任务</a></td>
+	      <td>
+	      <c:if test="${project.projstatus!=3}">
+	      	<a href="javascript:void(0);"  onclick="tasksubmit('${li.id}');">提交任务</a>
+	      </c:if>
+	      <c:if test="${project.projstatus==3}">
+	      	项目已结题
+	      </c:if>
+	      </td>
 	    </tr>
     </c:forEach>
   </table>

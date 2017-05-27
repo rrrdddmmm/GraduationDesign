@@ -1,8 +1,17 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+response.setHeader("cache-control", "no-cache");
+response.setHeader("cache-control", "no-nostore");
+response.setHeader("expire", "0");
+response.setHeader("progma", "no-cache");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<meta HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+<meta HTTP-EQUIV="expires" CONTENT="0">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>校园软件开发在线协同平台</title>
 <link href="content/css/style.css" rel="stylesheet" type="text/css" />
@@ -42,7 +51,7 @@
             <tr>
                 <td height="40" align="right">角&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;色：</td>
                  <td height="40">
-                   <select id="role" class="input_b" style="width:129px;height:34px">
+                   <select id="role" class="input_b" style="width:148px;height:34px">
 			          <option selected="selected" value="-1">---请选择---</option>
 			          <option value="1">学生</option>
 			          <option value="2">教师</option>

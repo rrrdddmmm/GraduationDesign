@@ -61,7 +61,7 @@ public class SessionController {
 	// session失效处理
 	public static void noSeeiondelwithdefalt(HttpServletRequest request) throws ControllerException {
 		if (!judgeUserSession(request)) {
-			request.setAttribute("controllerExceptionInfo", "session失效请重新登录!");
+			request.setAttribute("controllerExceptionInfo", "您需要登陆,请登录!");
 			throw new ControllerException("session异常跳转到主页面");
 		}
 	}

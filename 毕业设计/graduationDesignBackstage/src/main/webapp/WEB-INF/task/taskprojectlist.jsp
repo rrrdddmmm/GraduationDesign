@@ -99,11 +99,11 @@
 	     <td title="${li.projdescribe }">${fn:substring(li.projdescribe, 0, 10)}...</td>
 	     <c:if test="${li.projstartuptime!=null }">
 		     <td>
-		     <c:if test="${li.projemail==userInfomation.email }">
+		     <c:if test="${li.projemail==userInfomation.email and li.projstatus!=3}">
 		     	<a href="taskProjectList.do?projid=${li.projid }&projemail=${li.projemail }" >创建任务</a>&nbsp;&nbsp;
 		     	<a href="taskDistribution.do?projid=${li.projid }" >分配任务</a>&nbsp;&nbsp;
 		     </c:if>
-		        <a href="taskChakan.do?projphone=${li.projphone }&projid=${li.projid }&projemail=${li.projemail }&projname=${li.projname }&creatpersionname=${li.creatpersionname }" >我的任务</a>
+		        <a href="taskChakan.do?projstatus=${li.projstatus }&projphone=${li.projphone }&projid=${li.projid }&projemail=${li.projemail }&projname=${li.projname }&creatpersionname=${li.creatpersionname }" >我的任务</a>
 		      </td>
 	      </c:if>
 	      <c:if test="${li.projstartuptime==null }">

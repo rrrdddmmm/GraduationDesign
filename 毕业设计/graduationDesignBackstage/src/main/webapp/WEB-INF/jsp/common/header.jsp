@@ -11,7 +11,7 @@
 				<ul class="clearfix">
 						<li><a href="index.do">系统首页</a></li>
 						<li><a href="news.do">新闻动态</a></li>
-						<li><a href="jion.do">加入项目</a></li>
+						
 						<li><a href="../commonController/toDefault.do">创建项目</a></li>
 						<li><a href="../commonController/toDefault.do">项目管理</a></li>
 						<li><a href="register.do">系统注册</a></li>
