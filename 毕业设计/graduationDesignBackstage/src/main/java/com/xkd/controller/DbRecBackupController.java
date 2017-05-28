@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -49,7 +48,6 @@ public class DbRecBackupController {
 
 	@RequestMapping("recover.do")
 	@Transactional
-	@Async
 	@ResponseBody
 	public BaseDbbackup recover(BaseDbbackup baseDbbackup) {
 		return dbRecBackupService.recover(baseDbbackup);

@@ -41,14 +41,28 @@ response.setHeader("progma", "no-cache");
   <div class="sys-content-left"> <img src="../content/images/title.fw.png" />
     <ul class="ulnav">
       <li> <i class="i1"></i><em><a href="../userLoginController/getIndex.do" class="lan" target="rightT">系统首页</a></em> </li>
-      <li> <i class="i2"></i><em>项目管理</em>
-      <dd class="snav dis">  
-      		<c:if test="${userInfomation.role=='1' }">
-      		<dl><a href="../projectCreatController/toCreatProject.do" target="rightT">创建项目</a></dl>        
-            </c:if>
-            <dl><a href="../projectManagerController/projectList.do" target="rightT">项目列表</a></dl>
-        </dd>
-      </li>
+      <c:if test="${userInfomation.role=='1' }">
+	      <li> <i class="i2"></i><em>项目管理</em>
+	      <dd class="snav dis">  
+	      		<dl><a href="../projectCreatController/toCreatProject.do" target="rightT">创建项目</a></dl>        
+	            <dl><a href="../projectManagerController/projectList.do" target="rightT">项目列表</a></dl>
+	        </dd>
+	      </li>
+      </c:if>
+      <c:if test="${userInfomation.role=='2' }">
+	      <li> <i class="i2"></i><em>审核管理</em>
+	      <dd class="snav dis">  
+	            <dl><a href="../projectManagerController/projectList.do" target="rightT">审核列表</a></dl>
+	        </dd>
+	      </li>
+      </c:if>
+      <c:if test="${userInfomation.role=='3' }">
+	      <li> <i class="i2"></i><em>项目管理</em>
+	      <dd class="snav dis">  
+	            <dl><a href="../projectManagerController/projectList.do" target="rightT">审核列表</a></dl>
+	        </dd>
+	      </li>
+      </c:if>
       <c:if test="${userInfomation.role=='3' }">
 	      <li> <i class="i3"></i><em>任务管理</em>
 	      	<dd class="snav dis">

@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.xkd.dao.BaseConfigMapper;
 import com.xkd.dao.BaseDirectionMapper;
@@ -52,6 +53,7 @@ public class ConfigManagerService {
 	@Resource(name = "basePlatformMapper")
 	private BasePlatformMapper	basePlatformMapper;
 
+	@Transactional
 	public List<?> configList(Integer flage) {
 		switch (flage) {
 			case 1:
