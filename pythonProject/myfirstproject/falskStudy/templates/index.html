@@ -1,0 +1,18 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>{{title}}我的第一个程序</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='site.css') }}"/>
+ </head >
+ <body>
+    <h1>{{ title }}</h1>
+    <nav>
+        <a href="{{ url_for('.services') }}">Services</a>
+        <a href="{{ url_for('.about') }}">About</a>
+    </nav>
+        renbo 任勃
+ </body>
+</html>

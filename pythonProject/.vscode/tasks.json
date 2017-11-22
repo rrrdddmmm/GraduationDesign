@@ -1,0 +1,11 @@
+{
+        // See https://go.microsoft.com/fwlink/?LinkId=733558
+        // for the documentation about the tasks.json format
+        //在.vscode文件夹下新建task.json，敲ctrl+shift+B，可以直接运行当前文件，相当于python 当前文件，输出在：输出控制台
+        "version":"0.1.0",
+        "command":"${config:python.pythonPath}",
+        "windows":{
+            "command":"${config:python.pythonPath}"
+        },
+        "args": ["${file}"]
+}
