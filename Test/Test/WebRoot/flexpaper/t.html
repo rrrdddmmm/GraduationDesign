@@ -1,0 +1,73 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+	<head>
+		<title>FlexPaper</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<style type="text/css" media="screen">
+html,body {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	overflow: auto;
+}
+
+#flashContent {
+	display: none;
+}
+</style>
+
+		<script type="text/javascript" src="flexpaper/js/jquery.js">
+</script><script type="text/javascript" src="flexpaper/js/flexpaper_flash.js">
+</script>
+	</head>
+	<body>
+<script type="text/javascript" src="js/swfobject/swfobject.js"></script>  
+ <script type="text/javascript">  
+         var swfVersionStr = "10.0.0";  
+         var xiSwfUrlStr = "playerProductInstall.swf";  
+         var flashvars = {  
+               SwfFile : escape("test.swf"),  
+   Scale : 0.6,  
+   ZoomTransition : "easeOut",  
+   ZoomTime : 0.5,  
+     ZoomInterval : 0.1,  
+     FitPageOnLoad : false,  
+     FitWidthOnLoad : true,  
+     PrintEnabled : true,  
+     FullScreenAsMaxWindow : false,  
+     ProgressiveLoading : true,  
+     PrintToolsVisible : true,  
+     ViewModeToolsVisible : true,  
+     ZoomToolsVisible : true,  
+     FullScreenVisible : true,  
+     NavToolsVisible : true,  
+     CursorToolsVisible : true,  
+   SearchToolsVisible : true,  
+     localeChain: "zh_CN"  
+   };  
+  
+ var params = {  
+  
+    }  
+         params.quality = "high";  
+         params.bgcolor = "#ffffff";  
+         params.allowscriptaccess = "sameDomain";  
+         params.allowfullscreen = "true";  
+         var attributes = {};  
+         attributes.id = "FlexPaperViewer";  
+         attributes.name = "FlexPaperViewer";  
+         swfobject.embedSWF(  
+             "FlexPaperViewer.swf", "flashContent",  
+             "650", "500",  
+             swfVersionStr, xiSwfUrlStr,  
+             flashvars, params, attributes);  
+swfobject.createCSS("#flashContent", "display:block;text-align:left;");  
+     </script>  
+
+
+	</body>
+</html>
